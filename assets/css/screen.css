@@ -1,7 +1,7 @@
-/* 
-Template Name: Mediumish 
-Copyright: Sal, WowThemes.net, https://www.wowthemes.net 
-License: https://www.wowthemes.net/freebies-license/ 
+/*
+Template Name: Mediumish
+Copyright: Sal, WowThemes.net, https://www.wowthemes.net
+License: https://www.wowthemes.net/freebies-license/
 */
 .mainheading {
     padding: 1rem 0rem;
@@ -298,10 +298,6 @@ span.post-read-more a:hover {
 .mediumnavigation .navbar-brand img {
     max-height: 30px;
     margin-right: 5px;
-}
-
-.mainheading h1.sitetitle {
-    font-family: Righteous;
 }
 
 .mainheading h1.posttitle {
