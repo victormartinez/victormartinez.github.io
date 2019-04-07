@@ -58,6 +58,15 @@ post_class: post-template
             <img class="featured-image img-fluid" src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ page.image | absolute_url }}{% endif %}" alt="{{ page.title }}">
             {% endif %}
 
+              {% if page.caption %}
+              <div class="d-flex justify-content-center">
+                {% if page.caption_url %}
+                <p class="font-italic"><a href="{{ page.caption_url }}">{{ page.caption}}</a></p>
+                {% else %}
+                  <p class="font-italic">{{ page.caption}}</p>
+                {% endif %}
+              </div>
+              {% endif %}
             {% endif %}
             <!-- End Featured Image -->
 
