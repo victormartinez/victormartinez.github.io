@@ -163,8 +163,12 @@ ga('send', 'pageview');
                 Copyright © {{ site.time | date: "%Y" }} {{ site.name }}
             </div>
             <div class="col-md-6 col-sm-6 text-center text-lg-right">
-              <a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll Theme</a> by WowThemes.net <br/>
+              <a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll Theme</a> by WowThemes.net
+
+              {% if page.url == "/" %}
+              <br/>
                 Photo by <a href="https://unsplash.com/photos/4KXuTvrdO8c">Laurent Peignault</a> on <a href="https://unsplash.com/photos/4KXuTvrdO8c">Unsplash</a>
+              {% endif %}
             </div>
         </div>
     </div>
