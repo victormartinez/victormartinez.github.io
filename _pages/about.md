@@ -6,17 +6,24 @@ comments: false
 ---
 
 <div class="row justify-content-between">
-<div class="col-md-12 pr-5">
+  <div class="col-md-8 pr-5">
+    <p>Passionate software developer engaged to help startups to build digital products. In the past few years I have been focusing on the development of products built with <b>Python</b>, <b>Django</b>, <b>REST</b>, <b>Docker</b>, <b>Celery</b>, <b>Continuous Delivery</b>, <b>Agile</b> and <b>SCRUM</b>. My learning-driven profile also led me to other experiences with <b>Scrapy</b>, <b>Data Extraction</b> and <b>(Deep) Web Crawling</b>.</p>
 
-<p>Passionate software developer engaged to help startups to build digital products. backend tasks and user-centric services. In the past months I have been focusing on the development of products built with Python, Django, REST, Docker, Celery, Continuous Delivery, Agile and SCRUM. My learning-driven profile also led me to other experiences with Scrapy, Data Extraction and (Deep) Web Crawling.</p>
+  </div>
 
-<p>Feel free to send me a message or follow me in the Internet.</p>
+  <div class="col-md-4">
+    <div class="sticky-top sticky-top-80">
+      <img src="/assets/images/author.png" alt="Victor Martinez" /> 
 
-<ul>
-  <li><a href="http://www.twitter.com/vcrmartinez">Twitter</a></li>
-  <li><a href="http://linkedin.com/in/vcrmartinez">LinkedIn</a></li>
-  <li>Email: vcrmartinez [at] gmail [dot] com</li>
-</ul>
-
-</div>
+      <br />
+      <br />
+      <h5>Find me in the internet</h5>
+      <ul>
+        <li><a href="https://github.com/victormartinez">Github</a></li>
+        <li><a href="http://www.twitter.com/vcrmartinez">Twitter</a></li>
+        <li><a href="http://linkedin.com/in/vcrmartinez">LinkedIn</a></li>
+        <li><b>Email:</b> vcrmartinez [at] gmail [dot] com</li>
+      </ul>
+    </div>
+  </div>
 </div>
