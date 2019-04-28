@@ -9,7 +9,7 @@ google_analytics: 'UA-104088464-3'
 disqus: 'vcrmartinez'
 mailchimp-list:
 include: ["_pages"]
-permalink: /:title/
+permalink: /:year/:month/:day/:title
 
 # Plugins
 plugins:
