@@ -3,7 +3,7 @@ layout: post
 title:  "Git hooks, issue tracker and Git Flow"
 image: assets/images/highlights/git_hooks.png
 on_post: false
-categories: [git]
+categories: [Git]
 tags: [git, gitflow, hooks]
 ---
 
