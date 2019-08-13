@@ -13,10 +13,10 @@ I have been studying Recommender Systems (RecSys) for the past few months. Many 
 
 * Part I: Introduction and Levels of Personalization
 * Part II: How it Works
-* Part II: Methodologies
-* Part III: Metrics
-* Part IV: Challenges
-* Part V: References and Further Reading
+* Part III: Methodologies
+* Part IV: Metrics
+* Part V: Challenges
+* Part VI: References and Further Reading
 
 ## Introduction
 RecSys is a topic of concern of big players like Amazon, Spotify, Netflix, Github and Linkedin. Mike McGuire in this [post](https://www.huffpostbrasil.com/2013/08/01/netflix-profiles_n_3685876.html) explains that companies have realized that "if there's not something else there surfacing that meets your interest beyond what you initially dialed in for, then you're out". In other words, companies are concerned with providing not only what the user is looking for but other items that meets the user's preferences. At Amazon, for example, if you want to buy a Kindle the website will drive you to the product but will also show related items you might want like a charger and a waterproof cover. 
