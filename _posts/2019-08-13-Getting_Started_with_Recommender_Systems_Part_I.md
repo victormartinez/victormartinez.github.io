@@ -29,6 +29,7 @@ RecSys are valuable at [increasing the sales](http://fortune.com/2012/07/30/amaz
 So far we have seen RecSys as a general idea that mixes some topics like `personalization`, `items`, `recommendation` and `user's preferences`. But, **how can we define it?**
 
 > Recommender Systems are software tools and techniques that provide suggestions for items that are most likely of interest to a particular user.
+>
 > \- F. Ricci, L. Rokach, B. Shapira, and P. B. Kantor, editors. Recommender Systems Handbook. Springera, 2011
 
 ## Levels of Personalization
@@ -55,7 +56,7 @@ The most common example is Netflix. Based on the titles you liked, Netflix does 
 
 The advantage of this approach is the level of personalization you can achieve and, thus, increase the convertion in your system. However, it takes much more effort than the previous one and, of course, requires a more complex solution/algorithm/architecture.
 
-## Notes
+### Notes
 There is no silver bullet. The best approach is the one that works for you business. It is pretty common to adopt both approaches in the same platform/website/system. For example, Spotify provides those "Top Lists" but also does a personalized approach when recommending you a song similar to the one you are listening to.
 
 A golden rule is to think about the whole experience and what you want to achieve: more sales; retention increase; form a habbit; etc. Once you have defined your goal, the Metrics, algorithms and technical decisions will relate to that and mixed approaches are very common.
