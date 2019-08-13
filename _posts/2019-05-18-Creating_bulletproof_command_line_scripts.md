@@ -6,7 +6,7 @@ tags: [command, line, scripts]
 image: assets/images/highlights/python_code_on_screen.jpg
 on_post: true
 toc: true
-featured: true
+featured: false
 ---
 
 The life of a backend developer involves creating some scripts to be executed in the production environment. For instance, you might need to update many records at once, trigger events or fix a specific bug. *What do they have in common?* If not designed properly, they can cause a very bad side-effect on your application, ruin the user experience, etc.
