@@ -2,7 +2,7 @@
 layout: post
 title: "Getting Started with Recommender Systems: Part I"
 categories: [RecSys]
-tags: [recommender, systems, machine, learning]
+tags: [recommender, systems, machine, learning, recsys, recommendation]
 image: assets/images/highlights/vinyles-part-i.png
 on_post: false
 toc: true
