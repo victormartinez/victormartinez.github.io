@@ -4,7 +4,7 @@ title: "Getting Started with Recommender Systems: Part I"
 categories: [RecSys]
 tags: [recommender, systems, machine, learning]
 image: assets/images/highlights/vinyles-part-i.png
-on_post: true
+on_post: false
 toc: true
 featured: true
 ---
@@ -21,7 +21,12 @@ I have been studying Recommender Systems (RecSys) for the past few months. Many 
 ## Introduction
 RecSys is a topic of concern of big players like Amazon, Spotify, Netflix, Github and Linkedin. Mike McGuire in this [post](https://www.huffpostbrasil.com/2013/08/01/netflix-profiles_n_3685876.html) explains that companies have realized that "if there's not something else there surfacing that meets your interest beyond what you initially dialed in for, then you're out". In other words, companies are concerned with providing not only what the user is looking for but other items that meets the user's preferences. At Amazon, for example, if you want to buy a Kindle the website will drive you to the product but will also show related items you might want like a charger and a waterproof cover. 
 
-An interesting article from Standford, [When Choice is Demotivating: Can One Desire Too Much of a Good Thing?](https://www.researchgate.net/publication/12189991_When_Choice_is_Demotivating_Can_One_Desire_Too_Much_of_a_Good_Thing), shows the negative impact of presenting too many options to customers. In fact, when there is no personalization your customers end up doing ["infinite browsing"](https://www.youtube.com/watch?v=VqdQZCvpIyo) and there is no conversion and, consequently, a high level of churn. This [article](https://www.businessinsider.com/netflix-recommendation-engine-worth-1-billion-per-year-2016-6) from Business Insider explains how "the combined effect of personalization and recommendations save us [Netflix] more than $1B per year".
+An interesting article from Standford, [When Choice is Demotivating: Can One Desire Too Much of a Good Thing?](https://www.researchgate.net/publication/12189991_When_Choice_is_Demotivating_Can_One_Desire_Too_Much_of_a_Good_Thing), shows the negative impact of presenting too many options to customers.
+
+
+![When Choice is Demotivating - Experiment](/assets/images/posts/jams-conversion.png "When Choice is Demotivating - Experiment")
+
+In fact, when there is no personalization your customers end up doing ["infinite browsing"](https://www.youtube.com/watch?v=VqdQZCvpIyo) and there is no conversion and, consequently, a high level of churn. This [article](https://www.businessinsider.com/netflix-recommendation-engine-worth-1-billion-per-year-2016-6) from Business Insider explains how "the combined effect of personalization and recommendations save us [Netflix] more than $1B per year".
 
 RecSys are valuable at [increasing the sales](http://fortune.com/2012/07/30/amazons-recommendation-secret/). In 2012, Amazon has reported "a 29% sales increase to $12.83 billion during its second fiscal quarter, up from $9.9 billion during the same time last year". However, they are not limited to profit. [This infographic](https://sigmoidal.io/recommender-systems-recommendation-engine/) illustrates they also **improve retention**, **form habits** and **accelerate work**.
 
