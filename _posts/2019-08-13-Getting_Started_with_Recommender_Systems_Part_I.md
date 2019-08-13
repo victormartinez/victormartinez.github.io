@@ -13,7 +13,7 @@ I have been studying Recommender Systems (RecSys) for the past few months. Many 
 
 * Part I: Introduction and Levels of Personalization
 * Part II: How it Works
-* Part III: Methodologies
+* Part III: Techniques
 * Part IV: Metrics
 * Part V: Challenges
 * Part VI: References and Further Reading
