@@ -1,7 +1,9 @@
-jekyll:
-    image: jekyll/jekyll:latest
-    command: jekyll serve --force_polling
-    ports:
-        - 4000:4000
+version: '3'
+services:
+  web:
+    image: jekyll/jekyll:3.8
+    command: jekyll serve --watch --force_polling --verbose
     volumes:
-        - .:/srv/jekyll
+      - "$PWD:/srv/jekyll"
+    ports:
+      - "4000:4000"
