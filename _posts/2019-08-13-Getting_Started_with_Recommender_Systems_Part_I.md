@@ -12,7 +12,7 @@ featured: true
 I have been studying Recommender Systems (RecSys) for the past few months. Many topics are scattered in the Internet and I thought about condensating the main concepts into a series of blog posts. For those of you who are interested in the subject, I organized the content and split into parts:
 
 * Part I: Introduction and Levels of Personalization
-* Part II: How it Works
+* [Part II: How it Works](/2019/09/07/Getting_Started_with_Recommender_Systems_Part_II)
 * Part III: Techniques
 * Part IV: Metrics
 * Part V: Challenges
