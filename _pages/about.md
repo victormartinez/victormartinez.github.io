@@ -7,8 +7,9 @@ comments: false
 
 <div class="row justify-content-between">
   <div class="col-md-8 pr-5">
-    <p>Passionate software developer engaged to help startups to build digital products. In the past few years I have been focusing on the development of products built with <b>Python</b>, <b>Django</b>, <b>REST</b>, <b>Docker</b>, <b>Celery</b>, <b>Continuous Delivery</b>, <b>Agile</b> and <b>SCRUM</b>. My learning-driven profile also led me to other experiences with <b>Scrapy</b>, <b>Data Extraction</b> and <b>(Deep) Web Crawling</b>.</p>
-
+    <p>I help startups to build digital products. I'm a backend developer with 5+ years experience who lives in <a href="https://www.google.com.br/maps/place/Salvador+-+State+of+Bahia/@-12.9115467,-38.4076728,11.46z/data=!4m5!3m4!1s0x716037ca23ca5b3:0x1b9fc7912c226698!8m2!3d-12.977749!4d-38.5016301?hl=en">Salvador/Ba - Brazil</a>.</p>
+    <p>Throughout the years I experienced different challenges and programming languages. Nowadays I work primarly with web development involving <b>Python</b>, <b>Django</b>, <b>Docker</b>, <b>Celery</b> and other cool stuff. Besides web development, I like to read about data-related topics like Machine Learning, Recommender Systems, Data Science, Web Crawling, etc.</p>
+    <p>Feel free to send me a message. I have a public profile in Twitter, Github and Linkedin.</p>
   </div>
 
   <div class="col-md-4">
