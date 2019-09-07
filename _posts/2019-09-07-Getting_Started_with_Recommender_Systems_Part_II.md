@@ -9,7 +9,7 @@ toc: true
 featured: true
 ---
 
-In the [previous](https://vcrmartinez.com/2019/08/13/Getting_Started_with_Recommender_Systems_Part_I) post I introduced the RecSys field and the levels of personalization. Today I will discuss about the recommendation pipeline and how it works.
+In the [previous](/2019/08/13/Getting_Started_with_Recommender_Systems_Part_I) post I introduced the RecSys field and the levels of personalization. Today I will discuss about the recommendation pipeline and how it works.
 
 If you missed the other posts, check them out:
 
