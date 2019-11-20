@@ -13,3 +13,15 @@
 	"syntax",
     "starsnonscss"
 ;
+
+// Custom
+
+div.highlight table {
+  border-collapse: unset !important;
+  margin-bottom: 0px !important;
+}
+
+
+div.highlight table tbody {
+  text-align: justify !important;
+}
