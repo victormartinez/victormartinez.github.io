@@ -20,27 +20,9 @@ If you missed the other posts, check them out:
 * Part V: Challenges
 * Part VI: References and Further Reading
 
-## Techniques
-There are many algorithms regarding RecSys. It is possible to group them into two big approaches (or techniques): non-personalized and personalized.
-
-### Non-Personalized
-You don't need to use robust and state-of-the-art algorithms to provide recommendations to your users. 
+### Techniques
 
 
-In fact, it is pretty common to see many non-personalized algorithms in a daily basis. 
-
-
-#### Association Rules
-Items that go together; items that are logically connected;
-
-count(A, B) / count(B)
-P(A | B)
-LIFT ( symetric
-
-#### Statistical
-Items that go together; items that are logically connected;
-
-### Personalized
 #### Collaborative Filtering
 #### Content-based Filtering
 #### Demographic
