@@ -3,6 +3,7 @@ layout: post
 title: "Kubernetes: my personal cheat sheet"
 categories: [DevOps]
 tags: [kubernetes, devops, cheat, sheet, commands, k8s]
+image: /assets/images/highlights/kubernetes_cheatsheet.png
 on_post: false
 toc: true
 featured: true
@@ -36,6 +37,7 @@ If your infrastructure is comprised of a Kubernetes cluster you probably have a 
 * Rollback a deployment: `kubectl rollout undo deployment/<DEPLOY-NAME> [-n <NAMESPACE>]`
 * Delete evicted pods: `kubectl [-n <NAMESPACE>] delete pods --field-selector=status.phase=Failed`
 * Delete all pods: `kubectl delete --all pods [-n <NAMESPACE>]`
+* Restart pods: `kubectl rollout restart deployment <DEPLOY-NAME> [-n <NAMESPACE>]`
 
 *Hints:* 
 1. ~~Never use~~ Avoid to use `scale deploy` command because you will end up differing from the yaml files and it will be a mess to determine the diff between the cluster and the yaml files. It is OK to use it in an emergency scenario but remember to update the deploy or the HPA file(s). In a normal scenario, keep your yamls updated and apply them to change the cluster state.
@@ -66,6 +68,7 @@ If your infrastructure is comprised of a Kubernetes cluster you probably have a 
 * List helm deployments: `helm ls`
 * Delete a helm deploy: `helm delete <NAME> --purge`
 * Install a chart: `helm install <CHART-NAME> --name <YOUR-DEPLOY-NAME> -f <YAML-FILE> [--namespace <NAMESPACE>]`
+* Update a chart: `helm upgrade <NAME> <CHART> -f <YAML-FILE>`
 
 
 That's all folks. As I use more commands I update this post.
