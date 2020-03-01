@@ -6,7 +6,7 @@ tags: [recommender, systems, machine, learning, recsys, recommendation]
 image: assets/images/highlights/vinyles-part-ii.png
 on_post: false
 toc: true
-featured: true
+featured: false
 ---
 
 In the [previous](/2019/08/13/Getting_Started_with_Recommender_Systems_Part_I) post I introduced the RecSys field and the levels of personalization. Today I will discuss about the recommendation pipeline and how it works.
