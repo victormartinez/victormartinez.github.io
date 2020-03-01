@@ -12,4 +12,3 @@ My personal website built with Jekyll.
 1. DevOps
 1. RecSys
 1. Reviews
-1. Books
