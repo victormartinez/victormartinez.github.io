@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Review: Cloud Native DevOps with Kubernetes"
-categories: [Reviews, Books]
+categories: [Reviews]
 tags: [book, review, cloud, native, devops, kubernetes, k8s]
 toc: false
 image: assets/images/highlights/book-review-cloud-native.png
