@@ -79,6 +79,11 @@ section.recent-posts {
     margin-bottom: -1px;
 }
 
+.article-post p img {
+  display: block;
+  margin: 0 auto;
+}
+
 .article-post ol,
 .article-post ul {
     margin-bottom: 1.5rem;
