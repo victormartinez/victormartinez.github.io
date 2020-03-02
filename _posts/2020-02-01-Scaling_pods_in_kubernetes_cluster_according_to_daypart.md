@@ -64,7 +64,7 @@ metadata:
 rules:
 - apiGroups: ["autoscaling"]
   resources: ["horizontalpodautoscalers"]
-  verbs: ["patch"]
+  verbs: ["get", "list", "patch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -91,7 +91,7 @@ PROJECTS = {
     "backend": {
         "HPA": {
             "NAMESPACE": "backend",
-            "HPA": "backend-autoscale",
+            "NAME": "backend-autoscale",
             "TARGET": "backend-web",
         }
     }
@@ -102,36 +102,33 @@ Instead of keeping string floating around the code, I use a settings module to s
 
 ```python
 # hpa.py
-from kubernetes import config                                                                                                                     
-                                                                                                                                                  
-config.load_incluster_config()                                                                                                                    
-                                                                                                                                                  
-from kubernetes import client                                                                                                                     
-                                                                                                                                                  
-import settings                                                                                                                                   
-                                                                                                                                                  
-                                                                                                                                                  
-def scale(project_name: str, min_replicas: int, max_replicas: int):                                                                               
-    config = settings.PROJECTS[project_name]["HPA"]                                                                                               
-    scale_target_ref = client.V1CrossVersionObjectReference(                                                                                      
-        api_version="extensions/v1beta1", kind="Deployment", name=config["TARGET"]                                                                
-    )                                                                                                                                             
-    spec = client.V1HorizontalPodAutoscalerSpec(                                                                                                  
-        min_replicas=min_replicas,                                                                                                                
-        max_replicas=max_replicas,                                                                                                                
-        scale_target_ref=scale_target_ref,                                                                                                        
-    )                                                                                                                                             
-    metadata = client.V1ObjectMeta(name=config["HPA"], namespace=config["NAMESPACE"])                                                             
-    autoscaler = client.V1HorizontalPodAutoscaler(                                                                                                
-        api_version="autoscaling/v2beta1",                                                                                                        
-        kind="HorizontalPodAutoscaler",                                                                                                           
-        metadata=metadata,                                                                                                                        
-        spec=spec,                                                                                                                                
-    )                                                                                                                                             
-                                                                                                                                                  
-    hpa_api = client.AutoscalingV1Api()                                                                                                           
-    return hpa_api.patch_namespaced_horizontal_pod_autoscaler(                                                                                    
-        config["HPA"], config["NAMESPACE"], autoscaler                                                                                            
+from kubernetes import config
+
+config.load_incluster_config()
+
+from kubernetes import client
+from kubernetes.client.models.v2beta1_horizontal_pod_autoscaler import (
+    V2beta1HorizontalPodAutoscaler,
+)
+
+import settings
+
+
+def scale(
+    project_name: str, min_replicas: int, max_replicas: int
+) -> V2beta1HorizontalPodAutoscaler:
+    config = settings.PROJECTS[project_name]["HPA"]
+
+    api_client = client.AutoscalingV2beta1Api(client.ApiClient())
+    v2beta1_hpa = api_client.read_namespaced_horizontal_pod_autoscaler(
+        config["NAME"], config["NAMESPACE"]
+    )
+    v2beta1_hpa.spec.min_replicas = min_replicas
+    v2beta1_hpa.spec.max_replicas = max_replicas
+    v2beta1_hpa.status = None
+
+    return api_client.patch_namespaced_horizontal_pod_autoscaler(
+        config["NAME"], config["NAMESPACE"], v2beta1_hpa
     )
 ```
 
