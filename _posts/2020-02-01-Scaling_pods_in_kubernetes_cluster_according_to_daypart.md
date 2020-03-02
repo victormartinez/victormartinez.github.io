@@ -9,7 +9,7 @@ toc: false
 featured: true
 ---
 
-There are businesses that heavily rely on specific periods of day to make profit. Food ordering companies, for example, tend to have a heated operation during midday and the opposite behavior in other dayparts. Regarding the infrastructure, the phenomenon is particularly interesting because in a specific period your application receives an impressive amount of requests and the cluster must be able to scale really fast to avoid errors otherwise customers might face slowness and decide to use another platform to order (churn). The chart below exemplifies the scenario.
+There are businesses that heavily rely on specific periods of day to make profit. Food ordering companies, for example, tend to have a heated operation during midday and the opposite behavior in other dayparts. Regarding the infrastructure, the phenomenon is particularly interesting because in a specific period of day the application receives an impressive amount of requests and the cluster must be able to scale really fast. A slow scale would bring errors and slowness to customer and, then, result into churn increase. The chart below exemplifies the scenario.
 
 ![Daypart behavior](/assets/images/posts/daypart_behavior_chart.png "Daypart behavior")
 
@@ -18,12 +18,14 @@ You might wonder whether the problem can be solved with a simple autoscaling mec
 A special thanks to [Robson Peixoto](https://www.linkedin.com/in/robsonpeixoto/) for providing me guidance to accomplish the task.
 
 ## General Overview
-We want to create a cronjob with the right permissions to edit autoscaling properties. Bear in mind that we want, basically, to create an agent that can edit the cluster properties from inside the cluster. The image below illustrates the scenario.
+The idea is to create a CronJob with the right permissions to edit autoscaling properties and, therefore, increase or decrese the number of pods available. The image below illustrates the scenario.
 
 ![Diagram illustrating before and after scenarios](/assets/images/posts/before_after_cronscale.png "Diagram illustrating before and after scenarios")
 
+While image illustrates a scaling up process, the opposite could also be accomplished: you might want to decrease the number of pods during the dawn, for example, to diminish the number of nodes and, therefore, the cost.
+
 ## Horizontal Pod Autoscaler
-Since the CronJob is going to **edit** the cluster properties we need a basic Horizontal Pod Autoscaler available. The yaml code below illustrates the scaling of a backend web application located inside the backend namespace.
+Since the CronJob is going to **edit** the autoscaling properties we need a basic Horizontal Pod Autoscaler available. The yaml code below illustrates the scaling of a backend application located inside the namespace `backend`.
 
 
 ```yaml
@@ -47,7 +49,7 @@ spec:
 ```
 
 ## Permissions
-Now, it is time to configure cronjob permissions. To do so, we will use the RBAC to grant access to Kubernetes API and make sure it has only permission to access the autoscaling resource. I use the term `cronscale` to identify the process of scaling according to the cronjob.
+Now, it is time to configure CronJob permissions. To do so, we use the RBAC to grant access to Kubernetes API and make sure it has only permission to access the autoscaling resource. I use the term `cronscale` to identify the process of scaling according to the CronJob.
 
 ```yaml
 apiVersion: v1
@@ -82,7 +84,7 @@ subjects:
 ```
 
 ## Application
-Before creating the CronJob, we need to create the image/application responsible for updating the autoscaling properties. For that, I suggest using the [python client](https://github.com/kubernetes-client/python). The code snippet below is just an example of implementation that you can use. Feel free to change according your necessities.
+Before creating the CronJob, we need to create the image/application responsible for updating the autoscaling properties. For that, I suggest using the [python client](https://github.com/kubernetes-client/python). The code snippet below is just an example of implementation that you can use. Feel free to change according to your necessities.
 
 ```python
 # settings.py
@@ -139,23 +141,23 @@ def scale(
 Now that we have the permissions, it is time to create the CronJob. Pay attention to the 12th line because it allows kubernetes to run the pod with the permissions we have setup before.
 
 ```yaml
-apiVersion: batch/v9beta1                                                                                                                         
-kind: CronJob                                                                                                                                     
-metadata:                                                                                                                                         
-  name: cronscale-midday                                                                                                              
-  namespace: backend                                                                                                                         
-spec:                                                                                                                                             
+apiVersion: batch/v9beta1
+kind: CronJob
+metadata:
+  name: cronscale-midday
+  namespace: backend
+spec:
   schedule: "<YOUR-CRON-GOES-HERE>" # UTC
-  jobTemplate:                                                                                                                                    
-    spec:                                                                                                                                         
-      template:                                                                                                                                   
-        spec:                                                                                                                                     
-          serviceAccountName: backend-cronscale                                                                                              
-          restartPolicy: Never                                                                                                                    
-          containers:                                                                                                                             
-          - name: job                                                                                                                             
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: backend-cronscale
+          restartPolicy: Never
+          containers:
+          - name: job
             image: <YOUR-IMAGE-AND-VERSION-GOES-HERE>
-            imagePullPolicy: IfNotPresent                                                                                                         
+            imagePullPolicy: IfNotPresent
             command: [<YOUR-COMMAND-GOES-HERE>]
 ```
 
@@ -164,7 +166,8 @@ It is important to be carefull regarding some points:
 
 1. **UTC vs LocalTime:** Configure the Dockerfile to use UTC time and consider it in the `schedule` property.
 2. **Click:** You can wrap the python code with [Click](https://click.palletsprojects.com/en/7.x/) to create an easy to use command line interface.
-3. **Non-root user:** Do not use root user for the Dockerfile. You can take the Dockerfile below as a starting point:
+3. **Configmaps:** The settings module use hardcoded values but it could easily take the values from a ConfigMap.
+4. **Non-root user:** Do not use root user for the Dockerfile. You can take the Dockerfile below as a starting point:
 
 ```dockerfile
 FROM python:3.7
