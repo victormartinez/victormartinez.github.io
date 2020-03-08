@@ -32,6 +32,7 @@ If your infrastructure is comprised of a Kubernetes cluster you probably have a 
 
 ## Deploy
 
+* Check all deployments: `kubectl get deployments --all-namespaces`
 * Creating or deleting a deploy is quite easy: `kubectl [apply|delete] -f <FOLDER-OR-FILE>`
 * Scaling it as well: `kubectl scale deploy <DEPLOY-NAME> [-n <NAMESPACE>] --replicas=<N>`
 * Rollback a deployment: `kubectl rollout undo deployment/<DEPLOY-NAME> [-n <NAMESPACE>]`
