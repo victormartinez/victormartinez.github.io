@@ -31,6 +31,8 @@ kubectx -d <NAME>         : delete context <NAME> ('.' for current-context)
 kubectx -u, --unset       : unset the current context
 ```
 
+**PS:** If you have [fzf](https://github.com/junegunn/fzf) installed you get a wonderful interactive menu with fuzzy searching by typing `kubectx` or `kubens`.
+
 That's all folks!
 
 ---
