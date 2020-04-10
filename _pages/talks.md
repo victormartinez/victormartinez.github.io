@@ -10,6 +10,14 @@ comments: false
 
 <p>Sometimes I get brave enough to talk about a topic in front of many people.</p>
 
+<h2>2020</h2>
+<h4><a href="https://www.meetup.com/pt-BR/sanartech/events/269401026/">Meetup SanarTech</a></h4>
+<ul>
+  <li>When: April, 9th</li>
+  <li>Where: Meetup SanarTech (Remote Talk)</li>
+  <li>Presentation: <a href="https://speakerdeck.com/victormartinez/o-manual-do-trabalho-remoto">O Manual do Trabalho Remoto</a></li>
+</ul>
+
 <h2>2019</h2>
 <h4><a href="http://nosqlba.com/">NoSQL:BA</a></h4>
 <ul>
