@@ -16,6 +16,7 @@ comments: false
   <li>When: April, 9th</li>
   <li>Where: Meetup SanarTech (Remote Talk)</li>
   <li>Presentation: <a href="https://speakerdeck.com/victormartinez/o-manual-do-trabalho-remoto">O Manual do Trabalho Remoto</a></li>
+  <li>Talk: <a href="https://www.youtube.com/watch?v=OfRGf8zXD2g">YouTube</a></li>
 </ul>
 
 <h2>2019</h2>
