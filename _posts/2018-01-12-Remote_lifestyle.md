@@ -11,7 +11,7 @@ It's been three months working remotely and I want to share what I learnt from t
 
 --
 
-2017 was a very though year but, as the saying goes, *smooth seas never made a skilled sailor*. I was working with PHP and the framework Neos Flow but I wanted to work with Python. Unfortunately the city I live in does not provide lots of opportunities and I could accept the scenario.
+2017 was a very though year but, as the saying goes, *smooth seas never made a skilled sailor*. I was working with PHP and the framework Neos Flow but I wanted to work with Python. Unfortunately the city I live in does not provide lots of opportunities and I could not accept the scenario.
 
 The strategy was: (i) beef up my skills; (ii) update my CV; (iii) look for jobs; (iv) send my CV to companies aligned with my profile. Few months later I was pleased to join a great team and, since then, I have been learning not only technical skills but also how to adapt myself to the so wanted remote lifestyle.
 
