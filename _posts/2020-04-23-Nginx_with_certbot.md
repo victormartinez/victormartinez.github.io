@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "Nginx + Certbox straight to the point"
-categories: [Web Development]
+categories: [DevOps]
 tags: [nginx, certbot, https, reverse proxy]
 image: /assets/images/highlights/nginx_and_certbot.png
 on_post: false
-toc: true
+toc: false
 featured: true
 ---
 
