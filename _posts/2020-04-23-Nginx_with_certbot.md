@@ -6,7 +6,7 @@ tags: [nginx, certbot, https, reverse proxy]
 image: /assets/images/highlights/nginx_and_certbot.png
 on_post: false
 toc: false
-featured: true
+featured: false
 ---
 
 Working in a team with no DevOps expertise forces you to manage to get things done regarding infrastructure. We had to install and configure a [RabbitMQ](https://www.rabbitmq.com/) instance behind a [Nginx](https://www.nginx.com/) with HTTPS. This is a straighforward post on how to install and configure the reverse proxy with [Let's Encrypt](https://letsencrypt.org).
