@@ -1,6 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+import SocialLinks from "../SocialLinks"
+
 import * as S from "./styled"
 
 const Hero = ({ showBackgroundImage }) => {
@@ -10,6 +12,7 @@ const Hero = ({ showBackgroundImage }) => {
       <S.HeroContainer>
         <S.Title>Hi, I'm Victor.</S.Title>
         <S.Description>I'm a backend developer.</S.Description>
+        <SocialLinks />
       </S.HeroContainer>
     </Wrapper>
   )
