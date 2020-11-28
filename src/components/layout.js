@@ -9,7 +9,7 @@ import GlobalStyles from "../styles/global"
 
 import * as S from "./MainWrapper/styled"
 
-const Layout = ({ location, title, children }) => {
+const Layout = ({ location, title, description, social, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
 
@@ -17,9 +17,14 @@ const Layout = ({ location, title, children }) => {
     <>
       <GlobalStyles />
       <TopBar />
-      <Hero showBackgroundImage={isRootPath} />
+      <Hero
+        showBackgroundImage={isRootPath}
+        title={title}
+        description={description}
+        social={social}
+      />
       <S.MainWrapper>{children}</S.MainWrapper>
-      <Footer />
+      <Footer social={social} />
     </>
   )
 }

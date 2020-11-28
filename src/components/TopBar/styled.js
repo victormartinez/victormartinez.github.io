@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 export const TopBarHeader = styled.header`
-  background-color: #f2f2f2;
+  background-color: transparent;
   height: 5rem;
   display: flex;
   justify-content: center;
@@ -16,21 +16,44 @@ export const TopBarContainer = styled.div`
 `
 
 export const Logo = styled(Link)`
-  display: inline-block;
   display: flex;
   align-items: center;
   min-height: 3.125rem;
+  text-decoration: none;
+
+  &:visited {
+    color: #fff;
+  }
+
+  &:hover {
+    border-bottom: 1px dashed #fff;
+  }
 `
 
-export const Nav = styled.nav``
+export const Nav = styled.nav`
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #fff;
+`
 
-export const NavList = styled.ul``
+export const NavList = styled.ul`
+  display: flex;
+`
 
 export const NavItem = styled.li`
+  flex-direction: row;
   list-style-type: none;
-  display: inline-block;
   margin-right: 1em;
 `
 export const NavLink = styled(Link)`
   text-decoration: none;
+
+  &:visited {
+    color: #fff;
+  }
+
+  &:hover {
+    border-bottom: 1px dashed #fff;
+  }
 `

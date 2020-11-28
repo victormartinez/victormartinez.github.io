@@ -5,14 +5,18 @@ import SocialLinks from "../SocialLinks"
 
 import * as S from "./styled"
 
-const Hero = ({ showBackgroundImage }) => {
+const Hero = ({ showBackgroundImage, title, description, social }) => {
   const Wrapper = showBackgroundImage ? S.HeroWrapperBg : S.HeroWrapperColor
   return (
     <Wrapper>
       <S.HeroContainer>
-        <S.Title>Hi, I'm Victor.</S.Title>
-        <S.Description>I'm a backend developer.</S.Description>
-        <SocialLinks />
+        <S.Title>{title}</S.Title>
+        <S.Description>{description}</S.Description>
+        <SocialLinks
+          twitter={social.twitter}
+          linkedin={social.linkedin}
+          github={social.github}
+        />
       </S.HeroContainer>
     </Wrapper>
   )
@@ -20,6 +24,9 @@ const Hero = ({ showBackgroundImage }) => {
 
 Hero.propTypes = {
   showBackgroundImage: PropTypes.bool,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  social: PropTypes.object.isRequired,
 }
 
 export default Hero

@@ -6,20 +6,20 @@ import { LinkedinWithCircle as Linkedin } from "@styled-icons/entypo-social/Link
 
 import * as S from "./styled"
 
-const SocialLinks = () => {
+const SocialLinks = ({ twitter, github, linkedin }) => {
   const socialIcons = [
     {
-      url: "https://twitter.com/vcrmartinez",
+      url: `https://twitter.com/${twitter}`,
       element: Twitter,
       label: "Twitter",
     },
     {
-      url: "https://linkedin.com/in/vcrmartinez",
+      url: `https://linkedin.com/in/${linkedin}`,
       element: Linkedin,
       label: "Linkedin",
     },
     {
-      url: "https://github.com/victormartinez",
+      url: `https://github.com/${github}`,
       element: Github,
       label: "Github",
     },

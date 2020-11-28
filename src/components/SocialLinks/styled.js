@@ -13,7 +13,7 @@ export const SocialItem = styled.li`
 `
 
 export const SocialItemLink = styled.a`
-  color: #f2f2f2;
+  color: #b8b8b8;
   text-decoration: none;
   transition: color 0.5s;
 
