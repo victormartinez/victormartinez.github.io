@@ -1,15 +1,29 @@
 import React from "react"
+import PropTypes from "prop-types"
 
+import SocialLinks from "../SocialLinks"
 import * as S from "./styled"
 
-const Footer = () => {
+const Footer = ({ social }) => {
   return (
     <S.FooterWrapper>
       <S.Footer>
-        Copyright © {new Date().getFullYear()} Victor Martinez
+        <S.Copyright>
+          Copyright © {new Date().getFullYear()} Victor Martinez
+        </S.Copyright>
+
+        <SocialLinks
+          twitter={social.twitter}
+          linkedin={social.linkedin}
+          github={social.github}
+        />
       </S.Footer>
     </S.FooterWrapper>
   )
+}
+
+Footer.propTypes = {
+  social: PropTypes.object.isRequired,
 }
 
 export default Footer
