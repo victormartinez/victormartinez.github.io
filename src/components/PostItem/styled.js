@@ -14,7 +14,7 @@ export const ImageSection = styled.div`
   background-color: blue;
 `
 
-export const ImageLink = styled(Link)``
+export const PostLink = styled(Link)``
 
 export const Image = styled.img``
 

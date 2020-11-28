@@ -13,15 +13,16 @@ const PostItem = ({
 }) => {
   return (
     <S.PostItemWrapper>
-      {/* {slug} */}
       <S.ImageSection>
-        {/* <S.ImageLink> */}
-        <S.Image src={"/assets/thumbs/thumb.jpg"}></S.Image>
-        {/* </S.ImageLink> */}
+        <S.PostLink to={slug}>
+          <S.Image src={"/assets/thumbs/thumb.jpg"}></S.Image>
+        </S.PostLink>
       </S.ImageSection>
       <S.TextSection>
         <S.Header>
-          <S.Title>{title}</S.Title>
+          <S.Title>
+            <S.PostLink to={slug}>{title}</S.PostLink>
+          </S.Title>
           <S.Description>{description}</S.Description>
         </S.Header>
         <S.Footer>
