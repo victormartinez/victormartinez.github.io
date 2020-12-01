@@ -1,8 +1,8 @@
 import React from "react"
 
-import { GithubWithCircle as Github } from "@styled-icons/entypo-social/GithubWithCircle"
-import { TwitterWithCircle as Twitter } from "@styled-icons/entypo-social/TwitterWithCircle"
-import { LinkedinWithCircle as Linkedin } from "@styled-icons/entypo-social/LinkedinWithCircle"
+import { Github } from "@styled-icons/entypo-social/Github"
+import { Twitter } from "@styled-icons/boxicons-logos/Twitter"
+import { Linkedin } from "@styled-icons/boxicons-logos/Linkedin"
 import { SpeakerDeck } from "@styled-icons/fa-brands/SpeakerDeck"
 
 import * as S from "./styled"

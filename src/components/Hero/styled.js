@@ -7,7 +7,7 @@ export const HeroWrapperBg = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 38rem;
+  height: 68vh;
   margin-top: -5rem;
 `
 
