@@ -11,7 +11,7 @@ rating: 5
 
 Microservice has been a heated topic in the past few years and many ~~reckless~~ developers urge to migrate their legacy monoliths to that architecture. However, the process of breaking down databases and source code demands cautiousness, domain understanding and a strong technical foundation to support the new architecture. Monolith to Microservices, by Sam Newman, is a must to understand patterns that can help you with the transition.
 
-![Monolith to Microservices](./review.png "Monolith to Microservices")
+![Monolith to Microservices](./featured.png "Monolith to Microservices")
 
 The author starts the book with fundamental concepts like Information Hiding, Domain Driven Design, Coupling, Delivery Contention, etc. It plays an important role as it exposes aspects that you must understand to properly model a microservice-driven architecture.
 
