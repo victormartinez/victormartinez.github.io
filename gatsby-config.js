@@ -1,18 +1,7 @@
+const siteMetadata = require(`./src/config/site`)
+
 module.exports = {
-  siteMetadata: {
-    title: `Hi, I'm Victor!`,
-    description: `I'm (mostly) a backend developer who like topics related to software development, python 💓, career and other cool stuff.`,
-    author: {
-      name: `Victor Martinez`,
-      summary: `I'm (mostly) a backend developer who like topics related to software development, python 💓, career and other cool stuff.`,
-    },
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
-    social: {
-      twitter: `vcrmartinez`,
-      linkedin: `vcrmartinez`,
-      github: `victormartinez`,
-    },
-  },
+  siteMetadata: siteMetadata,
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
