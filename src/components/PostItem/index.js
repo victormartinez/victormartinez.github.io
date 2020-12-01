@@ -11,11 +11,13 @@ const PostItem = ({
   title,
   description,
 }) => {
+  console.log(image)
+
   return (
     <S.PostItemWrapper>
       <S.ImageSection>
         <S.PostLink to={slug}>
-          <S.Image src={"/assets/thumbs/thumb.jpg"}></S.Image>
+          {image && <S.Image fluid={image?.childImageSharp.fluid} />}
         </S.PostLink>
       </S.ImageSection>
       <S.TextSection>

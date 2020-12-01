@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { Link } from "gatsby"
+import Img from "gatsby-image"
 
 export const PostItemWrapper = styled.article`
   margin-bottom: 3em;
@@ -9,14 +10,16 @@ export const PostItemWrapper = styled.article`
 `
 
 export const ImageSection = styled.div`
-  width: 40em;
-  height: 23em;
-  background-color: blue;
+  max-width: 25em;
+  max-height: 20em;
 `
 
 export const PostLink = styled(Link)``
 
-export const Image = styled.img``
+export const Image = styled(Img)`
+  width: 25em;
+  height: 20em;
+`
 
 export const TextSection = styled.section`
   width: 100%;

@@ -7,14 +7,14 @@ export const HeroWrapperBg = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 35rem;
+  height: 38rem;
   margin-top: -5rem;
 `
 
 export const HeroWrapperColor = styled.div`
   display: flex;
   background-color: #000;
-  height: 35rem;
+  height: 12rem;
   margin-top: -5rem;
 `
 

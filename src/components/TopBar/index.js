@@ -13,10 +13,10 @@ const TopBar = () => {
               <S.NavLink to="/">Home</S.NavLink>
             </S.NavItem>
             <S.NavItem>
-              <S.NavLink to="/">About</S.NavLink>
+              <S.NavLink to="/about">About</S.NavLink>
             </S.NavItem>
             <S.NavItem>
-              <S.NavLink to="/">Talks</S.NavLink>
+              <S.NavLink to="/talks">Talks</S.NavLink>
             </S.NavItem>
             <S.NavItem>
               <S.NavLink to="/">RSS</S.NavLink>

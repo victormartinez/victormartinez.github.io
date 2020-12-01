@@ -9,22 +9,14 @@ import GlobalStyles from "../styles/global"
 
 import * as S from "./MainWrapper/styled"
 
-const Layout = ({ location, title, description, social, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  const isRootPath = location.pathname === rootPath
-
+const Layout = ({ title, description, heroSocial, footerSocial, children }) => {
   return (
     <>
       <GlobalStyles />
       <TopBar />
-      <Hero
-        showBackgroundImage={isRootPath}
-        title={title}
-        description={description}
-        social={social}
-      />
+      <Hero title={title} description={description} social={heroSocial} />
       <S.MainWrapper>{children}</S.MainWrapper>
-      <Footer social={social} />
+      <Footer social={footerSocial} />
     </>
   )
 }

@@ -12,18 +12,14 @@ const Footer = ({ social }) => {
           Copyright © {new Date().getFullYear()} Victor Martinez
         </S.Copyright>
 
-        <SocialLinks
-          twitter={social.twitter}
-          linkedin={social.linkedin}
-          github={social.github}
-        />
+        {social && <SocialLinks data={social} />}
       </S.Footer>
     </S.FooterWrapper>
   )
 }
 
 Footer.propTypes = {
-  social: PropTypes.object.isRequired,
+  social: PropTypes.object,
 }
 
 export default Footer
