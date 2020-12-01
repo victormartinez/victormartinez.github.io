@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import PostItem from "../components/PostItem"
 import SEO from "../components/seo"
@@ -16,7 +15,6 @@ const BlogIndex = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />
-        <Bio />
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the
           directory you specified for the "gatsby-source-filesystem" plugin in
@@ -31,7 +29,8 @@ const BlogIndex = ({ data, location }) => {
       location={location}
       title={siteTitle}
       description={description}
-      social={social}
+      heroSocial={social}
+      footerSocial={social}
     >
       <SEO title="All posts" />
       <main>
@@ -71,7 +70,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       nodes {
-        excerpt
+        excerpt(pruneLength: 250)
         fields {
           slug
         }
@@ -81,7 +80,12 @@ export const pageQuery = graphql`
           description
           category
           image {
-            relativePath
+            publicURL
+            childImageSharp {
+              fluid(maxHeight: 368, maxWidth: 640) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
           }
         }
         timeToRead
