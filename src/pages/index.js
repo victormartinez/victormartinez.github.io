@@ -33,22 +33,20 @@ const BlogIndex = ({ data, location }) => {
       footerSocial={social}
     >
       <SEO title="All posts" />
-      <main>
-        {posts.map(post => {
-          return (
-            <PostItem
-              key={post.fields.slug}
-              slug={post.fields.slug}
-              title={post.frontmatter.title || post.fields.slug}
-              date={post.frontmatter.date}
-              description={post.frontmatter.description || post.excerpt}
-              timeToRead={post.timeToRead}
-              category={post.frontmatter.category}
-              image={post.frontmatter.image}
-            />
-          )
-        })}
-      </main>
+      {posts.map(post => {
+        return (
+          <PostItem
+            key={post.fields.slug}
+            slug={post.fields.slug}
+            title={post.frontmatter.title || post.fields.slug}
+            date={post.frontmatter.date}
+            description={post.frontmatter.description || post.excerpt}
+            timeToRead={post.timeToRead}
+            category={post.frontmatter.category}
+            image={post.frontmatter.image}
+          />
+        )
+      })}
     </Layout>
   )
 }
