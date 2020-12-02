@@ -3,13 +3,20 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import PostItem from "../components/PostItem"
+import Pagination from "../components/Pagination"
 import SEO from "../components/seo"
 
-const BlogIndex = ({ data, location }) => {
+const BlogIndex = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const description = data.site.siteMetadata.description
   const social = data.site.siteMetadata.social
   const posts = data.allMarkdownRemark.nodes
+
+  const { currentPage, numPages } = pageContext
+  const isFirst = currentPage === 1
+  const isLast = currentPage === numPages
+  const prevPage = currentPage - 1 === 1 ? "/" : `/page/${currentPage - 1}`
+  const nextPage = `/page/${currentPage + 1}`
 
   if (posts.length === 0) {
     return (
@@ -47,6 +54,14 @@ const BlogIndex = ({ data, location }) => {
           />
         )
       })}
+      <Pagination
+        isFirst={isFirst}
+        isLast={isLast}
+        currentPage={currentPage}
+        numPages={numPages}
+        prevPage={prevPage}
+        nextPage={nextPage}
+      />
     </Layout>
   )
 }
@@ -54,7 +69,7 @@ const BlogIndex = ({ data, location }) => {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query {
+  query PostList($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
@@ -66,7 +81,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: $limit
+      skip: $skip
+    ) {
       nodes {
         excerpt(pruneLength: 250)
         fields {
