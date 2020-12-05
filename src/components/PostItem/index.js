@@ -11,8 +11,6 @@ const PostItem = ({
   title,
   description,
 }) => {
-  console.log(image)
-
   return (
     <S.PostItemWrapper>
       <S.ImageSection>
