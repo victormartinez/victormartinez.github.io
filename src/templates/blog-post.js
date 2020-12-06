@@ -67,7 +67,10 @@ export const pageQuery = graphql`
       }
       timeToRead
     }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
+    previous: markdownRemark(
+      id: { eq: $previousPostId }
+      fileAbsolutePath: { regex: "/content/blog/" }
+    ) {
       fields {
         slug
       }
@@ -75,7 +78,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    next: markdownRemark(id: { eq: $nextPostId }) {
+    next: markdownRemark(
+      id: { eq: $nextPostId }
+      fileAbsolutePath: { regex: "/content/blog/" }
+    ) {
       fields {
         slug
       }
