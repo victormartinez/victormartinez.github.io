@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Point Alembic and SQLAlchemy to a different schema (image)"
+title: "Point Alembic and SQLAlchemy to a different schema"
 category: Web Development
 date: "2020-10-02T00:00:00"
 tags: [alembic, sqlalchemy, migration, schema, public, python, flask]
