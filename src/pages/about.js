@@ -1,28 +1,16 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
+import Image from "gatsby-image"
 
 import Layout from "../components/layout"
-import PostItem from "../components/PostItem"
 import SEO from "../components/seo"
 
 const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const description = data.site.siteMetadata.description
+  const avatar = data?.avatar
+  const author = data.site.siteMetadata?.author.name
+  const siteTitle = data.site.siteMetadata?.about.title
+  const description = data.site.siteMetadata?.about.description
   const social = data.site.siteMetadata.social
-  const posts = data.allMarkdownRemark.nodes
-
-  if (posts.length === 0) {
-    return (
-      <Layout location={location} title={siteTitle}>
-        <SEO title="All posts" />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-      </Layout>
-    )
-  }
 
   return (
     <Layout
@@ -33,7 +21,14 @@ const BlogIndex = ({ data, location }) => {
       footerSocial={social}
     >
       <SEO title="All posts" />
-      <main>ABOUT</main>
+      <div style={{ height: "200em" }}>
+        <Image
+          fluid={avatar?.childImageSharp.fluid}
+          alt={author?.name || ``}
+          imgStyle={{ borderRadius: "50%" }}
+          style={{ width: "20em" }}
+        />
+      </div>
     </Layout>
   )
 }
@@ -42,30 +37,30 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
+    avatar: file(absolutePath: { regex: "/profile-removebg.png/" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
     site {
       siteMetadata {
         title
         description
+        author {
+          name
+        }
         social {
           twitter
           github
           linkedin
+          speakerdeck
         }
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      nodes {
-        excerpt(pruneLength: 250)
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
+        about {
           title
           description
-          category
         }
-        timeToRead
       }
     }
   }
