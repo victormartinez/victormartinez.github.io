@@ -1,13 +1,20 @@
 import React from "react"
-import { Link } from "gatsby"
+import ReactDisqusComments from "react-disqus-comments"
 
 import * as S from "./styled"
 
-const Comments = () => {
+const Comments = ({ url, title }) => {
   return (
-    <S.Comments>
+    <S.CommentsWrapper>
       <S.CommentsTitle>Comments</S.CommentsTitle>
-    </S.Comments>
+
+      <ReactDisqusComments
+        shortname="vcrmartinez"
+        identifier={url}
+        title={title}
+        url={url}
+      />
+    </S.CommentsWrapper>
   )
 }
 

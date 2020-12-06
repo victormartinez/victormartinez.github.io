@@ -11,18 +11,20 @@ import SEO from "../components/seo"
 const BlogPostTemplate = ({ data }) => {
   const post = data.markdownRemark
   const social = data.site.siteMetadata.social
+  const title = post.frontmatter.title
+  const url = `${data.site.siteMetadata.siteUrl}${post.fields.slug}`
   const { previous, next } = data
 
   return (
     <Layout footerSocial={social}>
       <SEO
-        title={post.frontmatter.title}
+        title={title}
         description={post.frontmatter.description || post.excerpt}
       />
       <Article post={post} />
       <ArticleNav previous={previous} next={next} />
       <Divider />
-      <Comments />
+      <Comments url={url} title={title} />
     </Layout>
   )
 }
@@ -38,6 +40,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
         social {
           twitter
           github
@@ -58,6 +61,9 @@ export const pageQuery = graphql`
         rating
         image_url
         image_author
+      }
+      fields {
+        slug
       }
       timeToRead
     }

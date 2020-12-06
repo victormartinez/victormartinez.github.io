@@ -4,7 +4,7 @@ module.exports = {
   author: {
     name: `Victor Martinez`,
   },
-  siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+  siteUrl: `https://vcrmartinez.com/`,
   social: {
     twitter: `vcrmartinez`,
     linkedin: `vcrmartinez`,
