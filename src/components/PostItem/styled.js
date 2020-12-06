@@ -51,6 +51,7 @@ export const Footer = styled.footer`
   justify-content: space-between;
   align-items: center;
   height: 2em;
+  font-weight: 300;
 `
 
 export const FooterItem = styled.p``
