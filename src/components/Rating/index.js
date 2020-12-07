@@ -10,7 +10,7 @@ const Rating = ({ value }) => {
     const stars = []
     for (let i = 1; i <= value; i++) {
       stars.push(
-        <S.RatingItem>
+        <S.RatingItem key={i}>
           <StarFill />
         </S.RatingItem>
       )

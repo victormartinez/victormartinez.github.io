@@ -14,8 +14,8 @@ const Article = ({ post }) => {
         <S.TagsWrapper>
           <S.TagsList>
             <S.TagItemFirst>Tags:</S.TagItemFirst>
-            {post.frontmatter.tags.map(tag => (
-              <S.TagItem>{tag}</S.TagItem>
+            {post.frontmatter.tags.map((tag, index) => (
+              <S.TagItem key={index}>{tag}</S.TagItem>
             ))}
           </S.TagsList>
         </S.TagsWrapper>
