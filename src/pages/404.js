@@ -3,15 +3,15 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import NotFound from "../components/NotFound"
 
 const NotFoundPage = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
+  const social = data.site.siteMetadata.social
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout footerSocial={social}>
       <SEO title="404: Not Found" />
-      <h1>404: Not Found</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+      <NotFound />
     </Layout>
   )
 }
@@ -22,7 +22,12 @@ export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
-        title
+        social {
+          twitter
+          github
+          linkedin
+          speakerdeck
+        }
       }
     }
   }
