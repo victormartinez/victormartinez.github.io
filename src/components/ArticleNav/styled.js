@@ -5,9 +5,10 @@ export const Nav = styled.nav`
   margin-top: 4em;
 `
 
-export const NavTitle = styled.p`
+export const NavTitle = styled.h3`
   margin-bottom: 1em;
   font-weight: 900;
+  font-size: 1.5rem;
 `
 
 export const LinksWrapper = styled.ul`
