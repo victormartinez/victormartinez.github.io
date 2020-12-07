@@ -20,6 +20,12 @@ const BlogPostTemplate = ({ data }) => {
       <SEO
         title={title}
         description={post.frontmatter.description || post.excerpt}
+        meta={[
+          {
+            property: `keywords`,
+            content: post.frontmatter.tags.join(", "),
+          },
+        ]}
       />
       <Article post={post} />
       <ArticleNav previous={previous} next={next} />
