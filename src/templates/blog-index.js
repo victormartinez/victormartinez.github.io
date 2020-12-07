@@ -21,7 +21,7 @@ const BlogIndex = ({ data, pageContext }) => {
   if (posts.length === 0) {
     return (
       <Layout title={siteTitle}>
-        <SEO title="All posts" />
+        <SEO title={`${siteTitle}`} />
         <p>No blog posts found.</p>
       </Layout>
     )
@@ -34,7 +34,7 @@ const BlogIndex = ({ data, pageContext }) => {
       heroSocial={social}
       footerSocial={social}
     >
-      <SEO title="All posts" />
+      <SEO title={`${siteTitle}`} description={`${siteTitle} ${description}`} />
       {posts.map(post => {
         return (
           <PostItem
