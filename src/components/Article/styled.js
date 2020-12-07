@@ -15,6 +15,29 @@ export const Date = styled.span`
   color: gray;
 `
 
+export const TagsWrapper = styled.div``
+
+export const TagsList = styled.ul`
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin-top: 1em;
+`
+
+export const TagItem = styled.li`
+  margin-right: 1em;
+  background-color: #f5f2f0;
+  color: gray;
+  padding: 0 0.5em;
+  font-weight: 300;
+`
+
+export const TagItemFirst = styled.li`
+  font-weight: 300;
+  margin-right: 1em;
+  color: gray;
+`
+
 export const Section = styled.section`
   margin-top: 2em;
 
