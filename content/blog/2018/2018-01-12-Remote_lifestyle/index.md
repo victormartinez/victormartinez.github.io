@@ -7,6 +7,7 @@ tags: [career, remote, work, lifestyle]
 image: featured.png
 image_author: Toa Heftiba
 image_url: https://unsplash.com/photos/W6q15ddqqJo
+language: en
 ---
 
 #### TL;DR

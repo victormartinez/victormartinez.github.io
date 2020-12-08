@@ -7,6 +7,7 @@ image: featured.jpeg
 date: "2020-02-01T00:00:00"
 image_url: https://unsplash.com/photos/G9gHtroxnaI
 image_author: Frank Eiffert
+language: en
 ---
 
 There are businesses that heavily rely on specific periods of day to make profit. Food ordering companies, for example, tend to have a heated operation during midday and the opposite behavior in other dayparts. Regarding the infrastructure, the phenomenon is particularly interesting because in a specific period of day the application receives an impressive amount of requests and the cluster must be able to scale really fast. A slow scale would bring errors and slowness to customer and, then, result into churn increase. The chart below exemplifies the scenario.

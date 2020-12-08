@@ -1,5 +1,7 @@
 import React from "react"
 
+import { useIntl } from "gatsby-plugin-intl"
+
 import * as S from "./styled"
 
 const PostItem = ({
@@ -11,6 +13,8 @@ const PostItem = ({
   title,
   description,
 }) => {
+  const intl = useIntl()
+
   return (
     <S.PostItemWrapper>
       <S.ImageSection>
@@ -30,7 +34,9 @@ const PostItem = ({
           <S.FooterItem>•</S.FooterItem>
           <S.FooterItem>{category}</S.FooterItem>
           <S.FooterItem>•</S.FooterItem>
-          <S.FooterItem>{timeToRead} min reading</S.FooterItem>
+          <S.FooterItem>
+            {timeToRead} min {intl.formatMessage({ id: "reading" })}
+          </S.FooterItem>
         </S.Footer>
       </S.TextSection>
     </S.PostItemWrapper>

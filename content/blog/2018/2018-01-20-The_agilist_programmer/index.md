@@ -7,6 +7,7 @@ tags: [agile, programmer]
 image: featured.png
 image_author: Patrick Perkins
 image_url: https://unsplash.com/photos/ETRPjvb0KM0
+language: en
 ---
 
 A recent conversation with a friend brought up important aspects of software development. Some characteristics like **constant feedback**, **short cycles** and **fast learning** might drive your mind to think about Agile frameworks (e.g. Scrum, Kanban, Lean Software Development, etc). However, they are not exclusively attached to one framework but a whole concept/idea of addressing problems through iterative and incremental periods lasting usually from 7 to 14 days. The benefits are clearly seen in agile teams but not all professionals have internalized those concepts into the personal workflow. If you do that it is likely to increase your productivity and focus on the deliverable.

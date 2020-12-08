@@ -7,6 +7,7 @@ tags: [alembic, sqlalchemy, migration, schema, public, python, flask]
 image: featured.jpg
 image_url: https://unsplash.com/photos/lRoX0shwjUQ
 image_author: Jan Antonin Kolar
+language: en
 ---
 
 A while ago I developed a backend project that used a shared instance of Postgres. If you use Flask, as I did, probably your migration layer is dealt by Alembic and the ORM of choice is SQLAlchemy. Due to architectural constraints, the project used a different schema (_public_ was not available). **After the first migration, any change in the model was not identified by Alembic and all tables were generated again.**

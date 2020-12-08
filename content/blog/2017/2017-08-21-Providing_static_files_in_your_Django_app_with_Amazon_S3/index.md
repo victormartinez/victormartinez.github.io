@@ -5,6 +5,7 @@ category: Web Development
 date: "2017-08-21T00:00:00"
 tags: [aws, django, python, s3, storage]
 image: featured.png
+language: en
 ---
 
 It is well-known that Django does not provide static files. Using a WSGI Middleware to address the issue is not the right way to provide static files and, thus, this post show how you can do it using Amazon S3.

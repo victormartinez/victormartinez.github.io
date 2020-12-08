@@ -7,6 +7,7 @@ date: "2019-09-07T00:00:00"
 image_author: Mr Cup / Fabien Barral
 image_url: https://unsplash.com/photos/o6GEPQXnqMY
 image: featured.png
+language: en
 ---
 
 In the [previous](/2019-08-13-Getting_Started_with_Recommender_Systems_Part_I/) post I introduced the RecSys field and the levels of personalization. Today I will discuss about the recommendation pipeline and how it works.

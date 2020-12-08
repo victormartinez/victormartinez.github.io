@@ -5,6 +5,7 @@ category: Git
 date: "2017-05-07T00:00:00"
 tags: [git, gitflow, hooks]
 image: featured.png
+language: en
 ---
 
 At [Agilize](https://www.agilize.com.br/) a common developer workflow involves the usage of Jira for issue tracking, Git + Git Flow for versioning code, Slack for communication and programmer's tools like IDE, Text Editor and Terminal. Basically, a prioritized sprint is maintained in Jira full of cards that describe the features, bugs, spikes and chores following some conventions of SCRUM and the software engineer assign himself to a card. During the development there is a convention that **commits must have the issue code the engineer is working on**. After some commits the convention gets boring (you have to type the issue code all time). Hopefully there is a way to automate that.

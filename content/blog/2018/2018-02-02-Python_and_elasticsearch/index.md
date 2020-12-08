@@ -6,6 +6,7 @@ tags: [elasticsearch, python]
 date: "2018-02-02T00:00:00"
 image: featured.png
 last_modified_at: "2018-02-04"
+language: en
 ---
 
 So you got lots of documents and need fast querying, huh? Or you have tons of data and need to process and extract metrics. Either way, Elasticsearch (ES) can be a powerful engine to help you index, query and extract metrics from its document-driven storage. This post is very straightforward and intends to show how to use python to interact with the engine and index/retrieve/query documents.

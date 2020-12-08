@@ -6,6 +6,7 @@ tags: [book, review, cloud, native, devops, kubernetes, k8s]
 date: "2019-08-04T00:00:00"
 image: featured.png
 rating: 5
+language: en
 ---
 
 Particularly, I like the content produced by O'Reilly media and [Cloud Native DevOps with Kubernetes](https://www.amazon.com.br/Cloud-Native-DevOps-Kubernetes-Applications-ebook/dp/B07PJ4HM92) is not an exception. After trying some books and courses I found a complete overview of Kubernetes in that material produced by John Arundel and Justin Domingus.

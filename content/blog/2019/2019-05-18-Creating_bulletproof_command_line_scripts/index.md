@@ -7,6 +7,7 @@ date: "2019-05-18T00:00:00"
 image: featured.jpg
 image_author: Chris Ried
 image_url: https://unsplash.com/photos/ieic5Tq8YMk
+language: en
 ---
 
 The life of a backend developer involves creating some scripts to be executed in the production environment. For instance, you might need to update many records at once, trigger events or fix a specific bug. _What do they have in common?_ If not designed properly, they can cause a very bad side-effect on your application, ruin the user experience, etc.

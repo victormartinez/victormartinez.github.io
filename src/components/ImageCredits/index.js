@@ -1,15 +1,19 @@
 import React from "react"
-
 import PropTypes from "prop-types"
+
+import { useIntl } from "gatsby-plugin-intl"
 
 import * as S from "./styled"
 
 const ImageCredits = ({ url, author }) => {
+  const intl = useIntl()
   const hasCopyright = author && url
   return (
     hasCopyright && (
       <S.CreditsWrapper>
-        <S.Text>* Featured image credits: </S.Text>
+        <S.Text>
+          * {intl.formatMessage({ id: "Featured_image_credits" })}:{" "}
+        </S.Text>
         <S.Url
           title={author}
           target="_blank"

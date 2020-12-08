@@ -7,6 +7,7 @@ image: featured.png
 date: "2019-08-13T00:00:00"
 image_author: Mr Cup / Fabien Barral
 image_url: https://unsplash.com/photos/o6GEPQXnqMY
+language: en
 ---
 
 I have been studying Recommender Systems (RecSys) for the past few months. Many topics are scattered in the Internet and I thought about condensating the main concepts into a series of blog posts. For those of you who are interested in the subject, I organized the content and split into parts:

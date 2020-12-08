@@ -5,7 +5,7 @@ import SocialLinks from "../SocialLinks"
 
 import * as S from "./styled"
 
-const Hero = ({ showBackgroundImage, title, description, social }) => {
+const Hero = ({ title, description, social }) => {
   const Wrapper = title ? S.HeroWrapperBg : S.HeroWrapperColor
   return (
     <Wrapper>
@@ -19,7 +19,6 @@ const Hero = ({ showBackgroundImage, title, description, social }) => {
 }
 
 Hero.propTypes = {
-  showBackgroundImage: PropTypes.bool,
   title: PropTypes.string,
   description: PropTypes.string,
   social: PropTypes.object,

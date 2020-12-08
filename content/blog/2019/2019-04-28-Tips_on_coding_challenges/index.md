@@ -7,6 +7,7 @@ date: "2019-04-28T00:00:00"
 image: featured.jpg
 image_author: Fabian Grohs
 image_url: https://unsplash.com/photos/dMUt0X3f59Q
+language: en
 ---
 
 It is common for Software Engineers/Programmers/Developers to face a coding/technical challenge in recruitment processes. The challenge consists of programming assignments designed to exam candidates mainly regarding hard skills (e.g. programming ability, architectural design, etc). Usually, the process is comprised of three phases: (i) specification; (ii) development; (iii) review. There are idiosyncrasies and tips for each of them.

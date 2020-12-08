@@ -5,7 +5,6 @@ import * as S from "./styled"
 const ArticleNav = ({ previous, next }) => {
   return (
     <S.Nav>
-      <S.NavTitle>Recent posts:</S.NavTitle>
       <S.LinksWrapper>
         {previous && (
           <S.NavItem>

@@ -57,3 +57,18 @@ export const NavLink = styled(Link)`
     border-bottom: 1px dashed #fff;
   }
 `
+
+export const NavAnchor = styled.a`
+  text-decoration: none;
+  background-color: #b8b8b8;
+  cursor: pointer;
+  padding: 0.2em;
+
+  &:visited {
+    color: #fff;
+  }
+
+  &:hover {
+    border-bottom: none;
+  }
+`

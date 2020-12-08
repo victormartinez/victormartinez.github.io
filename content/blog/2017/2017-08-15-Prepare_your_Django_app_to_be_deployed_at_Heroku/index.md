@@ -5,6 +5,7 @@ category: Web Development
 date: "2017-08-15T00:00:00"
 tags: [deploy, django, heroku, paas, python]
 image: featured.png
+language: en
 ---
 
 It is really exciting to build our own projects and see it working on production environment, right? Some developers might think deploying a Django app to a server is a nightmare. In this post I will show how to prepare your application to have different configurations and deploy it to Heroku.

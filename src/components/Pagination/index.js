@@ -1,6 +1,7 @@
 import React from "react"
 
 import propTypes from "prop-types"
+import { useIntl } from "gatsby-plugin-intl"
 
 import * as S from "./styled"
 
@@ -12,18 +13,20 @@ const Pagination = ({
   prevPage,
   nextPage,
 }) => {
+  const intl = useIntl()
+
   return (
     <S.PaginationWrapper>
       <S.PaginationLink to={isFirst ? null : prevPage}>
-        {isFirst ? null : `← Previous`}
+        {isFirst ? null : `← ${intl.formatMessage({ id: "Previous" })}`}
       </S.PaginationLink>
 
       <S.PaginationText>
-        {currentPage} of {numPages}
+        {currentPage} {intl.formatMessage({ id: "of" })} {numPages}
       </S.PaginationText>
 
       <S.PaginationLink to={isLast ? null : nextPage}>
-        {isLast ? null : `→ Next`}
+        {isLast ? null : `→ ${intl.formatMessage({ id: "Next" })}`}
       </S.PaginationLink>
     </S.PaginationWrapper>
   )

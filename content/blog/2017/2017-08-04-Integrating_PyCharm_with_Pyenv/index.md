@@ -5,6 +5,7 @@ category: Tools
 date: "2017-08-04T00:00:00"
 tags: [pycharm, python, virtualenv]
 image: featured.png
+language: en
 ---
 
 PyCharm is my favorite IDE and undoubtedly a powerful tool. It gives you great shortcuts and a set of tools that prevent the programmer from dealing with many windows. One of them is the built-in terminal that increase our productivity once it is not necessary to shift from the IDE to the terminal and vice versa.

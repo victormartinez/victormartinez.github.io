@@ -6,9 +6,13 @@ import PostItem from "../components/PostItem"
 import Pagination from "../components/Pagination"
 import SEO from "../components/seo"
 
+import { useIntl } from "gatsby-plugin-intl"
+
 const BlogIndex = ({ data, pageContext }) => {
-  const siteTitle = data.site.siteMetadata?.title
-  const description = data.site.siteMetadata.description
+  const intl = useIntl()
+
+  const siteTitle = data.site.siteMetadata[intl.locale].title
+  const description = data.site.siteMetadata[intl.locale].description
   const social = data.site.siteMetadata.social
   const posts = data.allMarkdownRemark.nodes
 
@@ -67,8 +71,20 @@ export const pageQuery = graphql`
   query PostList($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
-        title
-        description
+        en {
+          title
+          description
+          author {
+            name
+          }
+        }
+        pt {
+          title
+          description
+          author {
+            name
+          }
+        }
         social {
           twitter
           github
@@ -89,7 +105,7 @@ export const pageQuery = graphql`
           slug
         }
         frontmatter {
-          date(formatString: "MMMM DD, YYYY")
+          date(formatString: "MMM DD, YYYY")
           title
           description
           category
