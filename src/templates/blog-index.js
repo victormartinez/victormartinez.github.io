@@ -14,7 +14,12 @@ const BlogIndex = ({ data, pageContext }) => {
   const siteTitle = data.site.siteMetadata[intl.locale].title
   const description = data.site.siteMetadata[intl.locale].description
   const social = data.site.siteMetadata.social
-  const posts = data.allMarkdownRemark.nodes
+  const allPosts = data.allMarkdownRemark.nodes
+
+  // Filtering posts by locale
+  const posts = allPosts.filter(node =>
+    node.frontmatter.language.includes(intl.locale)
+  )
 
   const { currentPage, numPages } = pageContext
   const isFirst = currentPage === 1
@@ -109,6 +114,7 @@ export const pageQuery = graphql`
           title
           description
           category
+          language
           image {
             publicURL
             childImageSharp {
