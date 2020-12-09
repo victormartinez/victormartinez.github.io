@@ -5,7 +5,7 @@ import Article from "../components/Article"
 import ArticleNav from "../components/ArticleNav"
 import Comments from "../components/Comments"
 import Divider from "../components/Divider"
-import Layout from "../components/layout"
+import LayoutContent from "../components/LayoutContent"
 import SEO from "../components/seo"
 
 const BlogPostTemplate = ({ data }) => {
@@ -15,8 +15,11 @@ const BlogPostTemplate = ({ data }) => {
   const url = `${data.site.siteMetadata.siteUrl}${post.fields.slug}`
   const { previous, next } = data
 
+  console.log("PREVIOUS", previous)
+  console.log("NEXT", next)
+
   return (
-    <Layout footerSocial={social}>
+    <LayoutContent footerSocial={social}>
       <SEO
         title={title}
         description={post.frontmatter.description || post.excerpt}
@@ -31,7 +34,7 @@ const BlogPostTemplate = ({ data }) => {
       <ArticleNav previous={previous} next={next} />
       <Divider />
       <Comments url={url} title={title} />
-    </Layout>
+    </LayoutContent>
   )
 }
 

@@ -43,7 +43,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
 
       createPage({
-        path: post.fields.slug,
+        path: `/blog${post.fields.slug}`,
         component: path.resolve(`./src/templates/blog-post.js`),
         context: {
           id: post.id,
@@ -57,7 +57,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
       Array.from({ length: numPages }).forEach((_, index) => {
         createPage({
-          path: index === 0 ? `/` : `/page/${index + 1}`,
+          path: index === 0 ? `/blog` : `/blog/page/${index + 1}`,
           component: path.resolve(`./src/templates/blog-index.js`),
           context: {
             limit: postsPerPage,

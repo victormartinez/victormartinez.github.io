@@ -8,14 +8,14 @@ const ArticleNav = ({ previous, next }) => {
       <S.LinksWrapper>
         {previous && (
           <S.NavItem>
-            <S.NavLink to={previous.fields.slug} rel="prev">
+            <S.NavLink to={`/blog${previous.fields.slug}`} rel="prev">
               ← {previous.frontmatter.title}
             </S.NavLink>
           </S.NavItem>
         )}
         {next && (
           <S.NavItem>
-            <S.NavLink to={next.fields.slug} rel="next">
+            <S.NavLink to={`/blog${next.fields.slug}`} rel="next">
               {next.frontmatter.title} →
             </S.NavLink>
           </S.NavItem>

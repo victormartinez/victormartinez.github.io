@@ -5,7 +5,7 @@ import { useIntl } from "gatsby-plugin-intl"
 import * as S from "./styled"
 
 const PostItem = ({
-  slug,
+  path,
   image,
   category,
   date,
@@ -18,14 +18,14 @@ const PostItem = ({
   return (
     <S.PostItemWrapper>
       <S.ImageSection>
-        <S.PostLink to={slug}>
+        <S.PostLink to={path}>
           {image && <S.Image fluid={image?.childImageSharp.fluid} />}
         </S.PostLink>
       </S.ImageSection>
       <S.TextSection>
         <S.Header>
           <S.Title>
-            <S.PostLink to={slug}>{title}</S.PostLink>
+            <S.PostLink to={path}>{title}</S.PostLink>
           </S.Title>
           <S.Description>{description}</S.Description>
         </S.Header>

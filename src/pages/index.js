@@ -8,34 +8,12 @@ import SEO from "../components/seo"
 
 import { useIntl } from "gatsby-plugin-intl"
 
-const BlogIndex = ({ data, pageContext }) => {
+const HomeIndex = ({ data }) => {
   const intl = useIntl()
 
   const siteTitle = data.site.siteMetadata[intl.locale].title
   const description = data.site.siteMetadata[intl.locale].description
   const social = data.site.siteMetadata.social
-  const allPosts = data.allMarkdownRemark.nodes
-
-  // Filtering posts by locale
-  const posts = allPosts.filter(node =>
-    node.frontmatter.language.includes(intl.locale)
-  )
-
-  const { currentPage, numPages } = pageContext
-  const isFirst = currentPage === 1
-  const isLast = currentPage === numPages
-  const prevPage =
-    currentPage - 1 === 1 ? "/blog" : `/blog/page/${currentPage - 1}`
-  const nextPage = `/blog/page/${currentPage + 1}`
-
-  if (posts.length === 0) {
-    return (
-      <LayoutContent title={siteTitle}>
-        <SEO title={`${siteTitle}`} />
-        <p>No blog posts found.</p>
-      </LayoutContent>
-    )
-  }
 
   return (
     <LayoutContent
@@ -45,36 +23,15 @@ const BlogIndex = ({ data, pageContext }) => {
       footerSocial={social}
     >
       <SEO title={`${siteTitle}`} description={`${siteTitle} ${description}`} />
-      {posts.map(post => {
-        return (
-          <PostItem
-            key={post.fields.slug}
-            path={`/blog${post.fields.slug}`}
-            title={post.frontmatter.title || post.fields.slug}
-            date={post.frontmatter.date}
-            description={post.frontmatter.description || post.excerpt}
-            timeToRead={post.timeToRead}
-            category={post.frontmatter.category}
-            image={post.frontmatter.image}
-          />
-        )
-      })}
-      <Pagination
-        isFirst={isFirst}
-        isLast={isLast}
-        currentPage={currentPage}
-        numPages={numPages}
-        prevPage={prevPage}
-        nextPage={nextPage}
-      />
+      AQUI É A PÁGINA INICIAL
     </LayoutContent>
   )
 }
 
-export default BlogIndex
+export default HomeIndex
 
 export const pageQuery = graphql`
-  query PostList($skip: Int!, $limit: Int!) {
+  query {
     site {
       siteMetadata {
         en {
@@ -102,8 +59,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/content/blog/" } }
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: $limit
-      skip: $skip
+      limit: 3
     ) {
       nodes {
         excerpt(pruneLength: 250)

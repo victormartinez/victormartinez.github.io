@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
+import LayoutContent from "../components/LayoutContent"
 import SEO from "../components/seo"
 import NotFound from "../components/NotFound"
 
@@ -9,10 +9,10 @@ const NotFoundPage = ({ data, location }) => {
   const social = data.site.siteMetadata.social
 
   return (
-    <Layout footerSocial={social}>
+    <LayoutContent footerSocial={social}>
       <SEO title="404: Not Found" />
       <NotFound />
-    </Layout>
+    </LayoutContent>
   )
 }
 
