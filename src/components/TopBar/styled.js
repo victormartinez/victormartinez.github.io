@@ -57,12 +57,26 @@ export const NavLink = styled(Link)`
     border-bottom: 1px dashed #fff;
   }
 `
+export const NavAnchorItem = styled.li`
+  flex-direction: row;
+  list-style-type: none;
+  margin-right: 0.5em;
+`
 
 export const NavAnchor = styled.a`
   text-decoration: none;
-  background-color: #b8b8b8;
+  color: #000;
+  background-color: #fff;
   cursor: pointer;
   padding: 0.2em;
+  border-radius: 10%;
+  font-size: 0.7em;
+  padding: 0.5em;
+
+  &.active {
+    background-color: #b8b8b8;
+    font-weight: 900;
+  }
 
   &:visited {
     color: #fff;

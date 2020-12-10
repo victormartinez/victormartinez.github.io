@@ -7,6 +7,11 @@ import Pagination from "../components/Pagination"
 import SEO from "../components/seo"
 
 import { useIntl } from "gatsby-plugin-intl"
+import {
+  articleUrl,
+  nextPageBlogUrl,
+  prevPageBlogUrl,
+} from "../utils/routing.js"
 
 const BlogIndex = ({ data, pageContext }) => {
   const intl = useIntl()
@@ -24,9 +29,8 @@ const BlogIndex = ({ data, pageContext }) => {
   const { currentPage, numPages } = pageContext
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
-  const prevPage =
-    currentPage - 1 === 1 ? "/blog" : `/blog/page/${currentPage - 1}`
-  const nextPage = `/blog/page/${currentPage + 1}`
+  const prevPage = prevPageBlogUrl(intl.locale, currentPage)
+  const nextPage = nextPageBlogUrl(intl.locale, currentPage)
 
   if (posts.length === 0) {
     return (
@@ -48,7 +52,7 @@ const BlogIndex = ({ data, pageContext }) => {
         return (
           <PostItem
             key={post.fields.slug}
-            path={`/blog${post.fields.slug}`}
+            path={`${articleUrl(intl.locale, post.fields.slug)}`}
             title={post.frontmatter.title || post.fields.slug}
             date={post.frontmatter.date}
             description={post.frontmatter.description || post.excerpt}
