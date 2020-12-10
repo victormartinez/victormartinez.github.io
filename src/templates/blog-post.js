@@ -15,9 +15,6 @@ const BlogPostTemplate = ({ data }) => {
   const url = `${data.site.siteMetadata.siteUrl}${post.fields.slug}`
   const { previous, next } = data
 
-  console.log("PREVIOUS", previous)
-  console.log("NEXT", next)
-
   return (
     <LayoutContent footerSocial={social}>
       <SEO
