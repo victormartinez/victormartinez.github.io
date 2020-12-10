@@ -30,7 +30,7 @@ Working remotely is a life-changing experience that has helping me to live a dif
 2. **Soft Skills** are fastly developed due to the new way of relating to people.
 3. By not commuting **you save an extra time** that can be used to study, relax or resume that side project you promised to deliver.
 4. You embrace a **less stressful routine** once you do not have to face traffic jams or clock in your work in the office.
-5. **Time flexibility** becomes possible because you can set up the routing that works for you.
+5. **Time flexibility** becomes possible because you can set up the routine that works for you.
 
 ## Drawbacks
 
