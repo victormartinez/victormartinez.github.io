@@ -17,6 +17,7 @@ const BlogIndex = ({ data, pageContext }) => {
   const intl = useIntl()
 
   const siteTitle = data.site.siteMetadata[intl.locale].blog.title
+  const noPosts = data.site.siteMetadata[intl.locale].noPosts
   const description = data.site.siteMetadata[intl.locale].blog.description
   const social = data.site.siteMetadata.social
   const allPosts = data.allMarkdownRemark.nodes
@@ -40,7 +41,7 @@ const BlogIndex = ({ data, pageContext }) => {
         social={social}
       >
         <SEO title={`${siteTitle}`} />
-        <p>No blog posts found.</p>
+        <p>{noPosts}</p>
       </LayoutContent>
     )
   }
@@ -81,6 +82,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         en {
+          noPosts
           author {
             name
           }
@@ -90,8 +92,7 @@ export const pageQuery = graphql`
           }
         }
         pt {
-          title
-          description
+          noPosts
           author {
             name
           }

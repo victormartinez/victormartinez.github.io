@@ -7,12 +7,13 @@ export const TopBarHeader = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.2rem;
 `
 
 export const TopBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 70em;
+  width: 58em;
 `
 
 export const Logo = styled(Link)`
