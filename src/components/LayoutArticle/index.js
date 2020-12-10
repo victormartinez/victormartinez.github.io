@@ -1,6 +1,6 @@
 import React from "react"
 
-import Hero from "../Hero"
+import BlackHeader from "../BlackHeader"
 import TopBar from "../TopBar"
 import Footer from "../Footer"
 
@@ -8,16 +8,16 @@ import GlobalStyles from "../../styles/global"
 
 import * as S from "./styled"
 
-const LayoutContent = ({ title, description, social, children }) => {
+const LayoutArticle = ({ social, children }) => {
   return (
     <>
       <GlobalStyles />
       <TopBar />
-      <Hero title={title} description={description} social={social} />
+      <BlackHeader />
       <S.MainWrapper>{children}</S.MainWrapper>
       <Footer social={social} />
     </>
   )
 }
 
-export default LayoutContent
+export default LayoutArticle

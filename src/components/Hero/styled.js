@@ -11,13 +11,6 @@ export const HeroWrapperBg = styled.div`
   margin-top: -5rem;
 `
 
-export const HeroWrapperColor = styled.div`
-  display: flex;
-  background-color: #000;
-  height: 12rem;
-  margin-top: -5rem;
-`
-
 export const HeroContainer = styled.div`
   margin: 0 auto;
   width: 70em;

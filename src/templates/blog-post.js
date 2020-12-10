@@ -5,7 +5,7 @@ import Article from "../components/Article"
 import ArticleNav from "../components/ArticleNav"
 import Comments from "../components/Comments"
 import Divider from "../components/Divider"
-import LayoutContent from "../components/LayoutContent"
+import LayoutArticle from "../components/LayoutArticle"
 import SEO from "../components/seo"
 
 const BlogPostTemplate = ({ data }) => {
@@ -16,7 +16,7 @@ const BlogPostTemplate = ({ data }) => {
   const { previous, next } = data
 
   return (
-    <LayoutContent footerSocial={social}>
+    <LayoutArticle social={social}>
       <SEO
         title={title}
         description={post.frontmatter.description || post.excerpt}
@@ -31,7 +31,7 @@ const BlogPostTemplate = ({ data }) => {
       <ArticleNav previous={previous} next={next} />
       <Divider />
       <Comments url={url} title={title} />
-    </LayoutContent>
+    </LayoutArticle>
   )
 }
 

@@ -8,16 +8,15 @@ import GlobalStyles from "../../styles/global"
 
 import * as S from "./styled"
 
-const LayoutContent = ({ title, description, social, children }) => {
+const LayoutMarketing = ({ title, description, social, children }) => {
   return (
     <>
       <GlobalStyles />
       <TopBar />
       <Hero title={title} description={description} social={social} />
-      <S.MainWrapper>{children}</S.MainWrapper>
-      <Footer social={social} />
+      {/* <S.MainWrapper>{children}</S.MainWrapper> */}
     </>
   )
 }
 
-export default LayoutContent
+export default LayoutMarketing

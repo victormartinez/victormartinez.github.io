@@ -1,9 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import LayoutContent from "../components/LayoutContent"
-import PostItem from "../components/PostItem"
-import Pagination from "../components/Pagination"
+import LayoutMarketing from "../components/LayoutMarketing"
 import SEO from "../components/seo"
 
 import { useIntl } from "gatsby-plugin-intl"
@@ -16,15 +14,14 @@ const HomeIndex = ({ data }) => {
   const social = data.site.siteMetadata.social
 
   return (
-    <LayoutContent
+    <LayoutMarketing
       title={siteTitle}
       description={description}
-      heroSocial={social}
-      footerSocial={social}
+      social={social}
     >
       <SEO title={`${siteTitle}`} description={`${siteTitle} ${description}`} />
       AQUI É A PÁGINA INICIAL
-    </LayoutContent>
+    </LayoutMarketing>
   )
 }
 

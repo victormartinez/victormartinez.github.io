@@ -6,22 +6,21 @@ import SocialLinks from "../SocialLinks"
 import * as S from "./styled"
 
 const Hero = ({ title, description, social }) => {
-  const Wrapper = title ? S.HeroWrapperBg : S.HeroWrapperColor
   return (
-    <Wrapper>
+    <S.HeroWrapperBg>
       <S.HeroContainer>
-        {title && <S.Title>{title}</S.Title>}
-        {description && <S.Description>{description}</S.Description>}
-        {social && <SocialLinks data={social} />}
+        <S.Title>{title}</S.Title>
+        <S.Description>{description}</S.Description>
+        <SocialLinks data={social} />
       </S.HeroContainer>
-    </Wrapper>
+    </S.HeroWrapperBg>
   )
 }
 
 Hero.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  social: PropTypes.object,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  social: PropTypes.object.isRequired,
 }
 
 export default Hero
