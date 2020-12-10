@@ -2,8 +2,8 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 export const TopBarHeader = styled.header`
-  background-color: transparent;
-  height: 5rem;
+  background-color: #090b0b;
+  height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;

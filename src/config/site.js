@@ -20,6 +20,10 @@ module.exports = {
       title: `Sobre mim`,
       description: `Aqui vamos nós!`,
     },
+    blog: {
+      title: `Blog`,
+      description: `Aqui você encontra minhas postagens. Gosto de tópicos envolvendo programação, python, carreira, startups e tecnologia em geral.`,
+    },
   },
   en: {
     title: `Hi, I'm Victor!`,
@@ -34,6 +38,10 @@ module.exports = {
     about: {
       title: `About me`,
       description: `Here we go!`,
+    },
+    blog: {
+      title: `Blog`,
+      description: `Here you find my blog posts. I like topics involving programming, python, career, startups and technology.`,
     },
   },
 }

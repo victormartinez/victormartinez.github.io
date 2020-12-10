@@ -7,25 +7,29 @@ export const HeroWrapperBg = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 68vh;
-  margin-top: -5rem;
+  height: 90vh;
 `
 
 export const HeroContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto;
-  width: 70em;
-  margin-top: 10em;
+  width: 100%;
+  text-align: center;
 `
 
 export const Title = styled.h1`
-  margin: 0 auto;
+  margin-bottom: 0.5em;
   color: #fff;
   font-size: 4rem;
 `
 export const Description = styled.p`
   color: #fff;
   font-size: 1.5rem;
-  margin: 1em 0.1em;
-  max-width: 30em;
+  margin: 0 auto;
+  width: 30em;
   line-height: 1.5;
+  text-align: center;
 `

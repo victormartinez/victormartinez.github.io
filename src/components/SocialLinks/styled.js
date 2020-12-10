@@ -1,6 +1,9 @@
 import styled from "styled-components"
 
-export const SocialWrapper = styled.nav``
+export const SocialWrapper = styled.nav`
+  margin: 0 auto;
+  margin-top: 1em;
+`
 
 export const SocialItemList = styled.ul`
   display: flex;

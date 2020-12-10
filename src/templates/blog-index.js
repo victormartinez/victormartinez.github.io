@@ -16,8 +16,8 @@ import {
 const BlogIndex = ({ data, pageContext }) => {
   const intl = useIntl()
 
-  const siteTitle = data.site.siteMetadata[intl.locale].title
-  const description = data.site.siteMetadata[intl.locale].description
+  const siteTitle = data.site.siteMetadata[intl.locale].blog.title
+  const description = data.site.siteMetadata[intl.locale].blog.description
   const social = data.site.siteMetadata.social
   const allPosts = data.allMarkdownRemark.nodes
 
@@ -81,10 +81,12 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         en {
-          title
-          description
           author {
             name
+          }
+          blog {
+            title
+            description
           }
         }
         pt {
@@ -92,6 +94,10 @@ export const pageQuery = graphql`
           description
           author {
             name
+          }
+          blog {
+            title
+            description
           }
         }
         social {

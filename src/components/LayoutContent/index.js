@@ -1,6 +1,6 @@
 import React from "react"
 
-import Hero from "../Hero"
+import BlackHeader from "../BlackHeader"
 import TopBar from "../TopBar"
 import Footer from "../Footer"
 
@@ -13,7 +13,7 @@ const LayoutContent = ({ title, description, social, children }) => {
     <>
       <GlobalStyles />
       <TopBar />
-      <Hero title={title} description={description} social={social} />
+      <BlackHeader title={title} description={description} />
       <S.MainWrapper>{children}</S.MainWrapper>
       <Footer social={social} />
     </>
