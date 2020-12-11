@@ -8,10 +8,10 @@ export const PostItemWrapper = styled.article`
   display: flex;
   margin-bottom: 3em;
 
-  ${media.lessThan("small")`
+  ${media.lessThan("medium")`
     flex-direction: column;
     padding: 1em;
-  `}
+  `};
 `
 
 export const ImageSection = styled.div``
@@ -23,10 +23,15 @@ export const Image = styled(Img)`
     width: 25em;
     height: 20em;
   `}
+
+  ${media.between("small", "medium")`
+    width: 46em;
+    height: 20em;
+  `}
 `
 
 export const TextSection = styled.section`
-  width: 100%;
+  width: 100vw;
   padding: 1em 1.5em;
   display: flex;
   flex-direction: column;
