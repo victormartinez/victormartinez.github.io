@@ -5,6 +5,7 @@ import LayoutContent from "../components/LayoutContent"
 import PostItem from "../components/PostItem"
 import Pagination from "../components/Pagination"
 import SEO from "../components/seo"
+import Paragraph from "../components/Paragraph"
 
 import { useIntl } from "gatsby-plugin-intl"
 import {
@@ -41,7 +42,7 @@ const BlogIndex = ({ data, pageContext }) => {
         social={social}
       >
         <SEO title={`${siteTitle}`} />
-        <p>{noPosts}</p>
+        <Paragraph text={noPosts} />
       </LayoutContent>
     )
   }
@@ -116,7 +117,7 @@ export const pageQuery = graphql`
       skip: $skip
     ) {
       nodes {
-        excerpt(pruneLength: 250)
+        excerpt(pruneLength: 200)
         fields {
           slug
         }

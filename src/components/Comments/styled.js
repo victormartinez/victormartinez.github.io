@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import media from "styled-media-query"
 
 export const CommentsWrapper = styled.section`
   iframe[src*="ads-iframe"] {
@@ -15,4 +16,8 @@ export const CommentsWrapper = styled.section`
 export const CommentsTitle = styled.h2`
   font-weight: 900;
   font-size: 1.5rem;
+
+  ${media.lessThan("small")`
+    margin-bottom: 2em;
+  `}
 `

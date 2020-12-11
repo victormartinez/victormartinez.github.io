@@ -1,9 +1,14 @@
 import styled from "styled-components"
+import media from "styled-media-query"
 
 export const Headline = styled.h1`
   font-size: 4rem;
   font-weight: 900;
   line-height: 1.5;
+
+  ${media.lessThan("small")`
+    font-size: 2.8rem;
+  `}
 `
 export const Article = styled.article`
   line-height: 2;
@@ -22,6 +27,7 @@ export const TagsList = styled.ul`
   flex-direction: row;
   list-style-type: none;
   margin-top: 1em;
+  flex-wrap: wrap;
 `
 
 export const TagItem = styled.li`
@@ -30,12 +36,20 @@ export const TagItem = styled.li`
   color: gray;
   padding: 0 0.5em;
   font-weight: 300;
+
+  ${media.lessThan("small")`
+    margin-top: 0.5em;
+  `}
 `
 
 export const TagItemFirst = styled.li`
   font-weight: 300;
   margin-right: 1em;
   color: gray;
+
+  ${media.lessThan("small")`
+    margin-top: 0.5em;
+  `}
 `
 
 export const Section = styled.section`

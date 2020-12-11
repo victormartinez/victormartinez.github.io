@@ -27,16 +27,18 @@ const PostItem = ({
           <S.Title>
             <S.PostLink to={path}>{title}</S.PostLink>
           </S.Title>
+
+          <S.Metadata>
+            <S.Date>{date}</S.Date>
+            <S.Bullet>•</S.Bullet>
+            <S.ReadingTime>
+              {timeToRead} min {intl.formatMessage({ id: "reading" })}
+            </S.ReadingTime>
+          </S.Metadata>
           <S.Description>{description}</S.Description>
         </S.Header>
         <S.Footer>
-          <S.FooterItem>{date}</S.FooterItem>
-          <S.FooterItem>•</S.FooterItem>
           <S.FooterItem>{category}</S.FooterItem>
-          <S.FooterItem>•</S.FooterItem>
-          <S.FooterItem>
-            {timeToRead} min {intl.formatMessage({ id: "reading" })}
-          </S.FooterItem>
         </S.Footer>
       </S.TextSection>
     </S.PostItemWrapper>

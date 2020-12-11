@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import media from "styled-media-query"
 import { Link } from "gatsby"
 
 export const TopBarHeader = styled.header`
@@ -8,12 +9,16 @@ export const TopBarHeader = styled.header`
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
+
+  ${media.lessThan("large")`
+    display: none;
+  `}
 `
 
 export const TopBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 58em;
+  width: 58vw;
 `
 
 export const Logo = styled(Link)`

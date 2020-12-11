@@ -1,3 +1,4 @@
+import media from "styled-media-query"
 import styled from "styled-components"
 
 export const HeroWrapperBg = styled.div`
@@ -24,6 +25,10 @@ export const Title = styled.h1`
   margin-bottom: 0.5em;
   color: #fff;
   font-size: 4rem;
+
+  ${media.lessThan("large")`
+    font-size: 2.8rem;
+  `}
 `
 export const Description = styled.p`
   color: #fff;
@@ -32,4 +37,10 @@ export const Description = styled.p`
   width: 30em;
   line-height: 1.5;
   text-align: center;
+
+  ${media.lessThan("large")`
+    font-size: 1rem;
+    width: 100vw;
+    padding: 1em;
+  `}
 `
