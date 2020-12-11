@@ -17,10 +17,9 @@ export const Container = styled.div`
   width: 70em;
   margin-top: 10vh;
 
-  ${media.lessThan("small")`
+  ${media.lessThan("large")`
     width: 100vw;
     padding: 1.5em;
-    width: 100vw;
   `}
 `
 
@@ -42,6 +41,5 @@ export const Description = styled.p`
   ${media.lessThan("small")`
     font-size: 0.8rem;
     width: 85vw;
-
   `}
 `

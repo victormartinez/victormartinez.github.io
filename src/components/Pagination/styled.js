@@ -17,7 +17,9 @@ export const PaginationWrapper = styled.section`
   `}
 `
 
-export const PaginationItemWrapper = styled.div``
+export const PaginationItemWrapper = styled.div`
+  width: 4.5em;
+`
 
 export const PaginationLink = styled(Link)`
   height: 1em;

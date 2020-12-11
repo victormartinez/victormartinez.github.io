@@ -36,6 +36,10 @@ export const TextSection = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  ${media.lessThan("small")`
+    width: 95vw;
+  `};
 `
 
 export const Header = styled.header`
