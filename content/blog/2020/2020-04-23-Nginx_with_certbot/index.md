@@ -130,6 +130,6 @@ Voilà!
 
 You might find useful the links below:
 
-- [https://certbot.eff.org/](https://tecadmin.net/auto-renew-lets-encrypt-certificates/)
-- [https://techmonger.github.io/49/certbot-auto-renew/](https://tecadmin.net/auto-renew-lets-encrypt-certificates/)
-- [https://tecadmin.net/auto-renew-lets-encrypt-certificates/](https://tecadmin.net/auto-renew-lets-encrypt-certificates/)
+- [Certbot.org](https://tecadmin.net/auto-renew-lets-encrypt-certificates/)
+- [Techmonger: Certbot Auto Renew/](https://tecadmin.net/auto-renew-lets-encrypt-certificates/)
+- [Tecadmin: Auto renew lets encrypt certificates](https://tecadmin.net/auto-renew-lets-encrypt-certificates/)

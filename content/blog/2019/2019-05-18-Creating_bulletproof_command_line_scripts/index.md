@@ -14,7 +14,7 @@ The life of a backend developer involves creating some scripts to be executed in
 
 In the real-world scenario some changes are ~pratically~ impossible to revert:
 
-1. Triggering emails/notifications/messages/SMSs to customers
+1. Triggering emails / notifications / messages / SMSs to customers
 2. Accidentally giving an offer to a user
 3. Updating records without a backup
 

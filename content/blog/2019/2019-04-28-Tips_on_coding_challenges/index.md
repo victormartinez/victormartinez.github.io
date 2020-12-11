@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Tips on Coding/Technical Challenges"
+title: "Tips on Coding / Technical Challenges"
 category: Career
 tags: [career, technical, coding, challenges]
 date: "2019-04-28T00:00:00"
@@ -10,7 +10,7 @@ image_url: https://unsplash.com/photos/dMUt0X3f59Q
 language: en
 ---
 
-It is common for Software Engineers/Programmers/Developers to face a coding/technical challenge in recruitment processes. The challenge consists of programming assignments designed to exam candidates mainly regarding hard skills (e.g. programming ability, architectural design, etc). Usually, the process is comprised of three phases: (i) specification; (ii) development; (iii) review. There are idiosyncrasies and tips for each of them.
+It is common for Software Engineers/Programmers/Developers to face a coding / technical challenge in recruitment processes. The challenge consists of programming assignments designed to exam candidates mainly regarding hard skills (e.g. programming ability, architectural design, etc). Usually, the process is comprised of three phases: (i) specification; (ii) development; (iii) review. There are idiosyncrasies and tips for each of them.
 
 After going through coding challenges and, especially, reviewing some of them at [Onyo](www.onyo.com) I decided to write this post and share some lessons that I have learned.
 

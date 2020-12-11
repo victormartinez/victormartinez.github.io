@@ -5,7 +5,6 @@ category: Web Development
 tags: [elasticsearch, python]
 date: "2018-02-02T00:00:00"
 image: featured.png
-last_modified_at: "2018-02-04"
 language: en
 ---
 

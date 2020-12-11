@@ -58,7 +58,7 @@ _Hints:_
   ** Node: `kubectl top node <NODE-NAME>`
   \*\* Pod: `kubectl top pod <POD-NAME> [-n <NAMESPACE>]`
 
-## Scheduling/Migration
+## Scheduling / Migration
 
 - Mark a node unschedulable: `kubectl cordon <NODE-NAME>`
 - Mark a node schedulable: `kubectl uncordon <NODE-NAME>`
