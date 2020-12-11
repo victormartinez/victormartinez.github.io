@@ -17,15 +17,23 @@ const Pagination = ({
 
   return (
     <S.PaginationWrapper>
-      <S.PaginationLink to={isFirst ? "#" : prevPage}>
-        {isFirst ? null : `← ${intl.formatMessage({ id: "Previous" })}`}
-      </S.PaginationLink>
-      <S.PaginationText>
-        {currentPage} {intl.formatMessage({ id: "of" })} {numPages}
-      </S.PaginationText>
-      <S.PaginationLink to={isLast ? "#" : nextPage}>
-        {isLast ? null : `→ ${intl.formatMessage({ id: "Next" })}`}
-      </S.PaginationLink>
+      <S.PaginationItemWrapper>
+        <S.PaginationLink to={isFirst ? "#" : prevPage}>
+          {isFirst ? null : `← ${intl.formatMessage({ id: "Previous" })}`}
+        </S.PaginationLink>
+      </S.PaginationItemWrapper>
+
+      <S.PaginationItemWrapper>
+        <S.PaginationText>
+          {currentPage} {intl.formatMessage({ id: "of" })} {numPages}
+        </S.PaginationText>
+      </S.PaginationItemWrapper>
+
+      <S.PaginationItemWrapper>
+        <S.PaginationLink to={isLast ? "#" : nextPage}>
+          {isLast ? null : `→ ${intl.formatMessage({ id: "Next" })}`}
+        </S.PaginationLink>
+      </S.PaginationItemWrapper>
     </S.PaginationWrapper>
   )
 }

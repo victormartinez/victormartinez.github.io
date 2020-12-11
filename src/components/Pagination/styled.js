@@ -12,14 +12,16 @@ export const PaginationWrapper = styled.section`
   height: 2em;
   font-size: 1.1rem;
 
-  ${media.lessThan("small")`
+  ${media.lessThan("medium")`
     padding: 2em 1em;
   `}
 `
 
+export const PaginationItemWrapper = styled.div``
+
 export const PaginationLink = styled(Link)`
   height: 1em;
-  width: 3.625em;
+  width: 4em;
 `
 
 export const PaginationText = styled.p``
