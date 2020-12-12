@@ -25,8 +25,8 @@ export const Image = styled(Img)`
   `}
 
   ${media.between("small", "medium")`
-    width: 46em;
-    height: 20em;
+    width: 95vw;
+    height: 25vh;
   `}
 `
 

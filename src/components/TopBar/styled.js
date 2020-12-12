@@ -18,7 +18,9 @@ export const TopBarHeader = styled.header`
 export const TopBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 58vw;
+  // width: 58vw;
+  width: 60em;
+  padding: 1.5em;
 `
 
 export const Logo = styled(Link)`

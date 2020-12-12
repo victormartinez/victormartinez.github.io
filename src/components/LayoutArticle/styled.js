@@ -9,7 +9,7 @@ export const MainWrapper = styled.main`
   min-height: 100vh;
   padding: 2em;
 
-  ${media.lessThan("small")`
+  ${media.lessThan("large")`
     width: 100vw;
   `}
 `

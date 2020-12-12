@@ -17,13 +17,23 @@ export const PaginationWrapper = styled.section`
   `}
 `
 
-export const PaginationItemWrapper = styled.div`
-  width: 4.5em;
+export const PaginationPrevious = styled.div`
+  width: 6em;
+  text-align: left;
+`
+
+export const PaginationNext = styled.div`
+  width: 6em;
+  text-align: right;
+`
+
+export const PaginationPage = styled.div`
+  width: 3em;
 `
 
 export const PaginationLink = styled(Link)`
   height: 1em;
-  width: 4em;
+  width: 6em;
 `
 
 export const PaginationText = styled.p``

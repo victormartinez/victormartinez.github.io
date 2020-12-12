@@ -8,7 +8,6 @@ export const Wrapper = styled.div`
 
   ${media.lessThan("small")`
     margin-bottom: 1em;  
-    height:  ${props => (props.content ? `35vh` : `15vh`)};
   `}
 `
 
@@ -38,8 +37,12 @@ export const Description = styled.p`
   width: 30em;
   line-height: 1.5;
 
+  ${media.lessThan("medium")`
+    font-size: 1rem;
+    width: 85vw;
+  `}
+
   ${media.lessThan("small")`
     font-size: 0.8rem;
-    width: 85vw;
   `}
 `
