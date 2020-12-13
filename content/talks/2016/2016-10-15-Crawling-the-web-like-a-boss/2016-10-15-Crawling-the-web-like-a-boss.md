@@ -5,5 +5,6 @@ image: featured.jpg
 date: "2016-10-15T00:00:00"
 where: Salvador/BA - Brazil
 title: Crawling the web like a boss
+tags: [talk, crawler, spider, scrapy, python]
 slides: https://speakerdeck.com/victormartinez/crawling-the-web-like-a-boss
 ---

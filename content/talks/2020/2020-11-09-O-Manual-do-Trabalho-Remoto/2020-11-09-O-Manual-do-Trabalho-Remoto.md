@@ -6,5 +6,6 @@ slides: https://speakerdeck.com/victormartinez/o-manual-do-trabalho-remoto
 event: Meetup SanarTech
 where: Remote
 video: https://www.youtube.com/watch?v=OfRGf8zXD2g
+tags: [talk, remote]
 website: https://www.meetup.com/pt-BR/sanartech/events/269401026/
 ---
