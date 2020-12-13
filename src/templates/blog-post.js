@@ -1,4 +1,5 @@
 import React from "react"
+import { useIntl } from "gatsby-plugin-intl"
 import { graphql } from "gatsby"
 
 import Article from "../components/Article"
@@ -7,13 +8,15 @@ import Comments from "../components/Comments"
 import Divider from "../components/Divider"
 import LayoutArticle from "../components/LayoutArticle"
 import SEO from "../components/seo"
+import { articleUrl } from "../utils/routing.js"
 
 const BlogPostTemplate = ({ data }) => {
+  const intl = useIntl()
   const post = data.markdownRemark
   const social = data.site.siteMetadata.social
   const title = post.frontmatter.title
-  const url = `${data.site.siteMetadata.siteUrl}${post.fields.slug}`
-  console.log(url)
+  const path = articleUrl(intl.locale, post.fields.slug)
+  const url = `${data.site.siteMetadata.siteUrl}${path}`
   const { previous, next } = data
 
   return (
@@ -31,7 +34,7 @@ const BlogPostTemplate = ({ data }) => {
       <Article post={post} />
       <ArticleNav previous={previous} next={next} />
       <Divider />
-      <Comments url={url} title={title} />
+      <Comments url={url} identifier={path} title={title} />
     </LayoutArticle>
   )
 }

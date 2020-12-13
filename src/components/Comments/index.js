@@ -5,7 +5,7 @@ import { useIntl } from "gatsby-plugin-intl"
 
 import * as S from "./styled"
 
-const Comments = ({ url, title }) => {
+const Comments = ({ url, identifier, title }) => {
   const intl = useIntl()
   return (
     <S.CommentsWrapper>
@@ -15,7 +15,7 @@ const Comments = ({ url, title }) => {
 
       <ReactDisqusComments
         shortname="vcrmartinez"
-        identifier={url}
+        identifier={identifier}
         title={title}
         url={url}
       />
