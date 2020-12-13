@@ -20,7 +20,6 @@ const HomeIndex = ({ data }) => {
       social={social}
     >
       <SEO title={`${siteTitle}`} description={`${siteTitle} ${description}`} />
-      AQUI É A PÁGINA INICIAL
     </LayoutMarketing>
   )
 }

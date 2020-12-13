@@ -4,8 +4,8 @@ import { graphql } from "gatsby"
 import LayoutContent from "../components/LayoutContent"
 import PostItem from "../components/PostItem"
 import Pagination from "../components/Pagination"
-import SEO from "../components/seo"
 import Paragraph from "../components/Paragraph"
+import SEO from "../components/seo"
 
 import { useIntl } from "gatsby-plugin-intl"
 import {

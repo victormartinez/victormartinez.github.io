@@ -1,6 +1,7 @@
 import React from "react"
 
 import BlackHeader from "../BlackHeader"
+import Sidebar from "../Sidebar"
 import TopBar from "../TopBar"
 import Footer from "../Footer"
 
@@ -13,6 +14,7 @@ const LayoutArticle = ({ social, children }) => {
     <>
       <GlobalStyles />
       <TopBar />
+      <Sidebar social={social} />
       <BlackHeader />
       <S.MainWrapper>{children}</S.MainWrapper>
       <Footer social={social} />

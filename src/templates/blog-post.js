@@ -13,6 +13,7 @@ const BlogPostTemplate = ({ data }) => {
   const social = data.site.siteMetadata.social
   const title = post.frontmatter.title
   const url = `${data.site.siteMetadata.siteUrl}${post.fields.slug}`
+  console.log(url)
   const { previous, next } = data
 
   return (
