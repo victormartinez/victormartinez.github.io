@@ -53,7 +53,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-104088464-3`,
       },
     },
     {
@@ -69,8 +69,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Victor Martinez`,
+        short_name: `VM`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
