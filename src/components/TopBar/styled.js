@@ -27,6 +27,7 @@ export const Logo = styled(Link)`
   align-items: center;
   min-height: 3.125rem;
   text-decoration: none;
+  color: #fff;
 
   &:visited {
     color: #fff;
