@@ -56,6 +56,7 @@ export const NavItem = styled.li`
 `
 export const NavLink = styled(Link)`
   text-decoration: none;
+  color: #fff;
 
   &:visited {
     color: #fff;
