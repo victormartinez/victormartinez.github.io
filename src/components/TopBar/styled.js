@@ -23,9 +23,10 @@ export const TopBarContainer = styled.div`
 `
 
 export const Logo = styled(Link)`
+  line-height: 1.8;
+  font-size: 1.1em;
   display: flex;
   align-items: center;
-  min-height: 3.125rem;
   text-decoration: none;
   color: #fff;
 
@@ -88,7 +89,7 @@ export const NavAnchor = styled.a`
   }
 
   &:visited {
-    color: #fff;
+    color: #000;
   }
 
   &:hover {
