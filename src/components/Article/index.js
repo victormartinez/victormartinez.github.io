@@ -1,16 +1,23 @@
 import React from "react"
 
+import { useIntl } from "gatsby-plugin-intl"
+
 import * as S from "./styled"
 
 import Rating from "../Rating"
 import ImageCredits from "../ImageCredits"
 
 const Article = ({ post }) => {
+  const intl = useIntl()
+
   return (
     <S.Article>
       <S.Header>
         <S.Headline>{post.frontmatter.title}</S.Headline>
-        <S.Date>{post.frontmatter.date}</S.Date>
+        <S.Date>
+          {post.frontmatter.date} • {post.timeToRead} min{" "}
+          {intl.formatMessage({ id: "reading" })}
+        </S.Date>
         <S.TagsWrapper>
           <S.TagsList>
             <S.TagItemFirst>Tags:</S.TagItemFirst>
