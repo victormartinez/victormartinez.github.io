@@ -52,33 +52,5 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/blog/" } }
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: 3
-    ) {
-      nodes {
-        excerpt(pruneLength: 250)
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMM DD, YYYY")
-          title
-          description
-          category
-          language
-          image {
-            publicURL
-            childImageSharp {
-              fluid(maxHeight: 368, maxWidth: 640) {
-                ...GatsbyImageSharpFluid_tracedSVG
-              }
-            }
-          }
-        }
-        timeToRead
-      }
-    }
   }
 `
