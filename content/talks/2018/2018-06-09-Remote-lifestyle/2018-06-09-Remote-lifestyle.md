@@ -1,4 +1,5 @@
 ---
+layout: talk
 event: LinguÁgil
 website: https://linguagil.com.br/
 date: "2018-06-09T00:00:00"

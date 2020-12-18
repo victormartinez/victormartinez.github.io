@@ -1,4 +1,5 @@
 ---
+layout: talk
 title: Fast results with Elasticsearch
 image: featured.png
 date: "2019-04-06T00:00:00"

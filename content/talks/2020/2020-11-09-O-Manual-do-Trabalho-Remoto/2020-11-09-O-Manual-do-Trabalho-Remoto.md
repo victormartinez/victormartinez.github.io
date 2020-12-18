@@ -1,4 +1,5 @@
 ---
+layout: talk
 title: O Manual do Trabalho Remoto
 image: featured.jpeg
 date: "2020-11-09T00:00:00"

@@ -1,4 +1,5 @@
 ---
+layout: talk
 event: SEMCOMP
 website: http://semcomp.com.br/
 date: "2016-11-25T00:00:00"
