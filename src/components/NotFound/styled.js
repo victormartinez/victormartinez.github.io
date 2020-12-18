@@ -9,6 +9,7 @@ export const NotFoundWrapper = styled.section`
 
 export const Oops = styled.span`
   font-size: 6rem;
+  margin-top: 1em;
 `
 
 export const Title = styled.h1`
