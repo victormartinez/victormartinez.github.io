@@ -22,6 +22,7 @@ const BlogIndex = ({ data, pageContext }) => {
   const description = data.site.siteMetadata[intl.locale].blog.description
   const social = data.site.siteMetadata.social
   const allPosts = data.allMarkdownRemark.nodes
+  const author = data.site.siteMetadata.author.name
 
   // Filtering posts by locale
   const posts = allPosts.filter(node =>
@@ -41,7 +42,7 @@ const BlogIndex = ({ data, pageContext }) => {
         description={description}
         social={social}
       >
-        <SEO title={`${siteTitle}`} />
+        <SEO title={`${author} | ${siteTitle}`} />
         <Paragraph text={noPosts} />
       </LayoutContent>
     )
@@ -49,7 +50,10 @@ const BlogIndex = ({ data, pageContext }) => {
 
   return (
     <LayoutContent title={siteTitle} description={description} social={social}>
-      <SEO title={`${siteTitle}`} description={`${siteTitle} ${description}`} />
+      <SEO
+        title={`${author} | ${siteTitle}`}
+        description={`${siteTitle} ${description}`}
+      />
       {posts.map(post => {
         return (
           <PostItem
@@ -82,11 +86,17 @@ export const pageQuery = graphql`
   query PostList($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
+        author {
+          name
+        }
+        social {
+          twitter
+          github
+          linkedin
+          speakerdeck
+        }
         en {
           noPosts
-          author {
-            name
-          }
           blog {
             title
             description
@@ -94,19 +104,10 @@ export const pageQuery = graphql`
         }
         pt {
           noPosts
-          author {
-            name
-          }
           blog {
             title
             description
           }
-        }
-        social {
-          twitter
-          github
-          linkedin
-          speakerdeck
         }
       }
     }

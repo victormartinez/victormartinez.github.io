@@ -6,13 +6,12 @@ import SEO from "../components/seo"
 
 import { useIntl } from "gatsby-plugin-intl"
 
-const HomeIndex = ({ data }) => {
+const AboutIndex = ({ data }) => {
   const intl = useIntl()
 
-  const siteTitle = data.site.siteMetadata[intl.locale].title
-  const description = data.site.siteMetadata[intl.locale].description
+  const siteTitle = data.site.siteMetadata[intl.locale].about.title
+  const description = data.site.siteMetadata[intl.locale].about.description
   const social = data.site.siteMetadata.social
-  const author = data.site.siteMetadata.author.name
 
   return (
     <LayoutMarketing
@@ -20,30 +19,28 @@ const HomeIndex = ({ data }) => {
       description={description}
       social={social}
     >
-      <SEO
-        title={`${author} | ${siteTitle}`}
-        description={`${siteTitle} ${description}`}
-      />
+      <SEO title={`${siteTitle}`} description={`${siteTitle} ${description}`} />
     </LayoutMarketing>
   )
 }
 
-export default HomeIndex
+export default AboutIndex
 
 export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
-        author {
-          name
-        }
         en {
-          title
-          description
+          about {
+            title
+            description
+          }
         }
         pt {
-          title
-          description
+          about {
+            title
+            description
+          }
         }
         social {
           twitter

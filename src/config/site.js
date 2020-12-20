@@ -6,13 +6,13 @@ module.exports = {
     github: `victormartinez`,
     speakerdeck: `victormartinez`,
   },
+  author: {
+    name: `Victor Martinez`,
+  },
   pt: {
     title: `Olá, eu sou o Victor!`,
     description: `Eu sou (principalmente) um desenvolvedor backend que gosta de tópicos relacionados a desenvolvimento de software, python 💓, carreira e outras coisas legais.`,
     noPosts: `Desculpa, eu ainda não publiquei um post.`,
-    author: {
-      name: `Victor Martinez`,
-    },
     talks: {
       title: `Palestras`,
       description: `Algumas vezes eu fico corajoso o suficiente para falar sobre um tópico na frente de várias pessoas.`,
@@ -30,9 +30,6 @@ module.exports = {
     title: `Hi, I'm Victor!`,
     description: `I'm (mostly) a backend developer who like topics related to software development, python 💓, career and other cool stuff.`,
     noPosts: `Sorry, I haven't published any post yet.`,
-    author: {
-      name: `Victor Martinez`,
-    },
     talks: {
       title: `Talks`,
       description: `Sometimes I get brave enough to talk about a topic in front of many people.`,
