@@ -2,9 +2,8 @@
 layout: post
 title: "Review: Monolith to Microservices"
 category: Reviews
-date: "2020-05-26T00:00:00"
 tags: [book, review, monolith, microservices]
-toc: false
+date: "2020-05-26T00:00:00"
 image: featured.png
 rating: 5
 language: en

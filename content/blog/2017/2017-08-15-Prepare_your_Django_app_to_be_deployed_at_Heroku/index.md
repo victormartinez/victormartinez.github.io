@@ -14,9 +14,9 @@ It is really exciting to build our own projects and see it working on production
 
 ## Heroku
 
-[Heroku](http://www.heroku.com) is the PaaS that will host our project. Go to the dashboard and create your new app. Go to the [dashboard](https://dashboard.heroku.com/apps) and create your new app.
+[Heroku](http://www.heroku.com) is the PaaS that will host our project. Go to the [dashboard](https://dashboard.heroku.com/apps) and create your new app.
 
-Once you have created you app, it is necessart to use the terminal to set up your credentials. We need the Heroku CLI to access the app settings (check the [docs](https://devcenter.heroku.com/articles/heroku-cli) to install it properly).
+Once you have created you app, it is necessary to use the terminal to set up your credentials. We need the Heroku CLI to access the app settings (check the [docs](https://devcenter.heroku.com/articles/heroku-cli) to install it properly).
 
 After installing you can login:
 

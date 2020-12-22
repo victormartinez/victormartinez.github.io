@@ -12,7 +12,7 @@ At [Agilize](https://www.agilize.com.br/) a common developer workflow involves t
 
 ## Git Hooks
 
-Git allows us to run a script every time a particular event occurs in the repository. For instance, it is impossible to populate the text editor with a template message.This [tutorial](https://www.atlassian.com/git/tutorials/git-hooks) explains the power of git hooks and provides a snippet that will be customized in this post to address our necessities.
+Git allows us to run a script every time a particular event occurs in the repository. For instance, it is possible to setup the text editor with a template message. This [tutorial](https://www.atlassian.com/git/tutorials/git-hooks) explains the power of git hooks and provides a snippet that will be customized in this post to address our necessities.
 
 Inside your repository there is a folder _.git/hooks_ that contains some sample scripts that can be used as a playground and they end with _.sample_ in order to not be interpreted by Git. Create a file named _prepare-commit-msg_ that will contain the code below to automate the commit message.
 

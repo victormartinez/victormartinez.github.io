@@ -10,7 +10,7 @@ language: en
 
 So you got lots of documents and need fast querying, huh? Or you have tons of data and need to process and extract metrics. Either way, Elasticsearch (ES) can be a powerful engine to help you index, query and extract metrics from its document-driven storage. This post is very straightforward and intends to show how to use python to interact with the engine and index/retrieve/query documents.
 
-The python community has develop two well known projects: [elasticsearch-py](http://elasticsearch-py.readthedocs.io/) and [elasticsearch-dsl](http://elasticsearch-dsl.readthedocs.io/). While the former provides some tools to interact with ES and, IMHO, a more granular control over the actions, the latter was built to help you with the search and persistence. Let’s check that.
+The python community has developed two well known projects: [elasticsearch-py](http://elasticsearch-py.readthedocs.io/) and [elasticsearch-dsl](http://elasticsearch-dsl.readthedocs.io/). While the former provides some tools to interact with ES and, IMHO, a more granular control over the actions, the latter was built to help you with the search and persistence. Let’s check that.
 
 ## Connecting
 
@@ -143,5 +143,3 @@ if not response.success():
 
 return res.aggs['datetime']['buckets']
 ```
-
-Note: This post was intentionally written to be straightforward. Sometimes getting everything up and running decreases the learning curve. As the development goes you may have some questions that can be addressed in the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/), [elasticsearch-py docs](http://elasticsearch-py.readthedocs.io/) and [elasticsearch-dsl docs](http://elasticsearch-dsl.readthedocs.io/)

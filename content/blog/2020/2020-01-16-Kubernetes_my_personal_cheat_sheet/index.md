@@ -27,6 +27,7 @@ If your infrastructure is comprised of a Kubernetes cluster you probably have a 
 - Get your Ingress managed certificate: `kubectl describe managedcertificate [-n <NAMESPACE>]`
 - Port forward: `kubectl port-forward [-n <NAMESPACE>] svc/<SERVICE-NAME> <LOCAL-PORT>:<REMOTE-PORT>`
 - Suspend CronJob: `kubectl patch cronjobs <cronjob-name> -p '{"spec" : {"suspend" : true }}' [-n <NAMESPACE>]`
+- Create a job from Cronjob: `kubectl create job --from=cronjob/<YOUR-CRONJOB-NAME> <GIVE-A-NAME>`
 
 _Hint:_ prefix your commands with `watch` to keep an eye on the output. For instance, if you have deployed a new image, check the progress by running `watch kubectl get pods [-n namespace]`.
 
