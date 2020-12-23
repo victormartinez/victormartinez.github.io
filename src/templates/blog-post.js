@@ -65,7 +65,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMM DD, YYYY")
+        date
         description
         tags
         rating

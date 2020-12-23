@@ -6,6 +6,8 @@ import * as S from "./styled"
 
 import Rating from "../Rating"
 import ImageCredits from "../ImageCredits"
+import Alert from "../Alert"
+import { isPostDeprecated, formatDate } from "../../utils/date"
 
 const Article = ({ post }) => {
   const intl = useIntl()
@@ -15,7 +17,7 @@ const Article = ({ post }) => {
       <S.Header>
         <S.Headline>{post.frontmatter.title}</S.Headline>
         <S.Date>
-          {post.frontmatter.date} • {post.timeToRead} min{" "}
+          {formatDate(post.frontmatter.date, "pt")} • {post.timeToRead} min{" "}
           {intl.formatMessage({ id: "reading" })}
         </S.Date>
         <S.TagsWrapper>
@@ -28,6 +30,11 @@ const Article = ({ post }) => {
         </S.TagsWrapper>
       </S.Header>
       {post.frontmatter.rating && <Rating value={post.frontmatter.rating} />}
+
+      {isPostDeprecated(post.frontmatter.date) && (
+        <Alert msg={intl.formatMessage({ id: "Warning_deprecated" })} />
+      )}
+
       <S.Section
         dangerouslySetInnerHTML={{ __html: post.html }}
         itemProp="articleBody"

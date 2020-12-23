@@ -8,5 +8,6 @@
   "Featured_image_credits": "Featured image credits",
   "Not_Found": "Not Found",
   "Not_Found_Text": "The page you are looking for might have been removed, had its name changed or is temporarily unavailable.",
-  "Not_Found_Nav": "You can go to"
+  "Not_Found_Nav": "You can go to",
+  "Warning_deprecated": "Attention: this post was written some time ago and may not be valid anymore, ok?"
 }
