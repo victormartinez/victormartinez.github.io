@@ -5,7 +5,7 @@ import officeBackground from "../../../content/assets/office-background.jpeg"
 
 export const HeroWrapperBg = styled.div`
   display: flex;
-  background-color: #000;
+  background-color: #090b0b;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(${officeBackground});
   background-position: center;
