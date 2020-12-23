@@ -1,4 +1,4 @@
-var moment = require("moment")
+const moment = require("moment")
 
 export const isPostDeprecated = datetime => {
   const months = moment().diff(moment(datetime), "months")
@@ -7,10 +7,11 @@ export const isPostDeprecated = datetime => {
 
 export const formatDate = (datetime, locale) => {
   if (locale === "en") {
-    moment.locale("en")
-    return moment(datetime).format("MMM DD, YYYY")
+    return moment(datetime).locale("en").format("MMM DD, YYYY")
   }
+  let formatted = moment(datetime, "YYYY-MM-DDTHH:mm:ss")
+    .locale("pt-br")
+    .format("MMM DD, YYYY")
 
-  moment.locale("pt-br")
-  return moment(datetime).format("MMM DD, YYYY")
+  return `${formatted[0].toUpperCase()}${formatted.slice(1)}`
 }

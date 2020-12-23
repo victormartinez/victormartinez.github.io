@@ -1,7 +1,7 @@
 import React from "react"
 
 import { useIntl } from "gatsby-plugin-intl"
-
+import { formatDate } from "../../utils/date"
 import * as S from "./styled"
 
 const PostItem = ({
@@ -29,7 +29,7 @@ const PostItem = ({
           </S.Title>
 
           <S.Metadata>
-            <S.Date>{date}</S.Date>
+            <S.Date>{formatDate(date, intl.locale)}</S.Date>
             <S.Bullet>•</S.Bullet>
             <S.ReadingTime>
               {timeToRead} min {intl.formatMessage({ id: "reading" })}

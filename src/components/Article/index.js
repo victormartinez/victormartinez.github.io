@@ -17,8 +17,8 @@ const Article = ({ post }) => {
       <S.Header>
         <S.Headline>{post.frontmatter.title}</S.Headline>
         <S.Date>
-          {formatDate(post.frontmatter.date, "pt")} • {post.timeToRead} min{" "}
-          {intl.formatMessage({ id: "reading" })}
+          {formatDate(post.frontmatter.date, intl.locale)} • {post.timeToRead}{" "}
+          min {intl.formatMessage({ id: "reading" })}
         </S.Date>
         <S.TagsWrapper>
           <S.TagsList>
