@@ -3,7 +3,6 @@ import { useIntl } from "gatsby-plugin-intl"
 import { graphql } from "gatsby"
 
 import Article from "../components/Article"
-import ArticleNav from "../components/ArticleNav"
 import Comments from "../components/Comments"
 import Divider from "../components/Divider"
 import LayoutArticle from "../components/LayoutArticle"
@@ -17,7 +16,6 @@ const BlogPostTemplate = ({ data }) => {
   const title = post.frontmatter.title
   const path = articleUrl(intl.locale, post.fields.slug)
   const url = `${data.site.siteMetadata.siteUrl}${path}`
-  const { previous, next } = data
 
   return (
     <LayoutArticle social={social}>
@@ -32,7 +30,6 @@ const BlogPostTemplate = ({ data }) => {
         ]}
       />
       <Article post={post} />
-      <ArticleNav previous={previous} next={next} />
       <Divider />
       <Comments url={url} identifier={path} title={title} />
     </LayoutArticle>
@@ -42,11 +39,7 @@ const BlogPostTemplate = ({ data }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug(
-    $id: String!
-    $previousPostId: String
-    $nextPostId: String
-  ) {
+  query BlogPostBySlug($id: String!) {
     site {
       siteMetadata {
         title
@@ -76,28 +69,6 @@ export const pageQuery = graphql`
         slug
       }
       timeToRead
-    }
-    previous: markdownRemark(
-      id: { eq: $previousPostId }
-      fileAbsolutePath: { regex: "/content/blog/" }
-    ) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
-    }
-    next: markdownRemark(
-      id: { eq: $nextPostId }
-      fileAbsolutePath: { regex: "/content/blog/" }
-    ) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
     }
   }
 `

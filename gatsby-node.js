@@ -40,21 +40,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // `context` is available in the template as a prop and as a variable in GraphQL
   if (posts.length > 0) {
     posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
-
       createPage({
         path: `/blog${post.fields.slug}`,
         component: path.resolve(`./src/templates/blog-post.js`),
         context: {
           id: post.id,
-          previousPostId,
-          nextPostId,
         },
       })
 
       const postsPerPage = 6
-      const numPages = Math.ceil(posts.length / postsPerPage)
+      const totalPosts = Math.max(
+        allPosts.filter(post => post.frontmatter.language === "pt").length,
+        allPosts.filter(post => post.frontmatter.language === "en").length
+      )
+      const numPages = Math.ceil(totalPosts / postsPerPage)
 
       Array.from({ length: numPages }).forEach((_, index) => {
         createPage({
@@ -64,6 +63,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             limit: postsPerPage,
             skip: index * postsPerPage,
             numPages,
+            postsPerPage,
             currentPage: index + 1,
           },
         })

@@ -21,13 +21,12 @@ const BlogIndex = ({ data, pageContext }) => {
   const noPosts = data.site.siteMetadata[intl.locale].noPosts
   const description = data.site.siteMetadata[intl.locale].blog.description
   const social = data.site.siteMetadata.social
-  const allPosts = data.allMarkdownRemark.nodes
+  const englishPosts = data.englishPosts.nodes
+  const portuguesePosts = data.portuguesePosts.nodes
   const author = data.site.siteMetadata.author.name
 
   // Filtering posts by locale
-  const posts = allPosts.filter(node =>
-    node.frontmatter.language.includes(intl.locale)
-  )
+  const posts = intl.locale === "pt" ? portuguesePosts : englishPosts
 
   const { currentPage, numPages } = pageContext
   const isFirst = currentPage === 1
@@ -111,8 +110,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+    portuguesePosts: allMarkdownRemark(
+      filter: {
+        fileAbsolutePath: { regex: "/content/blog/" }
+        frontmatter: { language: { eq: "pt" } }
+      }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip
@@ -124,6 +126,38 @@ export const pageQuery = graphql`
         }
         frontmatter {
           date(formatString: "MMM DD, YYYY")
+          title
+          description
+          category
+          language
+          image {
+            publicURL
+            childImageSharp {
+              fluid(maxHeight: 368, maxWidth: 640) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
+          }
+        }
+        timeToRead
+      }
+    }
+    englishPosts: allMarkdownRemark(
+      filter: {
+        fileAbsolutePath: { regex: "/content/blog/" }
+        frontmatter: { language: { eq: "en" } }
+      }
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: $limit
+      skip: $skip
+    ) {
+      nodes {
+        excerpt(pruneLength: 200)
+        fields {
+          slug
+        }
+        frontmatter {
+          date
           title
           description
           category
