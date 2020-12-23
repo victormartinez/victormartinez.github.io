@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Prepare your Django app to be deployed at Heroku"
+title: Prepare your Django app to be deployed at Heroku
 category: Web Development
-date: "2017-08-15T00:00:00"
+date: 2017-08-15T00:00:00
 tags: [deploy, django, heroku, paas, python]
 image: featured.png
 language: en
@@ -58,7 +58,7 @@ DATABASES = {
 }
 ```
 
-The first two lines import the module while the other just load the values using python-decouple lib. The `cast` parameter is mandatory because Python will treat the .env file content as string and it is important to cast the value to the proper data type.
+The first two lines import the module while the other just load the values using python-decouple lib. The `cast` parameter is mandatory because env vars are strings and it is important to cast the value to the proper data type.
 
 Pay attention to the `DEFAULT_DBURL` and `DATABASES` variables. The first uses an Sqlite in the local environment but in Heroku we will configure it to store the Postgres configuration url.
 
@@ -88,7 +88,7 @@ The file will tell to Heroku which version of python our project uses.
 
 ###### Configure your production env vars
 
-Do you remember that our **settings.py** looks for an **.env** file? Well, **python-decouple** respect the environment variables precedence over **config** files. Thus, if there is an env var set in production the config directive will not look for an .env file.
+Do you remember that our **settings.py** looks for an **.env** file? Well, **python-decouple** respect the environment variables precedence over **config files**. Thus, if there is an env var set in production the config directive will not look for an .env file.
 
 For each key in _.env_ file we will use the _Heroku CLI_ to set the env var in production. We need to setup four variables: **SECRET_KEY**, **DEBUG**, **ALLOWED_HOSTS** and **DATABASE_URL**. Open the terminal and execute:
 

@@ -3,7 +3,7 @@ layout: post
 title: "Review: Cloud Native DevOps with Kubernetes"
 category: Reviews
 tags: [book, review, cloud, native, devops, kubernetes, k8s]
-date: "2019-08-04T00:00:00"
+date: 2019-08-04T00:00:00
 image: featured.png
 rating: 5
 language: en

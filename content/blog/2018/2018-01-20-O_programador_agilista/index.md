@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "O Programador Agilista"
+title: O Programador Agilista
 category: Career
-date: "2018-01-20T00:00:00"
+date: 2018-01-20T00:00:00
 tags: [agile, programmer]
 image: featured.png
 image_author: Patrick Perkins
@@ -16,7 +16,7 @@ Uma conversa recente com um amigo trouxe à tona aspectos importantes do desenvo
 
 Ao perguntar, eu quero que você pense sobre os conceitos e como você pode aplicá-los em seu fluxo de trabalho. Você trabalha com períodos curtos de tempo, feedback constante e aprendizado rápido? Pode parecer impossível a princípio ou não tão claro como aplicar isso, mas neste post tento trazer a provocação.
 
-As perguntas abaixo revelam aspectos importantes do seu fluxo de trabalho. Vamos pensar sobre isso respondendo a eles:
+As perguntas abaixo revelam aspectos importantes do seu fluxo de trabalho. Vamos pensar sobre isso:
 
 1. Como você lida com problemas? Você resolve de uma vez ou quebra em pedaços?
 2. Você cria testes automatizados?
@@ -28,13 +28,13 @@ Suas respostas provavelmente dizem algo que já sabemos: criar e manter um softw
 
 No momento em que você recebe uma tarefa para realizar, o primeiro impulso é começar a codificar e apenas parar quando tudo estiver funcionando corretamente. Isso acontece porque nós _imediatamente focamos em **como** (programação) em vez de **o que** (etapas)_ precisa ser feito. É uma abordagem muito arriscada porque você (i) provavelmente encontrará problemas não planejados que precisam ser resolvidos e / ou (ii) gastará mais tempo em coisas que não detectou anteriormente. O cenário ideal acontece quando conhecemos todos os passos meticulosos para fazer o trabalho com antecedência. Porém, muitas vezes temos apenas uma visão mais ampla do escopo.
 
-Da próxima vez que você conseguir um recurso / bug / melhoria / tarefa para fazer, segure seu impulso por alguns minutos e delineie as etapas que você deve seguir para conseguir isso. Durante o caminho você provavelmente notará que existem alguns casos extremos para ficar atento ou cenários que exigem um esforço extra.
+Da próxima vez que você conseguir um recurso / bug / melhoria / tarefa para fazer, segure seu impulso por alguns minutos e desenhe as etapas que você deve seguir para conseguir isso. Durante o caminho você provavelmente notará que existem alguns casos extremos para ficar atento ou cenários que exigem um esforço extra.
 
 ![Planeje as etapas](./step1.png "Planeje as etapas")
 
 É importante ressaltar que você não deve planejar tudo de uma vez (isso exigiria muito tempo / esforço). Apenas planeje a próxima versão do seu produto: comece com o mvp, depois v1, v2, v3 ...
 
-_Dica:_ use um caderno / moleskine / papel pessoal para anotar todas as informações - ele limpa sua mente ao deixá-la livre para se concentrar na fase de execução.
+_Dica:_ use um caderno / moleskine / papel para anotar todas as informações - ele limpa sua mente ao deixá-la livre para se concentrar na fase de execução.
 
 ## Dividir para conquistar
 
@@ -61,6 +61,6 @@ Cada componente deve ser testado para garantir, pelo menos, os requisitos mínim
 
 ## Ciclos curtos, melhoria constante
 
-Você planejou as etapas, dividiu o problema em partes, começou a resolver um de cada vez e escreveu alguns testes automatizados. Lembre-se, todas as etapas devem se concentrar nos requisitos mínimos para alcançar o MVP, v1, v2, v3 e assim por diante. Dessa forma, você pode iterar ao longo de todo o ciclo, aprender as lições, desenvolver, testar e entregar rapidamente um software funcional. Se você gastar muito tempo planejando ou apenas desenvolvendo, provavelmente perderá a noção do tempo de comercialização em que muitas empresas desejam ser boas.
+Você planejou as etapas, dividiu o problema em partes, começou a resolver um de cada vez e escreveu alguns testes automatizados. Lembre-se, todas as etapas devem se concentrar nos requisitos mínimos para alcançar o MVP, v1, v2, v3 e assim por diante. Dessa forma, você pode iterar ao longo de todo o ciclo, aprender as lições, desenvolver, testar e entregar rapidamente um software funcional. Se você gastar muito tempo planejando ou apenas desenvolvendo, provavelmente perderá a noção do Time-to-Market que muitas empresas lutam para serem boas.
 
 E quanto a você? O que você usa para melhorar seu fluxo de trabalho?

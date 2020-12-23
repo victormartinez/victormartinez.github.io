@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Providing static files in your Django app with Amazon S3"
+title: Providing static files in your Django app with Amazon S3
 category: Web Development
-date: "2017-08-21T00:00:00"
+date: 2017-08-21T00:00:00
 tags: [aws, django, python, s3, storage]
 image: featured.png
 language: en

@@ -4,7 +4,7 @@ title: "Iniciando com Sistemas de Recomendação: Parte I"
 category: RecSys
 tags: [recommender, systems, machine, learning, recsys, recommendation]
 image: featured.png
-date: "2019-08-13T00:00:00"
+date: 2019-08-13T00:00:00
 image_author: Mr Cup / Fabien Barral
 image_url: https://unsplash.com/photos/o6GEPQXnqMY
 language: pt

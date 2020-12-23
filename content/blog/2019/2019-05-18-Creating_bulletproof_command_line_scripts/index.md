@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Creating bulletproof command-line scripts"
+title: Creating bulletproof command-line scripts
 category: Misc
 tags: [command, line, scripts]
-date: "2019-05-18T00:00:00"
+date: 2019-05-18T00:00:00
 image: featured.jpg
 image_author: Chris Ried
 image_url: https://unsplash.com/photos/ieic5Tq8YMk

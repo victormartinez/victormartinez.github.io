@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "The Agilist Programmer"
+title: The Agilist Programmer
 category: Career
-date: "2018-01-20T00:00:00"
+date: 2018-01-20T00:00:00
 tags: [agile, programmer]
 image: featured.png
 image_author: Patrick Perkins

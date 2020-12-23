@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Python + Elasticsearch"
+title: Python + Elasticsearch
 category: Web Development
 tags: [elasticsearch, python]
-date: "2018-02-02T00:00:00"
+date: 2018-02-02T00:00:00
 image: featured.png
 language: pt
 ---

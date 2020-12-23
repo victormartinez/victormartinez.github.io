@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Criando scripts de linha de comando à prova de balas"
+title: Criando scripts de linha de comando à prova de balas
 category: Misc
 tags: [command, line, scripts]
-date: "2019-05-18T00:00:00"
+date: 2019-05-18T00:00:00
 image: featured.jpg
 image_author: Chris Ried
 image_url: https://unsplash.com/photos/ieic5Tq8YMk

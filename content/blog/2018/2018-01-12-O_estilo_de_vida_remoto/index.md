@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "O estilo de vida remoto"
+title: O estilo de vida remoto
 category: Career
-date: "2018-01-12T00:00:00"
+date: 2018-01-12T00:00:00
 tags: [career, remote, work, lifestyle]
 image: featured.png
 image_author: Toa Heftiba
@@ -24,7 +24,7 @@ Se você nunca trabalhou remotamente antes, as coisas podem parecer estranhas no
 
 ## Benefícios
 
-Trabalhar remotamente é uma experiência de mudança de vida que tem me ajudado a viver uma vida diferente. Até agora, experimentei os benefícios abaixo:
+Trabalhar remotamente é uma experiência de mudança de vida que tem me ajudado a viver diferente. Até agora, experimentei os benefícios abaixo:
 
 1. Trabalhando remotamente você **se vê como um cidadão global** porque, agora, não importa onde a empresa está localizada.
 2. **Soft Skills** são rapidamente desenvolvidas devido à nova forma de relacionamento com as pessoas.
@@ -36,7 +36,7 @@ Trabalhar remotamente é uma experiência de mudança de vida que tem me ajudado
 
 Apesar de parecer um trabalho perfeito possui alguns inconvenientes que merecem atenção.
 
-1. Você pode ser levado a uma **"rotina enjaulada"**, especialmente se trabalhar apenas em casa.
+1. Você pode ser levado a uma **rotina presa dentro de casa**, especialmente se trabalhar apenas em casa.
 2. É muito provável que aconteça **excesso de trabalho** porque você não terá que bater seu ponto e poderá se sentir compelido a trabalhar o tempo todo.
 3. Sua **produtividade** torna-se uma questão para ficar mais atento pois as TVs, a família e o ambiente doméstico podem facilmente distraí-lo.
 4. O sentimento de **solidão** pode surgir devido à falta de pessoas por perto.

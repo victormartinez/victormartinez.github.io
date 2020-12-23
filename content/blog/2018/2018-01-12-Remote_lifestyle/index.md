@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Remote Lifestyle"
+title: Remote Lifestyle
 category: Career
-date: "2018-01-12T00:00:00"
+date: 2018-01-12T00:00:00
 tags: [career, remote, work, lifestyle]
 image: featured.png
 image_author: Toa Heftiba
@@ -36,7 +36,7 @@ Working remotely is a life-changing experience that has helping me to live a dif
 
 Despite of seeming the perfect work it has some drawbacks that deserve attention.
 
-1. You might be driven to a **a caged up routine** especially if you only work at home.
+1. You might be driven to a **routine stuck at home** especially if you only work at home.
 2. **Overworking** is very likely to happen because you won't have to clock in your work and you might feel compelled to work all time.
 3. Your **productivity** becomes an issue to be more attentive because TVs, family and the home atmosphere can easily distract you.
 4. The feeling of **loneliness** can emerge due to the lack of people around.

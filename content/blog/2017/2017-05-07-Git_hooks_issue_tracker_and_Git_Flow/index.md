@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Git hooks, issue tracker and Git Flow"
+title: Git hooks, issue tracker and Git Flow
 category: Git
-date: "2017-05-07T00:00:00"
+date: 2017-05-07T00:00:00
 tags: [git, gitflow, hooks]
 image: featured.png
 language: en
@@ -15,10 +15,6 @@ At [Agilize](https://www.agilize.com.br/) a common developer workflow involves t
 Git allows us to run a script every time a particular event occurs in the repository. For instance, it is possible to setup the text editor with a template message. This [tutorial](https://www.atlassian.com/git/tutorials/git-hooks) explains the power of git hooks and provides a snippet that will be customized in this post to address our necessities.
 
 Inside your repository there is a folder _.git/hooks_ that contains some sample scripts that can be used as a playground and they end with _.sample_ in order to not be interpreted by Git. Create a file named _prepare-commit-msg_ that will contain the code below to automate the commit message.
-
-```bash
-export GIT_EDITOR="vim -c'startinsert|norm! ggA'"
-```
 
 ```bash
 #!/usr/bin/env python3

@@ -4,7 +4,7 @@ title: "Kubernetes: meu cheat sheet pessoal"
 category: DevOps
 tags: [kubernetes, devops, cheat, sheet, commands, k8s]
 image: featured.png
-date: "2020-01-16T00:00:00"
+date: 2020-01-16T00:00:00
 language: pt
 ---
 

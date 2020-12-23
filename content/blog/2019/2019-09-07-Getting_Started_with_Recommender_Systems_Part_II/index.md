@@ -3,7 +3,7 @@ layout: post
 title: "Getting Started with Recommender Systems: Part II"
 category: RecSys
 tags: [recommender, systems, machine, learning, recsys, recommendation]
-date: "2019-09-07T00:00:00"
+date: 2019-09-07T00:00:00
 image_author: Mr Cup / Fabien Barral
 image_url: https://unsplash.com/photos/o6GEPQXnqMY
 image: featured.png

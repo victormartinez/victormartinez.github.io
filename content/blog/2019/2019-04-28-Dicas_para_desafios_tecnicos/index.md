@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Dicas para desafios técnicos"
+title: Dicas para desafios técnicos
 category: Career
 tags: [career, technical, coding, challenges]
-date: "2019-04-28T00:00:00"
+date: 2019-04-28T00:00:00"
 image: featured.jpg
 image_author: Fabian Grohs
 image_url: https://unsplash.com/photos/dMUt0X3f59Q
 language: pt
 ---
 
-É comum que engenheiros / programadores / desenvolvedores de software enfrentem um desafio técnico / de codificação nos processos de recrutamento. O desafio consiste em tarefas de programação projetadas para avaliar candidatos, principalmente, em relação às hard skills (por exemplo, habilidade de programação, arquitetura de software, etc.) Normalmente, o processo é composto por três fases: (i) especificação; (ii) desenvolvimento; (iii) revisão. Existem idiossincrasias e dicas para cada um deles.
+É comum que programadores enfrentem um desafio técnico nos processos de recrutamento. O desafio consiste em tarefas de programação projetadas para avaliar candidatos, principalmente, em relação às hard skills (por exemplo, habilidade de programação, arquitetura de software, etc.) Normalmente, o processo é composto por três fases: (i) especificação; (ii) desenvolvimento; (iii) revisão. Existem idiossincrasias e dicas para cada um deles.
 
 Depois de passar por desafios de codificação e, principalmente, avaliar alguns deles na [Onyo](www.onyo.com), decidi escrever este post e compartilhar algumas lições que aprendi.
 

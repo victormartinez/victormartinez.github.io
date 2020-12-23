@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Tips on Coding / Technical Challenges"
+title: Tips on Coding / Technical Challenges
 category: Career
 tags: [career, technical, coding, challenges]
-date: "2019-04-28T00:00:00"
+date: 2019-04-28T00:00:00
 image: featured.jpg
 image_author: Fabian Grohs
 image_url: https://unsplash.com/photos/dMUt0X3f59Q

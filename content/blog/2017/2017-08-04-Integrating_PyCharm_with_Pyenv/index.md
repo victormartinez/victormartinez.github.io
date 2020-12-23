@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Integrating PyCharm with Pyenv"
+title: Integrating PyCharm with Pyenv
 category: Tools
-date: "2017-08-04T00:00:00"
+date: 2017-08-04T00:00:00
 tags: [pycharm, python, virtualenv]
 image: featured.png
 language: en
