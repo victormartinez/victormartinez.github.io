@@ -10,11 +10,11 @@ image: featured.png
 language: en
 ---
 
-In the [previous](/2019-08-13-Getting_Started_with_Recommender_Systems_Part_I/) post I introduced the RecSys field and the levels of personalization. Today I will discuss about the recommendation pipeline and how it works.
+In the [previous](/en/blog/2019/2019-08-13-Getting_Started_with_Recommender_Systems_Part_I/) post I introduced the RecSys field and the levels of personalization. Today I will discuss about the recommendation pipeline and how it works.
 
 If you missed the other posts, check them out:
 
-- [Part I: Introduction and Levels of Personalization](/2019-08-13-Getting_Started_with_Recommender_Systems_Part_I/)
+- [Part I: Introduction and Levels of Personalization](/en/blog/2019/2019-08-13-Getting_Started_with_Recommender_Systems_Part_I/)
 - Part II: How it Works
 - Part III: Techniques
 - Part IV: Metrics

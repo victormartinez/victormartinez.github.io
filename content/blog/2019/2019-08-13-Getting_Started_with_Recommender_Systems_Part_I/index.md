@@ -13,7 +13,7 @@ language: en
 I have been studying Recommender Systems (RecSys) for the past few months. Many topics are scattered in the Internet and I thought about condensating the main concepts into a series of blog posts. For those of you who are interested in the subject, I organized the content and split into parts:
 
 - Part I: Introduction and Levels of Personalization
-- [Part II: How it Works](/2019/09/07/Getting_Started_with_Recommender_Systems_Part_II)
+- [Part II: How it Works](/en/blog/2019/2019-09-07-Getting_Started_with_Recommender_Systems_Part_II/)
 - Part III: Techniques
 - Part IV: Metrics
 - Part V: Challenges
@@ -59,7 +59,7 @@ Some examples:
 
 The advantage of this approach is that it is not that expensive and is useful when you do not have enough information about your users. That way you can solve **cold start problems** (explained in Part IV) and start doing recommendation without too much effort.
 
-### Personalyzed
+### Personalized
 
 The personalyzed approach considers the user's preferences to recommend an item. Algorithms in this category rely on a pipeline that (i) takes user's data; (ii) does processing to find patterns in the preferences; (iii) calc predictions. _Disclaimer: in Part II and III it will be crystal clear._
 
@@ -71,4 +71,4 @@ The advantage of this approach is the level of personalization you can achieve a
 
 There is no silver bullet. The best approach is the one that works for you business. It is pretty common to adopt both approaches in the same platform/website/system. For example, Spotify provides those "Top Lists" but also does a personalized approach when recommending you a song similar to the one you are listening to.
 
-A golden rule is to think about the whole experience and what you want to achieve: more sales; retention increase; form a habbit; etc. Once you have defined your goal, the Metrics, algorithms and technical decisions will relate to that and mixed approaches are very common.
+A golden rule is to think about the whole experience and what you want to achieve: more sales; retention increase; form a habit; etc. Once you have defined your goal, the Metrics, algorithms and technical decisions will relate to that and mixed approaches are very common.

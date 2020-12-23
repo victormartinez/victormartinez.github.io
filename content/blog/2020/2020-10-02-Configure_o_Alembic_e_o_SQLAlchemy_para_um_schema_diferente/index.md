@@ -1,20 +1,20 @@
 ---
 layout: post
-title: "Point Alembic and SQLAlchemy to a different schema"
+title: "Configure o Alembic e o SQLAlchemy para um schema diferente"
 category: Web Development
 date: "2020-10-02T00:00:00"
 tags: [alembic, sqlalchemy, migration, schema, public, python, flask]
 image: featured.jpg
 image_url: https://unsplash.com/photos/lRoX0shwjUQ
 image_author: Jan Antonin Kolar
-language: en
+language: pt
 ---
 
-A while ago I developed a backend project that used a shared instance of Postgres. If you use Flask, as I did, probably your migration layer is dealt by Alembic and the ORM of choice is SQLAlchemy. Due to architectural constraints, the project used a different schema (_public_ was not available). **After the first migration, any change in the model was not identified by Alembic and all tables were generated again.**
+Há algum tempo, desenvolvi um projeto de back-end que usava uma instância compartilhada do Postgres. Se você usar o Flask, como eu fiz, provavelmente sua camada de migração é tratada pelo Alembic e o ORM de escolha sendo o SQLAlchemy. Devido a restrições da arquitetura, o projeto usou um esquema diferente (_public_ não estava disponível). **Após a primeira migração, qualquer alteração no modelo não foi identificada pelo Alembic e todas as tabelas foram geradas novamente.**
 
-## The scenario
+## O Cenário
 
-In order to address a new database schema I specified table arguments in the models as illustrated by the example below.
+Para lidar com um novo schema de banco de dados, especifiquei os argumentos nos models, conforme ilustrado pelo exemplo abaixo.
 
 ```python
 class User(db.Model):
@@ -25,23 +25,23 @@ class User(db.Model):
     email = db.Column(db.String(100), unique=True)
 ```
 
-However, that is just one thing that must be done. The other is to **properly configure Alembic to watch the new schema.**
+No entanto, isso é apenas uma coisa que deve ser feita. A outra é **configurar corretamente o Alembic apontar para o novo esquema.**
 
-## The solution
+## A solução
 
-It was unclear to me what was happening but [this issue](https://stackoverflow.com/questions/26275041/alembic-sqlalchemy-does-not-detect-existing-tables) in StackOverflow clarified. To sum up:
+Não estava claro para mim o que estava acontecendo mas [esta thread](https://stackoverflow.com/questions/26275041/alembic-sqlalchemy-does-not-detect-existing-tables) no StackOverflow tornou claro. Em resumo:
 
-(1) It is necessary to allow Alembic to scan all schemas in database. It is done by setting `EnvironmentContext.configure.include_schemas` in the configuration context. Thus, the database dialect (Postgres in this scenario) executes the query below to retrieve the schemas:
+(1) É necessário permitir ao Alembic escanear todos os schemas do banco de dados. Isso é feito através da configuração `EnvironmentContext.configure.include_schemas`. Assim, o dialeto de banco de dados (Postgres neste cenário) executa a query abaixo para obter todos os schemas:
 
 ```sql
 SELECT nspname FROM pg_namespace WHERE nspname NOT LIKE 'pg_%' ORDER BY nspname
 ```
 
-(2) The query above brings the schemas but we are interested in the one our application uses. By setting `EnvironmentContext.configure.include_object`, we can specify a callable responsible for filtering which database objects should be considered.
+(2) A query acima retorna os schemas mas nós estamos interessados apenas naquele que nossa aplicação usa. Ao configurar `EnvironmentContext.configure.include_object`, nós podemos especificar um _callable_ responsável por filtrar quais objetos do banco de dados devem ser considerados.
 
-## Code Snippet
+## Trecho de código
 
-After running the init command, `migrations/env.py` is generated. Since it specifies the configuration object, we will need to modify it a little bit. The code bellow illustrates that.
+Após executar o comando de init, `migrations/env.py` é gerado. Uma vez que ele especifica o objeto de configuração, nós vamos precisar modificá-lo um pouco. O trecho de código abaixo ilustra isso.
 
 ```python
 # ...
@@ -110,6 +110,6 @@ def run_migrations_online():
 # ...
 ```
 
-- **Lines 21 and 55** set `include_schema=True`.
-- **Lines 22 and 57** pass a callable `include_object` that corresponds to the function at 4th line.
-- **Line 3** is our callable that specifies whether Alembic should consider or not the object in question. Pay attention that in the 5th line we check whether the object has a schema attribute. Finally lines 6 and 7 compare the schema with the one configured in the SQLAlchemy models.
+- **Linhas 21 e 55** configuram `include_schema=True`.
+- **Linhas 22 e 57** passam o _callable_ `include_object` que corresponde a função da 4ª linha.
+- **Linha 3** corresponde ao nosso _callable_ que especifica se o Alembic deve considerar ou não o objeto em questão. Preste atenção que na 5ª linha nós verificamos se o objeto tem um atributo `schema`. Finalmente, as linhas 6 e 7 comparam o schema com aquele configurado nos models do SQLAlchemy.

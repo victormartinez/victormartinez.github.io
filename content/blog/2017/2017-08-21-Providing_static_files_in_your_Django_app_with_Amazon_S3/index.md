@@ -26,7 +26,7 @@ You will need to install the [boto](https://github.com/boto/boto3) and [django-s
 
 As explained before django-storages will help us to send files to Amazon S3. However, we need to install boto because it will provide the connection to amazon services.
 
-**Note:** This post uses [python-decouple](https://github.com/henriquebastos/python-decouple) to manage local environments. If you do not know how to use it check this [post](/django/2017/08/15/Prepare_your_Django_app_to_be_deployed_at_Heroku.html).
+**Note:** This post uses [python-decouple](https://github.com/henriquebastos/python-decouple) to manage local environments. If you do not know how to use it check this [post](/en/blog/2017/2017-08-15-Prepare_your_Django_app_to_be_deployed_at_Heroku/).
 
 ### Creating our custom backends
 
@@ -84,7 +84,7 @@ MEDIAFILES_LOCATION = 'media'
 - Line 6: We want to preload the S3 metadata.
 - Line 7: It is necessary to provide the bucket name you created at Amazon S3.
 - Lines 8-9: Config will look for env vars or an .env file with those variables. In a local environment they will be blank because we will not send files to S3 in development mode. However, in production we will set those variables.
-- Lines 11-12: Those variables will explicit define which storage our project will use to store the static files. In local environment the default value will the ordinary backend (StaticFilesStorage and FileSystemStorage). However, in production, we will set the backends responsible for sending the file to S3.
+- Lines 11-12: Those variables will explicit define which storage our project will use to store the static files. In local environment the default value will be the ordinary backend (StaticFilesStorage and FileSystemStorage). However, in production, we will set the backends responsible for sending the file to S3.
 - Lines 14-15: Point to the static and media urls. In production they store the amazon s3 url that correspond to each type (static or media).
 - Lines 17-20: AWS Headers that explicit our cache policy.
 - Lines 22-23: Those variables tell our backend where are our media and static files. They are used in our s3util.py file.
