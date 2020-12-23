@@ -1,13 +1,18 @@
 const moment = require("moment")
 
 export const isPostDeprecated = datetime => {
-  const months = moment().diff(moment(datetime), "months")
+  const months = moment().diff(
+    moment(datetime, "YYYY-MM-DDTHH:mm:ss"),
+    "months"
+  )
   return months >= 12
 }
 
 export const formatDate = (datetime, locale) => {
   if (locale === "en") {
-    return moment(datetime).locale("en").format("MMM DD, YYYY")
+    return moment(datetime, "YYYY-MM-DDTHH:mm:ss")
+      .locale("en")
+      .format("MMM DD, YYYY")
   }
   let formatted = moment(datetime, "YYYY-MM-DDTHH:mm:ss")
     .locale("pt-br")
