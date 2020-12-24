@@ -13,15 +13,17 @@ const Article = ({ post }) => {
   const intl = useIntl()
 
   return (
-    <S.Article>
+    <S.Article itemscope itemtype="https://schema.org/BlogPosting">
       <S.Header>
-        <S.Headline>{post.frontmatter.title}</S.Headline>
-        <S.Date>
-          {formatDate(post.frontmatter.date, intl.locale)} • {post.timeToRead}{" "}
-          min {intl.formatMessage({ id: "reading" })}
-        </S.Date>
+        <S.Headline itemprop="headline">{post.frontmatter.title}</S.Headline>
+        <S.DateBox>
+          <S.Date itemprop="datePublished">
+            {formatDate(post.frontmatter.date, intl.locale)}
+          </S.Date>{" "}
+          • {post.timeToRead} min {intl.formatMessage({ id: "reading" })}
+        </S.DateBox>
         <S.TagsWrapper>
-          <S.TagsList>
+          <S.TagsList itemprop="keywords">
             <S.TagItemFirst>Tags:</S.TagItemFirst>
             {post.frontmatter.tags.map((tag, index) => (
               <S.TagItem key={index}>{tag}</S.TagItem>
@@ -36,6 +38,7 @@ const Article = ({ post }) => {
       )}
 
       <S.Section
+        itemprop="articleBody"
         dangerouslySetInnerHTML={{ __html: post.html }}
         itemProp="articleBody"
       />

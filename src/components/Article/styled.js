@@ -16,6 +16,8 @@ export const Article = styled.article`
 `
 export const Header = styled.header``
 
+export const DateBox = styled.div``
+
 export const Date = styled.span`
   color: gray;
 `

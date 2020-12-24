@@ -8,7 +8,7 @@ import * as S from "./styled"
 const Comments = ({ url, identifier, title }) => {
   const intl = useIntl()
   return (
-    <S.CommentsWrapper>
+    <S.CommentsWrapper itemtype="https://schema.org/Conversation">
       <S.CommentsTitle>
         {intl.formatMessage({ id: "Comments" })}
       </S.CommentsTitle>

@@ -48,7 +48,13 @@ const BlogIndex = ({ data, pageContext }) => {
   }
 
   return (
-    <LayoutContent title={siteTitle} description={description} social={social}>
+    <LayoutContent
+      itemscope
+      itemtype="https://schema.org/Blog"
+      title={siteTitle}
+      description={description}
+      social={social}
+    >
       <SEO
         title={`${author} | ${siteTitle}`}
         description={`${siteTitle} ${description}`}
