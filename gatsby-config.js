@@ -70,7 +70,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Victor Martinez`,
-        short_name: `VM`,
+        short_name: `Victor Martinez`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
