@@ -107,6 +107,11 @@ export const Section = styled.section`
     margin: 0 0 2em 0;
   }
 
+  ul > p,
+  li > p {
+    margin: 0 0 1em 0;
+  }
+
   table {
     width: 100%;
   }
