@@ -17,11 +17,7 @@ const HomeIndex = ({ data }) => {
   const image = data.allFile.edges[0].node.publicURL
 
   return (
-    <LayoutMarketing
-      title={siteTitle}
-      description={description}
-      social={social}
-    >
+    <>
       <SEO
         title={`${author} | ${siteTitle}`}
         description={`${siteTitle} ${description}`}
@@ -33,7 +29,12 @@ const HomeIndex = ({ data }) => {
           },
         ]}
       />
-    </LayoutMarketing>
+      <LayoutMarketing
+        title={siteTitle}
+        description={description}
+        social={social}
+      />
+    </>
   )
 }
 
