@@ -13,6 +13,8 @@ const HomeIndex = ({ data }) => {
   const description = data.site.siteMetadata[intl.locale].description
   const social = data.site.siteMetadata.social
   const author = data.site.siteMetadata.author.name
+  const keywords = data.site.siteMetadata.keywords
+  const image = data.allFile.edges[0].node.publicURL
 
   return (
     <LayoutMarketing
@@ -23,6 +25,13 @@ const HomeIndex = ({ data }) => {
       <SEO
         title={`${author} | ${siteTitle}`}
         description={`${siteTitle} ${description}`}
+        image={image}
+        meta={[
+          {
+            property: `keywords`,
+            content: keywords.join(", "),
+          },
+        ]}
       />
     </LayoutMarketing>
   )
@@ -32,8 +41,22 @@ export default HomeIndex
 
 export const pageQuery = graphql`
   query {
+    allFile(
+      filter: {
+        absolutePath: { regex: "/content/assets/" }
+        name: { eq: "cover" }
+      }
+    ) {
+      edges {
+        node {
+          name
+          publicURL
+        }
+      }
+    }
     site {
       siteMetadata {
+        keywords
         author {
           name
         }

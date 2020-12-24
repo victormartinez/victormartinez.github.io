@@ -9,6 +9,17 @@ module.exports = {
   author: {
     name: `Victor Martinez`,
   },
+  keywords: [
+    "developer",
+    "programmer",
+    "web development",
+    "python",
+    "react",
+    "javascript",
+    "kubernetes",
+    "technology",
+    "blog",
+  ],
   pt: {
     title: `Olá, eu sou o Victor!`,
     description: `Eu sou (principalmente) um desenvolvedor backend que gosta de tópicos relacionados a desenvolvimento de software, python 💓, carreira e outras coisas legais.`,

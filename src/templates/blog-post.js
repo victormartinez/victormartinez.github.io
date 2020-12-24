@@ -16,12 +16,14 @@ const BlogPostTemplate = ({ data }) => {
   const title = post.frontmatter.title
   const path = articleUrl(intl.locale, post.fields.slug)
   const url = `${data.site.siteMetadata.siteUrl}${path}`
+  const imageURL = post.frontmatter.image.publicURL
 
   return (
     <LayoutArticle social={social}>
       <SEO
         title={title}
         description={post.frontmatter.description || post.excerpt}
+        image={imageURL}
         meta={[
           {
             property: `keywords`,
@@ -64,6 +66,9 @@ export const pageQuery = graphql`
         rating
         image_url
         image_author
+        image {
+          publicURL
+        }
       }
       fields {
         slug

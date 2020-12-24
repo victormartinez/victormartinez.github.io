@@ -24,6 +24,8 @@ const BlogIndex = ({ data, pageContext }) => {
   const englishPosts = data.englishPosts.nodes
   const portuguesePosts = data.portuguesePosts.nodes
   const author = data.site.siteMetadata.author.name
+  const keywords = data.site.siteMetadata.keywords
+  const image = data.allFile.edges[0].node.publicURL
 
   // Filtering posts by locale
   const posts = intl.locale === "pt" ? portuguesePosts : englishPosts
@@ -41,7 +43,17 @@ const BlogIndex = ({ data, pageContext }) => {
         description={description}
         social={social}
       >
-        <SEO title={`${author} | ${siteTitle}`} />
+        <SEO
+          title={`${author} | ${siteTitle}`}
+          description={description}
+          image={image}
+          meta={[
+            {
+              property: `keywords`,
+              content: keywords.join(", "),
+            },
+          ]}
+        />
         <Paragraph text={noPosts} />
       </LayoutContent>
     )
@@ -58,6 +70,13 @@ const BlogIndex = ({ data, pageContext }) => {
       <SEO
         title={`${author} | ${siteTitle}`}
         description={`${siteTitle} ${description}`}
+        image={image}
+        meta={[
+          {
+            property: `keywords`,
+            content: keywords.join(", "),
+          },
+        ]}
       />
       {posts.map(post => {
         return (
@@ -89,6 +108,19 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query PostList($skip: Int!, $limit: Int!) {
+    allFile(
+      filter: {
+        absolutePath: { regex: "/content/assets/" }
+        name: { eq: "cover" }
+      }
+    ) {
+      edges {
+        node {
+          name
+          publicURL
+        }
+      }
+    }
     site {
       siteMetadata {
         author {
@@ -100,6 +132,7 @@ export const pageQuery = graphql`
           linkedin
           speakerdeck
         }
+        keywords
         en {
           noPosts
           blog {
