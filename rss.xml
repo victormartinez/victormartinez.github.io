@@ -1,4 +1,78 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://vcrmartinez.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 23 Dec 2020 23:40:19 GMT</lastBuildDate><item><title><![CDATA[O Manual do Trabalho Remoto]]></title><link>https://vcrmartinez.com/2020/2020-11-09-O-Manual-do-Trabalho-Remoto/2020-11-09-O-Manual-do-Trabalho-Remoto/</link><guid isPermaLink="false">https://vcrmartinez.com/2020/2020-11-09-O-Manual-do-Trabalho-Remoto/2020-11-09-O-Manual-do-Trabalho-Remoto/</guid><pubDate>Mon, 09 Nov 2020 03:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Configure o Alembic e o SQLAlchemy para um schema diferente]]></title><description><![CDATA[Há algum tempo, desenvolvi um projeto de back-end que usava uma instância compartilhada do Postgres. Se você usar o Flask, como eu fiz…]]></description><link>https://vcrmartinez.com/2020/2020-10-02-Configure_o_Alembic_e_o_SQLAlchemy_para_um_schema_diferente/</link><guid isPermaLink="false">https://vcrmartinez.com/2020/2020-10-02-Configure_o_Alembic_e_o_SQLAlchemy_para_um_schema_diferente/</guid><pubDate>Fri, 02 Oct 2020 03:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Há algum tempo, desenvolvi um projeto de back-end que usava uma instância compartilhada do Postgres. Se você usar o Flask, como eu fiz, provavelmente sua camada de migração é tratada pelo Alembic e o ORM de escolha sendo o SQLAlchemy. Devido a restrições da arquitetura, o projeto usou um esquema diferente (&lt;em&gt;public&lt;/em&gt; não estava disponível). &lt;strong&gt;Após a primeira migração, qualquer alteração no modelo não foi identificada pelo Alembic e todas as tabelas foram geradas novamente.&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://vcrmartinez.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 24 Dec 2020 17:30:00 GMT</lastBuildDate><item><title><![CDATA[Do Jekyll para o Gatsby]]></title><description><![CDATA[Durante os útlimos meses eu tenho estudado desenvolvimento front-end e um dos primeiros projetos para praticar foi migrar meu site do Jekyll…]]></description><link>https://vcrmartinez.com/2020/2020-12-24-Do_Jekyll_para_o_Gatsby/</link><guid isPermaLink="false">https://vcrmartinez.com/2020/2020-12-24-Do_Jekyll_para_o_Gatsby/</guid><pubDate>Thu, 24 Dec 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Durante os útlimos meses eu tenho estudado desenvolvimento front-end e um dos primeiros projetos para praticar foi migrar meu site do &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; para o &lt;a href=&quot;https://www.gatsbyjs.com/&quot;&gt;Gatsby&lt;/a&gt;. Só por isso eu já achei a migração vantajosa mas acabei descobrindo outros benefícios à medida que eu desenvolvia as funcionalidades do site.&lt;/p&gt;
+&lt;h2&gt;Requisitos&lt;/h2&gt;
+&lt;p&gt;Eu acredito que a melhor ferramenta para manter um site é o Wordpress. Porém, quem escolhe geradores de sites estáticos não quer se preocupar com: (i) hospedagem; (ii) banco de dados; (iii) manutenção de plugins / terceiros.&lt;/p&gt;
+&lt;p&gt;Além disso, no meu caso, eu queria usar o &lt;a href=&quot;https://pages.github.com/&quot;&gt;Github Pages&lt;/a&gt; pela praticidade da ferramenta e por me permitir focar mais no texto do que com a gestão do blog.&lt;/p&gt;
+&lt;h2&gt;Vantagens&lt;/h2&gt;
+&lt;p&gt;Para mim, algumas vantagens ficaram bem claras:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Praticar desenvolvimento front-end&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Neste site eu tive contato com React, Styled Components, HTML, CSS, Vanilla Javascript, Media Queries (e responsividade) e GraphQL.&lt;/p&gt;
+&lt;p&gt;Aqui cabe o &lt;em&gt;disclaimer&lt;/em&gt;: um desenvolvedor não front-ender pode sentir dificuldade pois é necessário entender (ainda que minimamente) de diversas tecnologias que talvez em outra ferramenta esteja presente de forma transparente.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Plugins poderosos&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;O Gatsby tem &lt;a href=&quot;https://www.gatsbyjs.com/plugins&quot;&gt;plugins&lt;/a&gt; muito poderosos que permitem trabalhar com: PWA, Internacionalização, Otimização de Imagens, Performance, e um muito mais!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Build separado do Github Pages&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Como o Github Pages faz o build do seu site criado com Jekyll, por questões de segurança ele não aceita alguns plugins e, com isso, você fica um pouco limitado. Isso não acontece com o Gatsby porque você executa o build e só disponibiliza a pasta &lt;code class=&quot;language-text&quot;&gt;public&lt;/code&gt; para o Github Pages. Assim, como o output é apenas HTML, CSS e Javascript, seu site dificilmente terá alguma incompatibilidade com o Github.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Internacionalização&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Com o Jekyll eu tive muita dificuldade em criar um blog que suportasse dois idiomas até que desisti da ideia. Com o Gatsby, encontrei plugins e materiais que me ajudaram bastante no processo e, hoje, finalmente, tenho um site com dois idiomas.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Alta possibilidade de customização&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Como o Gatsby utiliza React, você pode criar seus próprios componentes. Por exemplo, criei um componente que exibe um alerta caso a postagem seja muito antiga.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Aplicabilidade no mercado&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Eu confesso que não me sentia motivado a estudar como o Jekyll funcionava pois não via aplicabilidade prática no mercado. Já o Gatsby, por ser mais recentes, te coloca em contato com diversas tecnologias utilizadas no mercado (vide o primeiro item desta listagem).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Performance&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;É nítida a preocupação que o Gatsby tem com performance. Isso vai desde fazer o prefetch das páginas enquanto o usuário navega até o uso de plugins que otimizam imagens para a web.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;E aí, o que achou do site? Críticas e sugestões são bem-vindas!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[From Jekyll to Gatsby]]></title><description><![CDATA[During the last few months I have been studying front-end development and migrating from Jekyll to Gatsby was one of my personal projects…]]></description><link>https://vcrmartinez.com/2020/2020-12-24-From_Jekyll_to_Gatsby/</link><guid isPermaLink="false">https://vcrmartinez.com/2020/2020-12-24-From_Jekyll_to_Gatsby/</guid><pubDate>Thu, 24 Dec 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;During the last few months I have been studying front-end development and migrating from &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; to &lt;a href=&quot;https://www.gatsbyjs.com/&quot;&gt;Gatsby&lt;/a&gt; was one of my personal projects. For that reason alone I already considered the process worthwhile but I ended up discovering other benefits while I developed the features.&lt;/p&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;I believe the best tool to maintain a website is Wordpress. However, people that choose a static website generator do not want to worry about: (i) hosting; (ii) database; (iii) maintaining plugins / third-party.&lt;/p&gt;
+&lt;p&gt;Besides, in my situation, I wanted to use &lt;a href=&quot;https://pages.github.com/&quot;&gt;Github Pages&lt;/a&gt; due to practicality that provides and its focus on the content over the blog maintenance.&lt;/p&gt;
+&lt;h2&gt;Advantages&lt;/h2&gt;
+&lt;p&gt;In my opinion, some advantages became crystal clear:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Practice front-end development&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;For my blog I got in contact with React, Styled Components, HTML, CSS, Vanilla Javascript, Media Queries (and responsiveness) and GraphQL.&lt;/p&gt;
+&lt;p&gt;Here goes the &lt;em&gt;disclaimer&lt;/em&gt;: a non front-end developer might face hard times because it is necessary to understand (even a little bit) about several technologies that might be transparent in other tools.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Powerful Plugins&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Gatsby makes available powerful &lt;a href=&quot;https://www.gatsbyjs.com/plugins&quot;&gt;plugins&lt;/a&gt; that allow working with: PWA, i18n, Images Optimization, Performance, and much more!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Separated build from Github Pages&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;As Github Pages builds your website created with Jekyll, for security reasons it does not accept some plugins and, thus, you get limited. That does not happen with Gatsby because you execute the build phase and makes available the &lt;code class=&quot;language-text&quot;&gt;public&lt;/code&gt; directory to Github Pages. Therefore, since the output corresponds to HTML, CSS and Javascript, your website will be hardly affected by any incompatibility with Github.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Internationalization&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I went through hard times trying to create a multilingual blog with Jekyll and I gave up on that. Gatsby allowed me to use plugins and find materials that helped me a lot in the proccess and, finally, I have a blog that supports english and portuguese blog posts.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Customization&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Since Gatsby uses React, you can create your own components. For instance, I created a component that exhibits an alert in case of an old blog post.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Influential Technologies&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I confess that I did not fell motivated to study how Jekyll works because I did not see any aplicability to the labor market. Gatsby makes you get in touch with several technologies that are influential in the current job market (check the first item of this list).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Performance&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It’s crystal clear the performance concern. That goes from doing prefetch of the pages while the user navigates until the usage of plugins that optimize images for web.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;So, what do you think about the website? Any critics and suggestions are welcome!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[O Manual do Trabalho Remoto]]></title><link>https://vcrmartinez.com/2020/2020-11-09-O-Manual-do-Trabalho-Remoto/2020-11-09-O-Manual-do-Trabalho-Remoto/</link><guid isPermaLink="false">https://vcrmartinez.com/2020/2020-11-09-O-Manual-do-Trabalho-Remoto/2020-11-09-O-Manual-do-Trabalho-Remoto/</guid><pubDate>Mon, 09 Nov 2020 03:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Configure o Alembic e o SQLAlchemy para um schema diferente]]></title><description><![CDATA[Há algum tempo, desenvolvi um projeto de back-end que usava uma instância compartilhada do Postgres. Se você usar o Flask, como eu fiz…]]></description><link>https://vcrmartinez.com/2020/2020-10-02-Configure_o_Alembic_e_o_SQLAlchemy_para_um_schema_diferente/</link><guid isPermaLink="false">https://vcrmartinez.com/2020/2020-10-02-Configure_o_Alembic_e_o_SQLAlchemy_para_um_schema_diferente/</guid><pubDate>Fri, 02 Oct 2020 03:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Há algum tempo, desenvolvi um projeto de back-end que usava uma instância compartilhada do Postgres. Se você usar o Flask, como eu fiz, provavelmente sua camada de migração é tratada pelo Alembic e o ORM de escolha sendo o SQLAlchemy. Devido a restrições da arquitetura, o projeto usou um esquema diferente (&lt;em&gt;public&lt;/em&gt; não estava disponível). &lt;strong&gt;Após a primeira migração, qualquer alteração no modelo não foi identificada pelo Alembic e todas as tabelas foram geradas novamente.&lt;/strong&gt;&lt;/p&gt;
 &lt;h2&gt;O Cenário&lt;/h2&gt;
 &lt;p&gt;Para lidar com um novo schema de banco de dados, especifiquei os argumentos nos models, conforme ilustrado pelo exemplo abaixo.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;db&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Model&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
@@ -1361,70 +1435,7 @@ Não usar feedback híbrido não implica em um mecanismo RecSys ruim porque cada
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;h2&gt;Predição vs Recomendação&lt;/h2&gt;
-&lt;p&gt;Você pode ler postagens que usam &lt;strong&gt;previsão&lt;/strong&gt; e &lt;strong&gt;recomendação&lt;/strong&gt; de forma intercambiável, mas têm significados diferentes. &lt;strong&gt;Previsão&lt;/strong&gt; corresponde à classificação esperada para um determinado item. Na fase de aprendizagem, seu modelo atribui classificações aos itens que o usuário não viu e essas classificações são previsões. Por outro lado, &lt;strong&gt;recomendação&lt;/strong&gt; corresponde ao próprio item (ou conjunto de itens) que está sendo recomendado ao usuário.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Getting Started with Recommender Systems: Part I]]></title><description><![CDATA[I have been studying Recommender Systems (RecSys) for the past few months. Many topics are scattered in the Internet and I thought about…]]></description><link>https://vcrmartinez.com/2019/2019-08-13-Getting_Started_with_Recommender_Systems_Part_I/</link><guid isPermaLink="false">https://vcrmartinez.com/2019/2019-08-13-Getting_Started_with_Recommender_Systems_Part_I/</guid><pubDate>Tue, 13 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I have been studying Recommender Systems (RecSys) for the past few months. Many topics are scattered in the Internet and I thought about condensating the main concepts into a series of blog posts. For those of you who are interested in the subject, I organized the content and split into parts:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Part I: Introduction and Levels of Personalization&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;/en/blog/2019/2019-09-07-Getting_Started_with_Recommender_Systems_Part_II/&quot;&gt;Part II: How it Works&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Part III: Techniques&lt;/li&gt;
-&lt;li&gt;Part IV: Metrics&lt;/li&gt;
-&lt;li&gt;Part V: Challenges&lt;/li&gt;
-&lt;li&gt;Part VI: References and Further Reading&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;RecSys is a topic of concern of big players like Amazon, Spotify, Netflix, Github and Linkedin. Mike McGuire in this &lt;a href=&quot;https://www.huffpostbrasil.com/2013/08/01/netflix-profiles_n_3685876.html&quot;&gt;post&lt;/a&gt; explains that companies have realized that “if there’s not something else there surfacing that meets your interest beyond what you initially dialed in for, then you’re out”. In other words, companies are concerned with providing not only what the user is looking for but other items that meets the user’s preferences. At Amazon, for example, if you want to buy a Kindle the website will drive you to the product but will also show related items you might want like a charger and a waterproof cover.&lt;/p&gt;
-&lt;p&gt;An interesting article from Standford, &lt;a href=&quot;https://www.researchgate.net/publication/12189991_When_Choice_is_Demotivating_Can_One_Desire_Too_Much_of_a_Good_Thing&quot;&gt;When Choice is Demotivating: Can One Desire Too Much of a Good Thing?&lt;/a&gt;, shows the negative impact of presenting too many options to customers.&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 58.75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsSAAALEgHS3X78AAAC6UlEQVQoz1WS+09TZxjH+78tmmn0N6MxXBS8jUHp6QUtmsVkm8nIiIZSKBMUJQa8obFqJ4gMiMzLNBSBttIKPbSDqgErlHPa0nM+Pm2Dxjf55v0+l3zzfd7ntehPfyP3xE7Kb2Vp8GfmB04QvfETibv16E9caMNWjI1lTG0VbewM2qibpN9B6oGT+ZtWorcaWRxUyIycQpe6RRu2kbtfQbR3H6879jL25y4mWn/kpWcP2QeHyNzdj/F5CSPznmygknzgIMGu3QR9u5i8sIPx1h944dnJuvRtParEoo842RRBXYJcoAb97wopFO9KtEA12r0KEUyAluLdlZMCK7FeB9HLCvE+hcWrToGDhSs2wt2nsORGFZL9x5n0/M6H24flPofaX8ub7rPM9DjI3t9PIZ0EPUXY6ybSYSPU7hLuINyhEPK4JHZIXiF4vhlLfkxBvVjHq8Y/WLley/OGFuK9R5n75VfCLU3ogW+CIW8z4U6FOREMeZ0iaBexpq986vzpokM7KzdreXbRzeqdwzzvdktcw8xVcdHXQNZ/gEJx5KJDXxNvuxpE1E7EZxPeWOLhErcy7WkSh+MKC9L0b90F/h84wviJNmI9xwg2t/Dm3OnvHEY8MrJX3qpNHHlkTK9CpM1V4m/bFaZbZWRdvsznOxWsDFSz4a9iub+S9XtVvL9exdrgIVnKwa8OZ31uQl02ZjtdAjtz4my2wyl5h+QVXnuKgqMn0R/WkBs6RuFRHYzUYw7XszV0XDZ9VH5AtWw5iSmCapdT3rueuK8R9ZKDpT4Xao+LuIyu/tVArN2JxcikMOXj6mmVmYUxJkMPCUwNsPYxAhsrFNYTmIW8YAszE5feRXGbYGvhBdrQNXLTIxIvlfObi1hMyqcg8EcnGFX/YyIRJJZeLuW369tnO9ZfTrH5+B/0Z6++67GYplEi2bxO5GMM9VOSd6tx0nq6LCB10zTLMIySpKFr5GZnyMei5KPzFNZWy71GgS8tGQKSZLv2agAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image lazyload&quot;
-        alt=&quot;When Choice is Demotivating - Experiment&quot;
-        title=&quot;When Choice is Demotivating - Experiment&quot;
-        data-src=&quot;/static/79e2ffaa80393025cae6e242117076b7/d9199/jams-conversion.png&quot;
-        data-srcset=&quot;/static/79e2ffaa80393025cae6e242117076b7/8ff5a/jams-conversion.png 240w,
-/static/79e2ffaa80393025cae6e242117076b7/e85cb/jams-conversion.png 480w,
-/static/79e2ffaa80393025cae6e242117076b7/d9199/jams-conversion.png 960w,
-/static/79e2ffaa80393025cae6e242117076b7/2ba99/jams-conversion.png 1221w&quot;
-        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-      /&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;In fact, when there is no personalization your customers end up doing &lt;a href=&quot;https://www.youtube.com/watch?v=VqdQZCvpIyo&quot;&gt;“infinite browsing”&lt;/a&gt; and there is no conversion and, consequently, a high level of churn. This &lt;a href=&quot;https://www.businessinsider.com/netflix-recommendation-engine-worth-1-billion-per-year-2016-6&quot;&gt;article&lt;/a&gt; from Business Insider explains how “the combined effect of personalization and recommendations save us [Netflix] more than $1B per year”.&lt;/p&gt;
-&lt;p&gt;RecSys are valuable at &lt;a href=&quot;http://fortune.com/2012/07/30/amazons-recommendation-secret/&quot;&gt;increasing the sales&lt;/a&gt;. In 2012, Amazon has reported “a 29% sales increase to $12.83 billion during its second fiscal quarter, up from $9.9 billion during the same time last year”. However, they are not limited to profit. &lt;a href=&quot;https://sigmoidal.io/recommender-systems-recommendation-engine/&quot;&gt;This infographic&lt;/a&gt; illustrates they also &lt;strong&gt;improve retention&lt;/strong&gt;, &lt;strong&gt;form habits&lt;/strong&gt; and &lt;strong&gt;accelerate work&lt;/strong&gt;.&lt;/p&gt;
-&lt;h3&gt;Formal definition&lt;/h3&gt;
-&lt;p&gt;So far we have seen RecSys as a general idea that mixes some topics like &lt;code class=&quot;language-text&quot;&gt;personalization&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;items&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;recommendation&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;user&amp;#39;s preferences&lt;/code&gt;. But, &lt;strong&gt;how can we define it?&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Recommender Systems are software tools and techniques that provide suggestions for items that are most likely of interest to a particular user.&lt;/p&gt;
-&lt;p&gt;- F. Ricci, L. Rokach, B. Shapira, and P. B. Kantor, editors. Recommender Systems Handbook. Springera, 2011&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2&gt;Levels of Personalization&lt;/h2&gt;
-&lt;p&gt;In RecSys context, personalization means how much your algorithm understand each user to provide a meaningful recommendation. Basically, the approach can be understood as &lt;strong&gt;non-personalyzed&lt;/strong&gt; or &lt;strong&gt;personalyzed&lt;/strong&gt;.&lt;/p&gt;
-&lt;h3&gt;Non-Personalized&lt;/h3&gt;
-&lt;p&gt;Non-personalized RecSys do not take into consideration individual preferences. They usually consider an heuristic or statistical calc to recommend items. The most common scenario is the News websites like CNN, Bloomber, Globo.com, etc, in which there are sections like “Breaking news” or “Featured”. In Spotify, “Top songs in Brazil”. Amazon, “Top-selling books”.&lt;/p&gt;
-&lt;p&gt;Some examples:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Most listened songs&lt;/li&gt;
-&lt;li&gt;Most read blog posts&lt;/li&gt;
-&lt;li&gt;Breaking news articles&lt;/li&gt;
-&lt;li&gt;Top tracks on the radio&lt;/li&gt;
-&lt;li&gt;Top-selling books&lt;/li&gt;
-&lt;li&gt;High-scored hotels&lt;/li&gt;
-&lt;li&gt;Best places to stay&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The advantage of this approach is that it is not that expensive and is useful when you do not have enough information about your users. That way you can solve &lt;strong&gt;cold start problems&lt;/strong&gt; (explained in Part IV) and start doing recommendation without too much effort.&lt;/p&gt;
-&lt;h3&gt;Personalized&lt;/h3&gt;
-&lt;p&gt;The personalyzed approach considers the user’s preferences to recommend an item. Algorithms in this category rely on a pipeline that (i) takes user’s data; (ii) does processing to find patterns in the preferences; (iii) calc predictions. &lt;em&gt;Disclaimer: in Part II and III it will be crystal clear.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;The most common example is Netflix. Based on the titles you liked, Netflix does a lot of processing and recommends you new movies or series.&lt;/p&gt;
-&lt;p&gt;The advantage of this approach is the level of personalization you can achieve and, thus, increase the convertion in your system. However, it takes much more effort than the previous one and, of course, requires a more complex solution/algorithm/architecture.&lt;/p&gt;
-&lt;h3&gt;Notes&lt;/h3&gt;
-&lt;p&gt;There is no silver bullet. The best approach is the one that works for you business. It is pretty common to adopt both approaches in the same platform/website/system. For example, Spotify provides those “Top Lists” but also does a personalized approach when recommending you a song similar to the one you are listening to.&lt;/p&gt;
-&lt;p&gt;A golden rule is to think about the whole experience and what you want to achieve: more sales; retention increase; form a habit; etc. Once you have defined your goal, the Metrics, algorithms and technical decisions will relate to that and mixed approaches are very common.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Iniciando com Sistemas de Recomendação: Parte I]]></title><description><![CDATA[Tenho estudado Sistemas de Recomendação (RecSys) nos últimos meses. Muitos tópicos estão espalhados pela Internet e pensei em condensar os…]]></description><link>https://vcrmartinez.com/2019/2019-08-13-Iniciando_com_sistemas_de_recomendacao_parte_I/</link><guid isPermaLink="false">https://vcrmartinez.com/2019/2019-08-13-Iniciando_com_sistemas_de_recomendacao_parte_I/</guid><pubDate>Tue, 13 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Tenho estudado Sistemas de Recomendação (RecSys) nos últimos meses. Muitos tópicos estão espalhados pela Internet e pensei em condensar os principais conceitos em uma série de postagens de blog. Para vocês interessados ​​no assunto, organizei o conteúdo e dividi em partes:&lt;/p&gt;
+&lt;p&gt;Você pode ler postagens que usam &lt;strong&gt;previsão&lt;/strong&gt; e &lt;strong&gt;recomendação&lt;/strong&gt; de forma intercambiável, mas têm significados diferentes. &lt;strong&gt;Previsão&lt;/strong&gt; corresponde à classificação esperada para um determinado item. Na fase de aprendizagem, seu modelo atribui classificações aos itens que o usuário não viu e essas classificações são previsões. Por outro lado, &lt;strong&gt;recomendação&lt;/strong&gt; corresponde ao próprio item (ou conjunto de itens) que está sendo recomendado ao usuário.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Iniciando com Sistemas de Recomendação: Parte I]]></title><description><![CDATA[Tenho estudado Sistemas de Recomendação (RecSys) nos últimos meses. Muitos tópicos estão espalhados pela Internet e pensei em condensar os…]]></description><link>https://vcrmartinez.com/2019/2019-08-13-Iniciando_com_sistemas_de_recomendacao_parte_I/</link><guid isPermaLink="false">https://vcrmartinez.com/2019/2019-08-13-Iniciando_com_sistemas_de_recomendacao_parte_I/</guid><pubDate>Tue, 13 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Tenho estudado Sistemas de Recomendação (RecSys) nos últimos meses. Muitos tópicos estão espalhados pela Internet e pensei em condensar os principais conceitos em uma série de postagens de blog. Para vocês interessados ​​no assunto, organizei o conteúdo e dividi em partes:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Parte I: Introdução e níveis de personalização&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;pt/blog/2019/2019-09-07-Getting_Started_with_Recommender_Systems_Part_II/&quot;&gt;Parte II: Como funciona&lt;/a&gt;&lt;/li&gt;
@@ -1488,7 +1499,70 @@ Não usar feedback híbrido não implica em um mecanismo RecSys ruim porque cada
 &lt;p&gt;A vantagem desta abordagem é o nível de personalização que você pode alcançar e, assim, aumentar a conversão em seu sistema. No entanto, é preciso muito mais esforço do que o anterior e, é claro, requer uma solução / algoritmo / arquitetura mais complexa.&lt;/p&gt;
 &lt;h3&gt;Notas&lt;/h3&gt;
 &lt;p&gt;Não há bala de prata. A melhor abordagem é aquela que funciona para o seu negócio. É bastante comum adotar ambas as abordagens na mesma plataforma / site / sistema. Por exemplo, o Spotify fornece essas “Listas principais”, mas também faz uma abordagem personalizada ao recomendar uma música semelhante à que você está ouvindo.&lt;/p&gt;
-&lt;p&gt;Uma regra de ouro é pensar em toda a experiência e no que você deseja alcançar: mais vendas; aumento de retenção; formar um hábito; Depois de definir seu objetivo, as métricas, algoritmos e decisões técnicas estarão relacionadas. Abordagens mistas são muito comuns.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Review: Cloud Native DevOps with Kubernetes]]></title><description><![CDATA[Particularly, I like the content produced by O’Reilly media and Cloud Native DevOps with Kubernetes is not an exception. After trying some…]]></description><link>https://vcrmartinez.com/2019/2019-08-04-Review_Cloud_Native_DevOps_with_Kubernetes/</link><guid isPermaLink="false">https://vcrmartinez.com/2019/2019-08-04-Review_Cloud_Native_DevOps_with_Kubernetes/</guid><pubDate>Sun, 04 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Particularly, I like the content produced by O’Reilly media and &lt;a href=&quot;https://www.amazon.com.br/Cloud-Native-DevOps-Kubernetes-Applications-ebook/dp/B07PJ4HM92&quot;&gt;Cloud Native DevOps with Kubernetes&lt;/a&gt; is not an exception. After trying some books and courses I found a complete overview of Kubernetes in that material produced by John Arundel and Justin Domingus.&lt;/p&gt;
+&lt;p&gt;Uma regra de ouro é pensar em toda a experiência e no que você deseja alcançar: mais vendas; aumento de retenção; formar um hábito; Depois de definir seu objetivo, as métricas, algoritmos e decisões técnicas estarão relacionadas. Abordagens mistas são muito comuns.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Getting Started with Recommender Systems: Part I]]></title><description><![CDATA[I have been studying Recommender Systems (RecSys) for the past few months. Many topics are scattered in the Internet and I thought about…]]></description><link>https://vcrmartinez.com/2019/2019-08-13-Getting_Started_with_Recommender_Systems_Part_I/</link><guid isPermaLink="false">https://vcrmartinez.com/2019/2019-08-13-Getting_Started_with_Recommender_Systems_Part_I/</guid><pubDate>Tue, 13 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I have been studying Recommender Systems (RecSys) for the past few months. Many topics are scattered in the Internet and I thought about condensating the main concepts into a series of blog posts. For those of you who are interested in the subject, I organized the content and split into parts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Part I: Introduction and Levels of Personalization&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/en/blog/2019/2019-09-07-Getting_Started_with_Recommender_Systems_Part_II/&quot;&gt;Part II: How it Works&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Part III: Techniques&lt;/li&gt;
+&lt;li&gt;Part IV: Metrics&lt;/li&gt;
+&lt;li&gt;Part V: Challenges&lt;/li&gt;
+&lt;li&gt;Part VI: References and Further Reading&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;RecSys is a topic of concern of big players like Amazon, Spotify, Netflix, Github and Linkedin. Mike McGuire in this &lt;a href=&quot;https://www.huffpostbrasil.com/2013/08/01/netflix-profiles_n_3685876.html&quot;&gt;post&lt;/a&gt; explains that companies have realized that “if there’s not something else there surfacing that meets your interest beyond what you initially dialed in for, then you’re out”. In other words, companies are concerned with providing not only what the user is looking for but other items that meets the user’s preferences. At Amazon, for example, if you want to buy a Kindle the website will drive you to the product but will also show related items you might want like a charger and a waterproof cover.&lt;/p&gt;
+&lt;p&gt;An interesting article from Standford, &lt;a href=&quot;https://www.researchgate.net/publication/12189991_When_Choice_is_Demotivating_Can_One_Desire_Too_Much_of_a_Good_Thing&quot;&gt;When Choice is Demotivating: Can One Desire Too Much of a Good Thing?&lt;/a&gt;, shows the negative impact of presenting too many options to customers.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsSAAALEgHS3X78AAAC6UlEQVQoz1WS+09TZxjH+78tmmn0N6MxXBS8jUHp6QUtmsVkm8nIiIZSKBMUJQa8obFqJ4gMiMzLNBSBttIKPbSDqgErlHPa0nM+Pm2Dxjf55v0+l3zzfd7ntehPfyP3xE7Kb2Vp8GfmB04QvfETibv16E9caMNWjI1lTG0VbewM2qibpN9B6oGT+ZtWorcaWRxUyIycQpe6RRu2kbtfQbR3H6879jL25y4mWn/kpWcP2QeHyNzdj/F5CSPznmygknzgIMGu3QR9u5i8sIPx1h944dnJuvRtParEoo842RRBXYJcoAb97wopFO9KtEA12r0KEUyAluLdlZMCK7FeB9HLCvE+hcWrToGDhSs2wt2nsORGFZL9x5n0/M6H24flPofaX8ub7rPM9DjI3t9PIZ0EPUXY6ybSYSPU7hLuINyhEPK4JHZIXiF4vhlLfkxBvVjHq8Y/WLley/OGFuK9R5n75VfCLU3ogW+CIW8z4U6FOREMeZ0iaBexpq986vzpokM7KzdreXbRzeqdwzzvdktcw8xVcdHXQNZ/gEJx5KJDXxNvuxpE1E7EZxPeWOLhErcy7WkSh+MKC9L0b90F/h84wviJNmI9xwg2t/Dm3OnvHEY8MrJX3qpNHHlkTK9CpM1V4m/bFaZbZWRdvsznOxWsDFSz4a9iub+S9XtVvL9exdrgIVnKwa8OZ31uQl02ZjtdAjtz4my2wyl5h+QVXnuKgqMn0R/WkBs6RuFRHYzUYw7XszV0XDZ9VH5AtWw5iSmCapdT3rueuK8R9ZKDpT4Xao+LuIyu/tVArN2JxcikMOXj6mmVmYUxJkMPCUwNsPYxAhsrFNYTmIW8YAszE5feRXGbYGvhBdrQNXLTIxIvlfObi1hMyqcg8EcnGFX/YyIRJJZeLuW369tnO9ZfTrH5+B/0Z6++67GYplEi2bxO5GMM9VOSd6tx0nq6LCB10zTLMIySpKFr5GZnyMei5KPzFNZWy71GgS8tGQKSZLv2agAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image lazyload&quot;
+        alt=&quot;When Choice is Demotivating - Experiment&quot;
+        title=&quot;When Choice is Demotivating - Experiment&quot;
+        data-src=&quot;/static/79e2ffaa80393025cae6e242117076b7/d9199/jams-conversion.png&quot;
+        data-srcset=&quot;/static/79e2ffaa80393025cae6e242117076b7/8ff5a/jams-conversion.png 240w,
+/static/79e2ffaa80393025cae6e242117076b7/e85cb/jams-conversion.png 480w,
+/static/79e2ffaa80393025cae6e242117076b7/d9199/jams-conversion.png 960w,
+/static/79e2ffaa80393025cae6e242117076b7/2ba99/jams-conversion.png 1221w&quot;
+        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;In fact, when there is no personalization your customers end up doing &lt;a href=&quot;https://www.youtube.com/watch?v=VqdQZCvpIyo&quot;&gt;“infinite browsing”&lt;/a&gt; and there is no conversion and, consequently, a high level of churn. This &lt;a href=&quot;https://www.businessinsider.com/netflix-recommendation-engine-worth-1-billion-per-year-2016-6&quot;&gt;article&lt;/a&gt; from Business Insider explains how “the combined effect of personalization and recommendations save us [Netflix] more than $1B per year”.&lt;/p&gt;
+&lt;p&gt;RecSys are valuable at &lt;a href=&quot;http://fortune.com/2012/07/30/amazons-recommendation-secret/&quot;&gt;increasing the sales&lt;/a&gt;. In 2012, Amazon has reported “a 29% sales increase to $12.83 billion during its second fiscal quarter, up from $9.9 billion during the same time last year”. However, they are not limited to profit. &lt;a href=&quot;https://sigmoidal.io/recommender-systems-recommendation-engine/&quot;&gt;This infographic&lt;/a&gt; illustrates they also &lt;strong&gt;improve retention&lt;/strong&gt;, &lt;strong&gt;form habits&lt;/strong&gt; and &lt;strong&gt;accelerate work&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3&gt;Formal definition&lt;/h3&gt;
+&lt;p&gt;So far we have seen RecSys as a general idea that mixes some topics like &lt;code class=&quot;language-text&quot;&gt;personalization&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;items&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;recommendation&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;user&amp;#39;s preferences&lt;/code&gt;. But, &lt;strong&gt;how can we define it?&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Recommender Systems are software tools and techniques that provide suggestions for items that are most likely of interest to a particular user.&lt;/p&gt;
+&lt;p&gt;- F. Ricci, L. Rokach, B. Shapira, and P. B. Kantor, editors. Recommender Systems Handbook. Springera, 2011&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Levels of Personalization&lt;/h2&gt;
+&lt;p&gt;In RecSys context, personalization means how much your algorithm understand each user to provide a meaningful recommendation. Basically, the approach can be understood as &lt;strong&gt;non-personalyzed&lt;/strong&gt; or &lt;strong&gt;personalyzed&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3&gt;Non-Personalized&lt;/h3&gt;
+&lt;p&gt;Non-personalized RecSys do not take into consideration individual preferences. They usually consider an heuristic or statistical calc to recommend items. The most common scenario is the News websites like CNN, Bloomber, Globo.com, etc, in which there are sections like “Breaking news” or “Featured”. In Spotify, “Top songs in Brazil”. Amazon, “Top-selling books”.&lt;/p&gt;
+&lt;p&gt;Some examples:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Most listened songs&lt;/li&gt;
+&lt;li&gt;Most read blog posts&lt;/li&gt;
+&lt;li&gt;Breaking news articles&lt;/li&gt;
+&lt;li&gt;Top tracks on the radio&lt;/li&gt;
+&lt;li&gt;Top-selling books&lt;/li&gt;
+&lt;li&gt;High-scored hotels&lt;/li&gt;
+&lt;li&gt;Best places to stay&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The advantage of this approach is that it is not that expensive and is useful when you do not have enough information about your users. That way you can solve &lt;strong&gt;cold start problems&lt;/strong&gt; (explained in Part IV) and start doing recommendation without too much effort.&lt;/p&gt;
+&lt;h3&gt;Personalized&lt;/h3&gt;
+&lt;p&gt;The personalyzed approach considers the user’s preferences to recommend an item. Algorithms in this category rely on a pipeline that (i) takes user’s data; (ii) does processing to find patterns in the preferences; (iii) calc predictions. &lt;em&gt;Disclaimer: in Part II and III it will be crystal clear.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The most common example is Netflix. Based on the titles you liked, Netflix does a lot of processing and recommends you new movies or series.&lt;/p&gt;
+&lt;p&gt;The advantage of this approach is the level of personalization you can achieve and, thus, increase the convertion in your system. However, it takes much more effort than the previous one and, of course, requires a more complex solution/algorithm/architecture.&lt;/p&gt;
+&lt;h3&gt;Notes&lt;/h3&gt;
+&lt;p&gt;There is no silver bullet. The best approach is the one that works for you business. It is pretty common to adopt both approaches in the same platform/website/system. For example, Spotify provides those “Top Lists” but also does a personalized approach when recommending you a song similar to the one you are listening to.&lt;/p&gt;
+&lt;p&gt;A golden rule is to think about the whole experience and what you want to achieve: more sales; retention increase; form a habit; etc. Once you have defined your goal, the Metrics, algorithms and technical decisions will relate to that and mixed approaches are very common.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Review: Cloud Native DevOps with Kubernetes]]></title><description><![CDATA[Particularly, I like the content produced by O’Reilly media and Cloud Native DevOps with Kubernetes is not an exception. After trying some…]]></description><link>https://vcrmartinez.com/2019/2019-08-04-Review_Cloud_Native_DevOps_with_Kubernetes/</link><guid isPermaLink="false">https://vcrmartinez.com/2019/2019-08-04-Review_Cloud_Native_DevOps_with_Kubernetes/</guid><pubDate>Sun, 04 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Particularly, I like the content produced by O’Reilly media and &lt;a href=&quot;https://www.amazon.com.br/Cloud-Native-DevOps-Kubernetes-Applications-ebook/dp/B07PJ4HM92&quot;&gt;Cloud Native DevOps with Kubernetes&lt;/a&gt; is not an exception. After trying some books and courses I found a complete overview of Kubernetes in that material produced by John Arundel and Justin Domingus.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 752px; &quot;
@@ -1924,109 +1998,7 @@ res &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; search&lt;span c
 &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;not&lt;/span&gt; response&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;success&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;token keyword&quot;&gt;raise&lt;/span&gt; ElasticsearchException&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Fail to get the hits&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; res&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;aggs&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;datetime&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;buckets&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[The Agilist Programmer]]></title><description><![CDATA[A recent conversation with a friend brought up important aspects of software development. Some characteristics like constant feedback, short…]]></description><link>https://vcrmartinez.com/2018/2018-01-20-The_agilist_programmer/</link><guid isPermaLink="false">https://vcrmartinez.com/2018/2018-01-20-The_agilist_programmer/</guid><pubDate>Sat, 20 Jan 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;A recent conversation with a friend brought up important aspects of software development. Some characteristics like &lt;strong&gt;constant feedback&lt;/strong&gt;, &lt;strong&gt;short cycles&lt;/strong&gt; and &lt;strong&gt;fast learning&lt;/strong&gt; might drive your mind to think about Agile frameworks (e.g. Scrum, Kanban, Lean Software Development, etc). However, they are not exclusively attached to one framework but a whole concept/idea of addressing problems through iterative and incremental periods lasting usually from 7 to 14 days. The benefits are clearly seen in agile teams but not all professionals have internalized those concepts into the personal workflow. If you do that it is likely to increase your productivity and focus on the deliverable.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Are you an Agilist Programmer?&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;By asking that I want you to think about the concepts and how you can apply that into your workflow. Do you work with shor periods of time, constant feedback and fast learning? It might seem impossible at first or not so clear how to apply that but in this post I try to bring up the tease.&lt;/p&gt;
-&lt;p&gt;The questions below reveal important aspects of your workflow. Let’s think over it by answering them:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;How do you tackle problems? Do you solve at once or break into pieces?&lt;/li&gt;
-&lt;li&gt;Do you create automated tests?&lt;/li&gt;
-&lt;li&gt;Are you used to create a simple MVP or you try to deliver the final version once and for all?&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Your answers probably tell you something we already know: creating and maintaining a software is not an easy task. Besides technical skills it is important to plan the execution and provide a fast-learning process. I have been trying to incorporate the workflow below and I hope it helps you to deliver faster and better products.&lt;/p&gt;
-&lt;h2&gt;Planning&lt;/h2&gt;
-&lt;p&gt;By the time you are assigned a task to accomplish the first impulse is to start coding and only stop when everything is working properly. It happens because we &lt;em&gt;immediately focus on &lt;strong&gt;how&lt;/strong&gt; (programming) instead of &lt;strong&gt;what&lt;/strong&gt; (steps)&lt;/em&gt; need to be done. It is a very risky approach because you (i) will likely find unplanned issues that need to be addresses and/or (ii) will spend more time on things that you have not previously detected. The ideal scenario happens when we know all the meticulous steps to get the job done beforehand. However, many times we have just a broader view of the scope.&lt;/p&gt;
-&lt;p&gt;Next time you get a feature/bug/improvement/task to do hold your impulse for some minutes and outline the steps you must follow to accomplish that. During the path you probably you probably will notice there exist some corner cases to be attentive or scenarios that demand an extra effort.&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 63.74999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsSAAALEgHS3X78AAABkElEQVQ4y4VTS0/CQBDu/z959+7NmzEhMRwM0RiQBEGNMRUojwKlj+1uS30k435LZ7OLBw8fm9LZ7zEzDSpV0H9QMrfIsx2l+w3JMvPecW1gL+JFe7rgYj5FsadNvDCkdSU8MY9QsdqJK5eMHQL7JLYu3RrPoXWqUVc+MdyMn4aU7NbmGU7ZYZEntvZPZNVGLbQLXMLzoS5pu1nSR/hGzUGaepDBaSlSI8ItCNw4bg/jdUSr5cy6Q8RUA+T4bzZ9p2geGlGQQdA4xI8EdD/YHYqA3XZl+1TqE4Bopp1l6dYIIS731PSwqUr6rCV9HxQ1Wt0twiUQHwlzg1xkVOizavtnjfDaTMJXehj16eq+S8/hC8U6JuKikCeq5NGlKI9phH4nncG5CM5713TR69DZzSV1h3ekitQqIwavBzsHMBie9OnyB7eTAfVHAxqMHylaTE3TQWAut7F5pfA/Jp1oEUwXYkxqCRslTO9+vmqr7H4h7tfAq7Jezc3Jg/N6yMVuc71VcoqZFCmQAPuHdXFFfwEye9nu5stTPgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image lazyload&quot;
-        alt=&quot;Plan the steps&quot;
-        title=&quot;Plan the steps&quot;
-        data-src=&quot;/static/d8857b1db6c297ba73261b0460a98433/d9199/step1.png&quot;
-        data-srcset=&quot;/static/d8857b1db6c297ba73261b0460a98433/8ff5a/step1.png 240w,
-/static/d8857b1db6c297ba73261b0460a98433/e85cb/step1.png 480w,
-/static/d8857b1db6c297ba73261b0460a98433/d9199/step1.png 960w,
-/static/d8857b1db6c297ba73261b0460a98433/07a9c/step1.png 1440w,
-/static/d8857b1db6c297ba73261b0460a98433/29114/step1.png 1920w,
-/static/d8857b1db6c297ba73261b0460a98433/cd13d/step1.png 1958w&quot;
-        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-      /&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;It is important to highlight that you should not plan everything at once (that would take too much time/effort). Just plan the next version of your deliverable: start with the mvp, then v1, v2, v3…&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Hint:&lt;/em&gt; use a personal notebook/moleskine/paper to write down all the info - it clears your mind by making it free to focus on the execution phase.&lt;/p&gt;
-&lt;h2&gt;Divide to Conquer&lt;/h2&gt;
-&lt;p&gt;Every single problem can be broken down into small pieces and must be tackled once at a time. Trying to code everything at once will distract you to what matters: make it work. Start with simple components that work in the best scenario. Let’s see an example:&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 46.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsSAAALEgHS3X78AAAByElEQVQoz11SXVPaUBDNf/ahv8EX39Tp+NJilQ6VoTDi52A7ndEptmgEEkhCAoTw0WhCQkJIinrcex1GJw87e2/2nD1n90aYhx7eRxhMEVH2vAd0xBq6p8doHOQg/azAHg8QRTOOSfNWIaSbcfAiQLt6BetbDubXLPqZz7C/7EIqFuCz+gr3jrMKId2Mx9zHSG1xd/VSAc3Sd7TyOWi/LxEnIccHM/d1GsLGZGBBzrnDtAKL/3GIGWXL6sF1/mFCo7pTG57v8POMckIY1ojVe90OzL7x5jChQhy9KfV7OtqtJicPzC6chwnHMFdMRGre4aZ2DU2V+VlVZM5R2hKEgNR6ROqPBhhR/Lm+4qBkEULvKLi3x3QX4dMjMcHnxxiPyRyMx0Snrg3DUCFLdY4XbqlrXrxBodmgfAuZPi6JYA11iGKV78g0DdT+VuHcj3FJj1X+UYFBIzIRjXbNnBm68rpDWVdRacs4lRo4r4uQVQmlk0/I5NeRLW1AUe+A5yU0rYX1nR182NzG2uYWDo7LeFpGCGhvvudw97zhghy4pDyk3UTsIQY6ji4yyB9+xMWvIu1vzMGTyRB75UNsZfdRPDuhu8Xdp3+fF1G0jZRkRhkiAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image lazyload&quot;
-        alt=&quot;Break a problem into small pieces&quot;
-        title=&quot;Break a problem into small pieces&quot;
-        data-src=&quot;/static/679ded0f865201227959f790169f1fa2/d9199/step2.png&quot;
-        data-srcset=&quot;/static/679ded0f865201227959f790169f1fa2/8ff5a/step2.png 240w,
-/static/679ded0f865201227959f790169f1fa2/e85cb/step2.png 480w,
-/static/679ded0f865201227959f790169f1fa2/d9199/step2.png 960w,
-/static/679ded0f865201227959f790169f1fa2/07a9c/step2.png 1440w,
-/static/679ded0f865201227959f790169f1fa2/5068c/step2.png 1917w&quot;
-        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-      /&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Imagine you have to interact with Elasticsearch service in order to index documents and retrieve them. So, it is possible to model the issue as:&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Interacting with Elasticsearch&lt;/em&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Create a minimum working client (or setup an existing one)&lt;/li&gt;
-&lt;li&gt;Create a function that index a document&lt;/li&gt;
-&lt;li&gt;Create a function that retrieve a document by id
-…&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;If you focus on tackling each piece at a time your mind will be 100% concentrated into solving that instead of constantly worring about the big picture.&lt;/p&gt;
-&lt;h2&gt;Automated Tests&lt;/h2&gt;
-&lt;p&gt;Each component must be tested to ensure, at least, the minimum requirements. I will not get into the discussion about TDD or not-TDD. The bottom line is: you must ensure your components work properly.&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 58.75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsSAAALEgHS3X78AAACf0lEQVQoz21TYU/aYBDuT963fdz2Zcmiy7LEZBvR6ZYpZk5kMy5muoDDoAKC0JYCQhWk2AKF0kIpjuXZ3Tvg0z5c2ve9u+eee947yR866NsWZDmHdOYCmqbAG9jwR4OFDb2+sBHF8tdzexgHQ2F8x+e5X1KvS0g2bpGsVnCsqTjUqzjOpOD2O7CpUL/XxmSWyElj38VkMkLnpgjrrgaXwH4/+Iui0lkhh/3qNY4I8JTskOzgPAm73cJdQ4dcyKKkySI4GHtom01kcllcHoRR+vEZ51RcoRjuRDAcEJNCSUGO2MnUbl6+gkOsmAkbg1zl0qiUVViWgUz6HCaB+q6NCfm4kKrkxT3HS8F4iGDkolwsIPHrJ7EpEGCHKrqiIgM+UIvculaUBRNukZPnMvyZBlCUKzTqNdKwmEXk+wb2jzaxFn6JlY9PsRNdh2UaaBl10W4um4LRvBXMeqQrS8HJ3c49imoeNn35rOsVSKfJIyy9fYzV7SW8Xn2C5yuPsPrpFQE24dJr92YPw8kaJTu2iSYBmvd3ws+SeSMHWkWFXitDYsqycokEAZ8kDpE8i6HVqotW2ccvzGB9ApJLRZQNA34wEq175J+SHN2hjWgqjppxA2lMjilpYndM1Os62lYL49n8sU7MMB4/hnXfQNd18DWRhFIuCY25KHeSSp+h1tTFWWKdvp3EsBHdQyi8hWehENb3IuKlmZlKYttdEwGBD9w+evRg1TJNRTaNS1oE/jLGxP/XkZSnDXkTiWArFsO73V0s7+zixdp7UZkB58O82BZiHpAMA6cLh/SbBN5CHjGHfHlBlTYjX7BM7D5sh1G/rYmg+bAu1m72Pz//by3/Agb5Y0erkapgAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image lazyload&quot;
-        alt=&quot;Automated Tests&quot;
-        title=&quot;Automated Tests&quot;
-        data-src=&quot;/static/2101f4bfba7793b7152acfc6ebe67ec9/d9199/step3.png&quot;
-        data-srcset=&quot;/static/2101f4bfba7793b7152acfc6ebe67ec9/8ff5a/step3.png 240w,
-/static/2101f4bfba7793b7152acfc6ebe67ec9/e85cb/step3.png 480w,
-/static/2101f4bfba7793b7152acfc6ebe67ec9/d9199/step3.png 960w,
-/static/2101f4bfba7793b7152acfc6ebe67ec9/07a9c/step3.png 1440w,
-/static/2101f4bfba7793b7152acfc6ebe67ec9/541fe/step3.png 1654w&quot;
-        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-      /&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;h2&gt;Short cycles, constant improvement&lt;/h2&gt;
-&lt;p&gt;You have planned the steps, divided the problem into pieces, started to solve one at a time and wrote some automated tests. Remember, all the steps must focus on the minimum requirements to reach the MVP, v1, v2, v3 and so on. That way you can iterate over the whole cycle, learn the lessons, develop, test and quick deliver a working piece of software. If you spend too much time on planning or only developing you probably will lost track of the Time to Market that many companies want to be good at.&lt;/p&gt;
-&lt;p&gt;How about you? What do you use that improve your workflow?&lt;/p&gt;</content:encoded></item><item><title><![CDATA[O Programador Agilista]]></title><description><![CDATA[Uma conversa recente com um amigo trouxe à tona aspectos importantes do desenvolvimento de software. Algumas características como feedback…]]></description><link>https://vcrmartinez.com/2018/2018-01-20-O_programador_agilista/</link><guid isPermaLink="false">https://vcrmartinez.com/2018/2018-01-20-O_programador_agilista/</guid><pubDate>Sat, 20 Jan 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Uma conversa recente com um amigo trouxe à tona aspectos importantes do desenvolvimento de software. Algumas características como &lt;strong&gt;feedback constante&lt;/strong&gt;, &lt;strong&gt;ciclos curtos&lt;/strong&gt; e &lt;strong&gt;aprendizado rápido&lt;/strong&gt; podem levar sua mente a pensar em frameworks Agile (por exemplo, Scrum, Kanban, Lean Software Development, etc). No entanto, eles não estão exclusivamente ligados a uma estrutura, mas a todo um conceito / ideia de abordar problemas por meio de períodos iterativos e incrementais que duram geralmente de 7 a 14 dias. Os benefícios são vistos claramente em equipes ágeis, mas nem todos os profissionais internalizaram esses conceitos no fluxo de trabalho pessoal. Se você fizer isso, provavelmente aumentará sua produtividade e se concentrará no produto final.&lt;/p&gt;
+&lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; res&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;aggs&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;datetime&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;buckets&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[O Programador Agilista]]></title><description><![CDATA[Uma conversa recente com um amigo trouxe à tona aspectos importantes do desenvolvimento de software. Algumas características como feedback…]]></description><link>https://vcrmartinez.com/2018/2018-01-20-O_programador_agilista/</link><guid isPermaLink="false">https://vcrmartinez.com/2018/2018-01-20-O_programador_agilista/</guid><pubDate>Sat, 20 Jan 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Uma conversa recente com um amigo trouxe à tona aspectos importantes do desenvolvimento de software. Algumas características como &lt;strong&gt;feedback constante&lt;/strong&gt;, &lt;strong&gt;ciclos curtos&lt;/strong&gt; e &lt;strong&gt;aprendizado rápido&lt;/strong&gt; podem levar sua mente a pensar em frameworks Agile (por exemplo, Scrum, Kanban, Lean Software Development, etc). No entanto, eles não estão exclusivamente ligados a uma estrutura, mas a todo um conceito / ideia de abordar problemas por meio de períodos iterativos e incrementais que duram geralmente de 7 a 14 dias. Os benefícios são vistos claramente em equipes ágeis, mas nem todos os profissionais internalizaram esses conceitos no fluxo de trabalho pessoal. Se você fizer isso, provavelmente aumentará sua produtividade e se concentrará no produto final.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Você é um programador Agilista?&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2128,7 +2100,109 @@ res &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; search&lt;span c
     &lt;/span&gt;&lt;/p&gt;
 &lt;h2&gt;Ciclos curtos, melhoria constante&lt;/h2&gt;
 &lt;p&gt;Você planejou as etapas, dividiu o problema em partes, começou a resolver um de cada vez e escreveu alguns testes automatizados. Lembre-se, todas as etapas devem se concentrar nos requisitos mínimos para alcançar o MVP, v1, v2, v3 e assim por diante. Dessa forma, você pode iterar ao longo de todo o ciclo, aprender as lições, desenvolver, testar e entregar rapidamente um software funcional. Se você gastar muito tempo planejando ou apenas desenvolvendo, provavelmente perderá a noção do Time-to-Market que muitas empresas lutam para serem boas.&lt;/p&gt;
-&lt;p&gt;E quanto a você? O que você usa para melhorar seu fluxo de trabalho?&lt;/p&gt;</content:encoded></item><item><title><![CDATA[O estilo de vida remoto]]></title><description><![CDATA[TL;DR Já faz três meses trabalhando remotamente e quero compartilhar o que aprendi da perspectiva de uma pessoa que nunca trabalhou…]]></description><link>https://vcrmartinez.com/2018/2018-01-12-O_estilo_de_vida_remoto/</link><guid isPermaLink="false">https://vcrmartinez.com/2018/2018-01-12-O_estilo_de_vida_remoto/</guid><pubDate>Fri, 12 Jan 2018 00:00:00 GMT</pubDate><content:encoded>&lt;h4&gt;TL;DR&lt;/h4&gt;
+&lt;p&gt;E quanto a você? O que você usa para melhorar seu fluxo de trabalho?&lt;/p&gt;</content:encoded></item><item><title><![CDATA[The Agilist Programmer]]></title><description><![CDATA[A recent conversation with a friend brought up important aspects of software development. Some characteristics like constant feedback, short…]]></description><link>https://vcrmartinez.com/2018/2018-01-20-The_agilist_programmer/</link><guid isPermaLink="false">https://vcrmartinez.com/2018/2018-01-20-The_agilist_programmer/</guid><pubDate>Sat, 20 Jan 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;A recent conversation with a friend brought up important aspects of software development. Some characteristics like &lt;strong&gt;constant feedback&lt;/strong&gt;, &lt;strong&gt;short cycles&lt;/strong&gt; and &lt;strong&gt;fast learning&lt;/strong&gt; might drive your mind to think about Agile frameworks (e.g. Scrum, Kanban, Lean Software Development, etc). However, they are not exclusively attached to one framework but a whole concept/idea of addressing problems through iterative and incremental periods lasting usually from 7 to 14 days. The benefits are clearly seen in agile teams but not all professionals have internalized those concepts into the personal workflow. If you do that it is likely to increase your productivity and focus on the deliverable.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Are you an Agilist Programmer?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;By asking that I want you to think about the concepts and how you can apply that into your workflow. Do you work with shor periods of time, constant feedback and fast learning? It might seem impossible at first or not so clear how to apply that but in this post I try to bring up the tease.&lt;/p&gt;
+&lt;p&gt;The questions below reveal important aspects of your workflow. Let’s think over it by answering them:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;How do you tackle problems? Do you solve at once or break into pieces?&lt;/li&gt;
+&lt;li&gt;Do you create automated tests?&lt;/li&gt;
+&lt;li&gt;Are you used to create a simple MVP or you try to deliver the final version once and for all?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Your answers probably tell you something we already know: creating and maintaining a software is not an easy task. Besides technical skills it is important to plan the execution and provide a fast-learning process. I have been trying to incorporate the workflow below and I hope it helps you to deliver faster and better products.&lt;/p&gt;
+&lt;h2&gt;Planning&lt;/h2&gt;
+&lt;p&gt;By the time you are assigned a task to accomplish the first impulse is to start coding and only stop when everything is working properly. It happens because we &lt;em&gt;immediately focus on &lt;strong&gt;how&lt;/strong&gt; (programming) instead of &lt;strong&gt;what&lt;/strong&gt; (steps)&lt;/em&gt; need to be done. It is a very risky approach because you (i) will likely find unplanned issues that need to be addresses and/or (ii) will spend more time on things that you have not previously detected. The ideal scenario happens when we know all the meticulous steps to get the job done beforehand. However, many times we have just a broader view of the scope.&lt;/p&gt;
+&lt;p&gt;Next time you get a feature/bug/improvement/task to do hold your impulse for some minutes and outline the steps you must follow to accomplish that. During the path you probably you probably will notice there exist some corner cases to be attentive or scenarios that demand an extra effort.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 63.74999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsSAAALEgHS3X78AAABkElEQVQ4y4VTS0/CQBDu/z959+7NmzEhMRwM0RiQBEGNMRUojwKlj+1uS30k435LZ7OLBw8fm9LZ7zEzDSpV0H9QMrfIsx2l+w3JMvPecW1gL+JFe7rgYj5FsadNvDCkdSU8MY9QsdqJK5eMHQL7JLYu3RrPoXWqUVc+MdyMn4aU7NbmGU7ZYZEntvZPZNVGLbQLXMLzoS5pu1nSR/hGzUGaepDBaSlSI8ItCNw4bg/jdUSr5cy6Q8RUA+T4bzZ9p2geGlGQQdA4xI8EdD/YHYqA3XZl+1TqE4Bopp1l6dYIIS731PSwqUr6rCV9HxQ1Wt0twiUQHwlzg1xkVOizavtnjfDaTMJXehj16eq+S8/hC8U6JuKikCeq5NGlKI9phH4nncG5CM5713TR69DZzSV1h3ekitQqIwavBzsHMBie9OnyB7eTAfVHAxqMHylaTE3TQWAut7F5pfA/Jp1oEUwXYkxqCRslTO9+vmqr7H4h7tfAq7Jezc3Jg/N6yMVuc71VcoqZFCmQAPuHdXFFfwEye9nu5stTPgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image lazyload&quot;
+        alt=&quot;Plan the steps&quot;
+        title=&quot;Plan the steps&quot;
+        data-src=&quot;/static/d8857b1db6c297ba73261b0460a98433/d9199/step1.png&quot;
+        data-srcset=&quot;/static/d8857b1db6c297ba73261b0460a98433/8ff5a/step1.png 240w,
+/static/d8857b1db6c297ba73261b0460a98433/e85cb/step1.png 480w,
+/static/d8857b1db6c297ba73261b0460a98433/d9199/step1.png 960w,
+/static/d8857b1db6c297ba73261b0460a98433/07a9c/step1.png 1440w,
+/static/d8857b1db6c297ba73261b0460a98433/29114/step1.png 1920w,
+/static/d8857b1db6c297ba73261b0460a98433/cd13d/step1.png 1958w&quot;
+        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;It is important to highlight that you should not plan everything at once (that would take too much time/effort). Just plan the next version of your deliverable: start with the mvp, then v1, v2, v3…&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Hint:&lt;/em&gt; use a personal notebook/moleskine/paper to write down all the info - it clears your mind by making it free to focus on the execution phase.&lt;/p&gt;
+&lt;h2&gt;Divide to Conquer&lt;/h2&gt;
+&lt;p&gt;Every single problem can be broken down into small pieces and must be tackled once at a time. Trying to code everything at once will distract you to what matters: make it work. Start with simple components that work in the best scenario. Let’s see an example:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 46.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsSAAALEgHS3X78AAAByElEQVQoz11SXVPaUBDNf/ahv8EX39Tp+NJilQ6VoTDi52A7ndEptmgEEkhCAoTw0WhCQkJIinrcex1GJw87e2/2nD1n90aYhx7eRxhMEVH2vAd0xBq6p8doHOQg/azAHg8QRTOOSfNWIaSbcfAiQLt6BetbDubXLPqZz7C/7EIqFuCz+gr3jrMKId2Mx9zHSG1xd/VSAc3Sd7TyOWi/LxEnIccHM/d1GsLGZGBBzrnDtAKL/3GIGWXL6sF1/mFCo7pTG57v8POMckIY1ojVe90OzL7x5jChQhy9KfV7OtqtJicPzC6chwnHMFdMRGre4aZ2DU2V+VlVZM5R2hKEgNR6ROqPBhhR/Lm+4qBkEULvKLi3x3QX4dMjMcHnxxiPyRyMx0Snrg3DUCFLdY4XbqlrXrxBodmgfAuZPi6JYA11iGKV78g0DdT+VuHcj3FJj1X+UYFBIzIRjXbNnBm68rpDWVdRacs4lRo4r4uQVQmlk0/I5NeRLW1AUe+A5yU0rYX1nR182NzG2uYWDo7LeFpGCGhvvudw97zhghy4pDyk3UTsIQY6ji4yyB9+xMWvIu1vzMGTyRB75UNsZfdRPDuhu8Xdp3+fF1G0jZRkRhkiAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image lazyload&quot;
+        alt=&quot;Break a problem into small pieces&quot;
+        title=&quot;Break a problem into small pieces&quot;
+        data-src=&quot;/static/679ded0f865201227959f790169f1fa2/d9199/step2.png&quot;
+        data-srcset=&quot;/static/679ded0f865201227959f790169f1fa2/8ff5a/step2.png 240w,
+/static/679ded0f865201227959f790169f1fa2/e85cb/step2.png 480w,
+/static/679ded0f865201227959f790169f1fa2/d9199/step2.png 960w,
+/static/679ded0f865201227959f790169f1fa2/07a9c/step2.png 1440w,
+/static/679ded0f865201227959f790169f1fa2/5068c/step2.png 1917w&quot;
+        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Imagine you have to interact with Elasticsearch service in order to index documents and retrieve them. So, it is possible to model the issue as:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Interacting with Elasticsearch&lt;/em&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a minimum working client (or setup an existing one)&lt;/li&gt;
+&lt;li&gt;Create a function that index a document&lt;/li&gt;
+&lt;li&gt;Create a function that retrieve a document by id
+…&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you focus on tackling each piece at a time your mind will be 100% concentrated into solving that instead of constantly worring about the big picture.&lt;/p&gt;
+&lt;h2&gt;Automated Tests&lt;/h2&gt;
+&lt;p&gt;Each component must be tested to ensure, at least, the minimum requirements. I will not get into the discussion about TDD or not-TDD. The bottom line is: you must ensure your components work properly.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsSAAALEgHS3X78AAACf0lEQVQoz21TYU/aYBDuT963fdz2Zcmiy7LEZBvR6ZYpZk5kMy5muoDDoAKC0JYCQhWk2AKF0kIpjuXZ3Tvg0z5c2ve9u+eee947yR866NsWZDmHdOYCmqbAG9jwR4OFDb2+sBHF8tdzexgHQ2F8x+e5X1KvS0g2bpGsVnCsqTjUqzjOpOD2O7CpUL/XxmSWyElj38VkMkLnpgjrrgaXwH4/+Iui0lkhh/3qNY4I8JTskOzgPAm73cJdQ4dcyKKkySI4GHtom01kcllcHoRR+vEZ51RcoRjuRDAcEJNCSUGO2MnUbl6+gkOsmAkbg1zl0qiUVViWgUz6HCaB+q6NCfm4kKrkxT3HS8F4iGDkolwsIPHrJ7EpEGCHKrqiIgM+UIvculaUBRNukZPnMvyZBlCUKzTqNdKwmEXk+wb2jzaxFn6JlY9PsRNdh2UaaBl10W4um4LRvBXMeqQrS8HJ3c49imoeNn35rOsVSKfJIyy9fYzV7SW8Xn2C5yuPsPrpFQE24dJr92YPw8kaJTu2iSYBmvd3ws+SeSMHWkWFXitDYsqycokEAZ8kDpE8i6HVqotW2ccvzGB9ApJLRZQNA34wEq175J+SHN2hjWgqjppxA2lMjilpYndM1Os62lYL49n8sU7MMB4/hnXfQNd18DWRhFIuCY25KHeSSp+h1tTFWWKdvp3EsBHdQyi8hWehENb3IuKlmZlKYttdEwGBD9w+evRg1TJNRTaNS1oE/jLGxP/XkZSnDXkTiWArFsO73V0s7+zixdp7UZkB58O82BZiHpAMA6cLh/SbBN5CHjGHfHlBlTYjX7BM7D5sh1G/rYmg+bAu1m72Pz//by3/Agb5Y0erkapgAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image lazyload&quot;
+        alt=&quot;Automated Tests&quot;
+        title=&quot;Automated Tests&quot;
+        data-src=&quot;/static/2101f4bfba7793b7152acfc6ebe67ec9/d9199/step3.png&quot;
+        data-srcset=&quot;/static/2101f4bfba7793b7152acfc6ebe67ec9/8ff5a/step3.png 240w,
+/static/2101f4bfba7793b7152acfc6ebe67ec9/e85cb/step3.png 480w,
+/static/2101f4bfba7793b7152acfc6ebe67ec9/d9199/step3.png 960w,
+/static/2101f4bfba7793b7152acfc6ebe67ec9/07a9c/step3.png 1440w,
+/static/2101f4bfba7793b7152acfc6ebe67ec9/541fe/step3.png 1654w&quot;
+        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Short cycles, constant improvement&lt;/h2&gt;
+&lt;p&gt;You have planned the steps, divided the problem into pieces, started to solve one at a time and wrote some automated tests. Remember, all the steps must focus on the minimum requirements to reach the MVP, v1, v2, v3 and so on. That way you can iterate over the whole cycle, learn the lessons, develop, test and quick deliver a working piece of software. If you spend too much time on planning or only developing you probably will lost track of the Time to Market that many companies want to be good at.&lt;/p&gt;
+&lt;p&gt;How about you? What do you use that improve your workflow?&lt;/p&gt;</content:encoded></item><item><title><![CDATA[O estilo de vida remoto]]></title><description><![CDATA[TL;DR Já faz três meses trabalhando remotamente e quero compartilhar o que aprendi da perspectiva de uma pessoa que nunca trabalhou…]]></description><link>https://vcrmartinez.com/2018/2018-01-12-O_estilo_de_vida_remoto/</link><guid isPermaLink="false">https://vcrmartinez.com/2018/2018-01-12-O_estilo_de_vida_remoto/</guid><pubDate>Fri, 12 Jan 2018 00:00:00 GMT</pubDate><content:encoded>&lt;h4&gt;TL;DR&lt;/h4&gt;
 &lt;p&gt;Já faz três meses trabalhando remotamente e quero compartilhar o que aprendi da perspectiva de uma pessoa que nunca trabalhou remotamente antes.&lt;/p&gt;
 &lt;p&gt;—&lt;/p&gt;
 &lt;p&gt;2017 foi um ano muito difícil mas, como diz o ditado, &lt;em&gt;mar tranquilo nunca fez um bom marinheiro&lt;/em&gt;. Eu estava trabalhando com PHP e o framework Neos Flow, mas queria trabalhar com Python. Infelizmente a cidade em que moro não oferece muitas oportunidades e não pude aceitar o cenário.&lt;/p&gt;
@@ -2216,104 +2290,7 @@ res &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; search&lt;span c
 &lt;p&gt;Working at home give to you the sensation of having more time to get the things done. That behavior lead you to working more hours instead of using them to do something productive to your own life. The key is to balance your working hours with your personal life by keeping track of how much time you work, how productive you are and how much time left you have gotten. Not having time to a personal life is not healthy.&lt;/p&gt;
 &lt;h5&gt;Exercise&lt;/h5&gt;
 &lt;p&gt;As the saying goes &lt;em&gt;Mens sana in corpore sano&lt;/em&gt; (A sound mind is in a sound body). Do I need to tell you anything? =)&lt;/p&gt;
-&lt;p&gt;That’s all folks. If you got any question please let me know.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Provendo arquivos estáticos na sua aplicação Django com Amazon S3]]></title><description><![CDATA[É sabido que Django não provê arquivos estáticos. Usar um middleware WSGI para endereçar essa questão não é o jeito correto de servir…]]></description><link>https://vcrmartinez.com/2017/2017-08-21-Provendo_arquivos_estaticos_na_sua_aplicacao_Django_com_Amazon_S3/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-08-21-Provendo_arquivos_estaticos_na_sua_aplicacao_Django_com_Amazon_S3/</guid><pubDate>Mon, 21 Aug 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;É sabido que Django não provê arquivos estáticos. Usar um middleware WSGI para endereçar essa questão não é o jeito correto de servir arquivos estáticos e, portanto, este post apresenta como você pode fazer isso usando a Amazon S3.&lt;/p&gt;
-&lt;h3&gt;Django backend storages&lt;/h3&gt;
-&lt;p&gt;Django usa uma arquitetura de &lt;em&gt;backend storages&lt;/em&gt; para armazenar dados (&lt;em&gt;e.g.&lt;/em&gt; &lt;a href=&quot;https://docs.djangoproject.com/en/1.11/ref/files/storage/&quot;&gt;FileSystemStorage&lt;/a&gt; é responsável por salvar arquivos no sistema de arquivos). Entretanto, você pode querer adotar uma abordagem diferente e, assim, implementar a &lt;a href=&quot;https://docs.djangoproject.com/en/1.11/howto/custom-file-storage/&quot;&gt;Storage Interface&lt;/a&gt; permite criar a sua própria estratégia. Um projeto chamado &lt;a href=&quot;https://github.com/jschneier/django-storages&quot;&gt;django-storages&lt;/a&gt; já pensou nesses problemas e implementou um armazenamento que envia os arquivos para a Amazon S3 com praticamennte zero esforço. Vamos usá-lo!&lt;/p&gt;
-&lt;h3&gt;Criando um bucket na Amazon S3&lt;/h3&gt;
-&lt;p&gt;Acesse a Amazon S3, crie um bucket com dois diretórios dentro: &lt;em&gt;static&lt;/em&gt; e &lt;em&gt;media&lt;/em&gt;. Neste exemplo assumiremos que a listagem dos objetos no S3 é pública.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Neste post nós falamos sobre diretórios mas é apenas uma abstração para facilitar o entendimento. A &lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/UG/FolderOperations.html&quot;&gt;documentação do S3&lt;/a&gt; explica que &lt;em&gt;buckets&lt;/em&gt; e objetos são os recursos primários e que não existe a hierarquia que ocorre em um sistema de arquivos convencional.&lt;/p&gt;
-&lt;h3&gt;Instalação e requisitos&lt;/h3&gt;
-&lt;p&gt;Você vai precisar instalar o &lt;a href=&quot;https://github.com/boto/boto3&quot;&gt;boto&lt;/a&gt; e o &lt;a href=&quot;https://github.com/jschneier/django-storages&quot;&gt;django-storages&lt;/a&gt;. Como explicado anteriormente, &lt;em&gt;django-storages&lt;/em&gt; vai nos ajudar a enviar arquivos para a Amazon S3. Entretanto, nós precisamos instalar o &lt;em&gt;boto&lt;/em&gt; pois ele é responsável por conectar com os serviços da Amazon.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Este post usa &lt;a href=&quot;https://github.com/henriquebastos/python-decouple&quot;&gt;python-decouple&lt;/a&gt; para gerenciar o ambiente local. Se você não sabe como dê uma olhada neste &lt;a href=&quot;/pt/blog/2017/2017-08-15-Prepare_sua_aplicacao_Django_para_ser_disponibilizada_no_Heroku&quot;&gt;post&lt;/a&gt;.&lt;/p&gt;
-&lt;h3&gt;Criando nosssos backends customizados&lt;/h3&gt;
-&lt;p&gt;No nosso diretório de configuração nós vamos criar os backends responsáveis por lidar com a Amazon S3. Crie um arquivo chamado &lt;em&gt;s3util.py&lt;/em&gt; e adicione o conteúdo abaixo:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; django&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;conf &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; settings
-&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; storages&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;backends&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;s3boto &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; S3BotoStorage
-
-
-&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;StaticStorage&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;S3BotoStorage&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
-    location &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; settings&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;STATICFILES_LOCATION
-
-
-&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MediaStorage&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;S3BotoStorage&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
-    location &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; settings&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;MEDIAFILES_LOCATION&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;Linhas 1-2: Importa os módulos.&lt;/li&gt;
-&lt;li&gt;Linhas 5-10: Representa nossos storages. O atributo &lt;code class=&quot;language-text&quot;&gt;location&lt;/code&gt; é configurado para armazenar a localização dos arquivos &lt;em&gt;static&lt;/em&gt; e &lt;em&gt;media&lt;/em&gt; definidos no arquivo &lt;em&gt;settings.py&lt;/em&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Configurando as variáveis da Amazon S3&lt;/h3&gt;
-&lt;p&gt;Assumindo que você já tem um bucket disponível, vamos adicionar algumas variáveis ao arquivo &lt;em&gt;settings.py&lt;/em&gt;.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; decouple &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; config
-
-&lt;span class=&quot;token comment&quot;&gt;# AWS&lt;/span&gt;
-AWS_S3_SECURE_URLS &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;
-AWS_QUERYSTRING_AUTH &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;False&lt;/span&gt;
-AWS_PRELOAD_METADATA &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;
-AWS_STORAGE_BUCKET_NAME &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&amp;lt;YOUR-BUCKET-NAME&gt;&apos;&lt;/span&gt;
-AWS_ACCESS_KEY_ID &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;AWS_ACCESS_KEY_ID&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-AWS_SECRET_ACCESS_KEY &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;AWS_SECRET_ACCESS_KEY&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-
-STATICFILES_STORAGE &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;STATICFILES_STORAGE&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;django.contrib.staticfiles.storage.StaticFilesStorage&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-DEFAULT_FILE_STORAGE &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;DEFAULT_FILE_STORAGE&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;django.core.files.storage.FileSystemStorage&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-
-STATIC_URL &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;STATIC_URL&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;/static/&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-MEDIA_URL &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;MEDIA_URL&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;/media/&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-
-AWS_HEADERS &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token string&quot;&gt;&apos;x-amz-acl&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;public-read&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token string&quot;&gt;&apos;Cache-Control&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;public, max-age=31556926&apos;&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-
-STATICFILES_LOCATION &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;static&apos;&lt;/span&gt;
-MEDIAFILES_LOCATION &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;media&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;Linha 1: Certifique-se de importar o módulo de configuração. Ele vai procurar as variáveis de ambiente ou um arquivo &lt;code class=&quot;language-text&quot;&gt;.env&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Linha 4: Use urls com SSL para servir os objetos do S3.&lt;/li&gt;
-&lt;li&gt;Linha 5: Nós não queremos gerar uma querystring de autenticação para o S3.&lt;/li&gt;
-&lt;li&gt;Linha 6: Queremos fazer o pré-carregamento de metadados do S3.&lt;/li&gt;
-&lt;li&gt;Linha 7: É necessário fornecer o nome do bucket.&lt;/li&gt;
-&lt;li&gt;Linhas 8-9: &lt;code class=&quot;language-text&quot;&gt;config&lt;/code&gt; vai procurar pelas variáveis de ambiente ou por um arquivo &lt;code class=&quot;language-text&quot;&gt;.env&lt;/code&gt;. No ambiente local elas estarão em branco pois não enviaremos para o S3. Entretanto, em produção nós iremos configurar essas variáveis.&lt;/li&gt;
-&lt;li&gt;Linhas 11-12: Essas variáveis irão explicitamente definir qual storage nosso projeto vai utilizar para armazenar os arquivos estáticos. No ambiente local será o backend comum (StaticFilesStorage e FileSystemStorage). Entretanto, em produção, iremos deixar configurado os backends responsáveis por enviar os arquivos para o S3.&lt;/li&gt;
-&lt;li&gt;Linhas 14-15: Aponta para as URLs de arquivos estáticos e mídias. Em produção eles vão armazenar a URL da Amazon S3 que corresponde a cada tipo de arquivo.&lt;/li&gt;
-&lt;li&gt;Linhas 17-20: Cabeçalhos AWS que explicitam a política de cache.&lt;/li&gt;
-&lt;li&gt;Linhas 22-23: Variáveis que informam nosso backend onde encontrar os arquivos de mídia e estáticos. Elas são usadas no arquivo &lt;em&gt;s3utils.py&lt;/em&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Variáveis Locais&lt;/h3&gt;
-&lt;p&gt;Em resumo, nossas variáveis locais vão acabar sendo:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;AWS_S3_SECURE_URLS &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; True
-AWS_QUERYSTRING_AUTH &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; False
-AWS_PRELOAD_METADATA &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; True
-AWS_STORAGE_BUCKET_NAME &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;BUCKET-NAME&apos;&lt;/span&gt;
-AWS_ACCESS_KEY_ID &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;
-AWS_SECRET_ACCESS_KEY &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;
-
-STATICFILES_STORAGE &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;django.contrib.staticfiles.storage.StaticFilesStorage&apos;&lt;/span&gt;
-DEFAULT_FILE_STORAGE &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;django.core.files.storage.FileSystemStorage&apos;&lt;/span&gt;
-
-STATIC_URL &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;/static/&apos;&lt;/span&gt;
-MEDIA_URL &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;/media/&apos;&lt;/span&gt;
-
-AWS_HEADERS &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token string&quot;&gt;&apos;x-amz-acl&apos;&lt;/span&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;public-read&apos;&lt;/span&gt;,
-    &lt;span class=&quot;token string&quot;&gt;&apos;Cache-Control&apos;&lt;/span&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;public, max-age=31556926&apos;&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-
-STATICFILES_LOCATION &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;static&apos;&lt;/span&gt;
-MEDIAFILES_LOCATION &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;media&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;Variáveis de Produção&lt;/h3&gt;
-&lt;p&gt;É necessário configurar as variáveis de produção:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;AWS_ACCESS_KEY_ID&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&amp;lt;YOUR-ACCESS-KEY&gt;&apos;&lt;/span&gt; -a &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
-heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&amp;lt;YOUR-SECRET-KEY&gt;&apos;&lt;/span&gt; -a &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
-heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;DEFAULT_FILE_STORAGE&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;config.s3util.MediaStorage&apos;&lt;/span&gt; -a &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
-heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;STATICFILES_STORAGE&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;config.s3util.StaticStorage&apos;&lt;/span&gt; -a &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
-heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;MEDIA_URL&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;https://s3.amazonaws.com/&amp;lt;YOUR-BUCKET-NAME&gt;/media/&apos;&lt;/span&gt; -a &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
-heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;STATIC_URL&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;https://s3.amazonaws.com/&amp;lt;YOUR-BUCKET-NAME&gt;/static/&apos;&lt;/span&gt; -a &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Você pode passar múltiplas variáveis em apenas uma declaração:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;AWS_ACCESS_KEY_ID&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&amp;lt;YOUR-ACCESS-KEY&gt;&apos;&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&amp;lt;YOUR-SECRET-KEY&gt;&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;. -a &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;Enviando arquivos para o S3&lt;/h3&gt;
-&lt;p&gt;De agora em diante, toda vez que você disponibilizar seu projeto no Heroku ele vai enviar os arquivos para a Amazon S3. Isso vai acontecer pois o Heroku executa &lt;code class=&quot;language-text&quot;&gt;$ python manage.py collectstatic&lt;/code&gt; durante o pipeline de deploy e esse comando coleta os arquivos estáticos e salva-os. Nosso backend de produção salva no S3 todos os arquivos.&lt;/p&gt;
-&lt;p&gt;Se você não estiver usando Heroku certifique-se de executar &lt;code class=&quot;language-text&quot;&gt;python manage.py collectstatic&lt;/code&gt; em produção.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Um teste pode ser feito ao configurar as variáveis de produção no ambiente local. Dessa forma, se você executar o comando &lt;code class=&quot;language-text&quot;&gt;collectstatic&lt;/code&gt; ele irá enviar os arquivos para o S3. Apenas certifique-se de removê-las após testar.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Providing static files in your Django app with Amazon S3]]></title><description><![CDATA[It is well-known that Django does not provide static files. Using a WSGI Middleware to address the issue is not the right way to provide…]]></description><link>https://vcrmartinez.com/2017/2017-08-21-Providing_static_files_in_your_Django_app_with_Amazon_S3/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-08-21-Providing_static_files_in_your_Django_app_with_Amazon_S3/</guid><pubDate>Mon, 21 Aug 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;It is well-known that Django does not provide static files. Using a WSGI Middleware to address the issue is not the right way to provide static files and, thus, this post show how you can do it using Amazon S3.&lt;/p&gt;
+&lt;p&gt;That’s all folks. If you got any question please let me know.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Providing static files in your Django app with Amazon S3]]></title><description><![CDATA[It is well-known that Django does not provide static files. Using a WSGI Middleware to address the issue is not the right way to provide…]]></description><link>https://vcrmartinez.com/2017/2017-08-21-Providing_static_files_in_your_Django_app_with_Amazon_S3/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-08-21-Providing_static_files_in_your_Django_app_with_Amazon_S3/</guid><pubDate>Mon, 21 Aug 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;It is well-known that Django does not provide static files. Using a WSGI Middleware to address the issue is not the right way to provide static files and, thus, this post show how you can do it using Amazon S3.&lt;/p&gt;
 &lt;h3&gt;Django backend storages&lt;/h3&gt;
 &lt;p&gt;Django uses an architecture of backend storages to store data (e.g. the &lt;a href=&quot;https://docs.djangoproject.com/en/1.11/ref/files/storage/&quot;&gt;FileSystemStorage&lt;/a&gt; is responsible for saving files in the current file system). However, you might want to adopt a different approach and, thus, by following the &lt;a href=&quot;https://docs.djangoproject.com/en/1.11/howto/custom-file-storage/&quot;&gt;Storage Interface&lt;/a&gt; it is possible to implement your own way to handle storage. A project called &lt;a href=&quot;https://github.com/jschneier/django-storages&quot;&gt;django-storages&lt;/a&gt; has already thought about common problems and implemented for us a storage that send files to Amazon S3 with almost no effort required. Let’s use it!&lt;/p&gt;
 &lt;h3&gt;Creating an Amazon S3 bucket&lt;/h3&gt;
@@ -2411,7 +2388,104 @@ heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;STATI
 &lt;h3&gt;Sending files to S3&lt;/h3&gt;
 &lt;p&gt;From now on every time you push your project to Heroku it will send the files to Amazon S3. That will happen because Heroku executes &lt;code class=&quot;language-text&quot;&gt;$ python manage.py collectstatic&lt;/code&gt; during the deploy pipeline and that command will collect the static files and save it. Once our production backend saves into S3 all files will be sent to the remote server.&lt;/p&gt;
 &lt;p&gt;If you are not using Heroku make sure you run &lt;code class=&quot;language-text&quot;&gt;python manage.py collectstatic&lt;/code&gt; in production.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; A test can be done locally by setting the production variables in the local environment. That way, if you run the collectstatic command it will send the files to S3. Just make sure to unset them after that.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Prepare sua aplicação Django para ser disponibilizada no Heroku]]></title><description><![CDATA[É bem animador construir nossos próprios projetos e vê-los funcionar em produção, certo? Alguns desenvolvedores podem pensar que fazer o…]]></description><link>https://vcrmartinez.com/2017/2017-08-15-Prepare_sua_aplicacao_Django_para_ser_disponibilizada_no_Heroku/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-08-15-Prepare_sua_aplicacao_Django_para_ser_disponibilizada_no_Heroku/</guid><pubDate>Tue, 15 Aug 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;É bem animador construir nossos próprios projetos e vê-los funcionar em produção, certo? Alguns desenvolvedores podem pensar que fazer o deploy de uma aplicação Django é um pesadelo. Neste post eu vou mostrar como preparar sua aplicação para ter diferentes configurações e efetuar o deploy no Heroku.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; A test can be done locally by setting the production variables in the local environment. That way, if you run the collectstatic command it will send the files to S3. Just make sure to unset them after that.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Provendo arquivos estáticos na sua aplicação Django com Amazon S3]]></title><description><![CDATA[É sabido que Django não provê arquivos estáticos. Usar um middleware WSGI para endereçar essa questão não é o jeito correto de servir…]]></description><link>https://vcrmartinez.com/2017/2017-08-21-Provendo_arquivos_estaticos_na_sua_aplicacao_Django_com_Amazon_S3/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-08-21-Provendo_arquivos_estaticos_na_sua_aplicacao_Django_com_Amazon_S3/</guid><pubDate>Mon, 21 Aug 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;É sabido que Django não provê arquivos estáticos. Usar um middleware WSGI para endereçar essa questão não é o jeito correto de servir arquivos estáticos e, portanto, este post apresenta como você pode fazer isso usando a Amazon S3.&lt;/p&gt;
+&lt;h3&gt;Django backend storages&lt;/h3&gt;
+&lt;p&gt;Django usa uma arquitetura de &lt;em&gt;backend storages&lt;/em&gt; para armazenar dados (&lt;em&gt;e.g.&lt;/em&gt; &lt;a href=&quot;https://docs.djangoproject.com/en/1.11/ref/files/storage/&quot;&gt;FileSystemStorage&lt;/a&gt; é responsável por salvar arquivos no sistema de arquivos). Entretanto, você pode querer adotar uma abordagem diferente e, assim, implementar a &lt;a href=&quot;https://docs.djangoproject.com/en/1.11/howto/custom-file-storage/&quot;&gt;Storage Interface&lt;/a&gt; permite criar a sua própria estratégia. Um projeto chamado &lt;a href=&quot;https://github.com/jschneier/django-storages&quot;&gt;django-storages&lt;/a&gt; já pensou nesses problemas e implementou um armazenamento que envia os arquivos para a Amazon S3 com praticamennte zero esforço. Vamos usá-lo!&lt;/p&gt;
+&lt;h3&gt;Criando um bucket na Amazon S3&lt;/h3&gt;
+&lt;p&gt;Acesse a Amazon S3, crie um bucket com dois diretórios dentro: &lt;em&gt;static&lt;/em&gt; e &lt;em&gt;media&lt;/em&gt;. Neste exemplo assumiremos que a listagem dos objetos no S3 é pública.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Neste post nós falamos sobre diretórios mas é apenas uma abstração para facilitar o entendimento. A &lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/UG/FolderOperations.html&quot;&gt;documentação do S3&lt;/a&gt; explica que &lt;em&gt;buckets&lt;/em&gt; e objetos são os recursos primários e que não existe a hierarquia que ocorre em um sistema de arquivos convencional.&lt;/p&gt;
+&lt;h3&gt;Instalação e requisitos&lt;/h3&gt;
+&lt;p&gt;Você vai precisar instalar o &lt;a href=&quot;https://github.com/boto/boto3&quot;&gt;boto&lt;/a&gt; e o &lt;a href=&quot;https://github.com/jschneier/django-storages&quot;&gt;django-storages&lt;/a&gt;. Como explicado anteriormente, &lt;em&gt;django-storages&lt;/em&gt; vai nos ajudar a enviar arquivos para a Amazon S3. Entretanto, nós precisamos instalar o &lt;em&gt;boto&lt;/em&gt; pois ele é responsável por conectar com os serviços da Amazon.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Este post usa &lt;a href=&quot;https://github.com/henriquebastos/python-decouple&quot;&gt;python-decouple&lt;/a&gt; para gerenciar o ambiente local. Se você não sabe como dê uma olhada neste &lt;a href=&quot;/pt/blog/2017/2017-08-15-Prepare_sua_aplicacao_Django_para_ser_disponibilizada_no_Heroku&quot;&gt;post&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Criando nosssos backends customizados&lt;/h3&gt;
+&lt;p&gt;No nosso diretório de configuração nós vamos criar os backends responsáveis por lidar com a Amazon S3. Crie um arquivo chamado &lt;em&gt;s3util.py&lt;/em&gt; e adicione o conteúdo abaixo:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; django&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;conf &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; settings
+&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; storages&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;backends&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;s3boto &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; S3BotoStorage
+
+
+&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;StaticStorage&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;S3BotoStorage&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    location &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; settings&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;STATICFILES_LOCATION
+
+
+&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MediaStorage&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;S3BotoStorage&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    location &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; settings&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;MEDIAFILES_LOCATION&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Linhas 1-2: Importa os módulos.&lt;/li&gt;
+&lt;li&gt;Linhas 5-10: Representa nossos storages. O atributo &lt;code class=&quot;language-text&quot;&gt;location&lt;/code&gt; é configurado para armazenar a localização dos arquivos &lt;em&gt;static&lt;/em&gt; e &lt;em&gt;media&lt;/em&gt; definidos no arquivo &lt;em&gt;settings.py&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Configurando as variáveis da Amazon S3&lt;/h3&gt;
+&lt;p&gt;Assumindo que você já tem um bucket disponível, vamos adicionar algumas variáveis ao arquivo &lt;em&gt;settings.py&lt;/em&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; decouple &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; config
+
+&lt;span class=&quot;token comment&quot;&gt;# AWS&lt;/span&gt;
+AWS_S3_SECURE_URLS &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;
+AWS_QUERYSTRING_AUTH &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;False&lt;/span&gt;
+AWS_PRELOAD_METADATA &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;
+AWS_STORAGE_BUCKET_NAME &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&amp;lt;YOUR-BUCKET-NAME&gt;&apos;&lt;/span&gt;
+AWS_ACCESS_KEY_ID &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;AWS_ACCESS_KEY_ID&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+AWS_SECRET_ACCESS_KEY &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;AWS_SECRET_ACCESS_KEY&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+STATICFILES_STORAGE &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;STATICFILES_STORAGE&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;django.contrib.staticfiles.storage.StaticFilesStorage&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+DEFAULT_FILE_STORAGE &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;DEFAULT_FILE_STORAGE&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;django.core.files.storage.FileSystemStorage&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+STATIC_URL &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;STATIC_URL&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;/static/&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+MEDIA_URL &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;MEDIA_URL&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;/media/&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+AWS_HEADERS &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token string&quot;&gt;&apos;x-amz-acl&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;public-read&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token string&quot;&gt;&apos;Cache-Control&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;public, max-age=31556926&apos;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+STATICFILES_LOCATION &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;static&apos;&lt;/span&gt;
+MEDIAFILES_LOCATION &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;media&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Linha 1: Certifique-se de importar o módulo de configuração. Ele vai procurar as variáveis de ambiente ou um arquivo &lt;code class=&quot;language-text&quot;&gt;.env&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Linha 4: Use urls com SSL para servir os objetos do S3.&lt;/li&gt;
+&lt;li&gt;Linha 5: Nós não queremos gerar uma querystring de autenticação para o S3.&lt;/li&gt;
+&lt;li&gt;Linha 6: Queremos fazer o pré-carregamento de metadados do S3.&lt;/li&gt;
+&lt;li&gt;Linha 7: É necessário fornecer o nome do bucket.&lt;/li&gt;
+&lt;li&gt;Linhas 8-9: &lt;code class=&quot;language-text&quot;&gt;config&lt;/code&gt; vai procurar pelas variáveis de ambiente ou por um arquivo &lt;code class=&quot;language-text&quot;&gt;.env&lt;/code&gt;. No ambiente local elas estarão em branco pois não enviaremos para o S3. Entretanto, em produção nós iremos configurar essas variáveis.&lt;/li&gt;
+&lt;li&gt;Linhas 11-12: Essas variáveis irão explicitamente definir qual storage nosso projeto vai utilizar para armazenar os arquivos estáticos. No ambiente local será o backend comum (StaticFilesStorage e FileSystemStorage). Entretanto, em produção, iremos deixar configurado os backends responsáveis por enviar os arquivos para o S3.&lt;/li&gt;
+&lt;li&gt;Linhas 14-15: Aponta para as URLs de arquivos estáticos e mídias. Em produção eles vão armazenar a URL da Amazon S3 que corresponde a cada tipo de arquivo.&lt;/li&gt;
+&lt;li&gt;Linhas 17-20: Cabeçalhos AWS que explicitam a política de cache.&lt;/li&gt;
+&lt;li&gt;Linhas 22-23: Variáveis que informam nosso backend onde encontrar os arquivos de mídia e estáticos. Elas são usadas no arquivo &lt;em&gt;s3utils.py&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Variáveis Locais&lt;/h3&gt;
+&lt;p&gt;Em resumo, nossas variáveis locais vão acabar sendo:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;AWS_S3_SECURE_URLS &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; True
+AWS_QUERYSTRING_AUTH &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; False
+AWS_PRELOAD_METADATA &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; True
+AWS_STORAGE_BUCKET_NAME &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;BUCKET-NAME&apos;&lt;/span&gt;
+AWS_ACCESS_KEY_ID &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;
+AWS_SECRET_ACCESS_KEY &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;
+
+STATICFILES_STORAGE &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;django.contrib.staticfiles.storage.StaticFilesStorage&apos;&lt;/span&gt;
+DEFAULT_FILE_STORAGE &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;django.core.files.storage.FileSystemStorage&apos;&lt;/span&gt;
+
+STATIC_URL &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;/static/&apos;&lt;/span&gt;
+MEDIA_URL &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;/media/&apos;&lt;/span&gt;
+
+AWS_HEADERS &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token string&quot;&gt;&apos;x-amz-acl&apos;&lt;/span&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;public-read&apos;&lt;/span&gt;,
+    &lt;span class=&quot;token string&quot;&gt;&apos;Cache-Control&apos;&lt;/span&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;public, max-age=31556926&apos;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+STATICFILES_LOCATION &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;static&apos;&lt;/span&gt;
+MEDIAFILES_LOCATION &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;media&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Variáveis de Produção&lt;/h3&gt;
+&lt;p&gt;É necessário configurar as variáveis de produção:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;AWS_ACCESS_KEY_ID&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&amp;lt;YOUR-ACCESS-KEY&gt;&apos;&lt;/span&gt; -a &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&amp;lt;YOUR-SECRET-KEY&gt;&apos;&lt;/span&gt; -a &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;DEFAULT_FILE_STORAGE&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;config.s3util.MediaStorage&apos;&lt;/span&gt; -a &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;STATICFILES_STORAGE&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;config.s3util.StaticStorage&apos;&lt;/span&gt; -a &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;MEDIA_URL&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;https://s3.amazonaws.com/&amp;lt;YOUR-BUCKET-NAME&gt;/media/&apos;&lt;/span&gt; -a &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;STATIC_URL&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;https://s3.amazonaws.com/&amp;lt;YOUR-BUCKET-NAME&gt;/static/&apos;&lt;/span&gt; -a &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Você pode passar múltiplas variáveis em apenas uma declaração:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;AWS_ACCESS_KEY_ID&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&amp;lt;YOUR-ACCESS-KEY&gt;&apos;&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&amp;lt;YOUR-SECRET-KEY&gt;&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;. -a &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Enviando arquivos para o S3&lt;/h3&gt;
+&lt;p&gt;De agora em diante, toda vez que você disponibilizar seu projeto no Heroku ele vai enviar os arquivos para a Amazon S3. Isso vai acontecer pois o Heroku executa &lt;code class=&quot;language-text&quot;&gt;$ python manage.py collectstatic&lt;/code&gt; durante o pipeline de deploy e esse comando coleta os arquivos estáticos e salva-os. Nosso backend de produção salva no S3 todos os arquivos.&lt;/p&gt;
+&lt;p&gt;Se você não estiver usando Heroku certifique-se de executar &lt;code class=&quot;language-text&quot;&gt;python manage.py collectstatic&lt;/code&gt; em produção.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Um teste pode ser feito ao configurar as variáveis de produção no ambiente local. Dessa forma, se você executar o comando &lt;code class=&quot;language-text&quot;&gt;collectstatic&lt;/code&gt; ele irá enviar os arquivos para o S3. Apenas certifique-se de removê-las após testar.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Prepare sua aplicação Django para ser disponibilizada no Heroku]]></title><description><![CDATA[É bem animador construir nossos próprios projetos e vê-los funcionar em produção, certo? Alguns desenvolvedores podem pensar que fazer o…]]></description><link>https://vcrmartinez.com/2017/2017-08-15-Prepare_sua_aplicacao_Django_para_ser_disponibilizada_no_Heroku/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-08-15-Prepare_sua_aplicacao_Django_para_ser_disponibilizada_no_Heroku/</guid><pubDate>Tue, 15 Aug 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;É bem animador construir nossos próprios projetos e vê-los funcionar em produção, certo? Alguns desenvolvedores podem pensar que fazer o deploy de uma aplicação Django é um pesadelo. Neste post eu vou mostrar como preparar sua aplicação para ter diferentes configurações e efetuar o deploy no Heroku.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Requisitos:&lt;/strong&gt; Você precisa instalar o &lt;a href=&quot;https://devcenter.heroku.com/articles/heroku-cli&quot;&gt;Heroku CLI&lt;/a&gt; e o &lt;strong&gt;GIT&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2&gt;Heroku&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.heroku.com&quot;&gt;Heroku&lt;/a&gt; é um PaaS (Plataforma como Serviço) que vai disponibilizar nosso projeto na web. É preciso que você acesse o &lt;a href=&quot;https://dashboard.heroku.com/apps&quot;&gt;dashboard&lt;/a&gt; e crie uma nova aplicação.&lt;/p&gt;
@@ -2655,7 +2729,49 @@ remote:&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;li&gt;You might need to restart your PyCharm.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h5&gt;Don’t you use Pyenv?&lt;/h5&gt;
-&lt;p&gt;&lt;del&gt;Install it and follow the tutorial&lt;/del&gt;. You just need to replace the path by your virtualenv path.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git hooks, issue tracker e Git Flow]]></title><description><![CDATA[Na Agilize o fluxo comum de trabalho do desenvolvedor envolve o uso do Jira para gerenciamento das tarefas, Git & Git Flow para…]]></description><link>https://vcrmartinez.com/2017/2017-05-07-Git_hooks_issue_tracker_e_Git_Flow/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-05-07-Git_hooks_issue_tracker_e_Git_Flow/</guid><pubDate>Sun, 07 May 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Na &lt;a href=&quot;https://www.agilize.com.br/&quot;&gt;Agilize&lt;/a&gt; o fluxo comum de trabalho do desenvolvedor envolve o uso do Jira para gerenciamento das tarefas, Git &amp;#x26; Git Flow para versionamento de código, Slack para comunicação e ferramentas como IDE, Editor de Texto e Terminal. Basicamente, a sprint é mantida no Jira com cards que descrevem as funcionalidades, bugs, spikes e chores seguindo algumas convenções do SCRUM e, então, o programador atribui um card para si.&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;Install it and follow the tutorial&lt;/del&gt;. You just need to replace the path by your virtualenv path.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git hooks, issue tracker and Git Flow]]></title><description><![CDATA[At Agilize a common developer workflow involves the usage of Jira for issue tracking, Git + Git Flow for versioning code, Slack for…]]></description><link>https://vcrmartinez.com/2017/2017-05-07-Git_hooks_issue_tracker_and_Git_Flow/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-05-07-Git_hooks_issue_tracker_and_Git_Flow/</guid><pubDate>Sun, 07 May 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;At &lt;a href=&quot;https://www.agilize.com.br/&quot;&gt;Agilize&lt;/a&gt; a common developer workflow involves the usage of Jira for issue tracking, Git + Git Flow for versioning code, Slack for communication and programmer’s tools like IDE, Text Editor and Terminal. Basically, a prioritized sprint is maintained in Jira full of cards that describe the features, bugs, spikes and chores following some conventions of SCRUM and the software engineer assign himself to a card. During the development there is a convention that &lt;strong&gt;commits must have the issue code the engineer is working on&lt;/strong&gt;. After some commits the convention gets boring (you have to type the issue code all time). Hopefully there is a way to automate that.&lt;/p&gt;
+&lt;h2&gt;Git Hooks&lt;/h2&gt;
+&lt;p&gt;Git allows us to run a script every time a particular event occurs in the repository. For instance, it is possible to setup the text editor with a template message. This &lt;a href=&quot;https://www.atlassian.com/git/tutorials/git-hooks&quot;&gt;tutorial&lt;/a&gt; explains the power of git hooks and provides a snippet that will be customized in this post to address our necessities.&lt;/p&gt;
+&lt;p&gt;Inside your repository there is a folder &lt;em&gt;.git/hooks&lt;/em&gt; that contains some sample scripts that can be used as a playground and they end with &lt;em&gt;.sample&lt;/em&gt; in order to not be interpreted by Git. Create a file named &lt;em&gt;prepare-commit-msg&lt;/em&gt; that will contain the code below to automate the commit message.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token shebang important&quot;&gt;#!/usr/bin/env python3&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;import&lt;/span&gt; sys, os, re
+from subprocess &lt;span class=&quot;token function&quot;&gt;import&lt;/span&gt; check_output
+
+&lt;span class=&quot;token comment&quot;&gt;# Setup&lt;/span&gt;
+branch_regex &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; r&lt;span class=&quot;token string&quot;&gt;&apos;.+/(AGZ-\d+).*&apos;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Collect the parameters&lt;/span&gt;
+commit_msg_filepath &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; sys.argv&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Figure out which branch we&apos;re on&lt;/span&gt;
+branch &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; check_output&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;git&apos;&lt;/span&gt;, &lt;span class=&quot;token string&quot;&gt;&apos;symbolic-ref&apos;&lt;/span&gt;, &lt;span class=&quot;token string&quot;&gt;&apos;--short&apos;&lt;/span&gt;, &lt;span class=&quot;token string&quot;&gt;&apos;HEAD&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;.strip&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Populate the commit message with the issue #, if there is one&lt;/span&gt;
+issue_match &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; re.match&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;branch_regex, branch.decode&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;utf-8&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;, re.M&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;re.I&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; issue_match:
+    issue_code &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; issue_match.group&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    with open&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;commit_msg_filepath, &lt;span class=&quot;token string&quot;&gt;&apos;r+&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; as f:
+        content &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; f.read&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        f.seek&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        f.write&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;%s %s&quot;&lt;/span&gt; % &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;issue_code, content&lt;span class=&quot;token punctuation&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;After typing &lt;em&gt;git commit&lt;/em&gt; the file above is called to populate the commit message and, thus, enables us to adopt a template in our commits. The script is called with three arguments:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;File name&lt;/li&gt;
+&lt;li&gt;The name of a temporary file that contains the message&lt;/li&gt;
+&lt;li&gt;The type of commit&lt;/li&gt;
+&lt;li&gt;The commit SHA1 hash&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;At Agilize the issue code follows the regex in the line 6. Once we use &lt;a href=&quot;http://nvie.com/posts/a-successful-git-branching-model/&quot;&gt;gitflow&lt;/a&gt; to manage our branches they will always follow some examples like &lt;em&gt;feature/AGZ-1256&lt;/em&gt;, &lt;em&gt;hotfix/AGZ-981&lt;/em&gt;, &lt;em&gt;release/AGZ-453&lt;/em&gt;. Therefore, commits are not created in the master or dev branches. Due to that, the variable in the line 6 defines a regex that will use the branch name to create our commit message. If you want to apply that to your company it just takes to update the regex (pay attention to the regex group in line 17).&lt;/p&gt;
+&lt;p&gt;The lines 15 and 16 check if the current branch is not master/dev and contains the issue code. The final lines just create the message with the code.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Obs:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;You can make the cursor start right after the template message. Just add the snippet below to your &lt;em&gt;.bashrc&lt;/em&gt; file.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;GIT_EDITOR&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;vim -c&apos;startinsert|norm! ggA&apos;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;References&lt;/h4&gt;
+&lt;p&gt;Want more resources? Check out the links below:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.atlassian.com/git/tutorials/git-hooks&quot;&gt;https://www.atlassian.com/git/tutorials/git-hooks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/41232722/open-git-commit-editor-to-specific-cursor-location&quot;&gt;http://stackoverflow.com/questions/41232722/open-git-commit-editor-to-specific-cursor-location&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[Git hooks, issue tracker e Git Flow]]></title><description><![CDATA[Na Agilize o fluxo comum de trabalho do desenvolvedor envolve o uso do Jira para gerenciamento das tarefas, Git & Git Flow para…]]></description><link>https://vcrmartinez.com/2017/2017-05-07-Git_hooks_issue_tracker_e_Git_Flow/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-05-07-Git_hooks_issue_tracker_e_Git_Flow/</guid><pubDate>Sun, 07 May 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Na &lt;a href=&quot;https://www.agilize.com.br/&quot;&gt;Agilize&lt;/a&gt; o fluxo comum de trabalho do desenvolvedor envolve o uso do Jira para gerenciamento das tarefas, Git &amp;#x26; Git Flow para versionamento de código, Slack para comunicação e ferramentas como IDE, Editor de Texto e Terminal. Basicamente, a sprint é mantida no Jira com cards que descrevem as funcionalidades, bugs, spikes e chores seguindo algumas convenções do SCRUM e, então, o programador atribui um card para si.&lt;/p&gt;
 &lt;p&gt;Durante o fluxo de desenvolvimento existe uma convenção de que &lt;strong&gt;commits devem ter o código do card que o programador está trabalhando&lt;/strong&gt;. Após alguns commits a convenção se torna chata de manter (pois você tem que digitar o código do card a todo momento). Existe uma forma de automatizar isso com Git Hooks.&lt;/p&gt;
 &lt;h2&gt;Git Hooks&lt;/h2&gt;
 &lt;p&gt;Git permite executir um script toda vez que um evento acontecer no repositório. Por exemplo, é possível configurar o editor de texto com uma mensagem de template que deve ser preenchida. Este &lt;a href=&quot;https://www.atlassian.com/git/tutorials/git-hooks&quot;&gt;tutorial&lt;/a&gt; explica o poder do Git Hooks e disponibiliza um trecho de código que será customizado neste post para endereçar nossas necessidades.&lt;/p&gt;
@@ -2698,46 +2814,4 @@ issue_match &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; re.match
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.atlassian.com/git/tutorials/git-hooks&quot;&gt;Git hooks&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/41232722/open-git-commit-editor-to-specific-cursor-location&quot;&gt;Open git commit editor to specific cursor location&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[Git hooks, issue tracker and Git Flow]]></title><description><![CDATA[At Agilize a common developer workflow involves the usage of Jira for issue tracking, Git + Git Flow for versioning code, Slack for…]]></description><link>https://vcrmartinez.com/2017/2017-05-07-Git_hooks_issue_tracker_and_Git_Flow/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-05-07-Git_hooks_issue_tracker_and_Git_Flow/</guid><pubDate>Sun, 07 May 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;At &lt;a href=&quot;https://www.agilize.com.br/&quot;&gt;Agilize&lt;/a&gt; a common developer workflow involves the usage of Jira for issue tracking, Git + Git Flow for versioning code, Slack for communication and programmer’s tools like IDE, Text Editor and Terminal. Basically, a prioritized sprint is maintained in Jira full of cards that describe the features, bugs, spikes and chores following some conventions of SCRUM and the software engineer assign himself to a card. During the development there is a convention that &lt;strong&gt;commits must have the issue code the engineer is working on&lt;/strong&gt;. After some commits the convention gets boring (you have to type the issue code all time). Hopefully there is a way to automate that.&lt;/p&gt;
-&lt;h2&gt;Git Hooks&lt;/h2&gt;
-&lt;p&gt;Git allows us to run a script every time a particular event occurs in the repository. For instance, it is possible to setup the text editor with a template message. This &lt;a href=&quot;https://www.atlassian.com/git/tutorials/git-hooks&quot;&gt;tutorial&lt;/a&gt; explains the power of git hooks and provides a snippet that will be customized in this post to address our necessities.&lt;/p&gt;
-&lt;p&gt;Inside your repository there is a folder &lt;em&gt;.git/hooks&lt;/em&gt; that contains some sample scripts that can be used as a playground and they end with &lt;em&gt;.sample&lt;/em&gt; in order to not be interpreted by Git. Create a file named &lt;em&gt;prepare-commit-msg&lt;/em&gt; that will contain the code below to automate the commit message.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token shebang important&quot;&gt;#!/usr/bin/env python3&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;import&lt;/span&gt; sys, os, re
-from subprocess &lt;span class=&quot;token function&quot;&gt;import&lt;/span&gt; check_output
-
-&lt;span class=&quot;token comment&quot;&gt;# Setup&lt;/span&gt;
-branch_regex &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; r&lt;span class=&quot;token string&quot;&gt;&apos;.+/(AGZ-\d+).*&apos;&lt;/span&gt;
-
-&lt;span class=&quot;token comment&quot;&gt;# Collect the parameters&lt;/span&gt;
-commit_msg_filepath &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; sys.argv&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
-
-&lt;span class=&quot;token comment&quot;&gt;# Figure out which branch we&apos;re on&lt;/span&gt;
-branch &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; check_output&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;git&apos;&lt;/span&gt;, &lt;span class=&quot;token string&quot;&gt;&apos;symbolic-ref&apos;&lt;/span&gt;, &lt;span class=&quot;token string&quot;&gt;&apos;--short&apos;&lt;/span&gt;, &lt;span class=&quot;token string&quot;&gt;&apos;HEAD&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;.strip&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;token comment&quot;&gt;# Populate the commit message with the issue #, if there is one&lt;/span&gt;
-issue_match &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; re.match&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;branch_regex, branch.decode&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;utf-8&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;, re.M&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;re.I&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; issue_match:
-    issue_code &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; issue_match.group&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-    with open&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;commit_msg_filepath, &lt;span class=&quot;token string&quot;&gt;&apos;r+&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; as f:
-        content &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; f.read&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-        f.seek&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-        f.write&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;%s %s&quot;&lt;/span&gt; % &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;issue_code, content&lt;span class=&quot;token punctuation&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;After typing &lt;em&gt;git commit&lt;/em&gt; the file above is called to populate the commit message and, thus, enables us to adopt a template in our commits. The script is called with three arguments:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;File name&lt;/li&gt;
-&lt;li&gt;The name of a temporary file that contains the message&lt;/li&gt;
-&lt;li&gt;The type of commit&lt;/li&gt;
-&lt;li&gt;The commit SHA1 hash&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;At Agilize the issue code follows the regex in the line 6. Once we use &lt;a href=&quot;http://nvie.com/posts/a-successful-git-branching-model/&quot;&gt;gitflow&lt;/a&gt; to manage our branches they will always follow some examples like &lt;em&gt;feature/AGZ-1256&lt;/em&gt;, &lt;em&gt;hotfix/AGZ-981&lt;/em&gt;, &lt;em&gt;release/AGZ-453&lt;/em&gt;. Therefore, commits are not created in the master or dev branches. Due to that, the variable in the line 6 defines a regex that will use the branch name to create our commit message. If you want to apply that to your company it just takes to update the regex (pay attention to the regex group in line 17).&lt;/p&gt;
-&lt;p&gt;The lines 15 and 16 check if the current branch is not master/dev and contains the issue code. The final lines just create the message with the code.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Obs:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;You can make the cursor start right after the template message. Just add the snippet below to your &lt;em&gt;.bashrc&lt;/em&gt; file.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;GIT_EDITOR&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;vim -c&apos;startinsert|norm! ggA&apos;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;References&lt;/h4&gt;
-&lt;p&gt;Want more resources? Check out the links below:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.atlassian.com/git/tutorials/git-hooks&quot;&gt;https://www.atlassian.com/git/tutorials/git-hooks&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/41232722/open-git-commit-editor-to-specific-cursor-location&quot;&gt;http://stackoverflow.com/questions/41232722/open-git-commit-editor-to-specific-cursor-location&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;</content:encoded></item><item><title><![CDATA[Maintaining 200+ spiders and still having time to sleep]]></title><link>https://vcrmartinez.com/2016/2016-11-25-Maintaining-200-spiders-and-still-having-time-to-sleep/Maintaining-200-spiders-and-still-having-time-to-sleep/</link><guid isPermaLink="false">https://vcrmartinez.com/2016/2016-11-25-Maintaining-200-spiders-and-still-having-time-to-sleep/Maintaining-200-spiders-and-still-having-time-to-sleep/</guid><pubDate>Fri, 25 Nov 2016 03:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Crawling the web like a boss]]></title><link>https://vcrmartinez.com/2016/2016-10-15-Crawling-the-web-like-a-boss/2016-10-15-Crawling-the-web-like-a-boss/</link><guid isPermaLink="false">https://vcrmartinez.com/2016/2016-10-15-Crawling-the-web-like-a-boss/2016-10-15-Crawling-the-web-like-a-boss/</guid><pubDate>Sat, 15 Oct 2016 03:00:00 GMT</pubDate><content:encoded></content:encoded></item></channel></rss>
