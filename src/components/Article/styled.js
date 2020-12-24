@@ -14,13 +14,13 @@ export const Article = styled.article`
   line-height: 2;
   font-size: 1.2rem;
 `
-export const Header = styled.header``
+export const Header = styled.header`
+  color: gray;
+`
 
 export const DateBox = styled.div``
 
-export const Date = styled.span`
-  color: gray;
-`
+export const Date = styled.span``
 
 export const TagsWrapper = styled.div``
 
@@ -45,7 +45,7 @@ export const TagItem = styled.li`
 `
 
 export const TagItemFirst = styled.li`
-  font-weight: 300;
+  font-weight: 600;
   margin-right: 1em;
   color: gray;
 
