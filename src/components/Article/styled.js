@@ -14,11 +14,11 @@ export const Article = styled.article`
   line-height: 2;
   font-size: 1.2rem;
 `
-export const Header = styled.header`
+export const Header = styled.header``
+
+export const DateBox = styled.div`
   color: gray;
 `
-
-export const DateBox = styled.div``
 
 export const Date = styled.span``
 
