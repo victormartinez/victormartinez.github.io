@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 <url> <loc>https://vcrmartinez.com/en/offline-plugin-app-shell-fallback/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vcrmartinez.com/pt/offline-plugin-app-shell-fallback/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://vcrmartinez.com/blog/2021/2021-01-12-Using_Postgres_array_agg_function_to_aggregate_string_columns/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://vcrmartinez.com/en/blog/2021/2021-01-12-Using_Postgres_array_agg_function_to_aggregate_string_columns/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://vcrmartinez.com/pt/blog/2021/2021-01-12-Using_Postgres_array_agg_function_to_aggregate_string_columns/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vcrmartinez.com/blog/2021/2021-01-12-Usando_a_funcao_Postgres_array_agg_para_agregar_colunas_de_string/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vcrmartinez.com/en/blog/2021/2021-01-12-Usando_a_funcao_Postgres_array_agg_para_agregar_colunas_de_string/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vcrmartinez.com/pt/blog/2021/2021-01-12-Usando_a_funcao_Postgres_array_agg_para_agregar_colunas_de_string/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vcrmartinez.com/blog</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vcrmartinez.com/en/blog</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vcrmartinez.com/pt/blog</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -17,9 +17,9 @@
 <url> <loc>https://vcrmartinez.com/blog/page/4</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vcrmartinez.com/en/blog/page/4</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vcrmartinez.com/pt/blog/page/4</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://vcrmartinez.com/blog/2021/2021-01-12-Usando_a_funcao_Postgres_array_agg_para_agregar_colunas_de_string/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://vcrmartinez.com/en/blog/2021/2021-01-12-Usando_a_funcao_Postgres_array_agg_para_agregar_colunas_de_string/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://vcrmartinez.com/pt/blog/2021/2021-01-12-Usando_a_funcao_Postgres_array_agg_para_agregar_colunas_de_string/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vcrmartinez.com/blog/2021/2021-01-12-Using_Postgres_array_agg_function_to_aggregate_string_columns/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vcrmartinez.com/en/blog/2021/2021-01-12-Using_Postgres_array_agg_function_to_aggregate_string_columns/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vcrmartinez.com/pt/blog/2021/2021-01-12-Using_Postgres_array_agg_function_to_aggregate_string_columns/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vcrmartinez.com/blog/2020/2020-12-24-Do_Jekyll_para_o_Gatsby/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vcrmartinez.com/en/blog/2020/2020-12-24-Do_Jekyll_para_o_Gatsby/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vcrmartinez.com/pt/blog/2020/2020-12-24-Do_Jekyll_para_o_Gatsby/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
