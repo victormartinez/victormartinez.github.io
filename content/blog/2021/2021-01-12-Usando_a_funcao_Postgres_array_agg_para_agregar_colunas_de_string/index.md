@@ -10,7 +10,7 @@ image_author: Nam Anh
 language: pt
 ---
 
-Graças a [@copquevictor](https://twitter.com/copquevictor) eu aprendi uma função de agregação muito útil do Posgres: **array_agg**. Para entendê-las, vamos supor que você tenha que notificar interessados em relatórios e sua query fornece como saída a tabela abaixo:
+Graças a [@copquevictor](https://twitter.com/copquevictor) eu aprendi uma função de agregação muito útil do Posgres: **array_agg**. Para entendê-la, vamos supor que você tenha que notificar interessados em relatórios e sua query fornece a tabela abaixo como saída:
 
 ```markdown
 | Report    | Email                  |
@@ -22,7 +22,7 @@ Graças a [@copquevictor](https://twitter.com/copquevictor) eu aprendi uma funç
 | Report #3 | anderson@gmail.com     |
 ```
 
-Como você pode ver, nós temos uma relação Um-para-muitos: um relatório é de interesse de um ou mais emails. Você pode notificar os emails por meio (i) da iteração dos registros (um por um) **OU** (ii) você pode agrupar os emails por relatório. Para o segundo caso, não seria legal obter os resultados abaixo?
+Como você pode ver, nós temos uma relação Um-para-Muitos: um relatório é de interesse de um ou mais emails. Você pode notificar os emails por meio (i) da iteração dos registros (um por um) **OU** (ii) você pode agrupar os emails por relatório. Para o segundo caso, não seria legal obter os resultados abaixo?
 
 ```
 | Report    | Email                                    |
