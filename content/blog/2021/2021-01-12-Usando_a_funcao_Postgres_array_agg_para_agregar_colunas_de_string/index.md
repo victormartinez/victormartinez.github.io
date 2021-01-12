@@ -5,6 +5,8 @@ category: Databases
 date: 2021-01-12T00:00:00
 tags: [postgres, array, agg, function, sqlalchemy]
 image: featured.png
+image_url: https://unsplash.com/photos/QJbyG6O0ick
+image_author: Nam Anh
 language: pt
 ---
 
