@@ -54,6 +54,7 @@ Dicas:\_
 - Verifique os logs de um container anterior: `kubectl logs <POD-NAME> -c <CONTAINER-NAME> --previous`
 - Verifique os logs de todos os containers que possuem uma label: `kubectl logs -f -l <KEY>=<VALUE> --all-containers`
 - Obtenha uma shell interativo: `kubectl exec -it <POD-NAME> [-n <NAMESPACE>] -- /bin/bash`
+- Faça o dump de um recurso para um arquivo yaml: `kubectl get <OBJECT> <OBJECT-NAME> -o yaml > <filename>.yaml
 - Obtenha as métricas de memória e cpu memory:
   ** Todos os nós: `kubectl top nodes`
   ** Um nó: `kubectl top node <NODE-NAME>`
