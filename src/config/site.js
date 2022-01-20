@@ -22,7 +22,7 @@ module.exports = {
   ],
   pt: {
     title: `Olá, eu sou o Victor!`,
-    description: `Eu sou (principalmente) um desenvolvedor backend que gosta de tópicos relacionados a desenvolvimento de software, python 💓, carreira e outras coisas legais.`,
+    description: `Eu sou (principalmente) um desenvolvedor backend que gosta de tópicos relacionados a desenvolvimento de software, python 💚, carreira e outras coisas legais.`,
     noPosts: `Desculpa, eu ainda não publiquei um post.`,
     talks: {
       title: `Palestras`,
@@ -39,7 +39,7 @@ module.exports = {
   },
   en: {
     title: `Hi, I'm Victor!`,
-    description: `I'm (mostly) a backend developer who like topics related to software development, python 💓, career and other cool stuff.`,
+    description: `I'm (mostly) a backend developer who like topics related to software development, python 💚, career and other cool stuff.`,
     noPosts: `Sorry, I haven't published any post yet.`,
     talks: {
       title: `Talks`,
