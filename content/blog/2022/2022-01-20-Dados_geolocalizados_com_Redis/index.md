@@ -32,7 +32,7 @@ Armazenar qualquer coisa no Redis requer a utilização de índices. De forma si
 
 ![Ilustração simplificada da estrutura de dados.](./redis-geoloc-architecture.png "Ilustração simplificada da estrutura de dados.")
 
-No exemplo, criamos um índice chamado *Salvador* (cidade em que sou nascido e criado =) ) que aponta para um conjunto de pontos.
+No exemplo, criamos um índice chamado *Salvador* (cidade em que sou nascido e criado 😊) que aponta para um conjunto de pontos.
 
 **Atenção:** como o Redis utiliza a estrutura de conjuntos não é possível existir no mesmo índice dois pontos com o mesmo nome. A inserção de um ponto com o mesmo nome corresponde a uma atualização das coordenadas (operação de *upsert*).
 
@@ -74,7 +74,7 @@ Uma vez inseridos os pontos, podemos brincar com a API. Vamos a alguns casos de 
 "749.1386"
 ```
 
-*OBS: Você pode passar, no final, a métrica de distância que você quer (m, km, ft, mi).*
+*OBS:* Você pode passar, no final, a métrica de distância que você quer (m, km, ft, mi).
 
 ### Atualizar um ponto
 
@@ -86,7 +86,7 @@ Uma vez inseridos os pontos, podemos brincar com a API. Vamos a alguns casos de 
 127.0.0.1:6379> GEOPOS location:salvador elevadorlacerda
 ```
 
-OBS: *Como estamos trabalhando com conjuntos a atualização de um ponto se dá por inserir um ponto com a mesma string (itens repetidos não são permitidos).*
+*OBS:* Como estamos trabalhando com conjuntos a atualização de um ponto se dá por inserir um ponto com a mesma string (itens repetidos não são permitidos).
 
 ### Buscar
 

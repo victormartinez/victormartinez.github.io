@@ -32,7 +32,7 @@ Storing anything in Redis requires usage of index. In a simple manner, it is a *
 
 ![Simplified architecture of geoloc data structure.](./redis-geoloc-architecture.png "Simplified architecture of geoloc data structure.")
 
-In the example we have an index named *Salvador* (city I'm born and bred =)) that points to a set of points.
+In the example we have an index named *Salvador* (city I'm born and bred 😊) that points to a set of points.
 
 **Attention:** as redis uses sorted set it is not possible to store two points with the same label. The insertion of a point correspond to an update of coordinates (**upsert**).
 
@@ -123,7 +123,7 @@ Once we have the points inserted, we can play with the API. Let's dive into some
 
 ```
 
-**Obs:**
+**OBS:**
 
 - `GEOSEARCH` allows to constraint the quantity of results by receiving the `COUNT` parameter.
 - Replace `BYRADIUS 200 km` by `BYBOX 200 200 km` and Redis will consider a rectangle rather than a circular area.
