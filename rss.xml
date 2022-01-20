@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://vcrmartinez.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 20 Jan 2022 17:32:34 GMT</lastBuildDate><item><title><![CDATA[Dados geolocalizados com Redis]]></title><description><![CDATA[TL;DR; Vamos usar o Redis para armazenar dados geolocalizados. Quando falamos em Redis invariavelmente pensamos em cache. Porém ele evoluiu…]]></description><link>https://vcrmartinez.com/2022/2022-01-20-Dados_geolocalizados_com_Redis/</link><guid isPermaLink="false">https://vcrmartinez.com/2022/2022-01-20-Dados_geolocalizados_com_Redis/</guid><pubDate>Thu, 20 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;TL;DR;&lt;/em&gt; Vamos usar o Redis para armazenar dados geolocalizados.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://vcrmartinez.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 20 Jan 2022 17:51:18 GMT</lastBuildDate><item><title><![CDATA[Dados geolocalizados com Redis]]></title><description><![CDATA[TL;DR; Vamos usar o Redis para armazenar dados geolocalizados. Quando falamos em Redis invariavelmente pensamos em cache. Porém ele evoluiu…]]></description><link>https://vcrmartinez.com/2022/2022-01-20-Dados_geolocalizados_com_Redis/</link><guid isPermaLink="false">https://vcrmartinez.com/2022/2022-01-20-Dados_geolocalizados_com_Redis/</guid><pubDate>Thu, 20 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;TL;DR;&lt;/em&gt; Vamos usar o Redis para armazenar dados geolocalizados.&lt;/p&gt;
 &lt;p&gt;Quando falamos em Redis invariavelmente pensamos em cache. Porém ele evoluiu e hoje é considerado um servidor que armazena diferentes estruturas de dados (hashes, sets, lists, etc).&lt;/p&gt;
 &lt;p&gt;No post de hoje vamos sair do uso comum e entender de que forma o Redis nos ajuda com quando precisamos trabalhar dados geolocalizados (para mais info, vide &lt;a href=&quot;https://redis.io/commands#geo&quot;&gt;documentação&lt;/a&gt;).&lt;/p&gt;
 &lt;h2&gt;Configuração do ambiente&lt;/h2&gt;
@@ -30,7 +30,7 @@ $ redis-cli
         loading=&quot;lazy&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;No exemplo, criamos um índice chamado &lt;em&gt;Salvador&lt;/em&gt; (cidade em que sou nascido e criado =) ) que aponta para um conjunto de pontos.&lt;/p&gt;
+&lt;p&gt;No exemplo, criamos um índice chamado &lt;em&gt;Salvador&lt;/em&gt; (cidade em que sou nascido e criado 😊) que aponta para um conjunto de pontos.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Atenção:&lt;/strong&gt; como o Redis utiliza a estrutura de conjuntos não é possível existir no mesmo índice dois pontos com o mesmo nome. A inserção de um ponto com o mesmo nome corresponde a uma atualização das coordenadas (operação de &lt;em&gt;upsert&lt;/em&gt;).&lt;/p&gt;
 &lt;h2&gt;Mãos à obra&lt;/h2&gt;
 &lt;p&gt;O Redis nos fornece uma API com os seguintes comandos: &lt;code class=&quot;language-text&quot;&gt;GEOADD&lt;/code&gt;,&lt;code class=&quot;language-text&quot;&gt;GEODIST&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEOHASH&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEOPOS&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEOSEARCH&lt;/code&gt;. Vamos iniciar adicionando alguns pontos ao índice &lt;code class=&quot;language-text&quot;&gt;location:salvador&lt;/code&gt;:&lt;/p&gt;
@@ -58,14 +58,14 @@ $ redis-cli
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEODIST location:salvador faroldabarra morrodocristo
 
 &lt;span class=&quot;token string&quot;&gt;&quot;749.1386&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;em&gt;OBS: Você pode passar, no final, a métrica de distância que você quer (m, km, ft, mi).&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;OBS:&lt;/em&gt; Você pode passar, no final, a métrica de distância que você quer (m, km, ft, mi).&lt;/p&gt;
 &lt;h3&gt;Atualizar um ponto&lt;/h3&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOADD location:salvador -38 -12 elevadorlacerda
 
 &lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOADD location:salvador -38.5159605 -12.9740495 elevadorlacerda
 
 &lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOPOS location:salvador elevadorlacerda&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;OBS: &lt;em&gt;Como estamos trabalhando com conjuntos a atualização de um ponto se dá por inserir um ponto com a mesma string (itens repetidos não são permitidos).&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;OBS:&lt;/em&gt; Como estamos trabalhando com conjuntos a atualização de um ponto se dá por inserir um ponto com a mesma string (itens repetidos não são permitidos).&lt;/p&gt;
 &lt;h3&gt;Buscar&lt;/h3&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Pontos em um raio de 1600 metros a uma determinada longitude/latitude&lt;/span&gt;
 &lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOSEARCH location:salvador FROMLONLAT -38.5175291 -13.0060716 BYRADIUS &lt;span class=&quot;token number&quot;&gt;1600&lt;/span&gt; m
@@ -174,7 +174,7 @@ $ redis-cli
         loading=&quot;lazy&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;In the example we have an index named &lt;em&gt;Salvador&lt;/em&gt; (city I’m born and bred =)) that points to a set of points.&lt;/p&gt;
+&lt;p&gt;In the example we have an index named &lt;em&gt;Salvador&lt;/em&gt; (city I’m born and bred 😊) that points to a set of points.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Attention:&lt;/strong&gt; as redis uses sorted set it is not possible to store two points with the same label. The insertion of a point correspond to an update of coordinates (&lt;strong&gt;upsert&lt;/strong&gt;).&lt;/p&gt;
 &lt;h2&gt;Getting the hands dirty&lt;/h2&gt;
 &lt;p&gt;Redis gives us an API with the following commands: &lt;code class=&quot;language-text&quot;&gt;GEOADD&lt;/code&gt;,&lt;code class=&quot;language-text&quot;&gt;GEODIST&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEOHASH&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEOPOS&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEOSEARCH&lt;/code&gt;. Let’s start by adding some points to the index &lt;code class=&quot;language-text&quot;&gt;location:salvador&lt;/code&gt;:&lt;/p&gt;
@@ -240,7 +240,7 @@ $ redis-cli
    &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;4.6149&quot;&lt;/span&gt;
    &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-38.51392239332199097&quot;&lt;/span&gt;
       &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-12.97303874405036339&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;Obs:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OBS:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;GEOSEARCH&lt;/code&gt; allows to constraint the quantity of results by receiving the &lt;code class=&quot;language-text&quot;&gt;COUNT&lt;/code&gt; parameter.&lt;/li&gt;
 &lt;li&gt;Replace &lt;code class=&quot;language-text&quot;&gt;BYRADIUS 200 km&lt;/code&gt; by &lt;code class=&quot;language-text&quot;&gt;BYBOX 200 200 km&lt;/code&gt; and Redis will consider a rectangle rather than a circular area.&lt;/li&gt;
