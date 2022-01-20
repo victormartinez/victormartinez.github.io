@@ -79,5 +79,9 @@ const GlobalStyles = createGlobalStyle`
     border-bottom: 1px dashed #3498db;
     opacity: 0.8;
   }
+
+  em {
+    font-style: italic;
+  }
 `
 export default GlobalStyles
