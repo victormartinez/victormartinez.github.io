@@ -83,5 +83,9 @@ const GlobalStyles = createGlobalStyle`
   em {
     font-style: italic;
   }
+
+  code.language-text {
+    color: #E6676B;
+  }
 `
 export default GlobalStyles
