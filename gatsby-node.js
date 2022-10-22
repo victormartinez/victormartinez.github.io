@@ -15,7 +15,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               slug
             }
             frontmatter {
-              language
               layout
             }
           }
@@ -38,35 +37,64 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
-  if (posts.length > 0) {
-    posts.forEach((post, index) => {
+  posts.forEach((post, index) => {
+    createPage({
+      path: `/blog${post.fields.slug}`,
+      component: path.resolve(`./src/templates/blog-post.js`),
+      context: {
+        id: post.id,
+      },
+    })
+
+    const postsPerPage = 6
+    const totalPosts = posts.length
+    const numPages = Math.ceil(totalPosts / postsPerPage)
+
+    Array.from({ length: numPages }).forEach((_, index) => {
       createPage({
-        path: `/blog${post.fields.slug}`,
-        component: path.resolve(`./src/templates/blog-post.js`),
+        path: index === 0 ? `/blog` : `/blog/page/${index + 1}`,
+        component: path.resolve(`./src/templates/blog-index.js`),
         context: {
-          id: post.id,
+          limit: postsPerPage,
+          skip: index * postsPerPage,
+          numPages,
+          postsPerPage,
+          currentPage: index + 1,
         },
       })
+    })
+  })
 
-      const postsPerPage = 6
-      const totalPosts = posts.length
-      const numPages = Math.ceil(totalPosts / postsPerPage)
+  // Create reviews pages
+  const bookReviews = allMarkdowns.filter(markdown => markdown.frontmatter.layout === "bookreview")
+  bookReviews.forEach((review, index) => {
+    console.log("creating book review page")
+    createPage({
+      path: `/bookreviews${review.fields.slug}`,
+      component: path.resolve(`./src/templates/bookreview-post.js`),
+      context: {
+        id: review.id,
+      },
+    })
 
-      Array.from({ length: numPages }).forEach((_, index) => {
-        createPage({
-          path: index === 0 ? `/blog` : `/blog/page/${index + 1}`,
-          component: path.resolve(`./src/templates/blog-index.js`),
-          context: {
-            limit: postsPerPage,
-            skip: index * postsPerPage,
-            numPages,
-            postsPerPage,
-            currentPage: index + 1,
-          },
-        })
+    const reviewsPerPage = 6
+    const totalReviews = bookReviews.length
+    const numReviewPages = Math.ceil(totalReviews / reviewsPerPage)
+
+    Array.from({ length: numReviewPages }).forEach((_, index) => {
+      createPage({
+        path: index === 0 ? `/bookreviews` : `/bookreviews/page/${index + 1}`,
+        component: path.resolve(`./src/templates/bookreview-index.js`),
+        context: {
+          limit: reviewsPerPage,
+          skip: index * reviewsPerPage,
+          numPages: numReviewPages,
+          postsPerPage: reviewsPerPage,
+          currentPage: index + 1,
+        },
       })
     })
-  }
+  })
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

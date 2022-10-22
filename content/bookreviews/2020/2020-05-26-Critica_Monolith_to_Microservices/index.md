@@ -1,5 +1,5 @@
 ---
-layout: review
+layout: bookreview
 title: "Crítica: Monolith to Microservices"
 category: Reviews
 tags: [book, review, monolith, microservices]

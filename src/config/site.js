@@ -34,7 +34,19 @@ module.exports = {
     },
     blog: {
       title: `Blog`,
-      description: `Aqui você encontra minhas postagens. Gosto de tópicos envolvendo programação, python, carreira, startups e tecnologia em geral.`,
+      description: `Aqui você encontra minhas postagens.`,
     },
+    talks: {
+      title: `Talks`,
+      description: ``,
+    },
+    studynotes: {
+      title: `Study Notes`,
+      description: ``,
+    },
+    bookreviews: {
+      title: `Book Reviews`,
+      description: `De vez em quando leio alguns livros técnicos e publico minhas impressões.`,
+    }
   }
 }

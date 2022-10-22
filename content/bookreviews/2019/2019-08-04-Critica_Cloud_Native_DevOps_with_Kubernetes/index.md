@@ -1,5 +1,5 @@
 ---
-layout: review
+layout: bookreview
 title: "Crítica: Cloud Native DevOps with Kubernetes"
 category: Reviews
 tags: [book, review, cloud, native, devops, kubernetes, k8s]

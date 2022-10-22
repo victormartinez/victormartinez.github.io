@@ -53,8 +53,9 @@ export const NavList = styled.ul`
 export const NavItem = styled.li`
   flex-direction: row;
   list-style-type: none;
-  margin-right: 1em;
+  margin-right: 1.6em;
 `
+
 export const NavLink = styled(Link)`
   text-decoration: none;
   color: #fff;
