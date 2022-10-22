@@ -141,7 +141,7 @@ export const pageQuery = graphql`
     portuguesePosts: allMarkdownRemark(
       filter: {
         fileAbsolutePath: { regex: "/content/blog/" }
-        frontmatter: { language: { eq: "pt" } }
+        frontmatter: { layout: { eq: "post" } }
       }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit

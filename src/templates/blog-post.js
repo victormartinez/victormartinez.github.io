@@ -63,7 +63,6 @@ export const pageQuery = graphql`
         date
         description
         tags
-        rating
         image_url
         image_author
         image {
