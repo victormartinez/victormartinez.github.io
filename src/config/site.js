@@ -38,7 +38,7 @@ module.exports = {
     },
     talks: {
       title: `Talks`,
-      description: ``,
+      description: `Às vezes eu fico corajoso o suficiente para falar em público sobre algum tema.`,
     },
     studynotes: {
       title: `Study Notes`,
