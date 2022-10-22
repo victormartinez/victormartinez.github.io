@@ -36,22 +36,5 @@ module.exports = {
       title: `Blog`,
       description: `Aqui você encontra minhas postagens. Gosto de tópicos envolvendo programação, python, carreira, startups e tecnologia em geral.`,
     },
-  },
-  en: {
-    title: `Hi, I'm Victor!`,
-    description: `I'm (mostly) a backend developer who like topics related to software development, python 💚, career and other cool stuff.`,
-    noPosts: `Sorry, I haven't published any post yet.`,
-    talks: {
-      title: `Talks`,
-      description: `Sometimes I get brave enough to talk about a topic in front of many people.`,
-    },
-    about: {
-      title: `About me`,
-      description: `Here we go!`,
-    },
-    blog: {
-      title: `Blog`,
-      description: `Here you find my blog posts. I like topics involving programming, python, career, startups and technology.`,
-    },
-  },
+  }
 }

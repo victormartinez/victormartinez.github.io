@@ -61,10 +61,6 @@ export const pageQuery = graphql`
         author {
           name
         }
-        en {
-          title
-          description
-        }
         pt {
           title
           description

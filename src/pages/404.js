@@ -5,7 +5,7 @@ import LayoutContent from "../components/LayoutContent"
 import SEO from "../components/seo"
 import NotFound from "../components/NotFound"
 
-const NotFoundPage = ({ data, location }) => {
+const NotFoundPage = ({ data }) => {
   const social = data.site.siteMetadata.social
 
   return (

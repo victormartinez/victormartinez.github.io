@@ -1,7 +1,7 @@
 import React from "react"
 
 import { homeUrl, blogUrl } from "../../utils/routing.js"
-import { changeLocale, useIntl } from "gatsby-plugin-intl"
+import { useIntl } from "gatsby-plugin-intl"
 
 import * as S from "./styled"
 
@@ -20,22 +20,6 @@ const TopBar = () => {
             <S.NavItem>
               <S.NavLink to={`${blogUrl(intl.locale)}`}>Blog</S.NavLink>
             </S.NavItem>
-            <S.NavAnchorItem>
-              <S.NavAnchor
-                className={intl.locale === `en` ? `active` : undefined}
-                onClick={() => changeLocale(`en`, `/`)}
-              >
-                EN
-              </S.NavAnchor>
-            </S.NavAnchorItem>
-            <S.NavAnchorItem>
-              <S.NavAnchor
-                className={intl.locale === `pt` ? `active` : undefined}
-                onClick={() => changeLocale(`pt`, `/`)}
-              >
-                PT
-              </S.NavAnchor>
-            </S.NavAnchorItem>
           </S.NavList>
         </S.Nav>
       </S.TopBarContainer>

@@ -30,12 +30,6 @@ export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
-        en {
-          about {
-            title
-            description
-          }
-        }
         pt {
           about {
             title

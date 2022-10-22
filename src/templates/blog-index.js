@@ -21,14 +21,10 @@ const BlogIndex = ({ data, pageContext }) => {
   const noPosts = data.site.siteMetadata[intl.locale].noPosts
   const description = data.site.siteMetadata[intl.locale].blog.description
   const social = data.site.siteMetadata.social
-  const englishPosts = data.englishPosts.nodes
-  const portuguesePosts = data.portuguesePosts.nodes
+  const posts = data.portuguesePosts.nodes
   const author = data.site.siteMetadata.author.name
   const keywords = data.site.siteMetadata.keywords
   const image = data.allFile.edges[0].node.publicURL
-
-  // Filtering posts by locale
-  const posts = intl.locale === "pt" ? portuguesePosts : englishPosts
 
   const { currentPage, numPages } = pageContext
   const isFirst = currentPage === 1
@@ -133,13 +129,6 @@ export const pageQuery = graphql`
           speakerdeck
         }
         keywords
-        en {
-          noPosts
-          blog {
-            title
-            description
-          }
-        }
         pt {
           noPosts
           blog {
@@ -153,38 +142,6 @@ export const pageQuery = graphql`
       filter: {
         fileAbsolutePath: { regex: "/content/blog/" }
         frontmatter: { language: { eq: "pt" } }
-      }
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: $limit
-      skip: $skip
-    ) {
-      nodes {
-        excerpt(pruneLength: 200)
-        fields {
-          slug
-        }
-        frontmatter {
-          date
-          title
-          description
-          category
-          language
-          image {
-            publicURL
-            childImageSharp {
-              fluid(maxHeight: 368, maxWidth: 640) {
-                ...GatsbyImageSharpFluid_tracedSVG
-              }
-            }
-          }
-        }
-        timeToRead
-      }
-    }
-    englishPosts: allMarkdownRemark(
-      filter: {
-        fileAbsolutePath: { regex: "/content/blog/" }
-        frontmatter: { language: { eq: "en" } }
       }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
