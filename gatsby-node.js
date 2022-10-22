@@ -33,7 +33,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   const allMarkdowns = result.data.allMarkdownRemark.nodes
-  const posts = allMarkdowns.filter(post => post.frontmatter.layout === "post")
+  const posts = allMarkdowns.filter(markdown => markdown.frontmatter.layout === "post")
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -49,7 +49,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
 
       const postsPerPage = 6
-      const totalPosts = allPosts.filter(post => post.frontmatter.layout === "post").length
+      const totalPosts = posts.length
       const numPages = Math.ceil(totalPosts / postsPerPage)
 
       Array.from({ length: numPages }).forEach((_, index) => {

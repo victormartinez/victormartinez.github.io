@@ -5,7 +5,7 @@ category: Web Development
 tags: [elasticsearch, python]
 date: 2018-02-02T00:00:00
 image: featured.png
-language: pt
+
 ---
 
 Então você tem muitos documentos e precisa buscar com rapidez, certo? Ou você tem muitos dados e precisa processar e extrair métricas. De qualquer jeito, Elasticsearch (ES) pode ser um poderoso motor para ajudá-lo a indexar, buscar e extrair métricas dos seu armazenamento orientado a documentos. Este post é bem direto e pretende apresentar como usar a linguagem Python para interagir com o motor e indexar, retornar e buscar documentos.

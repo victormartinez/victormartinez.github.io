@@ -5,7 +5,7 @@ category: Web Development
 date: 2020-12-24T00:00:00
 tags: [gatsby, javascript, react]
 image: featured.png
-language: pt
+
 ---
 
 Durante os útlimos meses eu tenho estudado desenvolvimento front-end e um dos primeiros projetos para praticar foi migrar meu site do [Jekyll](https://jekyllrb.com/) para o [Gatsby](https://www.gatsbyjs.com/). Só por isso eu já achei a migração vantajosa mas acabei descobrindo outros benefícios à medida que eu desenvolvia as funcionalidades do site.

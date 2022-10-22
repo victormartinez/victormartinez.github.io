@@ -7,7 +7,7 @@ tags: [alembic, sqlalchemy, migration, schema, public, python, flask]
 image: featured.jpg
 image_url: https://unsplash.com/photos/lRoX0shwjUQ
 image_author: Jan Antonin Kolar
-language: pt
+
 ---
 
 Há algum tempo, desenvolvi um projeto de back-end que usava uma instância compartilhada do Postgres. Se você usar o Flask, como eu fiz, provavelmente sua camada de migração é tratada pelo Alembic e o ORM de escolha sendo o SQLAlchemy. Devido a restrições da arquitetura, o projeto usou um esquema diferente (_public_ não estava disponível). **Após a primeira migração, qualquer alteração no modelo não foi identificada pelo Alembic e todas as tabelas foram geradas novamente.**

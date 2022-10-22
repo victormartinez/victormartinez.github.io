@@ -1,12 +1,11 @@
 ---
-layout: post
+layout: review
 title: "Crítica: Cloud Native DevOps with Kubernetes"
 category: Reviews
 tags: [book, review, cloud, native, devops, kubernetes, k8s]
 date: 2019-08-04T00:00:00
 image: featured.png
 rating: 5
-language: pt
 ---
 
 Particularmente, eu gosto do conteúdo produzido pela O'Reilly e [Cloud Native DevOps with Kubernetes](https://www.amazon.com.br/Cloud-Native-DevOps-Kubernetes-Applications-ebook/dp/B07PJ4HM92) não é uma exceção. Depois de tentar alguns livros e cursos eu encontrei um apanhado completo do Kubernetes no material escrito por John Arundel e Justin Domingus.

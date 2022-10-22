@@ -7,7 +7,7 @@ tags: [redis, geolocation, lat, long, nosql]
 image: featured.jpg
 image_url: https://unsplash.com/photos/TrhLCn1abMU
 image_author: Z
-language: pt
+
 ---
 
 *TL;DR;* Vamos usar o Redis para armazenar dados geolocalizados.

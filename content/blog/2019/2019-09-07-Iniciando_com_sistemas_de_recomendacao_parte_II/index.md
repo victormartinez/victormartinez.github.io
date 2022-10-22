@@ -7,7 +7,7 @@ date: 2019-09-07T00:00:00
 image_author: Mr Cup / Fabien Barral
 image_url: https://unsplash.com/photos/o6GEPQXnqMY
 image: featured.png
-language: pt
+
 ---
 
 No post [anterior](/pt/blog/2019/2019-08-13-Iniciando_com_sistemas_de_recomendacao_parte_I/) eu introduzi a área de RecSys e os níveis de personalização. Hoje eu vou discutir sobre o pipeline de recomendação e como ele funciona.

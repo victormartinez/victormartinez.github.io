@@ -7,7 +7,7 @@ image: featured.jpeg
 date: "2020-02-01T00:00:00"
 image_url: https://unsplash.com/photos/G9gHtroxnaI
 image_author: Frank Eiffert
-language: pt
+
 ---
 
 Existem empresas que dependem fortemente de períodos específicos do dia para obter lucro. Empresas de _food service_, por exemplo, tendem a ter uma operação aquecida ao meio-dia e o comportamento oposto nos demais períodos do dia. Em relação à infraestrutura, o fenômeno é particularmente interessante porque em um determinado período do dia a aplicação recebe uma quantidade impressionante de solicitações e o cluster deve ser capaz de escalar muito rápido. Uma escala lenta traria erros e lentidão para o cliente e, então, resultaria em aumento do churn. O gráfico abaixo exemplifica o cenário.

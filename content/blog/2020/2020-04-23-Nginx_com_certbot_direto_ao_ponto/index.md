@@ -5,7 +5,7 @@ category: DevOps
 tags: [nginx, certbot, https, reverse proxy]
 image: featured.png
 date: "2020-04-23T00:00:00"
-language: pt
+
 ---
 
 Trabalhar em uma equipe sem experiência em DevOps obriga você a gerenciar para fazer as coisas em relação à infraestrutura. Tivemos que instalar e configurar uma instância do [RabbitMQ](https://www.rabbitmq.com/) atrás de um [Nginx](https://www.nginx.com/) com HTTPS. Esta é uma postagem direta sobre como instalar e configurar o proxy reverso com [Let's Encrypt](https://letsencrypt.org).

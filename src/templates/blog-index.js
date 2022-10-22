@@ -157,7 +157,6 @@ export const pageQuery = graphql`
           title
           description
           category
-          language
           image {
             publicURL
             childImageSharp {

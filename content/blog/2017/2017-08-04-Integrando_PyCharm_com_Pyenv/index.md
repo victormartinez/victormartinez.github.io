@@ -5,7 +5,7 @@ category: Tools
 date: 2017-08-04T00:00:00
 tags: [pycharm, python, virtualenv]
 image: featured.png
-language: pt
+
 ---
 
 PyCharm é minha IDE favorita e, sem dúvidas, uma ferramenta poderosa. Ela te dá excelentes atalhos e um grupo de ferramentas que previnem o programador de ter que ficar trocando de telas a todo momento. Uma delas é um terminal embutido que evita que você fique trocando de contexto da IDE para o terminal do linux e vice-versa.

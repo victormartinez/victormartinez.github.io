@@ -5,7 +5,7 @@ category: DevOps
 tags: [kubernetes, devops, k8s, kubectx, cluster]
 image: featured.png
 date: "2020-03-28T00:00:00"
-language: pt
+
 ---
 
 Depentendo da sua empresa, manter mais de um cluster Kubernetes pode ser uma atividade comum. Entretando, digitar `kubectl config get-contexts` e `kubectl config use-context` para listar os contextos e trocar, respectivamente, (i) é chato, (ii) demanda esforço e (iii) não é intuitivo. Graças ao [kubectx](https://github.com/ahmetb/kubectx/) você pode facilmente trocar entre contextos.

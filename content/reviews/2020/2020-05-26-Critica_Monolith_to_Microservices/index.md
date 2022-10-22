@@ -1,12 +1,11 @@
 ---
-layout: post
+layout: review
 title: "Crítica: Monolith to Microservices"
 category: Reviews
 tags: [book, review, monolith, microservices]
 date: "2020-05-26T00:00:00"
 image: featured.png
 rating: 5
-language: pt
 ---
 
 Microsserviços tem sido um tópico acalorado nos últimos anos e muitos desenvolvedores ~~imprudentes~~ desejam migrar seus monólitos legados para essa arquitetura. No entanto, o processo de quebrar os bancos de dados e o código-fonte exige cautela, compreensão do domínio e uma base técnica sólida para dar suporte à nova arquitetura. Monolith to Microservices, de Sam Newman, é essencial para entender os padrões que podem ajudá-lo na transição.

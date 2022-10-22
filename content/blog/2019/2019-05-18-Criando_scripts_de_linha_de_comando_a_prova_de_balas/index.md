@@ -7,7 +7,7 @@ date: 2019-05-18T00:00:00
 image: featured.jpg
 image_author: Chris Ried
 image_url: https://unsplash.com/photos/ieic5Tq8YMk
-language: pt
+
 ---
 
 A vida de um desenvolvedor back-end envolve a criação de alguns scripts para serem executados no ambiente de produção. Por exemplo, você pode precisar atualizar muitos registros de uma vez, acionar eventos ou corrigir um bug específico. _O que eles têm em comum?_ Se não forem projetados corretamente, podem causar um efeito colateral muito ruim na aplicação, arruinar a experiência do usuário, etc.

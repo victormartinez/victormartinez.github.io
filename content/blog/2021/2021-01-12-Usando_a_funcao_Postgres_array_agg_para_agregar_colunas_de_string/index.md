@@ -7,7 +7,7 @@ tags: [postgres, array, agg, function, sqlalchemy]
 image: featured.png
 image_url: https://unsplash.com/photos/QJbyG6O0ick
 image_author: Nam Anh
-language: pt
+
 ---
 
 Graças a [@copquevictor](https://twitter.com/copquevictor) eu aprendi uma função de agregação muito útil do Posgres: **array_agg**. Para entendê-la, vamos supor que você tenha que notificar interessados em relatórios e sua query fornece a tabela abaixo como saída:

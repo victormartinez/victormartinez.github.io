@@ -5,7 +5,7 @@ category: DevOps
 tags: [kubernetes, devops, cheat, sheet, commands, k8s]
 image: featured.png
 date: 2020-01-16T00:00:00
-language: pt
+
 ---
 
 Se sua infraestrutura é composta por um cluster Kubernetes, você provavelmente tem um conjunto de comandos em mãos para tarefas comuns. A documentação do Google fornece um [cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/) útil que você deve dar uma olhada. Porém, neste post irei compartilhar alguns comandos que uso / tenho usado.
