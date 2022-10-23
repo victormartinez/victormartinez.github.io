@@ -65,36 +65,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
-  // Create reviews pages
-  const bookReviews = allMarkdowns.filter(markdown => markdown.frontmatter.layout === "bookreview")
-  bookReviews.forEach((review, index) => {
-    createPage({
-      path: `/bookreviews${review.fields.slug}`,
-      component: path.resolve(`./src/templates/bookreview-post.js`),
-      context: {
-        id: review.id,
-      },
-    })
-
-    const reviewsPerPage = 6
-    const totalReviews = bookReviews.length
-    const numReviewPages = Math.ceil(totalReviews / reviewsPerPage)
-
-    Array.from({ length: numReviewPages }).forEach((_, index) => {
-      createPage({
-        path: index === 0 ? `/bookreviews` : `/bookreviews/page/${index + 1}`,
-        component: path.resolve(`./src/templates/bookreview-index.js`),
-        context: {
-          limit: reviewsPerPage,
-          skip: index * reviewsPerPage,
-          numPages: numReviewPages,
-          postsPerPage: reviewsPerPage,
-          currentPage: index + 1,
-        },
-      })
-    })
-  })
-
   // Create talks pages
   const talks = allMarkdowns.filter(markdown => markdown.frontmatter.layout === "talk")
   talks.forEach((talkItem, index) => {
