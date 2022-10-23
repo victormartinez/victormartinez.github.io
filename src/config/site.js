@@ -42,7 +42,7 @@ module.exports = {
     },
     studynotes: {
       title: `Study Notes`,
-      description: ``,
+      description: `Eu gosto de fazer resumo das coisas que eu estudo.`,
     },
     bookreviews: {
       title: `Book Reviews`,

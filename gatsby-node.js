@@ -116,6 +116,28 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
   })
+
+  // Create studynotes pages
+  const studyNotes = allMarkdowns.filter(markdown => markdown.frontmatter.layout === "studynote")
+  studyNotes.forEach((studyNote, index) => {
+    const notesPerPage = 6
+    const totalNotes = talks.length
+    const numNotesPerPage = Math.ceil(totalNotes / notesPerPage)
+
+    Array.from({ length: numNotesPerPage }).forEach((_, index) => {
+      createPage({
+        path: index === 0 ? `/studynotes` : `/studynotes/page/${index + 1}`,
+        component: path.resolve(`./src/templates/studynote-index.js`),
+        context: {
+          limit: notesPerPage,
+          skip: index * notesPerPage,
+          numPages: numNotesPerPage,
+          postsPerPage: notesPerPage,
+          currentPage: index + 1,
+        },
+      })
+    })
+  })
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
