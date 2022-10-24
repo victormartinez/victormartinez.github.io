@@ -51,6 +51,7 @@ export const Menu = styled.div`
 
 export const MenuLink = styled(Link)`
   margin: 1em 0;
+  text-align: center;
 `
 
 export const MenuLanguage = styled.div`
