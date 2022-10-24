@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Configure o Alembic e o SQLAlchemy para um schema diferente"
-category: Web Development
+category: Web
 date: "2020-10-02T00:00:00"
 tags: [alembic, sqlalchemy, migration, schema, public, python, flask]
 image: featured.jpg

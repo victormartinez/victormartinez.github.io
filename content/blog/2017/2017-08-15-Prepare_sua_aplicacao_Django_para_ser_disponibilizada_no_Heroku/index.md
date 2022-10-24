@@ -1,11 +1,10 @@
 ---
 layout: post
 title: Prepare sua aplicação Django para ser disponibilizada no Heroku
-category: Web Development
+category: Web
 date: 2017-08-15T00:00:00
 tags: [deploy, django, heroku, paas, python]
 image: featured.png
-
 ---
 
 É bem animador construir nossos próprios projetos e vê-los funcionar em produção, certo? Alguns desenvolvedores podem pensar que fazer o deploy de uma aplicação Django é um pesadelo. Neste post eu vou mostrar como preparar sua aplicação para ter diferentes configurações e efetuar o deploy no Heroku.

@@ -1,13 +1,12 @@
 ---
 layout: post
 title: O estilo de vida remoto
-category: Career
+category: Carreira
 date: 2018-01-12T00:00:00
-tags: [career, remote, work, lifestyle]
+tags: [career, carreira, remoto, remote, work, lifestyle]
 image: featured.png
 image_author: Toa Heftiba
 image_url: https://unsplash.com/photos/W6q15ddqqJo
-
 ---
 
 #### TL;DR

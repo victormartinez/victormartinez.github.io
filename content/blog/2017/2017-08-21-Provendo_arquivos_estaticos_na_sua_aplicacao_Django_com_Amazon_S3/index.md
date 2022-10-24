@@ -1,11 +1,10 @@
 ---
 layout: post
 title: Provendo arquivos estáticos na sua aplicação Django com Amazon S3
-category: Web Development
+category: Web
 date: 2017-08-21T00:00:00
 tags: [aws, django, python, s3, storage]
 image: featured.png
-
 ---
 
 É sabido que Django não provê arquivos estáticos. Usar um middleware WSGI para endereçar essa questão não é o jeito correto de servir arquivos estáticos e, portanto, este post apresenta como você pode fazer isso usando a Amazon S3.

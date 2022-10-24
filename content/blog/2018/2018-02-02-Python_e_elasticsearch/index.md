@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Python + Elasticsearch
-category: Web Development
+category: Web
 tags: [elasticsearch, python]
 date: 2018-02-02T00:00:00
 image: featured.png

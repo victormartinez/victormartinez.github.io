@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Do Jekyll para o Gatsby
-category: Web Development
+category: Web
 date: 2020-12-24T00:00:00
 tags: [gatsby, javascript, react]
 image: featured.png

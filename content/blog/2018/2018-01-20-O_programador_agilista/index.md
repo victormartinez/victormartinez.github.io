@@ -1,13 +1,12 @@
 ---
 layout: post
 title: O Programador Agilista
-category: Career
+category: Carreira
 date: 2018-01-20T00:00:00
 tags: [agile, programmer]
 image: featured.png
 image_author: Patrick Perkins
 image_url: https://unsplash.com/photos/ETRPjvb0KM0
-
 ---
 
 Uma conversa recente com um amigo trouxe à tona aspectos importantes do desenvolvimento de software. Algumas características como **feedback constante**, **ciclos curtos** e **aprendizado rápido** podem levar sua mente a pensar em frameworks Agile (por exemplo, Scrum, Kanban, Lean Software Development, etc). No entanto, eles não estão exclusivamente ligados a uma estrutura, mas a todo um conceito / ideia de abordar problemas por meio de períodos iterativos e incrementais que duram geralmente de 7 a 14 dias. Os benefícios são vistos claramente em equipes ágeis, mas nem todos os profissionais internalizaram esses conceitos no fluxo de trabalho pessoal. Se você fizer isso, provavelmente aumentará sua produtividade e se concentrará no produto final.
