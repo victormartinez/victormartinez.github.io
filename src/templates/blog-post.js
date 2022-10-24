@@ -7,14 +7,16 @@ import Comments from "../components/Comments"
 import Divider from "../components/Divider"
 import LayoutArticle from "../components/LayoutArticle"
 import SEO from "../components/seo"
-import { articleUrl } from "../utils/routing.js"
+import { pageDetailUrl } from "../utils/routing.js"
 
 const BlogPostTemplate = ({ data }) => {
   const intl = useIntl()
+
+  const routeName = 'blog'
   const post = data.markdownRemark
   const social = data.site.siteMetadata.social
   const title = post.frontmatter.title
-  const path = articleUrl(intl.locale, post.fields.slug)
+  const path = pageDetailUrl(intl.locale, routeName, post.fields.slug)
   const url = `${data.site.siteMetadata.siteUrl}${path}`
   const imageURL = post.frontmatter.image.publicURL
 

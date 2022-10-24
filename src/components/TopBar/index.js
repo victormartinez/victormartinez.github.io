@@ -1,6 +1,6 @@
 import React from "react"
 
-import { homeUrl, blogUrl, talksUrl, studyNotesUrl, bookReviewsUrl } from "../../utils/routing.js"
+import { homeUrl, pageUrl } from "../../utils/routing.js"
 import { useIntl } from "gatsby-plugin-intl"
 
 import * as S from "./styled"
@@ -18,13 +18,13 @@ const TopBar = () => {
               <S.NavLink to={homeUrl(intl.locale)}>Home</S.NavLink>
             </S.NavItem>
             <S.NavItem>
-              <S.NavLink to={`${blogUrl(intl.locale)}`}>Blog</S.NavLink>
+              <S.NavLink to={pageUrl(intl.locale, 'blog')}>Blog</S.NavLink>
             </S.NavItem>
             <S.NavItem>
-              <S.NavLink to={`${talksUrl(intl.locale)}`}>Talks</S.NavLink>
+              <S.NavLink to={pageUrl(intl.locale, 'talks')}>Talks</S.NavLink>
             </S.NavItem>
             <S.NavItem>
-              <S.NavLink to={`${studyNotesUrl(intl.locale)}`}>Study Notes</S.NavLink>
+              <S.NavLink to={pageUrl(intl.locale, 'studynotes')}>Study Notes</S.NavLink>
             </S.NavItem>
           </S.NavList>
         </S.Nav>

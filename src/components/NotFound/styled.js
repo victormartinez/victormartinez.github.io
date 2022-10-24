@@ -26,4 +26,6 @@ export const Footer = styled.footer`
   font-weight: 300;
 `
 
-export const Url = styled(Link)``
+export const Url = styled(Link)`
+  margin-right: 0.5em;
+`

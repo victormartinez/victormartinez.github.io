@@ -9,13 +9,14 @@ import SEO from "../components/seo"
 
 import { useIntl } from "gatsby-plugin-intl"
 import {
-  nextPageTalksUrl,
-  prevPageTalksUrl,
+  nextPageUrl,
+  prevPageUrl,
 } from "../utils/routing.js"
 
 const TalksIndex = ({ data, pageContext }) => {
   const intl = useIntl()
 
+  const routeName = 'talks'
   const siteTitle = data.site.siteMetadata[intl.locale].talks.title
   const noPosts = data.site.siteMetadata[intl.locale].noPosts
   const description = data.site.siteMetadata[intl.locale].talks.description
@@ -28,8 +29,8 @@ const TalksIndex = ({ data, pageContext }) => {
   const { currentPage, numPages } = pageContext
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
-  const prevPage = prevPageTalksUrl(intl.locale, currentPage)
-  const nextPage = nextPageTalksUrl(intl.locale, currentPage)
+  const prevPage = prevPageUrl(intl.locale, routeName, currentPage)
+  const nextPage = nextPageUrl(intl.locale, routeName, currentPage)
 
   if (posts.length === 0) {
     return (

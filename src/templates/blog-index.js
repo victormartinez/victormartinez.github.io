@@ -9,9 +9,9 @@ import SEO from "../components/seo"
 
 import { useIntl } from "gatsby-plugin-intl"
 import {
-  articleUrl,
-  nextPageBlogUrl,
-  prevPageBlogUrl,
+  pageDetailUrl,
+  nextPageUrl,
+  prevPageUrl,
 } from "../utils/routing.js"
 
 const BlogIndex = ({ data, pageContext }) => {
@@ -26,11 +26,12 @@ const BlogIndex = ({ data, pageContext }) => {
   const keywords = data.site.siteMetadata.keywords
   const image = data.allFile.edges[0].node.publicURL
 
+  const routeName = 'blog'
   const { currentPage, numPages } = pageContext
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
-  const prevPage = prevPageBlogUrl(intl.locale, currentPage)
-  const nextPage = nextPageBlogUrl(intl.locale, currentPage)
+  const prevPage = prevPageUrl(intl.locale, routeName, currentPage)
+  const nextPage = nextPageUrl(intl.locale, routeName, currentPage)
 
   if (posts.length === 0) {
     return (
@@ -78,7 +79,7 @@ const BlogIndex = ({ data, pageContext }) => {
         return (
           <PostItem
             key={post.fields.slug}
-            path={`${articleUrl(intl.locale, post.fields.slug)}`}
+            path={`${pageDetailUrl(intl.locale, routeName, post.fields.slug)}`}
             title={post.frontmatter.title || post.fields.slug}
             date={post.frontmatter.date}
             description={post.frontmatter.description || post.excerpt}

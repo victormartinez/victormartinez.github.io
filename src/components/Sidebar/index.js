@@ -3,7 +3,7 @@ import { useIntl } from "gatsby-plugin-intl"
 import { CloseCircleOutline } from "@styled-icons/evaicons-outline/CloseCircleOutline"
 
 import SocialLinks from "../SocialLinks"
-import { homeUrl, blogUrl } from "../../utils/routing.js"
+import { homeUrl, pageUrl } from "../../utils/routing.js"
 
 import * as S from "./styled"
 
@@ -19,7 +19,9 @@ const Sidebar = ({ social }) => {
 
       <S.Menu>
         <S.MenuLink to={homeUrl(intl.locale)}>Home</S.MenuLink>
-        <S.MenuLink to={blogUrl(intl.locale)}>Blog</S.MenuLink>
+        <S.MenuLink to={pageUrl(intl.locale, 'blog')}>Blog</S.MenuLink>
+        <S.MenuLink to={pageUrl(intl.locale, 'talks')}>Talks</S.MenuLink>
+        <S.MenuLink to={pageUrl(intl.locale, 'studynotes')}>Study Notes</S.MenuLink>
       </S.Menu>
       <S.Footer>{social && <SocialLinks data={social} />}</S.Footer>
     </S.SidebarWrapper>
