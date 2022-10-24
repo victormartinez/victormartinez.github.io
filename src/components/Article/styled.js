@@ -11,7 +11,7 @@ export const Headline = styled.h1`
   `}
 `
 export const Article = styled.article`
-  line-height: 2;
+  line-height: 2rem;
   font-size: 1.2rem;
 `
 export const Header = styled.header``
@@ -72,6 +72,7 @@ export const Section = styled.section`
     list-style-type: disc;
     margin-left: 1em;
     margin-bottom: 2em;
+    margin-top: 0.5em;
   }
 
   h1 {
@@ -103,10 +104,11 @@ export const Section = styled.section`
   h5,
   h6 {
     margin-top: 1em;
+    margin-bottom: 0.5em;
   }
 
   p {
-    margin: 0 0 2em 0;
+    margin: 0 0 1em 0;
   }
 
   ul > p,
