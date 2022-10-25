@@ -36,4 +36,6 @@ export const PaginationLink = styled(Link)`
   width: 6em;
 `
 
-export const PaginationText = styled.p``
+export const PaginationText = styled.p`
+  color: #fff;
+`

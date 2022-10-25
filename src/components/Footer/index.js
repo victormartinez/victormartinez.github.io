@@ -11,7 +11,6 @@ const Footer = ({ social }) => {
         <S.Copyright>
           Copyright © {new Date().getFullYear()} Victor Martinez
         </S.Copyright>
-
         {social && <SocialLinks data={social} />}
       </S.Footer>
     </S.FooterWrapper>

@@ -40,6 +40,7 @@ export const Description = styled.p`
   width: 30em;
   line-height: 1.5;
   text-align: center;
+  margin-bottom: 1em;
 
   ${media.lessThan("large")`
     font-size: 1rem;

@@ -66,32 +66,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   // Create talks pages
-  const talks = allMarkdowns.filter(markdown => markdown.frontmatter.layout === "talk")
-  talks.forEach((talkItem, index) => {
-    const talksPerPage = 6
-    const totalTalks = talks.length
-    const numTalksPerPage = Math.ceil(totalTalks / talksPerPage)
-
-    Array.from({ length: numTalksPerPage }).forEach((_, index) => {
-      createPage({
-        path: index === 0 ? `/talks` : `/talks/page/${index + 1}`,
-        component: path.resolve(`./src/templates/talks-index.js`),
-        context: {
-          limit: talksPerPage,
-          skip: index * talksPerPage,
-          numPages: numTalksPerPage,
-          postsPerPage: talksPerPage,
-          currentPage: index + 1,
-        },
-      })
-    })
+  createPage({
+    path: `/talks`,
+    component: path.resolve(`./src/templates/talks-index.js`),
   })
 
   // Create studynotes pages
   const studyNotes = allMarkdowns.filter(markdown => markdown.frontmatter.layout === "studynote")
   studyNotes.forEach((studyNote, index) => {
     const notesPerPage = 6
-    const totalNotes = talks.length
+    const totalNotes = studyNotes.length
     const numNotesPerPage = Math.ceil(totalNotes / notesPerPage)
 
     Array.from({ length: numNotesPerPage }).forEach((_, index) => {

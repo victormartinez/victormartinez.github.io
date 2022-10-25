@@ -22,11 +22,11 @@ module.exports = {
   ],
   pt: {
     title: `Olá, eu sou o Victor!`,
-    description: `Eu sou (principalmente) um desenvolvedor backend que gosta de tópicos relacionados a desenvolvimento de software, python 💚, carreira e outras coisas legais.`,
+    description: `Eu sou um desenvolvedor (principalmente) backend que gosta de tópicos relacionados a desenvolvimento de software, python 💚 e carreira em tech.`,
     noPosts: `Desculpa, eu ainda não publiquei um post.`,
     talks: {
       title: `Palestras`,
-      description: `Algumas vezes eu fico corajoso o suficiente para falar sobre um tópico na frente de várias pessoas.`,
+      description: `Compartilhar conhecimento, sempre.`
     },
     about: {
       title: `Sobre mim`,
@@ -34,19 +34,11 @@ module.exports = {
     },
     blog: {
       title: `Blog`,
-      description: `Aqui você encontra minhas postagens.`,
-    },
-    talks: {
-      title: `Talks`,
-      description: `Às vezes eu fico corajoso o suficiente para falar em público sobre algum tema.`,
+      description: `Aqui você encontra textos sobre os diversos assuntos.`,
     },
     studynotes: {
       title: `Study Notes`,
       description: `Eu gosto de fazer resumo das coisas que eu estudo.`,
     },
-    bookreviews: {
-      title: `Book Reviews`,
-      description: `De vez em quando leio alguns livros técnicos e publico minhas impressões.`,
-    }
   }
 }

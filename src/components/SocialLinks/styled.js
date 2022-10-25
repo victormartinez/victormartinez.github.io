@@ -3,7 +3,6 @@ import media from "styled-media-query"
 
 export const SocialWrapper = styled.nav`
   margin: 0 auto;
-  margin-top: 1em;
 `
 
 export const SocialItemList = styled.ul`
@@ -27,8 +26,8 @@ export const SocialItemLink = styled.a`
 `
 
 export const IconWrapper = styled.div`
-  width: 3em;
-  height: 3em;
+  width: 2em;
+  height: 2em;
 
   ${media.lessThan("large")`
     width: 2em;

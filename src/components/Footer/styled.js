@@ -6,7 +6,8 @@ export const FooterWrapper = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: #090b0b;
+  margin-top: 1em;
 `
 
 export const Footer = styled.div`
@@ -16,7 +17,6 @@ export const Footer = styled.div`
   color: white;
   justify-content: center;
   width: 70em;
-  border-top: 1px solid #000;
 
   ${media.lessThan("small")`
     width: 100vw;

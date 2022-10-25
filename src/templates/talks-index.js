@@ -2,21 +2,15 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import LayoutContent from "../components/LayoutContent"
-import PostItem from "../components/PostItem"
-import Pagination from "../components/Pagination"
+import TalkItem from "../components/TalkItem"
 import Paragraph from "../components/Paragraph"
 import SEO from "../components/seo"
 
 import { useIntl } from "gatsby-plugin-intl"
-import {
-  nextPageUrl,
-  prevPageUrl,
-} from "../utils/routing.js"
 
-const TalksIndex = ({ data, pageContext }) => {
+const TalksIndex = ({ data }) => {
   const intl = useIntl()
 
-  const routeName = 'talks'
   const siteTitle = data.site.siteMetadata[intl.locale].talks.title
   const noPosts = data.site.siteMetadata[intl.locale].noPosts
   const description = data.site.siteMetadata[intl.locale].talks.description
@@ -25,12 +19,6 @@ const TalksIndex = ({ data, pageContext }) => {
   const author = data.site.siteMetadata.author.name
   const keywords = data.site.siteMetadata.keywords
   const image = data.allFile.edges[0].node.publicURL
-
-  const { currentPage, numPages } = pageContext
-  const isFirst = currentPage === 1
-  const isLast = currentPage === numPages
-  const prevPage = prevPageUrl(intl.locale, routeName, currentPage)
-  const nextPage = nextPageUrl(intl.locale, routeName, currentPage)
 
   if (posts.length === 0) {
     return (
@@ -76,26 +64,19 @@ const TalksIndex = ({ data, pageContext }) => {
       />
       {posts.map(post => {
         return (
-          <PostItem
-            key={post.fields.slug}
-            path={post.frontmatter.slides}
-            title={post.frontmatter.title || post.fields.slug}
+          <TalkItem
+            key={post.fields.slug}  
+            title={post.frontmatter.title}  
             date={post.frontmatter.date}
-            description={post.frontmatter.description || post.excerpt}
-            timeToRead={post.timeToRead}
-            category={post.frontmatter.category || `CATEGORY`}
             image={post.frontmatter.image}
+            slides={post.frontmatter.slides}
+            event={post.frontmatter.event}
+            where={post.frontmatter.where}
+            video={post.frontmatter.video}
+            website={post.frontmatter.website}
           />
         )
       })}
-      <Pagination
-        isFirst={isFirst}
-        isLast={isLast}
-        currentPage={currentPage}
-        numPages={numPages}
-        prevPage={prevPage}
-        nextPage={nextPage}
-      />
     </LayoutContent>
   )
 }
@@ -103,7 +84,7 @@ const TalksIndex = ({ data, pageContext }) => {
 export default TalksIndex
 
 export const pageQuery = graphql`
-  query TalksList($skip: Int!, $limit: Int!) {
+  query TalksList {
     allFile(
       filter: {
         absolutePath: { regex: "/content/assets/" }
@@ -144,8 +125,6 @@ export const pageQuery = graphql`
         frontmatter: { layout: { eq: "talk" } }
       }
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: $limit
-      skip: $skip
     ) {
       nodes {
         excerpt(pruneLength: 200)
@@ -155,13 +134,11 @@ export const pageQuery = graphql`
         frontmatter {
           date
           title
-          description
-          category
-          event
-          website
-          where
-          tags
           slides
+          event
+          where
+          video
+          website
           image {
             publicURL
             childImageSharp {

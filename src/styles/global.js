@@ -52,7 +52,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    background: #fff;
+    background: #090b0b;
     line-height: 1;
     color: #222;
     font-size: 100%;

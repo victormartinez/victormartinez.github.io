@@ -2,10 +2,9 @@ import styled from "styled-components"
 import media from "styled-media-query"
 
 export const MainWrapper = styled.main`
-  background-color: #fff;
+  background-color: #090b0b;
   margin-top: -5em;
   min-height: 100vh;
-  padding: 2em;
   width: 100vw;
 
   ${media.greaterThan("large")`

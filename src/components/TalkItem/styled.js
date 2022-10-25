@@ -5,8 +5,8 @@ import Img from "gatsby-image"
 export const TalkItemWrapper = styled.article`
   margin-bottom: 3em;
   background-color: #f3f3f3;
-  height: 35rem;
-  max-width: 30em;
+  display: flex;
+  flex-direction: row;
 `
 
 export const ImageSection = styled.div`
@@ -17,20 +17,24 @@ export const ImageSection = styled.div`
 export const Url = styled(Link)``
 
 export const Image = styled(Img)`
-  width: 30em;
-  height: 20em;
+  width: 20em;
+  height: 15em;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+
+  :hover {
+    filter: none;
+    -webkit-filter: grayscale(0);
+  }
 `
 
 export const TextSection = styled.section`
   width: 100%;
-  padding: 1em 1.5em;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  padding: 0.5em 1.5em;
 `
 
 export const Header = styled.header`
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 `
 
 export const Title = styled.h2`
@@ -40,14 +44,13 @@ export const Title = styled.h2`
   margin-bottom: 0.5em;
 `
 
-export const BodyItems = styled.ul``
+export const BodyItems = styled.ul`
+  list-style-type: disc;
+  padding-left: 1em;
+`
 
 export const Item = styled.li`
   height: 2em;
-
-  & > svg {
-    height: 2em;
-  }
 `
 
 export const ItemText = styled.span``
