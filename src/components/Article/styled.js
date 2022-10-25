@@ -5,16 +5,19 @@ export const Headline = styled.h1`
   font-size: 4rem;
   font-weight: 900;
   line-height: 1.5;
+  text-align: center;
 
   ${media.lessThan("small")`
     font-size: 2.8rem;
   `}
 `
 export const Article = styled.article`
-  line-height: 2rem;
+  line-height: 2.2rem;
   font-size: 1.2rem;
 `
-export const Header = styled.header``
+export const Header = styled.header`
+  text-align: center;
+`
 
 export const DateBox = styled.div`
   color: gray;
@@ -28,7 +31,7 @@ export const TagsList = styled.ul`
   display: flex;
   flex-direction: row;
   list-style-type: none;
-  margin-top: 1em;
+  margin-top: 4em;
   flex-wrap: wrap;
 `
 
@@ -83,11 +86,13 @@ export const Section = styled.section`
   h2 {
     font-weight: 900;
     font-size: 2.5rem;
+    margin-top: 1.2em;
   }
 
   h3 {
     font-weight: 900;
     font-size: 1.5rem;
+    margin-top: 0.5em;
   }
 
   h4,
@@ -103,7 +108,6 @@ export const Section = styled.section`
   h4,
   h5,
   h6 {
-    margin-top: 1em;
     margin-bottom: 0.5em;
   }
 

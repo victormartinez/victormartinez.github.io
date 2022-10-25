@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import media from "styled-media-query"
+
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 
@@ -7,6 +9,11 @@ export const TalkItemWrapper = styled.article`
   background-color: #f3f3f3;
   display: flex;
   flex-direction: row;
+
+  ${media.lessThan("medium")`
+    flex-direction: column;
+    padding: 1em;
+  `};
 `
 
 export const ImageSection = styled.div`
@@ -17,15 +24,15 @@ export const ImageSection = styled.div`
 export const Url = styled(Link)``
 
 export const Image = styled(Img)`
-  width: 20em;
-  height: 15em;
-  filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
+  ${media.greaterThan("small")`
+    width: 20em;
+    height: 15em;
+  `}
 
-  :hover {
-    filter: none;
-    -webkit-filter: grayscale(0);
-  }
+  ${media.between("small", "medium")`
+    width: 95vw;
+    height: 25vh;
+  `}
 `
 
 export const TextSection = styled.section`

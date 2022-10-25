@@ -4,7 +4,7 @@ import media from "styled-media-query"
 export const Wrapper = styled.div`
   display: flex;
   background-color: #090b0b;
-  height: ${props => (props.content ? `40vh` : `20vh`)};
+  height: ${props => (props.content ? `30vh` : `20vh`)};
 
   ${media.lessThan("small")`
     margin-bottom: 1em;  
@@ -23,9 +23,14 @@ export const Container = styled.div`
 `
 
 export const Title = styled.h1`
-  margin-bottom: 0.3em;
   color: #fff;
   font-size: 4rem;
+  padding-bottom: 0.6rem;
+  
+  background: #21B8CF;
+  background: linear-gradient(to right, #21B8CF 0%, #4BCF77 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
   ${media.lessThan("small")`
     font-size: 2.8rem;

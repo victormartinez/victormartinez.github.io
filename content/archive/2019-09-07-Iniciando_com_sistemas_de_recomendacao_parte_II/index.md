@@ -2,7 +2,7 @@
 layout: post
 title: "Iniciando com Sistemas de Recomendação: Parte II"
 category: RecSys
-tags: [sistemas, recomendação, recommender, systems, machine, learning, recsys, recommendation]
+tags: [sistemas, recomendação, recommender, systems, recsys, recommendation]
 date: 2019-09-07T00:00:00
 image_author: Mr Cup / Fabien Barral
 image_url: https://unsplash.com/photos/o6GEPQXnqMY

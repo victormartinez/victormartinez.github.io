@@ -22,14 +22,6 @@ const Article = ({ post }) => {
           </S.Date>{" "}
           • {post.timeToRead} min {intl.formatMessage({ id: "reading" })}
         </S.DateBox>
-        <S.TagsWrapper>
-          <S.TagsList itemprop="keywords">
-            <S.TagItemFirst>Tags:</S.TagItemFirst>
-            {post.frontmatter.tags.map((tag, index) => (
-              <S.TagItem key={index}>{tag}</S.TagItem>
-            ))}
-          </S.TagsList>
-        </S.TagsWrapper>
       </S.Header>
       {post.frontmatter.rating && <Rating value={post.frontmatter.rating} />}
 
@@ -42,6 +34,14 @@ const Article = ({ post }) => {
         dangerouslySetInnerHTML={{ __html: post.html }}
         itemProp="articleBody"
       />
+      <S.TagsWrapper>
+        <S.TagsList itemprop="keywords">
+          <S.TagItemFirst>Tags:</S.TagItemFirst>
+          {post.frontmatter.tags.map((tag, index) => (
+            <S.TagItem key={index}>{tag}</S.TagItem>
+          ))}
+        </S.TagsList>
+      </S.TagsWrapper>
       <ImageCredits
         url={post.frontmatter.image_url}
         author={post.frontmatter.image_author}

@@ -28,6 +28,7 @@ const TalkItem = ({
               website && 
               <S.Url to={website} target="_blank" rel="noopener noreferrer"> {event}</S.Url>
             }
+            { !website && event }
           </S.Item>
           <S.Item>Quando: { new Date(date).toLocaleString().slice(0, 10) }</S.Item>
           <S.Item>Onde: {where}</S.Item>

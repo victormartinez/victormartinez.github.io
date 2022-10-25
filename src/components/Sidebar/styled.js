@@ -28,6 +28,15 @@ export const HamburgerButton = styled.button`
   font-size: 2em;
 `
 
+export const HomeNavLink = styled(Link)`
+  margin: 1em 0;
+  color: #fff !important;
+
+  :hover {
+    border-bottom: 1px dashed #fff;
+  }
+`
+
 export const SidebarWrapper = styled.aside`
   display: flex;
   flex-direction: column;

@@ -6,8 +6,8 @@ import officeBackground from "../../../content/assets/office-background.jpeg"
 export const HeroWrapperBg = styled.div`
   display: flex;
   background-color: #090b0b;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(${officeBackground});
+  /*background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(${officeBackground});*/
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -28,6 +28,11 @@ export const Title = styled.h1`
   margin-bottom: 0.5em;
   color: #fff;
   font-size: 4rem;
+
+  background: #21B8CF;
+  background: linear-gradient(to right, #21B8CF 0%, #4BCF77 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
   ${media.lessThan("large")`
     font-size: 2.8rem;

@@ -7,7 +7,6 @@ const BlackHeader = ({ title, description }) => {
     <S.Wrapper content={title || description}>
       <S.Container>
         {title && <S.Title>{title}</S.Title>}
-        {description && <S.Description>{description}</S.Description>}
       </S.Container>
     </S.Wrapper>
   )

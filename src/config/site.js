@@ -22,19 +22,19 @@ module.exports = {
   ],
   pt: {
     title: `Olá, eu sou o Victor!`,
-    description: `Eu sou um desenvolvedor (principalmente) backend que gosta de tópicos relacionados a desenvolvimento de software, python 💚 e carreira em tech.`,
+    description: `Um desenvolvedor (principalmente) backend que gosta de tópicos relacionados a desenvolvimento de software, python 💚 e carreira em tech.`,
     noPosts: `Desculpa, eu ainda não publiquei um post.`,
     talks: {
-      title: `Palestras`,
-      description: `Compartilhar conhecimento, sempre.`
+      title: `Palestras. Bate-papos. Slides.`,
+      description: `Palestras. Bate-papos. Slides.`
     },
     about: {
       title: `Sobre mim`,
-      description: `Aqui vamos nós!`,
+      description: `Sobre mim`
     },
     blog: {
-      title: `Blog`,
-      description: `Aqui você encontra textos sobre os diversos assuntos envolvendo desenvolvimento de software.`,
+      title: `Blog. Textos. Guias.`,
+      description: `Blog. Textos. Guias.`
     },
   }
 }

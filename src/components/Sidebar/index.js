@@ -21,7 +21,6 @@ const Sidebar = ({ social }) => {
         <S.MenuLink to={homeUrl(intl.locale)}>Home</S.MenuLink>
         <S.MenuLink to={pageUrl(intl.locale, 'blog')}>Blog</S.MenuLink>
         <S.MenuLink to={pageUrl(intl.locale, 'talks')}>Talks</S.MenuLink>
-        <S.MenuLink to={pageUrl(intl.locale, 'studynotes')}>Study Notes</S.MenuLink>
       </S.Menu>
       <S.Footer>{social && <SocialLinks data={social} />}</S.Footer>
     </S.SidebarWrapper>
@@ -35,6 +34,7 @@ const Sidebar = ({ social }) => {
             <S.HamburgerButton onClick={() => setSidebarOpen(!sidebarOpen)}>
               ☰
             </S.HamburgerButton>
+            <S.HomeNavLink to={homeUrl(intl.locale)}>Victor Martinez</S.HomeNavLink>
           </S.Nav>
         </S.BarHeader>
       )}
