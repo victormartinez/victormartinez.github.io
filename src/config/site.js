@@ -34,11 +34,7 @@ module.exports = {
     },
     blog: {
       title: `Blog`,
-      description: `Aqui você encontra textos sobre os diversos assuntos.`,
-    },
-    studynotes: {
-      title: `Study Notes`,
-      description: `Eu gosto de fazer resumo das coisas que eu estudo.`,
+      description: `Aqui você encontra textos sobre os diversos assuntos envolvendo desenvolvimento de software.`,
     },
   }
 }
