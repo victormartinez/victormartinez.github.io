@@ -5,7 +5,7 @@ export const isPostDeprecated = datetime => {
     moment(datetime, "YYYY-MM-DDTHH:mm:ss"),
     "months"
   )
-  return months >= 12
+  return months >= 24
 }
 
 export const formatDate = (datetime, locale) => {
