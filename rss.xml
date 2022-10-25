@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://vcrmartinez.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 25 Oct 2022 01:21:07 GMT</lastBuildDate><item><title><![CDATA[Dados geolocalizados com Redis]]></title><description><![CDATA[TL;DR; Vamos usar o Redis para armazenar dados geolocalizados. Quando falamos em Redis invariavelmente pensamos em cache. Porém ele evoluiu…]]></description><link>https://vcrmartinez.com/2022/2022-01-20-Dados_geolocalizados_com_Redis/</link><guid isPermaLink="false">https://vcrmartinez.com/2022/2022-01-20-Dados_geolocalizados_com_Redis/</guid><pubDate>Thu, 20 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;TL;DR;&lt;/em&gt; Vamos usar o Redis para armazenar dados geolocalizados.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://vcrmartinez.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 25 Oct 2022 03:06:35 GMT</lastBuildDate><item><title><![CDATA[Dados geolocalizados com Redis]]></title><description><![CDATA[TL;DR; Vamos usar o Redis para armazenar dados geolocalizados. Quando falamos em Redis invariavelmente pensamos em cache. Porém ele evoluiu…]]></description><link>https://vcrmartinez.com/2022/2022-01-20-Dados_geolocalizados_com_Redis/</link><guid isPermaLink="false">https://vcrmartinez.com/2022/2022-01-20-Dados_geolocalizados_com_Redis/</guid><pubDate>Thu, 20 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;TL;DR;&lt;/em&gt; Vamos usar o Redis para armazenar dados geolocalizados.&lt;/p&gt;
 &lt;p&gt;Quando falamos em Redis invariavelmente pensamos em cache. Porém ele evoluiu e hoje é considerado um servidor que armazena diferentes estruturas de dados (hashes, sets, lists, etc).&lt;/p&gt;
 &lt;p&gt;No post de hoje vamos sair do uso comum e entender de que forma o Redis nos ajuda com quando precisamos trabalhar dados geolocalizados (para mais info, vide &lt;a href=&quot;https://redis.io/commands#geo&quot;&gt;documentação&lt;/a&gt;).&lt;/p&gt;
 &lt;h2&gt;Configuração do ambiente&lt;/h2&gt;
 &lt;p&gt;Para replicar os comandos você vai precisar configurar um ambiente local. Estou usando o &lt;a href=&quot;https://www.docker.com/&quot;&gt;docker&lt;/a&gt; e o &lt;a href=&quot;https://redis.io/topics/rediscli&quot;&gt;redis-cli&lt;/a&gt;. O CLI vem com a instalação do Redis mas eu gosto de tê-lo separado (veja este &lt;a href=&quot;https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/&quot;&gt;tutorial&lt;/a&gt;). Então, basta executar os comandos abaixo:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;--name&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;my-redis &lt;span class=&quot;token parameter variable&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;6379:6379&quot;&lt;/span&gt; redis:6 redis-server
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ docker run --name&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;my-redis --rm -p &lt;span class=&quot;token string&quot;&gt;&quot;6379:6379&quot;&lt;/span&gt; redis:6 redis-server
 $ redis-cli
 
 &lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -35,13 +35,13 @@ $ redis-cli
 &lt;h2&gt;Mãos à obra&lt;/h2&gt;
 &lt;p&gt;O Redis nos fornece uma API com os seguintes comandos: &lt;code class=&quot;language-text&quot;&gt;GEOADD&lt;/code&gt;,&lt;code class=&quot;language-text&quot;&gt;GEODIST&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEOHASH&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEOPOS&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEOSEARCH&lt;/code&gt;. Vamos iniciar adicionando alguns pontos ao índice &lt;code class=&quot;language-text&quot;&gt;location:salvador&lt;/code&gt;:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Atenção:&lt;/strong&gt; Os comandos logo serão depreciados: &lt;code class=&quot;language-text&quot;&gt;GEOMEMBER&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEORADIUS&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEORADIUS_RO&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEORADIUSBYMEMBER&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEORADIUSBYMEMBER_RO&lt;/code&gt;. Por isso, não vamos explorá-los neste post.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOADD location:salvador &lt;span class=&quot;token parameter variable&quot;&gt;-38.5139209&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-12.9730385&lt;/span&gt; mercadomodelo &lt;span class=&quot;token parameter variable&quot;&gt;-38.5329599&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-13.0101531&lt;/span&gt; faroldabarra &lt;span class=&quot;token parameter variable&quot;&gt;-38.5260635&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-13.0107505&lt;/span&gt; morrodocristo&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOADD location:salvador -38.5139209 -12.9730385 mercadomodelo -38.5329599 -13.0101531 faroldabarra -38.5260635 -13.0107505 morrodocristo&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Aqui, duas observações &lt;strong&gt;importantes&lt;/strong&gt;:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;O redis recebe &lt;strong&gt;primeiro&lt;/strong&gt; a longitude e depois a latitude.&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;CMD &amp;lt;set-name&gt; &amp;lt;long&gt; &amp;lt;lat&gt; &amp;lt;member-name&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;CMD &amp;lt;set-name&amp;gt; &amp;lt;long&amp;gt; &amp;lt;lat&amp;gt; &amp;lt;member-name&amp;gt;&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;li&gt;Como vamos manipular os pontos dentro do índice eu optei por adotar um padrão &lt;em&gt;lowercase&lt;/em&gt; nas strings e no índice. Isso evita erros na busca e também torna suficientemente legível os dados armazenados (veja a seção &lt;em&gt;Redis keys&lt;/em&gt; da &lt;a href=&quot;https://redis.io/topics/data-types-intro&quot;&gt;documentação&lt;/a&gt;).&lt;/li&gt;
@@ -60,15 +60,15 @@ $ redis-cli
 &lt;span class=&quot;token string&quot;&gt;&quot;749.1386&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;em&gt;OBS:&lt;/em&gt; Você pode passar, no final, a métrica de distância que você quer (m, km, ft, mi).&lt;/p&gt;
 &lt;h3&gt;Atualizar um ponto&lt;/h3&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOADD location:salvador &lt;span class=&quot;token parameter variable&quot;&gt;-38&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-12&lt;/span&gt; elevadorlacerda
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOADD location:salvador -38 -12 elevadorlacerda
 
-&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOADD location:salvador &lt;span class=&quot;token parameter variable&quot;&gt;-38.5159605&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-12.9740495&lt;/span&gt; elevadorlacerda
+&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOADD location:salvador -38.5159605 -12.9740495 elevadorlacerda
 
 &lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOPOS location:salvador elevadorlacerda&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;em&gt;OBS:&lt;/em&gt; Como estamos trabalhando com conjuntos a atualização de um ponto se dá por inserir um ponto com a mesma string (itens repetidos não são permitidos).&lt;/p&gt;
 &lt;h3&gt;Buscar&lt;/h3&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Pontos em um raio de 1600 metros a uma determinada longitude/latitude&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOSEARCH location:salvador FROMLONLAT &lt;span class=&quot;token parameter variable&quot;&gt;-38.5175291&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-13.0060716&lt;/span&gt; BYRADIUS &lt;span class=&quot;token number&quot;&gt;1600&lt;/span&gt; m
+&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOSEARCH location:salvador FROMLONLAT -38.5175291 -13.0060716 BYRADIUS &lt;span class=&quot;token number&quot;&gt;1600&lt;/span&gt; m
 &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;morrodocristo&quot;&lt;/span&gt;
 
 &lt;span class=&quot;token comment&quot;&gt;# Pontos em um raio de 200 km de um ponto existente&lt;/span&gt;
@@ -110,7 +110,7 @@ $ redis-cli
 &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;location:salvador&quot;&lt;/span&gt;
 &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;location:results:salvador&quot;&lt;/span&gt;
 
-&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; ZRANGE location:results:salvador &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-1&lt;/span&gt;
+&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; ZRANGE location:results:salvador &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; -1
 &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;faroldabarra&quot;&lt;/span&gt;
 &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;morrodocristo&quot;&lt;/span&gt;
 &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;mercadomodelo&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -122,7 +122,7 @@ $ redis-cli
 &lt;p&gt;Você pode verificar esse mapeamento geohash ↔ lat/long por meio do site &lt;em&gt;&lt;a href=&quot;https://geohash.org/&quot;&gt;https://geohash.org/&lt;/a&gt;&lt;coloque-aqui-o-geohash&gt;&lt;/em&gt;.&lt;/p&gt;
 &lt;h3&gt;Operações com &lt;em&gt;Sorted Set&lt;/em&gt;&lt;/h3&gt;
 &lt;p&gt;Como o Redis armazena essa estrutura na forma de &lt;em&gt;sorted sets&lt;/em&gt; então é possível acessar esses dados usando APIs dessa estrutura de dados. Vejamos alguns exemplos (todos os comandos estão na &lt;a href=&quot;https://redis.io/commands#sorted-set&quot;&gt;documentação&lt;/a&gt;):&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; ZRANGE location:salvador &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-1&lt;/span&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; ZRANGE location:salvador &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; -1
 &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;faroldabarra&quot;&lt;/span&gt;
 &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;morrodocristo&quot;&lt;/span&gt;
 &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;elevadorlacerda&quot;&lt;/span&gt;
@@ -134,7 +134,7 @@ $ redis-cli
 &lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; ZCARD location:salvador
 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;integer&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;
 
-&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; ZCOUNT location:salvador &lt;span class=&quot;token parameter variable&quot;&gt;-inf&lt;/span&gt; +inf
+&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; ZCOUNT location:salvador -inf +inf
 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;integer&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;Considerações Finais&lt;/h2&gt;
 &lt;ul&gt;
@@ -142,151 +142,7 @@ $ redis-cli
 &lt;li&gt;Cuidado com o nome do índice e dos pontos. Você vai precisar buscá-los de uma forma inteligente e que evite erros de digitação.&lt;/li&gt;
 &lt;li&gt;Antes de inserir todos os pontos pense em como você vai buscar os dados. Será que faz sentido todos os pontos estarem no mesmo índice? E se você precisar fazer &lt;em&gt;sharding&lt;/em&gt;?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;E ai, curtiu o post?&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Dados geolocalizados com Redis]]></title><description><![CDATA[TL;DR; Vamos usar o Redis para armazenar dados geolocalizados. Quando falamos em Redis invariavelmente pensamos em cache. Porém ele evoluiu…]]></description><link>https://vcrmartinez.com/2022-01-20-Dados_geolocalizados_com_Redis/</link><guid isPermaLink="false">https://vcrmartinez.com/2022-01-20-Dados_geolocalizados_com_Redis/</guid><pubDate>Thu, 20 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;TL;DR;&lt;/em&gt; Vamos usar o Redis para armazenar dados geolocalizados.&lt;/p&gt;
-&lt;p&gt;Quando falamos em Redis invariavelmente pensamos em cache. Porém ele evoluiu e hoje é considerado um servidor que armazena diferentes estruturas de dados (hashes, sets, lists, etc).&lt;/p&gt;
-&lt;p&gt;No post de hoje vamos sair do uso comum e entender de que forma o Redis nos ajuda com quando precisamos trabalhar dados geolocalizados (para mais info, vide &lt;a href=&quot;https://redis.io/commands#geo&quot;&gt;documentação&lt;/a&gt;).&lt;/p&gt;
-&lt;h2&gt;Configuração do ambiente&lt;/h2&gt;
-&lt;p&gt;Para replicar os comandos você vai precisar configurar um ambiente local. Estou usando o &lt;a href=&quot;https://www.docker.com/&quot;&gt;docker&lt;/a&gt; e o &lt;a href=&quot;https://redis.io/topics/rediscli&quot;&gt;redis-cli&lt;/a&gt;. O CLI vem com a instalação do Redis mas eu gosto de tê-lo separado (veja este &lt;a href=&quot;https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/&quot;&gt;tutorial&lt;/a&gt;). Então, basta executar os comandos abaixo:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;--name&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;my-redis &lt;span class=&quot;token parameter variable&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;6379:6379&quot;&lt;/span&gt; redis:6 redis-server
-$ redis-cli
-
-&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;Estrutura de Dados&lt;/h2&gt;
-&lt;p&gt;Armazenar qualquer coisa no Redis requer a utilização de índices. De forma simples, é uma chave &lt;em&gt;string&lt;/em&gt; que aponta para alguma estrutura de dados. Para lidar com dados geolocalizados o Redis utiliza a estrutura de &lt;em&gt;sorted set&lt;/em&gt; (conjunto ordenado) de forma que cada ponto (lat/long) é rotulado com uma &lt;strong&gt;string&lt;/strong&gt;. A imagem abaixo ilustra de forma simplificada essa arquitetura:&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 497px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 57.08333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsSAAALEgHS3X78AAAB70lEQVQoz42TTU9TQRSG+w/cGhM3JibuWPpvgKSCgQU2bmzA+B/cQP1gQSQY1GBitLoxSixIrU0wUQkItKKUaL8ohd47d+bexzO3vaUmRDzJuedjZt77znsysfxInNcXzpG53Mfzs2eob6xjAOW6KKXwPK8bo9zXNlf83j9CS89o2/dotVrEivNzvOq7RPriefKJUXTzgNB8H4Lg2MXaX2iqgMm3P0nMb3A/U8LV7RVHSMTkGDtfPrP5bpFK4wAdRMf+tkD6vt9em10sMHhvlcTcVwYkPs7thf2W4wigMThCW9s/CGVfa3S5jCqVuq6r1S7wkfKZeJBnKLXM6HSOuMSJJ2toYaaUMLSbrA6BMe2bCmhx7BrbV4bYHb/Jdv8AhRtJqgK6X6uw8ukbyZk8w3eWGZn+QHwyw/XZVSqHGiO6hoBWbN9qZgElb2YyVNNpvi8sUEu/pLmSxRg/VLHccBif+chwaomrd98Tn1oi+WiNQ2HuRQx7ASMFbdUQTaI66Fm7/WKdwVSWMWHaP5Ul9WanPRTnJEARP7B5VEsM3Q6lM7CtikPyaYHRh5vcelZkt+4eDyUCDE6Y7r96xb0a6dwWP37Vuzdw3R6GRoZiWf6ve66DajXlATiYzg2ciKEFczsvw/ppeRjDl6PD2Nv/A5eAKmFqZMPsAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image lazyload&quot;
-        alt=&quot;Ilustração simplificada da estrutura de dados.&quot;
-        title=&quot;Ilustração simplificada da estrutura de dados.&quot;
-        data-src=&quot;/static/411523fdcb3ebd9c49ad3bc74f2cf8d9/15d25/redis-geoloc-architecture.png&quot;
-        data-srcset=&quot;/static/411523fdcb3ebd9c49ad3bc74f2cf8d9/8ff5a/redis-geoloc-architecture.png 240w,
-/static/411523fdcb3ebd9c49ad3bc74f2cf8d9/e85cb/redis-geoloc-architecture.png 480w,
-/static/411523fdcb3ebd9c49ad3bc74f2cf8d9/15d25/redis-geoloc-architecture.png 497w&quot;
-        sizes=&quot;(max-width: 497px) 100vw, 497px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-      /&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;No exemplo, criamos um índice chamado &lt;em&gt;Salvador&lt;/em&gt; (cidade em que sou nascido e criado 😊) que aponta para um conjunto de pontos.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Atenção:&lt;/strong&gt; como o Redis utiliza a estrutura de conjuntos não é possível existir no mesmo índice dois pontos com o mesmo nome. A inserção de um ponto com o mesmo nome corresponde a uma atualização das coordenadas (operação de &lt;em&gt;upsert&lt;/em&gt;).&lt;/p&gt;
-&lt;h2&gt;Mãos à obra&lt;/h2&gt;
-&lt;p&gt;O Redis nos fornece uma API com os seguintes comandos: &lt;code class=&quot;language-text&quot;&gt;GEOADD&lt;/code&gt;,&lt;code class=&quot;language-text&quot;&gt;GEODIST&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEOHASH&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEOPOS&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEOSEARCH&lt;/code&gt;. Vamos iniciar adicionando alguns pontos ao índice &lt;code class=&quot;language-text&quot;&gt;location:salvador&lt;/code&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Atenção:&lt;/strong&gt; Os comandos logo serão depreciados: &lt;code class=&quot;language-text&quot;&gt;GEOMEMBER&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEORADIUS&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEORADIUS_RO&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEORADIUSBYMEMBER&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;GEORADIUSBYMEMBER_RO&lt;/code&gt;. Por isso, não vamos explorá-los neste post.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOADD location:salvador &lt;span class=&quot;token parameter variable&quot;&gt;-38.5139209&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-12.9730385&lt;/span&gt; mercadomodelo &lt;span class=&quot;token parameter variable&quot;&gt;-38.5329599&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-13.0101531&lt;/span&gt; faroldabarra &lt;span class=&quot;token parameter variable&quot;&gt;-38.5260635&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-13.0107505&lt;/span&gt; morrodocristo&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Aqui, duas observações &lt;strong&gt;importantes&lt;/strong&gt;:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;O redis recebe &lt;strong&gt;primeiro&lt;/strong&gt; a longitude e depois a latitude.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;CMD &amp;lt;set-name&gt; &amp;lt;long&gt; &amp;lt;lat&gt; &amp;lt;member-name&gt;&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;Como vamos manipular os pontos dentro do índice eu optei por adotar um padrão &lt;em&gt;lowercase&lt;/em&gt; nas strings e no índice. Isso evita erros na busca e também torna suficientemente legível os dados armazenados (veja a seção &lt;em&gt;Redis keys&lt;/em&gt; da &lt;a href=&quot;https://redis.io/topics/data-types-intro&quot;&gt;documentação&lt;/a&gt;).&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Uma vez inseridos os pontos, podemos brincar com a API. Vamos a alguns casos de uso.&lt;/p&gt;
-&lt;h3&gt;Obter longitude e latitude de um ou mais pontos&lt;/h3&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOPOS location:salvador faroldabarra
-
-&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-38.53296071290969849&quot;&lt;/span&gt;
-   &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-13.01015213126540715&quot;&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-38.52607816457748413&quot;&lt;/span&gt;
-   &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-13.0107807421129209&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;Calcular a distância, em metros, entre dois pontos&lt;/h3&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEODIST location:salvador faroldabarra morrodocristo
-
-&lt;span class=&quot;token string&quot;&gt;&quot;749.1386&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;em&gt;OBS:&lt;/em&gt; Você pode passar, no final, a métrica de distância que você quer (m, km, ft, mi).&lt;/p&gt;
-&lt;h3&gt;Atualizar um ponto&lt;/h3&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOADD location:salvador &lt;span class=&quot;token parameter variable&quot;&gt;-38&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-12&lt;/span&gt; elevadorlacerda
-
-&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOADD location:salvador &lt;span class=&quot;token parameter variable&quot;&gt;-38.5159605&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-12.9740495&lt;/span&gt; elevadorlacerda
-
-&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOPOS location:salvador elevadorlacerda&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;em&gt;OBS:&lt;/em&gt; Como estamos trabalhando com conjuntos a atualização de um ponto se dá por inserir um ponto com a mesma string (itens repetidos não são permitidos).&lt;/p&gt;
-&lt;h3&gt;Buscar&lt;/h3&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Pontos em um raio de 1600 metros a uma determinada longitude/latitude&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOSEARCH location:salvador FROMLONLAT &lt;span class=&quot;token parameter variable&quot;&gt;-38.5175291&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-13.0060716&lt;/span&gt; BYRADIUS &lt;span class=&quot;token number&quot;&gt;1600&lt;/span&gt; m
-&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;morrodocristo&quot;&lt;/span&gt;
-
-&lt;span class=&quot;token comment&quot;&gt;# Pontos em um raio de 200 km de um ponto existente&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOSEARCH location:salvador FROMMEMBER faroldabarra BYRADIUS &lt;span class=&quot;token number&quot;&gt;200&lt;/span&gt; km
-&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;faroldabarra&quot;&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;morrodocristo&quot;&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;elevadorlacerda&quot;&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;mercadomodelo&quot;&lt;/span&gt;
-
-&lt;span class=&quot;token comment&quot;&gt;# A mesma query acima porém com as coordenadas e a distância&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOSEARCH location:salvador FROMMEMBER faroldabarra BYRADIUS &lt;span class=&quot;token number&quot;&gt;200&lt;/span&gt; km WITHCOORD WITHDIST
-&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;faroldabarra&quot;&lt;/span&gt;
-   &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;0.0000&quot;&lt;/span&gt;
-   &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-38.53296071290969849&quot;&lt;/span&gt;
-      &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-13.01015213126540715&quot;&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;morrodocristo&quot;&lt;/span&gt;
-   &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;0.7491&quot;&lt;/span&gt;
-   &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-38.52607816457748413&quot;&lt;/span&gt;
-      &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-13.0107807421129209&quot;&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;elevadorlacerda&quot;&lt;/span&gt;
-   &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;4.4180&quot;&lt;/span&gt;
-   &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-38.51596087217330933&quot;&lt;/span&gt;
-      &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-12.97405009779294005&quot;&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;mercadomodelo&quot;&lt;/span&gt;
-   &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;4.6149&quot;&lt;/span&gt;
-   &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-38.51392239332199097&quot;&lt;/span&gt;
-      &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-12.97303874405036339&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;Observações:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;GEOSEARCH&lt;/code&gt; também permite restringir a quantidade de resultados por meio do parâmetro &lt;code class=&quot;language-text&quot;&gt;COUNT&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Substitua o &lt;code class=&quot;language-text&quot;&gt;BYRADIUS 200 km&lt;/code&gt; por &lt;code class=&quot;language-text&quot;&gt;BYBOX 200 200 km&lt;/code&gt; e o Redis irá considerar um retângulo ao invés de uma área circular.&lt;/li&gt;
-&lt;li&gt;É possível retornar os valores ordenados pela distância. Basta adicionar &lt;code class=&quot;language-text&quot;&gt;ASC&lt;/code&gt; ou &lt;code class=&quot;language-text&quot;&gt;DESC&lt;/code&gt; ao final da busca.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Armazenar os resultados da busca&lt;/h3&gt;
-&lt;p&gt;O redis permite que você faça uma busca e armazene em um índice específico. No exemplo abaixo buscamos em &lt;code class=&quot;language-text&quot;&gt;location:salvador&lt;/code&gt; e armazenamos em &lt;code class=&quot;language-text&quot;&gt;location:results:salvador&lt;/code&gt;.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOSEARCHSTORE location:results:salvador location:salvador FROMMEMBER faroldabarra BYRADIUS &lt;span class=&quot;token number&quot;&gt;200&lt;/span&gt; km
-
-&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; KEYS *
-&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;location:salvador&quot;&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;location:results:salvador&quot;&lt;/span&gt;
-
-&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; ZRANGE location:results:salvador &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-1&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;faroldabarra&quot;&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;morrodocristo&quot;&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;mercadomodelo&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;Geohash&lt;/h3&gt;
-&lt;p&gt;Redis usa a representação em Geohash, string de 11 caracteres, para representar os pontos no conjunto de forma que ela pode ser traduzida em uma coordenada (lat / long). &lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; GEOHASH location:salvador morrodocristo faroldabarra
-&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;7jstgr6nvs0&quot;&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;7jstgpt4kg0&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Você pode verificar esse mapeamento geohash ↔ lat/long por meio do site &lt;em&gt;&lt;a href=&quot;https://geohash.org/&quot;&gt;https://geohash.org/&lt;/a&gt;&lt;coloque-aqui-o-geohash&gt;&lt;/em&gt;.&lt;/p&gt;
-&lt;h3&gt;Operações com &lt;em&gt;Sorted Set&lt;/em&gt;&lt;/h3&gt;
-&lt;p&gt;Como o Redis armazena essa estrutura na forma de &lt;em&gt;sorted sets&lt;/em&gt; então é possível acessar esses dados usando APIs dessa estrutura de dados. Vejamos alguns exemplos (todos os comandos estão na &lt;a href=&quot;https://redis.io/commands#sorted-set&quot;&gt;documentação&lt;/a&gt;):&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; ZRANGE location:salvador &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-1&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;faroldabarra&quot;&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;morrodocristo&quot;&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;elevadorlacerda&quot;&lt;/span&gt;
-&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;mercadomodelo&quot;&lt;/span&gt;
-
-&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; ZREM location:salvador elevadorlacerda
-&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;integer&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
-
-&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; ZCARD location:salvador
-&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;integer&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;
-
-&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1:637&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;9&lt;/span&gt;&gt;&lt;/span&gt; ZCOUNT location:salvador &lt;span class=&quot;token parameter variable&quot;&gt;-inf&lt;/span&gt; +inf
-&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;integer&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;Considerações Finais&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Pense no Redis além da chave-valor. Existem outras estruturas de dados para você brincar.&lt;/li&gt;
-&lt;li&gt;Cuidado com o nome do índice e dos pontos. Você vai precisar buscá-los de uma forma inteligente e que evite erros de digitação.&lt;/li&gt;
-&lt;li&gt;Antes de inserir todos os pontos pense em como você vai buscar os dados. Será que faz sentido todos os pontos estarem no mesmo índice? E se você precisar fazer &lt;em&gt;sharding&lt;/em&gt;?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;E ai, curtiu o post?&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Usando a função Postgres::array_agg para agregar colunas de string]]></title><description><![CDATA[Graças a @copquevictor eu aprendi uma função de agregação muito útil do Posgres: array_agg. Para entendê-la, vamos supor que você tenha que…]]></description><link>https://vcrmartinez.com/2021/2021-01-12-Usando_a_funcao_Postgres_array_agg_para_agregar_colunas_de_string/</link><guid isPermaLink="false">https://vcrmartinez.com/2021/2021-01-12-Usando_a_funcao_Postgres_array_agg_para_agregar_colunas_de_string/</guid><pubDate>Tue, 12 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Graças a &lt;a href=&quot;https://twitter.com/copquevictor&quot;&gt;@copquevictor&lt;/a&gt; eu aprendi uma função de agregação muito útil do Posgres: &lt;strong&gt;array_agg&lt;/strong&gt;. Para entendê-la, vamos supor que você tenha que notificar interessados em relatórios e sua query fornece a tabela abaixo como saída:&lt;/p&gt;
+&lt;p&gt;E ai, curtiu o post?&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Defensive-Software-Delivery]]></title><link>https://vcrmartinez.com/2021/2021-12-28-Defensive-Software-Delivery/2020-12-28-Defensive-Software-Delivery/</link><guid isPermaLink="false">https://vcrmartinez.com/2021/2021-12-28-Defensive-Software-Delivery/2020-12-28-Defensive-Software-Delivery/</guid><pubDate>Tue, 28 Dec 2021 03:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Usando a função Postgres::array_agg para agregar colunas de string]]></title><description><![CDATA[Graças a @copquevictor eu aprendi uma função de agregação muito útil do Posgres: array_agg. Para entendê-la, vamos supor que você tenha que…]]></description><link>https://vcrmartinez.com/2021/2021-01-12-Usando_a_funcao_Postgres_array_agg_para_agregar_colunas_de_string/</link><guid isPermaLink="false">https://vcrmartinez.com/2021/2021-01-12-Usando_a_funcao_Postgres_array_agg_para_agregar_colunas_de_string/</guid><pubDate>Tue, 12 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Graças a &lt;a href=&quot;https://twitter.com/copquevictor&quot;&gt;@copquevictor&lt;/a&gt; eu aprendi uma função de agregação muito útil do Posgres: &lt;strong&gt;array_agg&lt;/strong&gt;. Para entendê-la, vamos supor que você tenha que notificar interessados em relatórios e sua query fornece a tabela abaixo como saída:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;markdown&quot;&gt;&lt;pre class=&quot;language-markdown&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;&lt;span class=&quot;token table&quot;&gt;&lt;span class=&quot;token table-header-row&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token table-header important&quot;&gt; Report    &lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token table-header important&quot;&gt; Email                  &lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;
 &lt;/span&gt;&lt;span class=&quot;token table-line&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;---------&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;----------------------&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;
 &lt;/span&gt;&lt;span class=&quot;token table-data-rows&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token table-data&quot;&gt; Report #1 &lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token table-data&quot;&gt; johndoe@gmail.com      &lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;
@@ -447,108 +303,17 @@ $ redis-cli
 &lt;li&gt;&lt;strong&gt;Linhas 21 e 55&lt;/strong&gt; configuram &lt;code class=&quot;language-text&quot;&gt;include_schema=True&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Linhas 22 e 57&lt;/strong&gt; passam o &lt;em&gt;callable&lt;/em&gt; &lt;code class=&quot;language-text&quot;&gt;include_object&lt;/code&gt; que corresponde a função da 4ª linha.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Linha 3&lt;/strong&gt; corresponde ao nosso &lt;em&gt;callable&lt;/em&gt; que especifica se o Alembic deve considerar ou não o objeto em questão. Preste atenção que na 5ª linha nós verificamos se o objeto tem um atributo &lt;code class=&quot;language-text&quot;&gt;schema&lt;/code&gt;. Finalmente, as linhas 6 e 7 comparam o schema com aquele configurado nos models do SQLAlchemy.&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Nginx + Certbox: direto ao ponto]]></title><description><![CDATA[Trabalhar em uma equipe sem experiência em DevOps obriga você a gerenciar para fazer as coisas em relação à infraestrutura. Tivemos que…]]></description><link>https://vcrmartinez.com/2020/2020-04-23-Nginx_com_certbot_direto_ao_ponto/</link><guid isPermaLink="false">https://vcrmartinez.com/2020/2020-04-23-Nginx_com_certbot_direto_ao_ponto/</guid><pubDate>Thu, 23 Apr 2020 03:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Trabalhar em uma equipe sem experiência em DevOps obriga você a gerenciar para fazer as coisas em relação à infraestrutura. Tivemos que instalar e configurar uma instância do &lt;a href=&quot;https://www.rabbitmq.com/&quot;&gt;RabbitMQ&lt;/a&gt; atrás de um &lt;a href=&quot;https://www.nginx.com/&quot;&gt;Nginx&lt;/a&gt; com HTTPS. Esta é uma postagem direta sobre como instalar e configurar o proxy reverso com &lt;a href=&quot;https://letsencrypt.org&quot;&gt;Let’s Encrypt&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Nginx&lt;/h2&gt;
-&lt;p&gt;Neste tutorial, o Nginx funciona como um proxy reverso, encaminhando solicitações externas da Internet para o serviço interno. Vamos começar.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1. Crie um registro &lt;code class=&quot;language-text&quot;&gt;A&lt;/code&gt; em seu provedor de DNS:&lt;/strong&gt;&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;center&quot;&gt;Type&lt;/th&gt;
-&lt;th align=&quot;center&quot;&gt;Name&lt;/th&gt;
-&lt;th&gt;Content&lt;/th&gt;
-&lt;th&gt;TTL&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;A&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;yourwebsite&lt;/td&gt;
-&lt;td&gt;123.456.78.91&lt;/td&gt;
-&lt;td&gt;Auto&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;2. Instale o Nginx e habilite-o:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt-get&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; nginx-full
-&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; systemctl &lt;span class=&quot;token builtin class-name&quot;&gt;enable&lt;/span&gt; nginx&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Gerencie a sua instância do nginx com os comandos abaixo:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; systemctl restart nginx
-&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; systemctl reload nginx
-&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; systemctl status nginx&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;3. Crie um arquivo de configuração no diretório&lt;/strong&gt; &lt;code class=&quot;language-text&quot;&gt;/etc/nginx/sites-available/&lt;/code&gt;&lt;strong&gt;. Um bom padrão é nomeá-lo de acordo com o DNS do seu serviço:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;/etc/nginx/sites-available/yourwebsite.com&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;4. Substitua o conteúdo abaixo de acordo com suas necessidades:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;server {
-  server_name &amp;lt;YOUR-DNS&gt;;
-  access_log /var/log/nginx/access.log;
-  error_log /var/log/nginx/error.log;
-  location / {
-          client_body_buffer_size 128k;
-          proxy_send_timeout   90;
-          proxy_read_timeout   90;
-          proxy_buffer_size    4k;
-          proxy_buffers     16 32k;
-          proxy_busy_buffers_size 64k;
-          proxy_temp_file_write_size 64k;
-          proxy_connect_timeout 30s;
-          proxy_pass   http://&amp;lt;YOUR-LOCAL&gt;:&amp;lt;PORT&gt;;
-          proxy_set_header   Host   $host;
-          proxy_set_header   X-Real-IP  $remote_addr;
-          proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
-  }
-}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;5. Crie um link simbólico para o diretório sites-enabled:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-s&lt;/span&gt; /etc/nginx/sites-available/&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;your-filename&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; /etc/nginx/sites-enabled/&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;your-filename&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;6. Carregue a configuração e cheque o status:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; systemctl reload nginx
-&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; systemctl status nginx&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;A saída abaixo ilustra que nosso Nginx está funcionando corretamente (dados sensíveis foram omitidos).&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt; nginx.service - A high performance web server and a reverse proxy server
-   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
-   Active: active (running) since Tue 2019-08-13 18:18:09 UTC; 3 months 7 days ago
-     Docs: man:nginx(8)
- Main PID: 6027 (nginx)
-    Tasks: 5 (limit: 4915)
-   CGroup: /system.slice/nginx.service
-           ├─5198 nginx: worker process
-           ├─5199 nginx: worker process
-           ├─5200 nginx: worker process
-           ├─5201 nginx: worker process
-           └─6027 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
-
-Aug 13 18:18:09 systemd[1]: Starting A high performance web server and a reverse proxy server...
-Aug 13 18:18:09 systemd[1]: Started A high performance web server and a reverse proxy server.
-Aug 13 18:53:04 systemd[1]: Reloading A high performance web server and a reverse proxy server.
-Aug 13 18:53:04 systemd[1]: Reloaded A high performance web server and a reverse proxy server.
-Aug 13 18:58:21 systemd[1]: Reloading A high performance web server and a reverse proxy server.
-Aug 13 18:58:21 systemd[1]: Reloaded A high performance web server and a reverse proxy server.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;Certbot&lt;/h2&gt;
-&lt;p&gt;Para permitir HTTPs no seu website você precisa ter um certificado de um Autoridade Certificadora (CA - Certificate Authority). Nós podemos usar o Let’s Encrypt e o cliente do Certbot para configurar o ambiente.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1. Instale o Certbot com o plugin do Nginx:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt-get&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; python-certbot-nginx&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;2. Execute o certbot passando seu domínio como parâmetro:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; certbot &lt;span class=&quot;token parameter variable&quot;&gt;--nginx&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR-DOMAIN&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;3. Garanta que a renovação automática está configurada no cronjob do Linux:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;cat&lt;/span&gt; /etc/cron.d/certbot&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Voilà!&lt;/p&gt;
-&lt;h2&gt;Links&lt;/h2&gt;
-&lt;p&gt;Você pode achar útil os links abaixo:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://tecadmin.net/auto-renew-lets-encrypt-certificates/&quot;&gt;Certbot.org&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://tecadmin.net/auto-renew-lets-encrypt-certificates/&quot;&gt;Techmonger: Certbot Auto Renew/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://tecadmin.net/auto-renew-lets-encrypt-certificates/&quot;&gt;Tecadmin: Auto renew lets encrypt certificates&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Dica rápida: kubectx para trocar facilmente entre clusters]]></title><description><![CDATA[Depentendo da sua empresa, manter mais de um cluster Kubernetes pode ser uma atividade comum. Entretando, digitar  e  para listar os…]]></description><link>https://vcrmartinez.com/2020/2020-03-28-Dica_rapida_kubectx_para_trocar_facilmente_entre_clusters/</link><guid isPermaLink="false">https://vcrmartinez.com/2020/2020-03-28-Dica_rapida_kubectx_para_trocar_facilmente_entre_clusters/</guid><pubDate>Sat, 28 Mar 2020 03:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Depentendo da sua empresa, manter mais de um cluster Kubernetes pode ser uma atividade comum. Entretando, digitar &lt;code class=&quot;language-text&quot;&gt;kubectl config get-contexts&lt;/code&gt; e &lt;code class=&quot;language-text&quot;&gt;kubectl config use-context&lt;/code&gt; para listar os contextos e trocar, respectivamente, (i) é chato, (ii) demanda esforço e (iii) não é intuitivo. Graças ao &lt;a href=&quot;https://github.com/ahmetb/kubectx/&quot;&gt;kubectx&lt;/a&gt; você pode facilmente trocar entre contextos.&lt;/p&gt;
 &lt;p&gt;Na &lt;a href=&quot;http://onyo.com/&quot;&gt;Onyo&lt;/a&gt;, nós temos que trocar entre três clusters. Portanto, os comandos abaixo são comumente usados:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;kubectx             : list the contexts
 kubectx -           : switch to the previous context
-kubectx &amp;lt;NAME&gt;      : switch to context &amp;lt;NAME&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+kubectx &amp;lt;NAME&amp;gt;      : switch to context &amp;lt;NAME&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;O README do &lt;em&gt;kubectx&lt;/em&gt; apresenta outros comandos que podem ser úteis para você:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;kubectx -c, --current     : show the current context name
-kubectx &amp;lt;NEW_NAME&gt;=&amp;lt;NAME&gt; : rename context &amp;lt;NAME&gt; to &amp;lt;NEW_NAME&gt;
-kubectx &amp;lt;NEW_NAME&gt;=.      : rename current-context to &amp;lt;NEW_NAME&gt;
-kubectx -d &amp;lt;NAME&gt;         : delete context &amp;lt;NAME&gt; (&apos;.&apos; for current-context)
-                            (this command won&apos;t delete the user/cluster entry
+kubectx &amp;lt;NEW_NAME&amp;gt;=&amp;lt;NAME&amp;gt; : rename context &amp;lt;NAME&amp;gt; to &amp;lt;NEW_NAME&amp;gt;
+kubectx &amp;lt;NEW_NAME&amp;gt;=.      : rename current-context to &amp;lt;NEW_NAME&amp;gt;
+kubectx -d &amp;lt;NAME&amp;gt;         : delete context &amp;lt;NAME&amp;gt; (&amp;#39;.&amp;#39; for current-context)
+                            (this command won&amp;#39;t delete the user/cluster entry
                             that is used by the context)
 kubectx -u, --unset       : unset the current context&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;PS:&lt;/strong&gt; Se você tiver &lt;a href=&quot;https://github.com/junegunn/fzf&quot;&gt;fzf&lt;/a&gt; instalado você tem um maravilhoso menu interativo com busca fuzzy sempre que digitar &lt;code class=&quot;language-text&quot;&gt;kubectx&lt;/code&gt; ou &lt;code class=&quot;language-text&quot;&gt;kubens&lt;/code&gt;.&lt;/p&gt;
@@ -728,50 +493,50 @@ config&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;load_inclust
 &lt;li&gt;&lt;strong&gt;Configmaps&lt;/strong&gt; O arquivo &lt;em&gt;settings&lt;/em&gt; usa valores fixos (hardcoded), mas pode utilizar Configmaps se não gostar da abordagem.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Usuário não root:&lt;/strong&gt; Não use usuário root para o Dockerfile. Você pode usar o Dockerfile abaixo como ponto de partida:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;dockerfile&quot;&gt;&lt;pre class=&quot;language-dockerfile&quot;&gt;&lt;code class=&quot;language-dockerfile&quot;&gt;&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;FROM&lt;/span&gt; python:3.7&lt;/span&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;dockerfile&quot;&gt;&lt;pre class=&quot;language-dockerfile&quot;&gt;&lt;code class=&quot;language-dockerfile&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;FROM&lt;/span&gt; python&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;3.7
 
-&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;ENV&lt;/span&gt; PYTHONUNBUFFERED=1&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;ENV&lt;/span&gt; PYTHONUNBUFFERED=1
 
-&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;ENV&lt;/span&gt; TZ=UTC&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;ENV&lt;/span&gt; TZ=UTC
 
-&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt; useradd -ms /bin/bash app&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt; useradd &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;ms /bin/bash app
 
-&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;USER&lt;/span&gt; app&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;USER&lt;/span&gt; app
 
-&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;WORKDIR&lt;/span&gt; /home/app&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;WORKDIR&lt;/span&gt; /home/app
 
-&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;ADD&lt;/span&gt; . /home/app&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;ADD&lt;/span&gt; . /home/app
 
-&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt; pip install --upgrade pip &amp;amp;&amp;amp; pip install -r requirements.txt&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Kubernetes: meu cheat sheet pessoal]]></title><description><![CDATA[Se sua infraestrutura é composta por um cluster Kubernetes, você provavelmente tem um conjunto de comandos em mãos para tarefas comuns. A…]]></description><link>https://vcrmartinez.com/2020/2020-01-16-Kubernetes_meu_cheat_sheet_pessoal/</link><guid isPermaLink="false">https://vcrmartinez.com/2020/2020-01-16-Kubernetes_meu_cheat_sheet_pessoal/</guid><pubDate>Thu, 16 Jan 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Se sua infraestrutura é composta por um cluster Kubernetes, você provavelmente tem um conjunto de comandos em mãos para tarefas comuns. A documentação do Google fornece um &lt;a href=&quot;https://kubernetes.io/docs/reference/kubectl/cheatsheet/&quot;&gt;cheat sheet&lt;/a&gt; útil que você deve dar uma olhada. Porém, neste post irei compartilhar alguns comandos que uso / tenho usado.&lt;/p&gt;
+&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt; pip install &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;upgrade pip &amp;amp;&amp;amp; pip install &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;r requirements.txt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Kubernetes: meu cheat sheet pessoal]]></title><description><![CDATA[Se sua infraestrutura é composta por um cluster Kubernetes, você provavelmente tem um conjunto de comandos em mãos para tarefas comuns. A…]]></description><link>https://vcrmartinez.com/2020/2020-01-16-Kubernetes_meu_cheat_sheet_pessoal/</link><guid isPermaLink="false">https://vcrmartinez.com/2020/2020-01-16-Kubernetes_meu_cheat_sheet_pessoal/</guid><pubDate>Thu, 16 Jan 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Se sua infraestrutura é composta por um cluster Kubernetes, você provavelmente tem um conjunto de comandos em mãos para tarefas comuns. A documentação do Google fornece um &lt;a href=&quot;https://kubernetes.io/docs/reference/kubectl/cheatsheet/&quot;&gt;cheat sheet&lt;/a&gt; útil que você deve dar uma olhada. Porém, neste post irei compartilhar alguns comandos que uso / tenho usado.&lt;/p&gt;
 &lt;h2&gt;Comandos Gcloud&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;Obter credenciais: &lt;code class=&quot;language-text&quot;&gt;gcloud container clusters get-credentials &amp;lt;CLUSTER-NAME&gt; --zone &amp;lt;ZONE&gt; --project &amp;lt;PROJECT-ID&gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Obter imagens que você fez upload: &lt;code class=&quot;language-text&quot;&gt;gcloud container images list-tags gcr.io/&amp;lt;project-id&gt;/&amp;lt;image-name&gt; [--limit &amp;lt;N&gt;]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Obter a última imagem do registry: &lt;code class=&quot;language-text&quot;&gt;gcloud container images list-tags gcr.io/&amp;lt;project-id&gt;/&amp;lt;image-name&gt; --limit 1 | tail -1 | awk &apos;{print $2}&apos;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Obter credenciais: &lt;code class=&quot;language-text&quot;&gt;gcloud container clusters get-credentials &amp;lt;CLUSTER-NAME&amp;gt; --zone &amp;lt;ZONE&amp;gt; --project &amp;lt;PROJECT-ID&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Obter imagens que você fez upload: &lt;code class=&quot;language-text&quot;&gt;gcloud container images list-tags gcr.io/&amp;lt;project-id&amp;gt;/&amp;lt;image-name&amp;gt; [--limit &amp;lt;N&amp;gt;]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Obter a última imagem do registry: &lt;code class=&quot;language-text&quot;&gt;gcloud container images list-tags gcr.io/&amp;lt;project-id&amp;gt;/&amp;lt;image-name&amp;gt; --limit 1 | tail -1 | awk &amp;#39;{print $2}&amp;#39;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Comandos Básicos&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Verifique o contexto atual (melhor usar &lt;a href=&quot;https://github.com/ahmetb/kubectx/&quot;&gt;kubectx&lt;/a&gt;): &lt;code class=&quot;language-text&quot;&gt;kubectl config current-context&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Você iniciou algum job? Melhor verificar: &lt;code class=&quot;language-text&quot;&gt;kubectl get jobs,pods [-n &amp;lt;NAMESPACE&gt; | --all-namespaces | -o wide]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Você iniciou algum job? Melhor verificar: &lt;code class=&quot;language-text&quot;&gt;kubectl get jobs,pods [-n &amp;lt;NAMESPACE&amp;gt; | --all-namespaces | -o wide]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Quantos nós no cluster? &lt;code class=&quot;language-text&quot;&gt;kubectl get nodes [-o wide]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Liste os recursos: &lt;code class=&quot;language-text&quot;&gt;kubectl get all,svc,deploy,configmaps,secrets,ingress,hpa [-n &amp;lt;NAMESPACE&gt; | --all-namespaces]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Liste os recursos: &lt;code class=&quot;language-text&quot;&gt;kubectl get all,svc,deploy,configmaps,secrets,ingress,hpa [-n &amp;lt;NAMESPACE&amp;gt; | --all-namespaces]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Quais namespaces seu cluster tem? &lt;code class=&quot;language-text&quot;&gt;kubectl get namespaces&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Exporte um deployment (útil para debugar o yaml): &lt;code class=&quot;language-text&quot;&gt;kubectl get deploy &amp;lt;NAME&gt; -o yaml --export&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Obtenha o Managed Certificate: &lt;code class=&quot;language-text&quot;&gt;kubectl describe managedcertificate [-n &amp;lt;NAMESPACE&gt;]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Faça encaminhamento de porta: &lt;code class=&quot;language-text&quot;&gt;kubectl port-forward [-n &amp;lt;NAMESPACE&gt;] svc/&amp;lt;SERVICE-NAME&gt; &amp;lt;LOCAL-PORT&gt;:&amp;lt;REMOTE-PORT&gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Suspenda um CronJob: &lt;code class=&quot;language-text&quot;&gt;kubectl patch cronjobs &amp;lt;cronjob-name&gt; -p &apos;{&quot;spec&quot; : {&quot;suspend&quot; : true }}&apos; [-n &amp;lt;NAMESPACE&gt;]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Crie um job a partir de um Cronjob: &lt;code class=&quot;language-text&quot;&gt;kubectl create job --from=cronjob/&amp;lt;YOUR-CRONJOB-NAME&gt; &amp;lt;GIVE-A-NAME&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Exporte um deployment (útil para debugar o yaml): &lt;code class=&quot;language-text&quot;&gt;kubectl get deploy &amp;lt;NAME&amp;gt; -o yaml --export&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Obtenha o Managed Certificate: &lt;code class=&quot;language-text&quot;&gt;kubectl describe managedcertificate [-n &amp;lt;NAMESPACE&amp;gt;]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Faça encaminhamento de porta: &lt;code class=&quot;language-text&quot;&gt;kubectl port-forward [-n &amp;lt;NAMESPACE&amp;gt;] svc/&amp;lt;SERVICE-NAME&amp;gt; &amp;lt;LOCAL-PORT&amp;gt;:&amp;lt;REMOTE-PORT&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Suspenda um CronJob: &lt;code class=&quot;language-text&quot;&gt;kubectl patch cronjobs &amp;lt;cronjob-name&amp;gt; -p &amp;#39;{&amp;quot;spec&amp;quot; : {&amp;quot;suspend&amp;quot; : true }}&amp;#39; [-n &amp;lt;NAMESPACE&amp;gt;]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Crie um job a partir de um Cronjob: &lt;code class=&quot;language-text&quot;&gt;kubectl create job --from=cronjob/&amp;lt;YOUR-CRONJOB-NAME&amp;gt; &amp;lt;GIVE-A-NAME&amp;gt;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;em&gt;Dica:&lt;/em&gt; prefixes seus comandos com &lt;code class=&quot;language-text&quot;&gt;watch&lt;/code&gt; para ficar de olho no output. Por exemplo, se você fez deploy de uma nova imagem, verifique o progresso com o comando &lt;code class=&quot;language-text&quot;&gt;watch kubectl get pods [-n namespace]&lt;/code&gt;.&lt;/p&gt;
 &lt;h2&gt;Deploy&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Liste todos os deployments: &lt;code class=&quot;language-text&quot;&gt;kubectl get deployments --all-namespaces&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Criar ou deletar um deploy é fácil: &lt;code class=&quot;language-text&quot;&gt;kubectl [apply|delete] -f &amp;lt;FOLDER-OR-FILE&gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Escale: &lt;code class=&quot;language-text&quot;&gt;kubectl scale deploy &amp;lt;DEPLOY-NAME&gt; [-n &amp;lt;NAMESPACE&gt;] --replicas=&amp;lt;N&gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Faça rollback de um deploy: &lt;code class=&quot;language-text&quot;&gt;kubectl rollout undo deployment/&amp;lt;DEPLOY-NAME&gt; [-n &amp;lt;NAMESPACE&gt;]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Delete evicted pods: &lt;code class=&quot;language-text&quot;&gt;kubectl [-n &amp;lt;NAMESPACE&gt;] delete pods --field-selector=status.phase=Failed&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Delete todos os pods: &lt;code class=&quot;language-text&quot;&gt;kubectl delete --all pods [-n &amp;lt;NAMESPACE&gt;]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Restart nos pods: &lt;code class=&quot;language-text&quot;&gt;kubectl rollout restart deployment &amp;lt;DEPLOY-NAME&gt; [-n &amp;lt;NAMESPACE&gt;]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Criar ou deletar um deploy é fácil: &lt;code class=&quot;language-text&quot;&gt;kubectl [apply|delete] -f &amp;lt;FOLDER-OR-FILE&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Escale: &lt;code class=&quot;language-text&quot;&gt;kubectl scale deploy &amp;lt;DEPLOY-NAME&amp;gt; [-n &amp;lt;NAMESPACE&amp;gt;] --replicas=&amp;lt;N&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Faça rollback de um deploy: &lt;code class=&quot;language-text&quot;&gt;kubectl rollout undo deployment/&amp;lt;DEPLOY-NAME&amp;gt; [-n &amp;lt;NAMESPACE&amp;gt;]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Delete evicted pods: &lt;code class=&quot;language-text&quot;&gt;kubectl [-n &amp;lt;NAMESPACE&amp;gt;] delete pods --field-selector=status.phase=Failed&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Delete todos os pods: &lt;code class=&quot;language-text&quot;&gt;kubectl delete --all pods [-n &amp;lt;NAMESPACE&amp;gt;]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Restart nos pods: &lt;code class=&quot;language-text&quot;&gt;kubectl rollout restart deployment &amp;lt;DEPLOY-NAME&amp;gt; [-n &amp;lt;NAMESPACE&amp;gt;]&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Dicas:_&lt;/p&gt;
 &lt;ol&gt;
@@ -780,312 +545,32 @@ config&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;load_inclust
 &lt;/ol&gt;
 &lt;h2&gt;Solução de problemas&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;Tenha uma visão geral dos deployments: &lt;code class=&quot;language-text&quot;&gt;kubectl describe deploy &amp;lt;DEPLOY-NAME&gt; [-n &amp;lt;NAMESPACE&gt;]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Tenha uma visão geral do pod: &lt;code class=&quot;language-text&quot;&gt;kubectl describe pod &amp;lt;POD-NAME&gt; [-n &amp;lt;NAMESPACE&gt;]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Verifique os logs: &lt;code class=&quot;language-text&quot;&gt;kubectl logs -f &amp;lt;POD-NAME&gt; [-n &amp;lt;NAMESPACE&gt;] [--tail=&amp;lt;N&gt;]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Verifique os logs de um container anterior: &lt;code class=&quot;language-text&quot;&gt;kubectl logs &amp;lt;POD-NAME&gt; -c &amp;lt;CONTAINER-NAME&gt; --previous&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Verifique os logs de todos os containers que possuem uma label: &lt;code class=&quot;language-text&quot;&gt;kubectl logs -f -l &amp;lt;KEY&gt;=&amp;lt;VALUE&gt; --all-containers&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Obtenha uma shell interativo: &lt;code class=&quot;language-text&quot;&gt;kubectl exec -it &amp;lt;POD-NAME&gt; [-n &amp;lt;NAMESPACE&gt;] -- /bin/bash&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Tenha uma visão geral dos deployments: &lt;code class=&quot;language-text&quot;&gt;kubectl describe deploy &amp;lt;DEPLOY-NAME&amp;gt; [-n &amp;lt;NAMESPACE&amp;gt;]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Tenha uma visão geral do pod: &lt;code class=&quot;language-text&quot;&gt;kubectl describe pod &amp;lt;POD-NAME&amp;gt; [-n &amp;lt;NAMESPACE&amp;gt;]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Verifique os logs: &lt;code class=&quot;language-text&quot;&gt;kubectl logs -f &amp;lt;POD-NAME&amp;gt; [-n &amp;lt;NAMESPACE&amp;gt;] [--tail=&amp;lt;N&amp;gt;]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Verifique os logs de um container anterior: &lt;code class=&quot;language-text&quot;&gt;kubectl logs &amp;lt;POD-NAME&amp;gt; -c &amp;lt;CONTAINER-NAME&amp;gt; --previous&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Verifique os logs de todos os containers que possuem uma label: &lt;code class=&quot;language-text&quot;&gt;kubectl logs -f -l &amp;lt;KEY&amp;gt;=&amp;lt;VALUE&amp;gt; --all-containers&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Obtenha uma shell interativo: &lt;code class=&quot;language-text&quot;&gt;kubectl exec -it &amp;lt;POD-NAME&amp;gt; [-n &amp;lt;NAMESPACE&amp;gt;] -- /bin/bash&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Faça o dump de um recurso para um arquivo yaml: `kubectl get &lt;OBJECT&gt; &lt;OBJECT-NAME&gt; -o yaml &gt; &lt;filename&gt;.yaml&lt;/li&gt;
 &lt;li&gt;Obtenha as métricas de memória e cpu memory:
 ** Todos os nós: &lt;code class=&quot;language-text&quot;&gt;kubectl top nodes&lt;/code&gt;
-** Um nó: &lt;code class=&quot;language-text&quot;&gt;kubectl top node &amp;lt;NODE-NAME&gt;&lt;/code&gt;
-** Pod: &lt;code class=&quot;language-text&quot;&gt;kubectl top pod &amp;lt;POD-NAME&gt; [-n &amp;lt;NAMESPACE&gt;]&lt;/code&gt;&lt;/li&gt;
+** Um nó: &lt;code class=&quot;language-text&quot;&gt;kubectl top node &amp;lt;NODE-NAME&amp;gt;&lt;/code&gt;
+** Pod: &lt;code class=&quot;language-text&quot;&gt;kubectl top pod &amp;lt;POD-NAME&amp;gt; [-n &amp;lt;NAMESPACE&amp;gt;]&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Escalonamento / Migração&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;Marque um nó não-escalável: &lt;code class=&quot;language-text&quot;&gt;kubectl cordon &amp;lt;NODE-NAME&gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Marque um nó escalável: &lt;code class=&quot;language-text&quot;&gt;kubectl uncordon &amp;lt;NODE-NAME&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Marque um nó não-escalável: &lt;code class=&quot;language-text&quot;&gt;kubectl cordon &amp;lt;NODE-NAME&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Marque um nó escalável: &lt;code class=&quot;language-text&quot;&gt;kubectl uncordon &amp;lt;NODE-NAME&amp;gt;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Helm&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Solucione o erro devido a versões incompatíveis de client: &lt;code class=&quot;language-text&quot;&gt;helm init --upgrade&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Liste os deployments do Helm: &lt;code class=&quot;language-text&quot;&gt;helm ls&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Delete um deploy do helm: &lt;code class=&quot;language-text&quot;&gt;helm delete &amp;lt;NAME&gt; --purge&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Instale um chart: &lt;code class=&quot;language-text&quot;&gt;helm install &amp;lt;CHART-NAME&gt; --name &amp;lt;YOUR-DEPLOY-NAME&gt; -f &amp;lt;YAML-FILE&gt; [--namespace &amp;lt;NAMESPACE&gt;]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Atualize um chart: &lt;code class=&quot;language-text&quot;&gt;helm upgrade &amp;lt;NAME&gt; &amp;lt;CHART&gt; -f &amp;lt;YAML-FILE&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Delete um deploy do helm: &lt;code class=&quot;language-text&quot;&gt;helm delete &amp;lt;NAME&amp;gt; --purge&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Instale um chart: &lt;code class=&quot;language-text&quot;&gt;helm install &amp;lt;CHART-NAME&amp;gt; --name &amp;lt;YOUR-DEPLOY-NAME&amp;gt; -f &amp;lt;YAML-FILE&amp;gt; [--namespace &amp;lt;NAMESPACE&amp;gt;]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Atualize um chart: &lt;code class=&quot;language-text&quot;&gt;helm upgrade &amp;lt;NAME&amp;gt; &amp;lt;CHART&amp;gt; -f &amp;lt;YAML-FILE&amp;gt;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Isso é tudo, pessoal! À medida que eu utilizar mais comandos eu atualizo este post.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Iniciando com Sistemas de Recomendação: Parte II]]></title><description><![CDATA[No post anterior eu introduzi a área de RecSys e os níveis de personalização. Hoje eu vou discutir sobre o pipeline de recomendação e como…]]></description><link>https://vcrmartinez.com/2019/2019-09-07-Iniciando_com_sistemas_de_recomendacao_parte_II/</link><guid isPermaLink="false">https://vcrmartinez.com/2019/2019-09-07-Iniciando_com_sistemas_de_recomendacao_parte_II/</guid><pubDate>Sat, 07 Sep 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;No post &lt;a href=&quot;/pt/blog/2019/2019-08-13-Iniciando_com_sistemas_de_recomendacao_parte_I/&quot;&gt;anterior&lt;/a&gt; eu introduzi a área de RecSys e os níveis de personalização. Hoje eu vou discutir sobre o pipeline de recomendação e como ele funciona.&lt;/p&gt;
-&lt;p&gt;Se você perdeu os outros posts, encontre aqui:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/pt/blog/2019/2019-08-13-Iniciando_com_sistemas_de_recomendacao_parte_I/&quot;&gt;Parte I: Introdução e níveis de personalização&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte II: Como funciona&lt;/li&gt;
-&lt;li&gt;Parte III: Técnicas&lt;/li&gt;
-&lt;li&gt;Parte IV: Métricas&lt;/li&gt;
-&lt;li&gt;Parte V: Desafios&lt;/li&gt;
-&lt;li&gt;Parte VI: Referências e leituras adicionais&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Como funciona&lt;/h2&gt;
-&lt;p&gt;Há muito trabalho a ser feito antes de fazer a recomendação em si. A coleta de dados, o pré-processamento e o design do modelo, por exemplo, são fases importantes. De modo geral, é possível visualizar o processo como um pipeline composto pelas fases ilustradas na figura a seguir.&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 755px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 27.916666666666668%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsSAAALEgHS3X78AAABkUlEQVQY0yWRbU/TYBiF+2NN/Oof0ET8IDEY3NaVbsRSEEVmwJi2e9EZsrEwRiSRLYKOOanSCnvpOtZ1yiaX28NJTu7kJOfKSW7p3OvScBy6o5DJvwk3N+BceJx+dzhtunS8gJnCv2Na/Wsav1q4XshVeC3ygd/BseucT91yz5C+JlQqzxZpv92m6/7G77Xo29u4X3QuTp4zutyh3Rvinx1wmX/Iz9wj3Nx9/BMLr9dj/7iNnm2ylmvwpuggGfOPMRcW+CjL+O0OQeBTTEexNucwNh7wubzJZLraPi7zLnIXQ7nH1tM7VAspsfB9qcZ8wuRJ0mBpYwdJ0TRUfYW1VIpgOGQ0+oO++hplSSMSW8ZMfxDFeuMHcnKVxMoroqpOce9A5HulAloyjrassJV6ibRbLFDaLVIpl6ewEWEYsr7+AlVVUOIy2WzmFlj/RjwWJS7HiEYWRWemZrPJp8ND4WqthhQEA4bDgH7fZzweC2g+n8eyLAzDoFLZF0XbtjFNg0wmLfJq9ej2KYMr4Rlndv8DUG+XRqscS6AAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image lazyload&quot;
-        alt=&quot;Recommender System Pipeline&quot;
-        title=&quot;Recommender System Pipeline&quot;
-        data-src=&quot;/static/445881097e2f93831b80b7d8dbcb42a0/cab43/recsys_phases.png&quot;
-        data-srcset=&quot;/static/445881097e2f93831b80b7d8dbcb42a0/8ff5a/recsys_phases.png 240w,
-/static/445881097e2f93831b80b7d8dbcb42a0/e85cb/recsys_phases.png 480w,
-/static/445881097e2f93831b80b7d8dbcb42a0/cab43/recsys_phases.png 755w&quot;
-        sizes=&quot;(max-width: 755px) 100vw, 755px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-      /&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Nas próximas seções, mergulharemos em cada fase.&lt;/p&gt;
-&lt;h3&gt;Coleta dos Dados&lt;/h3&gt;
-&lt;p&gt;O aspecto mais importante do RecSys é a compreensão das preferências dos usuários. Portanto, tudo começa com os dados coletados resultantes da interação entre usuários e itens. Dependendo dos dados coletados, você terá feedbacks &lt;strong&gt;implícitos&lt;/strong&gt; ou &lt;strong&gt;explícitos&lt;/strong&gt; sobre as preferências de seus usuários.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1. Explícito:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;O usuário indica explicitamente o quanto gosta / não gosta de um produto. Por exemplo, classificações que variam de 1 a 5 (por exemplo, Amazon) ou gosto / não gosto (por exemplo, Facebook, Netflix).&lt;/p&gt;
-&lt;p&gt;Trabalhar com dados explícitos facilita o processo de compreensão das preferências dos usuários, mas traz alguns desafios: (i) uma vez que classificar itens exige esforço do usuário, nem todos os usuários classificam os itens consumidos; (ii) as pessoas avaliam os itens de maneira diferente devido a diferentes fatores (algumas pessoas são mais exigentes do que outras); (iii) existem pessoas tendenciosas em relação a itens / categorias / produtos específicos.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2. Implícito:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Feedback implícito, como o nome sugere, não explicita preferências com avaliações. Em vez disso, representa ações ou características que indicam o quanto um determinado usuário gosta de um determinado produto. Por exemplo, você pode não gostar de um vídeo no Youtube, mas assisti-lo do início ao fim. Apesar de não ter gostado do vídeo (feedback explícito), você assistiu a todo o vídeo (feedback implícito) e, portanto, é muito provável que tenha gostado.&lt;/p&gt;
-&lt;p&gt;Outros exemplos que são considerados feedback implícito:&lt;/p&gt;
-&lt;p&gt;      i. Coloque os itens no carrinho de compras
-      ii. Número de vezes que você pesquisou por um item
-      iii. Quanto tempo você passou lendo um artigo&lt;/p&gt;
-&lt;p&gt;** 3. Híbrido:**&lt;/p&gt;
-&lt;p&gt;Existem abordagens que levam ambos os feedbacks em consideração para fornecer recomendações mais precisas. Uma vez que eles usam feedback explícito e implícito, diz-se que o algoritmo usa feedback híbrido. Certamente é uma abordagem mais poderosa porque no mundo real os usuários não gostam / não gostam explicitamente de todos os itens (o exemplo do Youtube mencionado acima ilustra o cenário).&lt;/p&gt;
-&lt;p&gt;** Discussão: usar ou não feedbacks híbridos? **
-Não usar feedback híbrido não implica em um mecanismo RecSys ruim porque cada domínio de negócios requer abordagens específicas. A melhor maneira de desenvolver um bom motor é começar devagar e continuar iterando até atingir resultados satisfatórios e um custo de manutenção razoável. Às vezes, uma arquitetura muito complexa não compensa e, portanto, uma abordagem simples, mas robusta, faz um trabalho maravilhoso.&lt;/p&gt;
-&lt;h3&gt;Pré-processando&lt;/h3&gt;
-&lt;p&gt;O pré-processamento é tão importante quanto a fase de coleta. No cenário do mundo real, você não pode ajustar os dados brutos diretamente nos algoritmos sem análise e pré-processamento. Elementos ruidosos e formato de dados são problemas comuns que precisam ser resolvidos. Outras questões podem requerer atenção especial:&lt;/p&gt;
-&lt;p&gt;      i. Como transformar dados implícitos em números viáveis ​​para o seu modelo?
-      ii. Existe algum recurso que não contribui para o modelo?
-      iii. Como você vai estruturar os dados antes de treinar os modelos? (csv? baldes? arquivos? memória?)
-      iv. Como você vai fazer a ingestão de dados por meio do seu modelo?&lt;/p&gt;
-&lt;p&gt;Se você seguir alguns tutoriais na Internet, pode não perceber a etapa de pré-processamento e isso porque eles costumam usar conjuntos de dados gratuitos como [Movielens] (&lt;a href=&quot;https://grouplens.org/datasets/movielens/&quot;&gt;https://grouplens.org/datasets/movielens/&lt;/a&gt;). Nesses casos, os dados já foram pré-processados ​​em um padrão comum (&lt;em&gt;por exemplo, CSV, TSV, SSV, etc) como `user&lt;/em&gt;id; item&lt;em&gt;id; rating; timestamp` e você precisa se preocupar com isso. No entanto, em cenários do mundo real, o pré-processamento é uma etapa comum em direção a um mecanismo RecSys melhor. A figura na seção \&lt;/em&gt;Como funciona_ lista algumas técnicas como &lt;em&gt;OneHot Encoding&lt;/em&gt;, &lt;em&gt;Row Compression&lt;/em&gt; e &lt;em&gt;Variable Selection&lt;/em&gt; que são muito comuns no campo Machine Learning, mas você pode não usar (todas).&lt;/p&gt;
-&lt;h3&gt;Aprendendo&lt;/h3&gt;
-&lt;p&gt;Os motores RecSys geralmente aproveitam os algoritmos de aprendizado de máquina para construir seus modelos. A recomendação personalizada requer a construção da Matriz de Avaliações (R): uma matriz que representa as preferências do usuário. A tabela abaixo ilustra isso usando filmes como itens.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;th&gt;Batman&lt;/th&gt;
-&lt;th&gt;Avengers&lt;/th&gt;
-&lt;th&gt;Harry Potter&lt;/th&gt;
-&lt;th&gt;Star Wars&lt;/th&gt;
-&lt;th&gt;Hangover&lt;/th&gt;
-&lt;th&gt;A Star is Born&lt;/th&gt;
-&lt;th&gt;Nemo&lt;/th&gt;
-&lt;th&gt;…&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Victor&lt;/td&gt;
-&lt;td&gt;4.0&lt;/td&gt;
-&lt;td&gt;4.0&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;2.0&lt;/td&gt;
-&lt;td&gt;2.0&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Jess&lt;/td&gt;
-&lt;td&gt;2.5&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;4.0&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;4.0&lt;/td&gt;
-&lt;td&gt;5.0&lt;/td&gt;
-&lt;td&gt;4.0&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Luke&lt;/td&gt;
-&lt;td&gt;4.0&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;3.0&lt;/td&gt;
-&lt;td&gt;3.0&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;1.0&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;…&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Como você pode ver, a matriz tem algumas propriedades:&lt;/p&gt;
-&lt;p&gt;      i. É esparso: os usuários não viam / assistiam / liam todo o catálogo de itens, certo?
-      ii. As linhas representam os usuários e as colunas representam os itens
-      iii. Valores ausentes indicam que o usuário não avaliou o item&lt;/p&gt;
-&lt;p&gt;Então, por meio de iterações matemáticas, ele prevê as classificações que os usuários dariam para cada item não visto e constrói a Matriz de classificações previstas (R ^):&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;th&gt;Batman&lt;/th&gt;
-&lt;th&gt;Avengers&lt;/th&gt;
-&lt;th&gt;Harry Potter&lt;/th&gt;
-&lt;th&gt;Star Wars&lt;/th&gt;
-&lt;th&gt;Hangover&lt;/th&gt;
-&lt;th&gt;A Star is Born&lt;/th&gt;
-&lt;th&gt;Nemo&lt;/th&gt;
-&lt;th&gt;…&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Victor&lt;/td&gt;
-&lt;td&gt;4.0&lt;/td&gt;
-&lt;td&gt;4.0&lt;/td&gt;
-&lt;td&gt;[3.0]&lt;/td&gt;
-&lt;td&gt;[5.0]&lt;/td&gt;
-&lt;td&gt;[4.0]&lt;/td&gt;
-&lt;td&gt;2.0&lt;/td&gt;
-&lt;td&gt;2.0&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Jess&lt;/td&gt;
-&lt;td&gt;2.5&lt;/td&gt;
-&lt;td&gt;[2.0]&lt;/td&gt;
-&lt;td&gt;4.0&lt;/td&gt;
-&lt;td&gt;[2.0]&lt;/td&gt;
-&lt;td&gt;4.0&lt;/td&gt;
-&lt;td&gt;5.0&lt;/td&gt;
-&lt;td&gt;4.0&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Luke&lt;/td&gt;
-&lt;td&gt;4.0&lt;/td&gt;
-&lt;td&gt;[4.0]&lt;/td&gt;
-&lt;td&gt;3.0&lt;/td&gt;
-&lt;td&gt;3.0&lt;/td&gt;
-&lt;td&gt;[4.0]&lt;/td&gt;
-&lt;td&gt;1.0&lt;/td&gt;
-&lt;td&gt;[2.0]&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;…&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;* &lt;em&gt;Valores entre colchetes significam a classificação prevista.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Existem muitos algoritmos para obter a matriz acima e cada um tem suas idiossincrasias. Falaremos sobre eles na próxima postagem do blog (&lt;em&gt;prenda a respiração!&lt;/em&gt;).&lt;/p&gt;
-&lt;h3&gt;Recomendação&lt;/h3&gt;
-&lt;p&gt;Finalmente, é hora de recomendar um novo item aos seus usuários. Assim que tivermos a Matriz de classificações previstas (R ^), fazer a recomendação é uma questão de selecionar e filtrar os itens previstos da seguinte forma:&lt;/p&gt;
-&lt;p&gt;          &lt;strong&gt;1. Selecione os candidatos:&lt;/strong&gt; Selecione os itens cujas avaliações foram previstas.
-          &lt;strong&gt;2. Filtragem:&lt;/strong&gt; Defina um limite (por exemplo, 4,0) e exclua candidatos cujas classificações sejam inferiores a isso.
-          &lt;strong&gt;3. Top N:&lt;/strong&gt; Classifica o resultado por classificação, estabelece o número de recomendações (N) e apresenta ao usuário.&lt;/p&gt;
-&lt;p&gt;A figura abaixo ilustra o processo levando em consideração o usuário Victor listado na tabela anterior.&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 25.83333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsSAAALEgHS3X78AAABRElEQVQY0yWQ20vCABjF/ZcLq4cIwqeee4iylCiESINIpLLULKEECbLyunkra87L5m5uRv7a1oED57vyfSdgaArK6Jt6pcxnT2RmKNi2zQIwDc2PW0KVtlDztWXqeLDtmRurqGOJjljHsabo0wmB5/qQ62KfVKHF5WOX/IuMZc/9oZ6kky5JJG4rLqvclAZ8DP4XGpbj9g65eupxftdwaxKl2ohALCuxdlBjI/rOerTGVrzPYKiiKUNyzxLBSIfgbpnV/aqruxQrYyx9jNCRCJ18s7TzxsreO8thgUhaJhB/kNk8ahA6fCF0XGf7QkLVLPid0+gpnN33iWeaJLKiq79o9aew+GGs6KSKMqcZgUROJJH/oPDqXnhdktlNttlPNgknRWK5Aab7Dr6HOqauMDOnPj3t5Tw4joOhTfy8ZXhUfQ//AF2oYQRryfDCAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image lazyload&quot;
-        alt=&quot;RecSys Filtering&quot;
-        title=&quot;RecSys Filtering&quot;
-        data-src=&quot;/static/6acaed139dbb707e59a1a7e9687f471f/d9199/recsys_filtering.png&quot;
-        data-srcset=&quot;/static/6acaed139dbb707e59a1a7e9687f471f/8ff5a/recsys_filtering.png 240w,
-/static/6acaed139dbb707e59a1a7e9687f471f/e85cb/recsys_filtering.png 480w,
-/static/6acaed139dbb707e59a1a7e9687f471f/d9199/recsys_filtering.png 960w,
-/static/6acaed139dbb707e59a1a7e9687f471f/c6ff8/recsys_filtering.png 1088w&quot;
-        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-      /&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;h2&gt;Predição vs Recomendação&lt;/h2&gt;
-&lt;p&gt;Você pode ler postagens que usam &lt;strong&gt;previsão&lt;/strong&gt; e &lt;strong&gt;recomendação&lt;/strong&gt; de forma intercambiável, mas têm significados diferentes. &lt;strong&gt;Previsão&lt;/strong&gt; corresponde à classificação esperada para um determinado item. Na fase de aprendizagem, seu modelo atribui classificações aos itens que o usuário não viu e essas classificações são previsões. Por outro lado, &lt;strong&gt;recomendação&lt;/strong&gt; corresponde ao próprio item (ou conjunto de itens) que está sendo recomendado ao usuário.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Iniciando com Sistemas de Recomendação: Parte I]]></title><description><![CDATA[Tenho estudado Sistemas de Recomendação (RecSys) nos últimos meses. Muitos tópicos estão espalhados pela Internet e pensei em condensar os…]]></description><link>https://vcrmartinez.com/2019/2019-08-13-Iniciando_com_sistemas_de_recomendacao_parte_I/</link><guid isPermaLink="false">https://vcrmartinez.com/2019/2019-08-13-Iniciando_com_sistemas_de_recomendacao_parte_I/</guid><pubDate>Tue, 13 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Tenho estudado Sistemas de Recomendação (RecSys) nos últimos meses. Muitos tópicos estão espalhados pela Internet e pensei em condensar os principais conceitos em uma série de postagens de blog. Para vocês interessados ​​no assunto, organizei o conteúdo e dividi em partes:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Parte I: Introdução e níveis de personalização&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;pt/blog/2019/2019-09-07-Getting_Started_with_Recommender_Systems_Part_II/&quot;&gt;Parte II: Como funciona&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte III: Técnicas&lt;/li&gt;
-&lt;li&gt;Parte IV: Métricas&lt;/li&gt;
-&lt;li&gt;Parte V: Desafios&lt;/li&gt;
-&lt;li&gt;Parte VI: Referências e leituras adicionais&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Introdução&lt;/h2&gt;
-&lt;p&gt;RecSys é um tema de interesse de grandes empresas como Amazon, Spotify, Netflix, Github e Linkedin. Mike McGuire neste &lt;a href=&quot;https://www.huffpostbrasil.com/2013/08/01/netflix-profiles_n_3685876.html&quot;&gt;post&lt;/a&gt; explica que as empresas perceberam que “if there’s not something else there surfacing that meets your interest beyond what you initially dialed in for, then you’re out”. Em outras palavras, as empresas se preocupam em fornecer não apenas o que o usuário procura, mas outros itens que atendam às suas preferências. Na Amazon, por exemplo, se você quiser comprar um Kindle o site o levará ao produto, mas também mostrará itens relacionados que você pode querer, como um carregador e uma capa à prova d’água.&lt;/p&gt;
-&lt;p&gt;Um artigo interessante de Standford, &lt;a href=&quot;Https://www.researchgate.net/publication/12189991_When_Choice_is_Demotivating_Can_One_Desire_Too_Much_of_a_Good_Thing&quot;&gt;When Choice is Demotivating: Can One Desire Much of a Good Thing?&lt;/a&gt;, mostra o impacto negativo de apresentar muitas opções aos clientes.&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 58.75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsSAAALEgHS3X78AAAC6UlEQVQoz1WS+09TZxjH+78tmmn0N6MxXBS8jUHp6QUtmsVkm8nIiIZSKBMUJQa8obFqJ4gMiMzLNBSBttIKPbSDqgErlHPa0nM+Pm2Dxjf55v0+l3zzfd7ntehPfyP3xE7Kb2Vp8GfmB04QvfETibv16E9caMNWjI1lTG0VbewM2qibpN9B6oGT+ZtWorcaWRxUyIycQpe6RRu2kbtfQbR3H6879jL25y4mWn/kpWcP2QeHyNzdj/F5CSPznmygknzgIMGu3QR9u5i8sIPx1h944dnJuvRtParEoo842RRBXYJcoAb97wopFO9KtEA12r0KEUyAluLdlZMCK7FeB9HLCvE+hcWrToGDhSs2wt2nsORGFZL9x5n0/M6H24flPofaX8ub7rPM9DjI3t9PIZ0EPUXY6ybSYSPU7hLuINyhEPK4JHZIXiF4vhlLfkxBvVjHq8Y/WLley/OGFuK9R5n75VfCLU3ogW+CIW8z4U6FOREMeZ0iaBexpq986vzpokM7KzdreXbRzeqdwzzvdktcw8xVcdHXQNZ/gEJx5KJDXxNvuxpE1E7EZxPeWOLhErcy7WkSh+MKC9L0b90F/h84wviJNmI9xwg2t/Dm3OnvHEY8MrJX3qpNHHlkTK9CpM1V4m/bFaZbZWRdvsznOxWsDFSz4a9iub+S9XtVvL9exdrgIVnKwa8OZ31uQl02ZjtdAjtz4my2wyl5h+QVXnuKgqMn0R/WkBs6RuFRHYzUYw7XszV0XDZ9VH5AtWw5iSmCapdT3rueuK8R9ZKDpT4Xao+LuIyu/tVArN2JxcikMOXj6mmVmYUxJkMPCUwNsPYxAhsrFNYTmIW8YAszE5feRXGbYGvhBdrQNXLTIxIvlfObi1hMyqcg8EcnGFX/YyIRJJZeLuW369tnO9ZfTrH5+B/0Z6++67GYplEi2bxO5GMM9VOSd6tx0nq6LCB10zTLMIySpKFr5GZnyMei5KPzFNZWy71GgS8tGQKSZLv2agAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image lazyload&quot;
-        alt=&quot;When Choice is Demotivating - Experiment&quot;
-        title=&quot;When Choice is Demotivating - Experiment&quot;
-        data-src=&quot;/static/79e2ffaa80393025cae6e242117076b7/d9199/jams-conversion.png&quot;
-        data-srcset=&quot;/static/79e2ffaa80393025cae6e242117076b7/8ff5a/jams-conversion.png 240w,
-/static/79e2ffaa80393025cae6e242117076b7/e85cb/jams-conversion.png 480w,
-/static/79e2ffaa80393025cae6e242117076b7/d9199/jams-conversion.png 960w,
-/static/79e2ffaa80393025cae6e242117076b7/2ba99/jams-conversion.png 1221w&quot;
-        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-      /&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Na verdade, quando não há personalização seus clientes acabam fazendo &lt;a href=&quot;https://www.youtube.com/watch?v=VqdQZCvpIyo&quot;&gt;“navegação infinita”&lt;/a&gt; (&lt;em&gt;infinite browsing&lt;/em&gt;) e não há conversão e, consequentemente, um alto nível de churn. Este &lt;a href=&quot;https://www.businessinsider.com/netflix-recommendation-engine-worth-1-billion-per-year-2016-6&quot;&gt;artigo&lt;/a&gt; do Business Insider explica como “o efeito combinado da personalização e das recomendações economiza mais de $ 1B por ano da Netflix”.&lt;/p&gt;
-&lt;p&gt;RecSys são valiosos em &lt;a href=&quot;http://fortune.com/2012/07/30/amazons-recommendation-secret/&quot;&gt;aumentar as vendas&lt;/a&gt;. Em 2012, a Amazon relatou “um aumento nas vendas de 29% para US$ 12,83 bilhões durante seu segundo trimestre fiscal, ante US$ 9,9 bilhões durante o mesmo período do ano passado”. No entanto, eles não se limitam ao lucro. &lt;a href=&quot;https://sigmoidal.io/recommender-systems-recommendation-engine/&quot;&gt;Este infográfico&lt;/a&gt; ilustra que esses sistemas também &lt;strong&gt;melhoram a retenção&lt;/strong&gt;, &lt;strong&gt;formam hábitos&lt;/strong&gt; e &lt;strong&gt;aceleram o trabalho&lt;/strong&gt;.&lt;/p&gt;
-&lt;h3&gt;Definição formal&lt;/h3&gt;
-&lt;p&gt;Até agora vimos o RecSys como uma ideia geral que mistura alguns tópicos como &lt;code class=&quot;language-text&quot;&gt;personalização&lt;/code&gt;,&lt;code class=&quot;language-text&quot;&gt;itens&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;recomendação&lt;/code&gt; e&lt;code class=&quot;language-text&quot;&gt;preferências do usuário&lt;/code&gt;. Mas, &lt;strong&gt;como podemos definí-lo?&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Recommender Systems are software tools and techniques that provide suggestions for items that are most likely of interest to a particular user.&lt;/p&gt;
-&lt;p&gt;- F. Ricci, L. Rokach, B. Shapira, and P. B. Kantor, editors. Recommender Systems Handbook. Springera, 2011&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Em tradução livre, Sistemas de Recomendação são ferramentas e técnicas de software que fornecem sugestões para itens que provavelmente são do interesse de um usuário específico.&lt;/p&gt;
-&lt;h2&gt;Níveis de Personalização&lt;/h2&gt;
-&lt;p&gt;No contexto do RecSys, personalização significa o quanto seu algoritmo entende cada usuário para fornecer uma recomendação significativa. Basicamente, a abordagem pode ser entendida como &lt;strong&gt;não personalizada&lt;/strong&gt; ou &lt;strong&gt;personalizada&lt;/strong&gt;.&lt;/p&gt;
-&lt;h3&gt;Não personalizado&lt;/h3&gt;
-&lt;p&gt;RecSys não personalizado não leva em consideração preferências individuais. Eles geralmente consideram um cálculo heurístico ou estatístico para recomendar itens. O cenário mais comum são os sites de Notícias como CNN, Bloomber, Globo.com, etc, em que há seções como “Notícias de última hora” ou “Em destaque”. No Spotify, “Melhores músicas do Brasil”. Amazon, “Livros mais vendidos”.&lt;/p&gt;
-&lt;p&gt;Alguns exemplos:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Músicas mais ouvidas&lt;/li&gt;
-&lt;li&gt;Postagens de blog mais lidas&lt;/li&gt;
-&lt;li&gt;Artigos de notícias de última hora&lt;/li&gt;
-&lt;li&gt;Principais faixas do rádio&lt;/li&gt;
-&lt;li&gt;Livros mais vendidos&lt;/li&gt;
-&lt;li&gt;Hotéis com pontuação elevada&lt;/li&gt;
-&lt;li&gt;Melhores lugares para ficar&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;A vantagem dessa abordagem é que ela não é tão cara e é útil quando você não tem informações suficientes sobre os usuários. Dessa forma, você pode resolver &lt;strong&gt;problemas de partida a frio&lt;/strong&gt; (explicados na Parte IV) e começar a fazer recomendações sem muito esforço.&lt;/p&gt;
-&lt;h3&gt;Personalizado&lt;/h3&gt;
-&lt;p&gt;A abordagem personalizada considera as preferências do usuário para recomendar um item. Os algoritmos nesta categoria dependem de um pipeline que (i) obtém os dados do usuário; (ii) faz processamento para encontrar padrões nas preferências; (iii) calcula previsões. &lt;em&gt;Disclaimer: na Parte II e III esses conceitos ficarão mais claros.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;O exemplo mais comum é a Netflix. Com base nos títulos de que você gostou, a Netflix processa e recomenda novos filmes ou séries.&lt;/p&gt;
-&lt;p&gt;A vantagem desta abordagem é o nível de personalização que você pode alcançar e, assim, aumentar a conversão em seu sistema. No entanto, é preciso muito mais esforço do que o anterior e, é claro, requer uma solução / algoritmo / arquitetura mais complexa.&lt;/p&gt;
-&lt;h3&gt;Notas&lt;/h3&gt;
-&lt;p&gt;Não há bala de prata. A melhor abordagem é aquela que funciona para o seu negócio. É bastante comum adotar ambas as abordagens na mesma plataforma / site / sistema. Por exemplo, o Spotify fornece essas “Listas principais”, mas também faz uma abordagem personalizada ao recomendar uma música semelhante à que você está ouvindo.&lt;/p&gt;
-&lt;p&gt;Uma regra de ouro é pensar em toda a experiência e no que você deseja alcançar: mais vendas; aumento de retenção; formar um hábito; Depois de definir seu objetivo, as métricas, algoritmos e decisões técnicas estarão relacionadas. Abordagens mistas são muito comuns.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Criando scripts de linha de comando à prova de balas]]></title><description><![CDATA[A vida de um desenvolvedor back-end envolve a criação de alguns scripts para serem executados no ambiente de produção. Por exemplo, você…]]></description><link>https://vcrmartinez.com/2019/2019-05-18-Criando_scripts_de_linha_de_comando_a_prova_de_balas/</link><guid isPermaLink="false">https://vcrmartinez.com/2019/2019-05-18-Criando_scripts_de_linha_de_comando_a_prova_de_balas/</guid><pubDate>Sat, 18 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;A vida de um desenvolvedor back-end envolve a criação de alguns scripts para serem executados no ambiente de produção. Por exemplo, você pode precisar atualizar muitos registros de uma vez, acionar eventos ou corrigir um bug específico. &lt;em&gt;O que eles têm em comum?&lt;/em&gt; Se não forem projetados corretamente, podem causar um efeito colateral muito ruim na aplicação, arruinar a experiência do usuário, etc.&lt;/p&gt;
+&lt;p&gt;Isso é tudo, pessoal! À medida que eu utilizar mais comandos eu atualizo este post.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Criando scripts de linha de comando à prova de balas]]></title><description><![CDATA[A vida de um desenvolvedor back-end envolve a criação de alguns scripts para serem executados no ambiente de produção. Por exemplo, você…]]></description><link>https://vcrmartinez.com/2019/2019-05-18-Criando_scripts_de_linha_de_comando_a_prova_de_balas/</link><guid isPermaLink="false">https://vcrmartinez.com/2019/2019-05-18-Criando_scripts_de_linha_de_comando_a_prova_de_balas/</guid><pubDate>Sat, 18 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;A vida de um desenvolvedor back-end envolve a criação de alguns scripts para serem executados no ambiente de produção. Por exemplo, você pode precisar atualizar muitos registros de uma vez, acionar eventos ou corrigir um bug específico. &lt;em&gt;O que eles têm em comum?&lt;/em&gt; Se não forem projetados corretamente, podem causar um efeito colateral muito ruim na aplicação, arruinar a experiência do usuário, etc.&lt;/p&gt;
 &lt;p&gt;No cenário do mundo real, algumas mudanças são ~praticamente~ impossíveis de reverter:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Acionar e-mails / notificações / mensagens / SMSs para clientes&lt;/li&gt;
@@ -1094,7 +579,7 @@ Não usar feedback híbrido não implica em um mecanismo RecSys ruim porque cada
 &lt;/ol&gt;
 &lt;p&gt;Como desenvolvedores, precisamos não apenas verificar novamente nossos scripts, mas também fazer o nosso melhor para minimizar / evitar possíveis efeitos colaterais (especialmente se algo inesperado acontecer). Algumas semanas atrás, durante uma sessão pair programming, [Elias] (&lt;a href=&quot;https://etandel.xyz&quot;&gt;https://etandel.xyz&lt;/a&gt;) e eu criamos um crítico &lt;a href=&quot;https://docs.djangoproject.com/en/2.2/howto/custom-management-command/&quot;&gt;comando Django&lt;/a&gt; responsável por alterar registros em muitas tabelas de acordo com uma lógica de negócios. À medida que mergulhávamos nas partes intrínsecas do script, percebemos o quão perigoso isso poderia ser e tomamos alguns cuidados que são compartilhados neste post.&lt;/p&gt;
 &lt;h2&gt;Barras de progresso são fantásticas!&lt;/h2&gt;
-&lt;p&gt;Executar um script que leva muito tempo para ser concluído é desesperador. Você fica confuso porque não sabe o que está acontecendo: (i) ainda está funcionando? (ii) a conexão está desligada? É por isso que um senso de progresso é importante. Se você é um programador Python, alguns projetos como &lt;a href=&quot;https://github.com/tqdm/tqdm&quot;&gt;tqdm&lt;/a&gt; e &lt;a href=&quot;https://github.com/kennethreitz/clint&quot;&gt;clint&lt;/a&gt; podem ajudá-lo fornecendo maneiras de criar barras de progresso. De qualquer forma, se isso exigir muito esforço ou se sua linguagem de programação não ajudar você com isso, um simples indicador &lt;code class=&quot;language-text&quot;&gt;&amp;lt;accomplished&gt; / &amp;lt;total&gt;&lt;/code&gt; é um bom começo, pelo menos.&lt;/p&gt;
+&lt;p&gt;Executar um script que leva muito tempo para ser concluído é desesperador. Você fica confuso porque não sabe o que está acontecendo: (i) ainda está funcionando? (ii) a conexão está desligada? É por isso que um senso de progresso é importante. Se você é um programador Python, alguns projetos como &lt;a href=&quot;https://github.com/tqdm/tqdm&quot;&gt;tqdm&lt;/a&gt; e &lt;a href=&quot;https://github.com/kennethreitz/clint&quot;&gt;clint&lt;/a&gt; podem ajudá-lo fornecendo maneiras de criar barras de progresso. De qualquer forma, se isso exigir muito esforço ou se sua linguagem de programação não ajudar você com isso, um simples indicador &lt;code class=&quot;language-text&quot;&gt;&amp;lt;accomplished&amp;gt; / &amp;lt;total&amp;gt;&lt;/code&gt; é um bom começo, pelo menos.&lt;/p&gt;
 &lt;h2&gt;Logging&lt;/h2&gt;
 &lt;p&gt;Depois de executar um script, as coisas acontecem:&lt;/p&gt;
 &lt;ol&gt;
@@ -1193,7 +678,7 @@ Não usar feedback híbrido não implica em um mecanismo RecSys ruim porque cada
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; elasticsearch &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; Elasticsearch
 
 client &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Elasticsearch&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;hosts&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; http_auth&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;username&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; password&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;**&lt;/span&gt;kwargs&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Execute &lt;code class=&quot;language-text&quot;&gt;client.indices.get_alias(&quot;*&quot;)&lt;/code&gt; para retornar os índices existentes e checar se está propriamente configurado.&lt;/p&gt;
+&lt;p&gt;Execute &lt;code class=&quot;language-text&quot;&gt;client.indices.get_alias(&amp;quot;*&amp;quot;)&lt;/code&gt; para retornar os índices existentes e checar se está propriamente configurado.&lt;/p&gt;
 &lt;h2&gt;Persistência&lt;/h2&gt;
 &lt;p&gt;Armazenar documentos é fácil pois &lt;code class=&quot;language-text&quot;&gt;elasticsearch-dsl&lt;/code&gt; provê &lt;code class=&quot;language-text&quot;&gt;DocType&lt;/code&gt; – uma classe que cuida de mapear sua classe python para documentos JSON. Ao invés de preocupar-se com estruturas JSON, vamos criar um documento que armazena o o acesso de um usuário a uma página específica:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; elasticsearch_dsl &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; DocType&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Integer&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Date&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Keyword
@@ -1425,172 +910,7 @@ res &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; search&lt;span c
 &lt;p&gt;Trabalhar em casa dá a sensação de ter mais tempo para fazer as coisas. Esse comportamento o leva a trabalhar mais horas em vez de usá-las para fazer algo produtivo para sua própria vida. A chave é equilibrar suas horas de trabalho com sua vida pessoal, mantendo o controle de quanto tempo você trabalha, quão produtivo você é e quanto tempo ainda resta. Não ter tempo para uma vida pessoal não é saudável.&lt;/p&gt;
 &lt;h5&gt;Exercício&lt;/h5&gt;
 &lt;p&gt;Como diz o ditado &lt;em&gt;Mens sana in corpore sano&lt;/em&gt; (Mente sã em um corpo são). Eu preciso te contar alguma coisa? =)&lt;/p&gt;
-&lt;p&gt;Isso é tudo, pessoal. Se você tiver alguma dúvida, por favor me avise.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Provendo arquivos estáticos na sua aplicação Django com Amazon S3]]></title><description><![CDATA[É sabido que Django não provê arquivos estáticos. Usar um middleware WSGI para endereçar essa questão não é o jeito correto de servir…]]></description><link>https://vcrmartinez.com/2017/2017-08-21-Provendo_arquivos_estaticos_na_sua_aplicacao_Django_com_Amazon_S3/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-08-21-Provendo_arquivos_estaticos_na_sua_aplicacao_Django_com_Amazon_S3/</guid><pubDate>Mon, 21 Aug 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;É sabido que Django não provê arquivos estáticos. Usar um middleware WSGI para endereçar essa questão não é o jeito correto de servir arquivos estáticos e, portanto, este post apresenta como você pode fazer isso usando a Amazon S3.&lt;/p&gt;
-&lt;h3&gt;Django backend storages&lt;/h3&gt;
-&lt;p&gt;Django usa uma arquitetura de &lt;em&gt;backend storages&lt;/em&gt; para armazenar dados (&lt;em&gt;e.g.&lt;/em&gt; &lt;a href=&quot;https://docs.djangoproject.com/en/1.11/ref/files/storage/&quot;&gt;FileSystemStorage&lt;/a&gt; é responsável por salvar arquivos no sistema de arquivos). Entretanto, você pode querer adotar uma abordagem diferente e, assim, implementar a &lt;a href=&quot;https://docs.djangoproject.com/en/1.11/howto/custom-file-storage/&quot;&gt;Storage Interface&lt;/a&gt; permite criar a sua própria estratégia. Um projeto chamado &lt;a href=&quot;https://github.com/jschneier/django-storages&quot;&gt;django-storages&lt;/a&gt; já pensou nesses problemas e implementou um armazenamento que envia os arquivos para a Amazon S3 com praticamennte zero esforço. Vamos usá-lo!&lt;/p&gt;
-&lt;h3&gt;Criando um bucket na Amazon S3&lt;/h3&gt;
-&lt;p&gt;Acesse a Amazon S3, crie um bucket com dois diretórios dentro: &lt;em&gt;static&lt;/em&gt; e &lt;em&gt;media&lt;/em&gt;. Neste exemplo assumiremos que a listagem dos objetos no S3 é pública.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Neste post nós falamos sobre diretórios mas é apenas uma abstração para facilitar o entendimento. A &lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/UG/FolderOperations.html&quot;&gt;documentação do S3&lt;/a&gt; explica que &lt;em&gt;buckets&lt;/em&gt; e objetos são os recursos primários e que não existe a hierarquia que ocorre em um sistema de arquivos convencional.&lt;/p&gt;
-&lt;h3&gt;Instalação e requisitos&lt;/h3&gt;
-&lt;p&gt;Você vai precisar instalar o &lt;a href=&quot;https://github.com/boto/boto3&quot;&gt;boto&lt;/a&gt; e o &lt;a href=&quot;https://github.com/jschneier/django-storages&quot;&gt;django-storages&lt;/a&gt;. Como explicado anteriormente, &lt;em&gt;django-storages&lt;/em&gt; vai nos ajudar a enviar arquivos para a Amazon S3. Entretanto, nós precisamos instalar o &lt;em&gt;boto&lt;/em&gt; pois ele é responsável por conectar com os serviços da Amazon.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Este post usa &lt;a href=&quot;https://github.com/henriquebastos/python-decouple&quot;&gt;python-decouple&lt;/a&gt; para gerenciar o ambiente local. Se você não sabe como dê uma olhada neste &lt;a href=&quot;/pt/blog/2017/2017-08-15-Prepare_sua_aplicacao_Django_para_ser_disponibilizada_no_Heroku&quot;&gt;post&lt;/a&gt;.&lt;/p&gt;
-&lt;h3&gt;Criando nosssos backends customizados&lt;/h3&gt;
-&lt;p&gt;No nosso diretório de configuração nós vamos criar os backends responsáveis por lidar com a Amazon S3. Crie um arquivo chamado &lt;em&gt;s3util.py&lt;/em&gt; e adicione o conteúdo abaixo:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; django&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;conf &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; settings
-&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; storages&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;backends&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;s3boto &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; S3BotoStorage
-
-
-&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;StaticStorage&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;S3BotoStorage&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
-    location &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; settings&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;STATICFILES_LOCATION
-
-
-&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MediaStorage&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;S3BotoStorage&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
-    location &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; settings&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;MEDIAFILES_LOCATION&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;Linhas 1-2: Importa os módulos.&lt;/li&gt;
-&lt;li&gt;Linhas 5-10: Representa nossos storages. O atributo &lt;code class=&quot;language-text&quot;&gt;location&lt;/code&gt; é configurado para armazenar a localização dos arquivos &lt;em&gt;static&lt;/em&gt; e &lt;em&gt;media&lt;/em&gt; definidos no arquivo &lt;em&gt;settings.py&lt;/em&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Configurando as variáveis da Amazon S3&lt;/h3&gt;
-&lt;p&gt;Assumindo que você já tem um bucket disponível, vamos adicionar algumas variáveis ao arquivo &lt;em&gt;settings.py&lt;/em&gt;.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; decouple &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; config
-
-&lt;span class=&quot;token comment&quot;&gt;# AWS&lt;/span&gt;
-AWS_S3_SECURE_URLS &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;
-AWS_QUERYSTRING_AUTH &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;False&lt;/span&gt;
-AWS_PRELOAD_METADATA &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;
-AWS_STORAGE_BUCKET_NAME &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&amp;lt;YOUR-BUCKET-NAME&gt;&apos;&lt;/span&gt;
-AWS_ACCESS_KEY_ID &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;AWS_ACCESS_KEY_ID&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-AWS_SECRET_ACCESS_KEY &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;AWS_SECRET_ACCESS_KEY&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-
-STATICFILES_STORAGE &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;STATICFILES_STORAGE&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;django.contrib.staticfiles.storage.StaticFilesStorage&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-DEFAULT_FILE_STORAGE &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;DEFAULT_FILE_STORAGE&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;django.core.files.storage.FileSystemStorage&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-
-STATIC_URL &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;STATIC_URL&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;/static/&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-MEDIA_URL &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;MEDIA_URL&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;/media/&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-
-AWS_HEADERS &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token string&quot;&gt;&apos;x-amz-acl&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;public-read&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token string&quot;&gt;&apos;Cache-Control&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;public, max-age=31556926&apos;&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-
-STATICFILES_LOCATION &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;static&apos;&lt;/span&gt;
-MEDIAFILES_LOCATION &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;media&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;Linha 1: Certifique-se de importar o módulo de configuração. Ele vai procurar as variáveis de ambiente ou um arquivo &lt;code class=&quot;language-text&quot;&gt;.env&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Linha 4: Use urls com SSL para servir os objetos do S3.&lt;/li&gt;
-&lt;li&gt;Linha 5: Nós não queremos gerar uma querystring de autenticação para o S3.&lt;/li&gt;
-&lt;li&gt;Linha 6: Queremos fazer o pré-carregamento de metadados do S3.&lt;/li&gt;
-&lt;li&gt;Linha 7: É necessário fornecer o nome do bucket.&lt;/li&gt;
-&lt;li&gt;Linhas 8-9: &lt;code class=&quot;language-text&quot;&gt;config&lt;/code&gt; vai procurar pelas variáveis de ambiente ou por um arquivo &lt;code class=&quot;language-text&quot;&gt;.env&lt;/code&gt;. No ambiente local elas estarão em branco pois não enviaremos para o S3. Entretanto, em produção nós iremos configurar essas variáveis.&lt;/li&gt;
-&lt;li&gt;Linhas 11-12: Essas variáveis irão explicitamente definir qual storage nosso projeto vai utilizar para armazenar os arquivos estáticos. No ambiente local será o backend comum (StaticFilesStorage e FileSystemStorage). Entretanto, em produção, iremos deixar configurado os backends responsáveis por enviar os arquivos para o S3.&lt;/li&gt;
-&lt;li&gt;Linhas 14-15: Aponta para as URLs de arquivos estáticos e mídias. Em produção eles vão armazenar a URL da Amazon S3 que corresponde a cada tipo de arquivo.&lt;/li&gt;
-&lt;li&gt;Linhas 17-20: Cabeçalhos AWS que explicitam a política de cache.&lt;/li&gt;
-&lt;li&gt;Linhas 22-23: Variáveis que informam nosso backend onde encontrar os arquivos de mídia e estáticos. Elas são usadas no arquivo &lt;em&gt;s3utils.py&lt;/em&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Variáveis Locais&lt;/h3&gt;
-&lt;p&gt;Em resumo, nossas variáveis locais vão acabar sendo:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;AWS_S3_SECURE_URLS &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; True
-AWS_QUERYSTRING_AUTH &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; False
-AWS_PRELOAD_METADATA &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; True
-AWS_STORAGE_BUCKET_NAME &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;BUCKET-NAME&apos;&lt;/span&gt;
-AWS_ACCESS_KEY_ID &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;
-AWS_SECRET_ACCESS_KEY &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;
-
-STATICFILES_STORAGE &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;django.contrib.staticfiles.storage.StaticFilesStorage&apos;&lt;/span&gt;
-DEFAULT_FILE_STORAGE &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;django.core.files.storage.FileSystemStorage&apos;&lt;/span&gt;
-
-STATIC_URL &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;/static/&apos;&lt;/span&gt;
-MEDIA_URL &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;/media/&apos;&lt;/span&gt;
-
-AWS_HEADERS &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token string&quot;&gt;&apos;x-amz-acl&apos;&lt;/span&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;public-read&apos;&lt;/span&gt;,
-    &lt;span class=&quot;token string&quot;&gt;&apos;Cache-Control&apos;&lt;/span&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;public, max-age=31556926&apos;&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-
-STATICFILES_LOCATION &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;static&apos;&lt;/span&gt;
-MEDIAFILES_LOCATION &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;media&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;Variáveis de Produção&lt;/h3&gt;
-&lt;p&gt;É necessário configurar as variáveis de produção:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;AWS_ACCESS_KEY_ID&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&amp;lt;YOUR-ACCESS-KEY&gt;&apos;&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
-heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&amp;lt;YOUR-SECRET-KEY&gt;&apos;&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
-heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;DEFAULT_FILE_STORAGE&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;config.s3util.MediaStorage&apos;&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
-heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;STATICFILES_STORAGE&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;config.s3util.StaticStorage&apos;&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
-heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;MEDIA_URL&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;https://s3.amazonaws.com/&amp;lt;YOUR-BUCKET-NAME&gt;/media/&apos;&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
-heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;STATIC_URL&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;https://s3.amazonaws.com/&amp;lt;YOUR-BUCKET-NAME&gt;/static/&apos;&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Você pode passar múltiplas variáveis em apenas uma declaração:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;AWS_ACCESS_KEY_ID&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&amp;lt;YOUR-ACCESS-KEY&gt;&apos;&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&amp;lt;YOUR-SECRET-KEY&gt;&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;. &lt;span class=&quot;token parameter variable&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;Enviando arquivos para o S3&lt;/h3&gt;
-&lt;p&gt;De agora em diante, toda vez que você disponibilizar seu projeto no Heroku ele vai enviar os arquivos para a Amazon S3. Isso vai acontecer pois o Heroku executa &lt;code class=&quot;language-text&quot;&gt;$ python manage.py collectstatic&lt;/code&gt; durante o pipeline de deploy e esse comando coleta os arquivos estáticos e salva-os. Nosso backend de produção salva no S3 todos os arquivos.&lt;/p&gt;
-&lt;p&gt;Se você não estiver usando Heroku certifique-se de executar &lt;code class=&quot;language-text&quot;&gt;python manage.py collectstatic&lt;/code&gt; em produção.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Um teste pode ser feito ao configurar as variáveis de produção no ambiente local. Dessa forma, se você executar o comando &lt;code class=&quot;language-text&quot;&gt;collectstatic&lt;/code&gt; ele irá enviar os arquivos para o S3. Apenas certifique-se de removê-las após testar.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Prepare sua aplicação Django para ser disponibilizada no Heroku]]></title><description><![CDATA[É bem animador construir nossos próprios projetos e vê-los funcionar em produção, certo? Alguns desenvolvedores podem pensar que fazer o…]]></description><link>https://vcrmartinez.com/2017/2017-08-15-Prepare_sua_aplicacao_Django_para_ser_disponibilizada_no_Heroku/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-08-15-Prepare_sua_aplicacao_Django_para_ser_disponibilizada_no_Heroku/</guid><pubDate>Tue, 15 Aug 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;É bem animador construir nossos próprios projetos e vê-los funcionar em produção, certo? Alguns desenvolvedores podem pensar que fazer o deploy de uma aplicação Django é um pesadelo. Neste post eu vou mostrar como preparar sua aplicação para ter diferentes configurações e efetuar o deploy no Heroku.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Requisitos:&lt;/strong&gt; Você precisa instalar o &lt;a href=&quot;https://devcenter.heroku.com/articles/heroku-cli&quot;&gt;Heroku CLI&lt;/a&gt; e o &lt;strong&gt;GIT&lt;/strong&gt;.&lt;/p&gt;
-&lt;h2&gt;Heroku&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.heroku.com&quot;&gt;Heroku&lt;/a&gt; é um PaaS (Plataforma como Serviço) que vai disponibilizar nosso projeto na web. É preciso que você acesse o &lt;a href=&quot;https://dashboard.heroku.com/apps&quot;&gt;dashboard&lt;/a&gt; e crie uma nova aplicação.&lt;/p&gt;
-&lt;p&gt;Um vez criada sua aplicação, é necessário usar o terminal para configurar as credenciais. Para isso, usamos o Heroku CLI para acessar as configurações do app (dê uma olhada na &lt;a href=&quot;https://devcenter.heroku.com/articles/heroku-cli&quot;&gt;docs&lt;/a&gt; para instalar propriamente).&lt;/p&gt;
-&lt;p&gt;Após a instalação você pode efetuar o login e já adicionar um banco Postgres à sua aplicação:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;heroku login
-heroku addons:create heroku-postgresql:&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;your-plan-name&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;your-application-name&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Mais tarde usaremos o Postgres. Heroku nos ajuda a provisionar um banco de dados com um comando. É bem fácil e você pode aprender sobre isso na &lt;a href=&quot;https://devcenter.heroku.com/articles/heroku-postgresql#provisioning-heroku-postgres&quot;&gt;docs&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Dica:&lt;/strong&gt; O comando &lt;code class=&quot;language-text&quot;&gt;$ heroku apps&lt;/code&gt; é bem útil e nos permite listar os apps que temos.&lt;/p&gt;
-&lt;h2&gt;Preparando nossa aplicação&lt;/h2&gt;
-&lt;p&gt;Quando se trata de gerenciar os ambientes local e de produção eu gosto de usar o &lt;a href=&quot;https://github.com/henriquebastos/python-decouple&quot;&gt;python decouple&lt;/a&gt; pois ele permite gerenciar as variáveis de ambiente e, com isso, ter diferentes configurações. Além dele, eu uso o &lt;a href=&quot;https://github.com/kennethreitz/dj-database-url&quot;&gt;dj&lt;em&gt;database&lt;/em&gt;url&lt;/a&gt; para tornar simples o uso de diferentes bancos de dados por meio de strings de configuração.&lt;/p&gt;
-&lt;p&gt;1. Primeiro, crie dois arquivos: &lt;em&gt;.env&lt;/em&gt; e &lt;em&gt;.env-sample&lt;/em&gt;. O primeiro será usado no nosso ambiente local e deve ser ignorado pelo GIT. O segundo funciona como um template:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token assign-left variable&quot;&gt;SECRET_KEY&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;YOUR_KEY_GOES_HERE
-&lt;span class=&quot;token assign-left variable&quot;&gt;DEBUG&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;True
-&lt;span class=&quot;token assign-left variable&quot;&gt;ALLOWED_HOSTS&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1,localhost,.herokuapp.com&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;2. Abra seu &lt;em&gt;settings.py&lt;/em&gt;, e cole o código abaixo:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; decouple &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Csv
-&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; dj_database_url &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; parse &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; dburl
-
-SECRET_KEY &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;SECRET_KEY&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-DEBUG &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;DEBUG&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; cast&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token builtin&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-
-ALLOWED_HOSTS &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;ALLOWED_HOSTS&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; cast&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;Csv&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-
-DEFAULT_DBURL &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;sqlite:///&apos;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; os&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;path&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;join&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;BASE_DIR&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;db.sqlite3&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-DATABASES &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token string&quot;&gt;&apos;default&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; config&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;DATABASE_URL&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;DEFAULT_DBURL&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; cast&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;dburl&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;As primeiras duas linhas importam os módulos enquanto as outras apenas carregam as variáveis de ambiente. O parâmetro &lt;code class=&quot;language-text&quot;&gt;cast&lt;/code&gt; é obrigatório pois variáveis de ambiente são strings e é importante converter o valor para o tipo de dado correto.&lt;/p&gt;
-&lt;p&gt;Preste atenção às variáveis &lt;code class=&quot;language-text&quot;&gt;DEFAULT_DBURL&lt;/code&gt; e &lt;code class=&quot;language-text&quot;&gt;DATABASES&lt;/code&gt;. A primeira usa o Sqlite no ambiente local mas no Heroku nós iremos configurá-la para armazenar a URL de configuração do Postgres.&lt;/p&gt;
-&lt;h2&gt;Subindo para o Heroku&lt;/h2&gt;
-&lt;p&gt;Nós criamos nossa aplicação no Heroku, adicionamos um banco de dados Postgres e configuramos o projeto para aceitar diferentes strings de configuração. Agora é hora de disponibilizar nossa aplicação!&lt;/p&gt;
-&lt;h6&gt;Certifique-se de que seu arquivo requirements.txt contém todas as dependências&lt;/h6&gt;
-&lt;p&gt;Ele deve ter, ao menos: &lt;em&gt;dj-database-url&lt;/em&gt;, &lt;em&gt;gunicorn&lt;/em&gt;, &lt;em&gt;psycopg2&lt;/em&gt;, &lt;em&gt;python-decouple&lt;/em&gt; e &lt;em&gt;pytz&lt;/em&gt;. Esse arquivo é extremamente importante pois o Heroku olha para ele a fim de instalar as dependências.&lt;/p&gt;
-&lt;h6&gt;Crie um arquivo Procfile no diretório raiz&lt;/h6&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;web: gunicorn &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;app&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;.wsgi --log-file -&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;O Procfile (sim, o arquivo não tem extensão) informa ao Heroku como executar a aplicação. Atente que &lt;strong&gt;&lt;app&gt;&lt;/strong&gt; deve ser substituído pelo diretório que está o seu arquivo &lt;strong&gt;wsgi&lt;/strong&gt;. Você pode executar o comando localmente para certificar-se de que está correto.&lt;/p&gt;
-&lt;h6&gt;Crie um arquivo runtime.txt no diretório raiz&lt;/h6&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;python-3.6.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;O arquivo vai dizer ao Heroku qual versão do python nosso projeto usa.&lt;/p&gt;
-&lt;h6&gt;Configure suas variáveis de ambiente de produção&lt;/h6&gt;
-&lt;p&gt;Lembra que nosso &lt;strong&gt;settings.py&lt;/strong&gt; carrega os dados do arquivo &lt;strong&gt;.env&lt;/strong&gt;? Bem, &lt;strong&gt;python-decouple&lt;/strong&gt; respeita a precedência das variáveis de ambiente em relação aos arquivos de configuração. Portanto, se existir alguma variável de ambiente em produção a diretiva &lt;em&gt;config&lt;/em&gt; não irá olhar para o arquivo .env.&lt;/p&gt;
-&lt;p&gt;Para cada chave no arquivo &lt;em&gt;.env&lt;/em&gt; nós iremos usar o &lt;em&gt;Heroku CLI&lt;/em&gt; para configurar a variável de ambiente em produção. Nós precisamos configurar quatro variáveis: &lt;strong&gt;SECRET_KEY&lt;/strong&gt;, &lt;strong&gt;DEBUG&lt;/strong&gt;, &lt;strong&gt;ALLOWED_HOSTS&lt;/strong&gt; e &lt;strong&gt;DATABASE_URL&lt;/strong&gt;. Abra o terminar e execute:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;SECRET_KEY&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&amp;lt;YOUR_SECRE_KEY&gt;&apos;&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
-heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;DEBUG&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;False &lt;span class=&quot;token parameter variable&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
-heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;ALLOWED_HOSTS&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;127.0&lt;/span&gt;.0.1,localhost,.herokuapp.com &lt;span class=&quot;token parameter variable&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
-heroku config:set &lt;span class=&quot;token assign-left variable&quot;&gt;DATABASE_URL&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&amp;lt;YOUR_DATABASE_URL&gt;&apos;&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;Notas:&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;SECRET_KEY é cercado por aspas simples pois precisamos explicitamente definí-la como uma string para o Heroku;&lt;/li&gt;
-&lt;li&gt;Substitua &amp;#x3C;YOUR_APP&gt; pelo nome da sua aplicação;&lt;/li&gt;
-&lt;li&gt;A string &lt;em&gt;.herokuapp.com&lt;/em&gt; deve estar dentro de &lt;em&gt;ALLOWED&lt;/em&gt;HOSTS_, caso contrário o Django não será executado no Heroku.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;Como encontrar DATABASE_URL?&lt;/strong&gt; Acesse o dashboard &gt; Resources &gt; Heroku Postgres Database. Uma nova aba irá abrir e permitirá você verificar &lt;em&gt;DATABASE CREDENTIALS&lt;/em&gt;.&lt;/p&gt;
-&lt;h6&gt;Disponibilize seu app&lt;/h6&gt;
-&lt;p&gt;O dashboard do Heroku irá conter instruções de como disponibilizar seu app. De qualquer maneira, com o git você pode fazê-lo facilmente:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;heroku git:remote &lt;span class=&quot;token parameter variable&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;YOUR_APP_NAME&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push heroku master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;Solução de Problemas&lt;/h2&gt;
-&lt;p&gt;Se você encontrar quaisquer problemas, apenas cheque o terminal pois o Heroku apresenta mensagens expressivas que podem te ajudar. Por exemplo, durante o deploy eu fui apresentado à seguinte mensagem:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;remote:        django.core.exceptions.ImproperlyConfigured: You&apos;re using the staticfiles app without having set the STATIC_ROOT setting to a filesystem path.
-remote:
-remote:  !     Error while running &apos;$ python manage.py collectstatic --noinput&apos;.
-remote:        See traceback above for details.
-remote:&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Ao checá-la percebi que havia esquecido de configurar a variável &lt;em&gt;STATIC ROOT&lt;/em&gt; no arquivo &lt;em&gt;\&lt;/em&gt;settings.py_ e instalar o middleware WSGI para servir os arquivos estáticos.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Django não foi pensado para servir arquivos estáticos. Use a Amazon S3 (ou equivalente) em projetos “reais”.&lt;/p&gt;
-&lt;p&gt;Isso é tudo, pessoal!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Integrando PyCharm com Pyenv]]></title><description><![CDATA[PyCharm é minha IDE favorita e, sem dúvidas, uma ferramenta poderosa. Ela te dá excelentes atalhos e um grupo de ferramentas que previnem o…]]></description><link>https://vcrmartinez.com/2017/2017-08-04-Integrando_PyCharm_com_Pyenv/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-08-04-Integrando_PyCharm_com_Pyenv/</guid><pubDate>Fri, 04 Aug 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;PyCharm é minha IDE favorita e, sem dúvidas, uma ferramenta poderosa. Ela te dá excelentes atalhos e um grupo de ferramentas que previnem o programador de ter que ficar trocando de telas a todo momento. Uma delas é um terminal embutido que evita que você fique trocando de contexto da IDE para o terminal do linux e vice-versa.&lt;/p&gt;
+&lt;p&gt;Isso é tudo, pessoal. Se você tiver alguma dúvida, por favor me avise.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Integrando PyCharm com Pyenv]]></title><description><![CDATA[PyCharm é minha IDE favorita e, sem dúvidas, uma ferramenta poderosa. Ela te dá excelentes atalhos e um grupo de ferramentas que previnem o…]]></description><link>https://vcrmartinez.com/2017/2017-08-04-Integrando_PyCharm_com_Pyenv/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-08-04-Integrando_PyCharm_com_Pyenv/</guid><pubDate>Fri, 04 Aug 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;PyCharm é minha IDE favorita e, sem dúvidas, uma ferramenta poderosa. Ela te dá excelentes atalhos e um grupo de ferramentas que previnem o programador de ter que ficar trocando de telas a todo momento. Uma delas é um terminal embutido que evita que você fique trocando de contexto da IDE para o terminal do linux e vice-versa.&lt;/p&gt;
 &lt;p&gt;Como você pode ver na imagem abaixo, o terminal dentro do PyCharm mostra o virtualenv atual que eu estou trabalhando.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -1640,7 +960,7 @@ remote:&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ol&gt;
 &lt;li&gt;Vá em &lt;code class=&quot;language-text&quot;&gt;Preferences&lt;/code&gt; &gt; &lt;code class=&quot;language-text&quot;&gt;Project Interpreter&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Clique na engrenagem e selecione &lt;strong&gt;Add local&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Aponte para o arquivo python que fica dentro do seu virtualenv. Como eu esotu usando pyenv, o caminho é &lt;code class=&quot;language-text&quot;&gt;~/.pyenv/versions/&amp;lt;virtualenv-name&gt;/bin/python3&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Aponte para o arquivo python que fica dentro do seu virtualenv. Como eu esotu usando pyenv, o caminho é &lt;code class=&quot;language-text&quot;&gt;~/.pyenv/versions/&amp;lt;virtualenv-name&amp;gt;/bin/python3&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Pode ser que você precise reiniciar o PyCharm.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h5&gt;Você não usa o Pyenv?&lt;/h5&gt;
