@@ -7,8 +7,6 @@
 <url> <loc>https://vcrmartinez.com/pt/blog</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vcrmartinez.com/blog/page/2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vcrmartinez.com/pt/blog/page/2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://vcrmartinez.com/blog/page/3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://vcrmartinez.com/pt/blog/page/3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vcrmartinez.com/blog/2021/2021-01-12-Usando_a_funcao_Postgres_array_agg_para_agregar_colunas_de_string/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vcrmartinez.com/pt/blog/2021/2021-01-12-Usando_a_funcao_Postgres_array_agg_para_agregar_colunas_de_string/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vcrmartinez.com/blog/2020/2020-12-24-Do_Jekyll_para_o_Gatsby/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
