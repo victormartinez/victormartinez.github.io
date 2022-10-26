@@ -2,7 +2,7 @@ import styled from "styled-components"
 import media from "styled-media-query"
 
 export const Headline = styled.h1`
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: 900;
   line-height: 1.5;
   text-align: center;
@@ -79,19 +79,19 @@ export const Section = styled.section`
   }
 
   h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: 900;
   }
 
   h2 {
     font-weight: 900;
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-top: 1.2em;
   }
 
   h3 {
     font-weight: 900;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-top: 0.5em;
   }
 
