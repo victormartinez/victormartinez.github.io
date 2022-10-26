@@ -8,7 +8,7 @@ export const BarHeader = styled.header`
   z-index: 99999;
   overflow: auto;
   background-color: #090b0b;
-  height: 10vh;
+  padding: 0 0 0.2em 0;
   display: flex;
   justify-content: flex-start;
   font-size: 1.2rem;
@@ -29,7 +29,6 @@ export const HamburgerButton = styled.button`
 `
 
 export const HomeNavLink = styled(Link)`
-  margin: 1em 0;
   color: #fff !important;
 
   :hover {

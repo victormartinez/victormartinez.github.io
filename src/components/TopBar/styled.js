@@ -4,7 +4,6 @@ import { Link } from "gatsby"
 
 export const TopBarHeader = styled.header`
   background-color: #090b0b;
-  height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,13 +28,10 @@ export const Logo = styled(Link)`
   align-items: center;
   text-decoration: none;
   color: #fff;
+  border-bottom: none;
 
   &:visited {
     color: #fff;
-  }
-
-  &:hover {
-    border-bottom: 1px dashed #fff;
   }
 `
 
@@ -59,13 +55,14 @@ export const NavItem = styled.li`
 export const NavLink = styled(Link)`
   text-decoration: none;
   color: #fff;
+  border-bottom: 1px dashed #fff;
 
   &:visited {
     color: #fff;
   }
 
   &:hover {
-    border-bottom: 1px dashed #fff;
+    border-bottom: none;
   }
 `
 export const NavAnchorItem = styled.li`

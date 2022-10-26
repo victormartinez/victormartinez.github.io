@@ -4,21 +4,22 @@ import media from "styled-media-query"
 export const Wrapper = styled.div`
   display: flex;
   background-color: #090b0b;
-  height: ${props => (props.content ? `30vh` : `20vh`)};
+  
 
   ${media.lessThan("small")`
-    margin-bottom: 1em;  
+    margin-bottom: 2em;  
   `}
 `
 
 export const Container = styled.div`
   margin: 0 auto;
   width: 70em;
-  margin-top: 10vh;
+  padding: 5em 0 2em 0;
 
   ${media.lessThan("large")`
     width: 100vw;
     padding: 1.5em;
+    padding-top: 6em;
   `}
 `
 

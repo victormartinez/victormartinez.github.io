@@ -67,6 +67,8 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     text-decoration: none;
+    border-bottom: 1px dashed #3498db;
+    padding-bottom:2px;
     color: #3498db;
     transition: opacity 0.5s;
   }
@@ -76,7 +78,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   a:hover {
-    border-bottom: 1px dashed #3498db;
+    border-bottom: none;
     opacity: 0.8;
   }
 

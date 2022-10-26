@@ -5,10 +5,9 @@ import { Link } from "gatsby"
 import Img from "gatsby-image"
 
 export const TalkItemWrapper = styled.article`
-  margin-bottom: 3em;
   background-color: #f3f3f3;
   display: flex;
-  flex-direction: row;
+  margin-bottom: 3em;
 
   ${media.lessThan("medium")`
     flex-direction: column;
@@ -16,17 +15,14 @@ export const TalkItemWrapper = styled.article`
   `};
 `
 
-export const ImageSection = styled.div`
-  max-width: 30em;
-  max-height: 20em;
-`
+export const ImageSection = styled.div``
 
 export const Url = styled(Link)``
 
 export const Image = styled(Img)`
   ${media.greaterThan("small")`
     width: 20em;
-    height: 15em;
+    height: 12em;
   `}
 
   ${media.between("small", "medium")`
@@ -37,18 +33,16 @@ export const Image = styled(Img)`
 
 export const TextSection = styled.section`
   width: 100%;
-  padding: 0.5em 1.5em;
+  padding: 1em 1em 0em 1.5em;
 `
 
 export const Header = styled.header`
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
 `
 
 export const Title = styled.h2`
-  font-size: 1.8em;
+  font-size: 1.2rem;
   font-weight: 600;
-  line-height: 1.5;
-  margin-bottom: 0.5em;
 `
 
 export const BodyItems = styled.ul`
@@ -57,7 +51,7 @@ export const BodyItems = styled.ul`
 `
 
 export const Item = styled.li`
-  height: 2em;
+  margin-bottom: 0.6em;
 `
 
 export const ItemText = styled.span``

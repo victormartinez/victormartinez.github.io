@@ -34,12 +34,11 @@ const PostItem = ({
             <S.ReadingTime>
               {timeToRead} min {intl.formatMessage({ id: "reading" })}
             </S.ReadingTime>
+            <S.Bullet>•</S.Bullet>
+            <S.Category>{category}</S.Category>
           </S.Metadata>
           <S.Description>{description}</S.Description>
         </S.Header>
-        <S.Footer>
-          <S.FooterItem>{category}</S.FooterItem>
-        </S.Footer>
       </S.TextSection>
     </S.PostItemWrapper>
   )
