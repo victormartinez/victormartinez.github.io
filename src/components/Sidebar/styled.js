@@ -26,10 +26,13 @@ export const HamburgerButton = styled.button`
   color: #fff;
   cursor: pointer;
   font-size: 2em;
+  padding-left: 0.5em;
 `
 
 export const HomeNavLink = styled(Link)`
+  border: none;
   color: #fff !important;
+  margin-left: 0.2em;
 
   :hover {
     border-bottom: 1px dashed #fff;
