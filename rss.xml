@@ -1,4 +1,84 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://vcrmartinez.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 01 Nov 2022 11:52:34 GMT</lastBuildDate><item><title><![CDATA[Pensamentos após 10 anos como programador]]></title><description><![CDATA[Um das minhas últimas reflexões me fez perceber que passei a marca de 10 anos como programador. Olhando para trás me questionei sobre quais…]]></description><link>https://vcrmartinez.com/2022/2022-11-01-Pensamentos_apos_10_anos_como_programador/</link><guid isPermaLink="false">https://vcrmartinez.com/2022/2022-11-01-Pensamentos_apos_10_anos_como_programador/</guid><pubDate>Tue, 01 Nov 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Um das minhas últimas reflexões me fez perceber que passei a marca de 10 anos como programador. Olhando para trás me questionei sobre quais aprendizados eu tive ao longo do caminho e decidi compartilhar alguns pensamentos “aleatórios”.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://vcrmartinez.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 17 Jan 2023 10:46:03 GMT</lastBuildDate><item><title><![CDATA[Acelerando seu onboarding como programador]]></title><description><![CDATA[TLDR; diminua a fricção no seu onboarding criando um Manual de Sobrevivência. Por mais que você seja experiente entrar em uma empresa nova é…]]></description><link>https://vcrmartinez.com/2023/2022-01-17-Acelerando_seu_onboarding_como_programador/</link><guid isPermaLink="false">https://vcrmartinez.com/2023/2022-01-17-Acelerando_seu_onboarding_como_programador/</guid><pubDate>Tue, 17 Jan 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;TLDR;&lt;/em&gt; diminua a fricção no seu onboarding criando um Manual de Sobrevivência.&lt;/p&gt;
+&lt;p&gt;Por mais que você seja experiente entrar em uma empresa nova é sempre desconfortável. No novo local de trabalho você precisa conhecer novas pessoas, absorver uma nova cultura, estudar sobre um novo mercado de atuação e se familiarizar com a parte técnica (ferramentas, processos, tecnologias do dia-a-dia, etc). Além disso, se você for uma pessoa &lt;strong&gt;ansiosa&lt;/strong&gt; e &lt;strong&gt;excessivamente preocupada&lt;/strong&gt;, então os primeiros meses tendem a ser angustiantes devido a uma cobrança interna muito grande.&lt;/p&gt;
+&lt;p&gt;Ao longo dos anos adotei o hábito de criar um documento que anotava tudo que julgava necessário. Isso me ajudava tanto na parte emocional como técnica. Hoje compartilho com vocês como criar o seu &lt;strong&gt;Manual de Sobrevivência (MS)&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2&gt;O que?&lt;/h2&gt;
+&lt;p&gt;O Manual de Sobrevivência é um documento que condenso tudo o que é preciso saber para exercer o meu trabalho no dia-a-dia. Como programador, por exemplo, eu preciso estar a par de como funciona o processo de &lt;strong&gt;deploy&lt;/strong&gt; adotado pela empresa, quais comando são úteis no dia-a-dia, dicas de como debugar uma determinada aplicação, etc. Esse documento está em constante atualização e à medida que os meses passam eu adiciono novas informações.&lt;/p&gt;
+&lt;h2&gt;Por que?&lt;/h2&gt;
+&lt;p&gt;Alguns motivos pelos quais é importante ter esse documento:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Sua memória vai falhar:&lt;/strong&gt; No primeiro mês de trabalho é comum receber um montante de informações e provavelmente absorver pouca coisa. O MS ajuda a documentar o que é essencial saber e para times que não possuem documentação isso pode ser um pontapé para criar uma base de conhecimento para novos engenheiros.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Autonomia:&lt;/strong&gt; No começo é natural termos ajuda de um ou mais colegas e a disponibilidade deles pode ser incerta. Ao criar esse doc você cria uma base de conhecimento para consultar sempre que precisar.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Segurança Psicológica:&lt;/strong&gt; Por ainda estar em processo de aprendizagem, muitas vezes ficamos inseguros em executar um comando, fazer deploy ou seguir determinada prática. Documentar ajuda a endereçar aquela dúvida para quem fica inseguro: “será que eu estou fazendo do jeito certo?”.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Aprendizagem:&lt;/strong&gt; Ao documentar você acelera o seu aprendizado. Simples assim.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dicas:&lt;/strong&gt; Por mais que a empresa possua tudo documentado, inevitavelmente você vai se deparar com comandos/fluxos/procedimentos facilitadores que não estão documentados. Pode ser aquele comando que seu colega usa constantemente ou mesmo um jeito mais fácil de fazer as coisas. Pescou no ar alguma dica? Anote!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Como?&lt;/h2&gt;
+&lt;p&gt;Agora que você já entendeu o objetivo e a motivação, é hora de criar o seu próprio manual:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Escolha uma ferramenta do seu gosto (&lt;em&gt;e.g.&lt;/em&gt; Notion, Google Docs, Evernote, Notes, etc).&lt;/li&gt;
+&lt;li&gt;Nos primeiros meses, deixe-a aberta e anote tudo o que achar relevante.&lt;/li&gt;
+&lt;li&gt;Semanalmente revisite o documento para deixar mais sucinto e objetivo.&lt;/li&gt;
+&lt;li&gt;Dedique alguns minutos/horas semanais para organizar o documento em blocos que façam sentido.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Um boilerplate para você seguir&lt;/h2&gt;
+&lt;p&gt;A seção anterior é um pouco abstrata então resolvi colocar aqui um boilerplate para que você possa seguir. Meus Manuais de Sobrevivência não seguem um padrão específico mas todos possuem um conjunto de tópicos que me permitem consultar rapidamente um determinado assunto. Um bom começo pode ser o modelo abaixo.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;💻 Manual de Sobrevivência da Empresa XYZ
+
+**Descrição da Empresa**
+A XYZ é uma startup de tecnologia voltada para o agronegócio.
+Por meio do seu marketplace web ela conecta pessoas interessados 
+em comprar e vender (i) produtos, (ii) animais e (iii) terrenos.
+
+**Descrição do Time**
+O Time de Payment é responsável por manter e evoluir o fluxo de pagamento 
+do cliente desde quando ele coloca um produto no carrinho até o momento em 
+que a transação financeira é consolidada.
+
+**Sistemas**
+- Sistema 1: &amp;lt;responsabilidade_1&amp;gt;
+- Sistema 2: &amp;lt;responsabilidade_2&amp;gt;
+- Sistema 3: &amp;lt;responsabilidade_3&amp;gt;
+
+**Sistema 1**
+- Explicação
+- Arquitetura
+- Repositório
+
+**Sistema 2**
+- Explicação
+- Arquitetura
+- Repositório
+
+**Sistema 3**
+- Explicação
+- Arquitetura
+- Repositório
+
+**Comandos Úteis**
+- Logs da Aplicação: `kubectl logs -f svc/api-app`
+- Acessar um POD: `kubectl exec -it &amp;lt;pod-name&amp;gt; -- /bin/bash`
+
+**Passos para fazer o Deploy**
+1. &amp;lt;Passo 1&amp;gt;
+2. &amp;lt;Passo 2&amp;gt;
+3. &amp;lt;Passo 3&amp;gt;
+4. &amp;lt;Passo 4&amp;gt;
+
+**Links Importantes**
+1. &amp;lt;titulo_1&amp;gt;: &amp;lt;link_1&amp;gt;
+2. &amp;lt;titulo_2&amp;gt;: &amp;lt;link_2&amp;gt;
+3. &amp;lt;titulo_3&amp;gt;: &amp;lt;link_3&amp;gt;
+
+**Como fazer rollback?**
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Estendendo o Boilerplate&lt;/h2&gt;
+&lt;p&gt;O boilerplate acima é apenas com começo e existem diversos tópicos que você pode adicionar:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Quais métricas mais importantes para cada aplicação?&lt;/li&gt;
+&lt;li&gt;Como debugar corretamente?&lt;/li&gt;
+&lt;li&gt;Quais principais causas de erro em prod e como endereçar?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;O mais importante é que você comece o quanto antes. Tenho certeza que seu processo ficará muito mais fácil se você tomar a iniciativa de documentar o que achar necessário.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Pensamentos após 10 anos como programador]]></title><description><![CDATA[Um das minhas últimas reflexões me fez perceber que passei a marca de 10 anos como programador. Olhando para trás me questionei sobre quais…]]></description><link>https://vcrmartinez.com/2022/2022-11-01-Pensamentos_apos_10_anos_como_programador/</link><guid isPermaLink="false">https://vcrmartinez.com/2022/2022-11-01-Pensamentos_apos_10_anos_como_programador/</guid><pubDate>Tue, 01 Nov 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Um das minhas últimas reflexões me fez perceber que passei a marca de 10 anos como programador. Olhando para trás me questionei sobre quais aprendizados eu tive ao longo do caminho e decidi compartilhar alguns pensamentos “aleatórios”.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Disclaimer: Com certeza alguns pontos abaixo carregam privilégios que eu tive na vida. Conto com você para desconsiderar se não for aplicável à sua realidade.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -409,7 +489,7 @@ $ redis-cli
 &lt;li&gt;&lt;strong&gt;Linhas 22 e 57&lt;/strong&gt; passam o &lt;em&gt;callable&lt;/em&gt; &lt;code class=&quot;language-text&quot;&gt;include_object&lt;/code&gt; que corresponde a função da 4ª linha.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Linha 3&lt;/strong&gt; corresponde ao nosso &lt;em&gt;callable&lt;/em&gt; que especifica se o Alembic deve considerar ou não o objeto em questão. Preste atenção que na 5ª linha nós verificamos se o objeto tem um atributo &lt;code class=&quot;language-text&quot;&gt;schema&lt;/code&gt;. Finalmente, as linhas 6 e 7 comparam o schema com aquele configurado nos models do SQLAlchemy.&lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Dica rápida: kubectx para trocar facilmente entre clusters]]></title><description><![CDATA[Depentendo da sua empresa, manter mais de um cluster Kubernetes pode ser uma atividade comum. Entretando, digitar  e  para listar os…]]></description><link>https://vcrmartinez.com/2020/2020-03-28-Dica_rapida_kubectx_para_trocar_facilmente_entre_clusters/</link><guid isPermaLink="false">https://vcrmartinez.com/2020/2020-03-28-Dica_rapida_kubectx_para_trocar_facilmente_entre_clusters/</guid><pubDate>Sat, 28 Mar 2020 03:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Depentendo da sua empresa, manter mais de um cluster Kubernetes pode ser uma atividade comum. Entretando, digitar &lt;code class=&quot;language-text&quot;&gt;kubectl config get-contexts&lt;/code&gt; e &lt;code class=&quot;language-text&quot;&gt;kubectl config use-context&lt;/code&gt; para listar os contextos e trocar, respectivamente, (i) é chato, (ii) demanda esforço e (iii) não é intuitivo. Graças ao &lt;a href=&quot;https://github.com/ahmetb/kubectx/&quot;&gt;kubectx&lt;/a&gt; você pode facilmente trocar entre contextos.&lt;/p&gt;
-&lt;p&gt;Na &lt;a href=&quot;http://onyo.com/&quot;&gt;Onyo&lt;/a&gt;, nós temos que trocar entre três clusters. Portanto, os comandos abaixo são comumente usados:&lt;/p&gt;
+&lt;p&gt;Onde trabalho temos que trocar entre três clusters. Portanto, os comandos abaixo são comumente usados:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;kubectx             : list the contexts
 kubectx -           : switch to the previous context
 kubectx &amp;lt;NAME&amp;gt;      : switch to context &amp;lt;NAME&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -584,13 +664,6 @@ config&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;load_inclust
               &lt;span class=&quot;token key atrule&quot;&gt;imagePullPolicy&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; IfNotPresent
               &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&amp;lt;YOUR&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;COMMAND&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;GOES&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;HERE&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;Considerações Importantes&lt;/h2&gt;
-&lt;p&gt;It is important to be carefull regarding some points:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;UTC vs LocalTime:&lt;/strong&gt; Configure the Dockerfile to use UTC time and consider it in the &lt;code class=&quot;language-text&quot;&gt;schedule&lt;/code&gt; property.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Click:&lt;/strong&gt; You can wrap the python code with &lt;a href=&quot;https://click.palletsprojects.com/en/7.x/&quot;&gt;Click&lt;/a&gt; to create an easy to use command line interface.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Configmaps:&lt;/strong&gt; The settings module use hardcoded values but it could easily take the values from a ConfigMap.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Non-root user:&lt;/strong&gt; Do not use root user for the Dockerfile. You can take the Dockerfile below as a starting point:&lt;/li&gt;
-&lt;/ol&gt;
 &lt;p&gt;É importante ter cuidado com alguns pontos:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;UTC vs LocalTime:&lt;/strong&gt; Configure o Dockerfile para usar o horário UTC e considere-o na propriedade &lt;code class=&quot;language-text&quot;&gt;schedule&lt;/code&gt;.&lt;/li&gt;
@@ -682,7 +755,7 @@ config&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;load_inclust
 &lt;li&gt;Fornecer, acidentalmente, um desconto a um usuário (ou muitos)&lt;/li&gt;
 &lt;li&gt;Atualizar de registros sem backup&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Como desenvolvedores, precisamos não apenas verificar novamente nossos scripts, mas também fazer o nosso melhor para minimizar / evitar possíveis efeitos colaterais (especialmente se algo inesperado acontecer). Algumas semanas atrás, durante uma sessão pair programming, [Elias] (&lt;a href=&quot;https://etandel.xyz&quot;&gt;https://etandel.xyz&lt;/a&gt;) e eu criamos um crítico &lt;a href=&quot;https://docs.djangoproject.com/en/2.2/howto/custom-management-command/&quot;&gt;comando Django&lt;/a&gt; responsável por alterar registros em muitas tabelas de acordo com uma lógica de negócios. À medida que mergulhávamos nas partes intrínsecas do script, percebemos o quão perigoso isso poderia ser e tomamos alguns cuidados que são compartilhados neste post.&lt;/p&gt;
+&lt;p&gt;Como desenvolvedores, precisamos não apenas verificar novamente nossos scripts, mas também fazer o nosso melhor para minimizar / evitar possíveis efeitos colaterais (especialmente se algo inesperado acontecer). Algumas semanas atrás, durante uma sessão pair programming, &lt;a href=&quot;https://etandel.xyz&quot;&gt;Elias&lt;/a&gt; e eu criamos um crítico &lt;a href=&quot;https://docs.djangoproject.com/en/2.2/howto/custom-management-command/&quot;&gt;comando Django&lt;/a&gt; responsável por alterar registros em muitas tabelas de acordo com uma lógica de negócios. À medida que mergulhávamos nas partes intrínsecas do script, percebemos o quão perigoso isso poderia ser e tomamos alguns cuidados que são compartilhados neste post.&lt;/p&gt;
 &lt;h2&gt;Barras de progresso são fantásticas!&lt;/h2&gt;
 &lt;p&gt;Executar um script que leva muito tempo para ser concluído é desesperador. Você fica confuso porque não sabe o que está acontecendo: (i) ainda está funcionando? (ii) a conexão está desligada? É por isso que um senso de progresso é importante. Se você é um programador Python, alguns projetos como &lt;a href=&quot;https://github.com/tqdm/tqdm&quot;&gt;tqdm&lt;/a&gt; e &lt;a href=&quot;https://github.com/kennethreitz/clint&quot;&gt;clint&lt;/a&gt; podem ajudá-lo fornecendo maneiras de criar barras de progresso. De qualquer forma, se isso exigir muito esforço ou se sua linguagem de programação não ajudar você com isso, um simples indicador &lt;code class=&quot;language-text&quot;&gt;&amp;lt;accomplished&amp;gt; / &amp;lt;total&amp;gt;&lt;/code&gt; é um bom começo, pelo menos.&lt;/p&gt;
 &lt;h2&gt;Logging&lt;/h2&gt;
@@ -718,7 +791,7 @@ config&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;load_inclust
 &lt;p&gt;E se sua conexão for perdida durante a execução? Isso pode ser muito ruim, hein? É por isso que é recomendado usar um multiplexador de Terminal como o tmux (dá uma olhada neste &lt;a href=&quot;https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/&quot;&gt;tutorial&lt;/a&gt;). É realmente útil porque você pode iniciar tarefas de longa execução em seu servidor remoto e mantê-las em execução mesmo que sua conexão seja perdida.&lt;/p&gt;
 &lt;h2&gt;Revisão de código&lt;/h2&gt;
 &lt;p&gt;Cada código que vai para a produção deve ser revisado por outro programador. Os scripts não são exceção. Ponto final.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Dicas para desafios técnicos]]></title><description><![CDATA[É comum que programadores enfrentem um desafio técnico nos processos de recrutamento. O desafio consiste em tarefas de programação…]]></description><link>https://vcrmartinez.com/2019/2019-04-28-Dicas_para_desafios_tecnicos/</link><guid isPermaLink="false">https://vcrmartinez.com/2019/2019-04-28-Dicas_para_desafios_tecnicos/</guid><pubDate>Invalid Date</pubDate><content:encoded>&lt;p&gt;É comum que programadores enfrentem um desafio técnico nos processos de recrutamento. O desafio consiste em tarefas de programação projetadas para avaliar candidatos, principalmente, em relação às hard skills (por exemplo, habilidade de programação, arquitetura de software, etc.) Normalmente, o processo é composto por três fases: (i) especificação; (ii) desenvolvimento; (iii) revisão. Existem idiossincrasias e dicas para cada um deles.&lt;/p&gt;
-&lt;p&gt;Depois de passar por desafios de codificação e, principalmente, avaliar alguns deles na &lt;a href=&quot;www.onyo.com&quot;&gt;Onyo&lt;/a&gt;, decidi escrever este post e compartilhar algumas lições que aprendi.&lt;/p&gt;
+&lt;p&gt;Depois de passar por desafios de codificação e, principalmente, avaliar alguns deles na atual empresa, decidi escrever este post e compartilhar algumas lições que aprendi.&lt;/p&gt;
 &lt;h2&gt;Especificação&lt;/h2&gt;
 &lt;p&gt;O candidato recebe um e-mail ou documento especificando o escopo do desafio. Geralmente são listados os requisitos, restrições e o que fazer / não fazer. Se você for um desenvolvedor back-end, por exemplo, pode ser solicitado desenvolver uma API REST / GraphQL, um SaaS ou uma integração com um terceiro. &lt;strong&gt;O segredo do sucesso é estar muito atento ao que você precisa fazer. O planejamento é vital.&lt;/strong&gt;&lt;/p&gt;
 &lt;h3&gt;Leia atentamente as especificações&lt;/h3&gt;
@@ -1069,7 +1142,7 @@ res &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; search&lt;span c
 &lt;li&gt;Pode ser que você precise reiniciar o PyCharm.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h5&gt;Você não usa o Pyenv?&lt;/h5&gt;
-&lt;p&gt;&lt;del&gt;Basta instalar e seguir o tutorial&lt;/del&gt;. Você só precisa substituir o caminho pelo caminho do seu virtualenv. =)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git hooks, issue tracker e Git Flow]]></title><description><![CDATA[Na Agilize o fluxo comum de trabalho do desenvolvedor envolve o uso do Jira para gerenciamento das tarefas, Git & Git Flow para…]]></description><link>https://vcrmartinez.com/2017/2017-05-07-Git_hooks_issue_tracker_e_Git_Flow/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-05-07-Git_hooks_issue_tracker_e_Git_Flow/</guid><pubDate>Sun, 07 May 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Na &lt;a href=&quot;https://www.agilize.com.br/&quot;&gt;Agilize&lt;/a&gt; o fluxo comum de trabalho do desenvolvedor envolve o uso do Jira para gerenciamento das tarefas, Git &amp;#x26; Git Flow para versionamento de código, Slack para comunicação e ferramentas como IDE, Editor de Texto e Terminal. Basicamente, a sprint é mantida no Jira com cards que descrevem as funcionalidades, bugs, spikes e chores seguindo algumas convenções do SCRUM e, então, o programador atribui um card para si.&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;Basta instalar e seguir o tutorial&lt;/del&gt;. Você só precisa substituir o caminho pelo caminho do seu virtualenv. =)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git hooks, issue tracker e Git Flow]]></title><description><![CDATA[Onde trabalho temos um fluxo comum de desenvolvimento que envolve o uso do Jira para gerenciamento das tarefas; Git & Git Flow para…]]></description><link>https://vcrmartinez.com/2017/2017-05-07-Git_hooks_issue_tracker_e_Git_Flow/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-05-07-Git_hooks_issue_tracker_e_Git_Flow/</guid><pubDate>Sun, 07 May 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Onde trabalho temos um fluxo comum de desenvolvimento que envolve o uso do Jira para gerenciamento das tarefas; Git &amp;#x26; Git Flow para versionamento de código; Slack para comunicação; ferramentas como IDE, Editor de Texto e Terminal. Basicamente, a sprint é mantida no Jira com cards que descrevem as funcionalidades, bugs, spikes e chores seguindo algumas convenções do SCRUM e, então, o programador atribui um card para si.&lt;/p&gt;
 &lt;p&gt;Durante o fluxo de desenvolvimento existe uma convenção de que &lt;strong&gt;commits devem ter o código do card que o programador está trabalhando&lt;/strong&gt;. Após alguns commits a convenção se torna chata de manter (pois você tem que digitar o código do card a todo momento). Existe uma forma de automatizar isso com Git Hooks.&lt;/p&gt;
 &lt;h2&gt;Git Hooks&lt;/h2&gt;
 &lt;p&gt;Git permite executir um script toda vez que um evento acontecer no repositório. Por exemplo, é possível configurar o editor de texto com uma mensagem de template que deve ser preenchida. Este &lt;a href=&quot;https://www.atlassian.com/git/tutorials/git-hooks&quot;&gt;tutorial&lt;/a&gt; explica o poder do Git Hooks e disponibiliza um trecho de código que será customizado neste post para endereçar nossas necessidades.&lt;/p&gt;
@@ -1112,4 +1185,4 @@ issue_match &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; re.match
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.atlassian.com/git/tutorials/git-hooks&quot;&gt;Git hooks&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/41232722/open-git-commit-editor-to-specific-cursor-location&quot;&gt;Open git commit editor to specific cursor location&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[Maintaining 200+ spiders and still having time to sleep]]></title><link>https://vcrmartinez.com/2016/2016-11-25-Maintaining-200-spiders-and-still-having-time-to-sleep/Maintaining-200-spiders-and-still-having-time-to-sleep/</link><guid isPermaLink="false">https://vcrmartinez.com/2016/2016-11-25-Maintaining-200-spiders-and-still-having-time-to-sleep/Maintaining-200-spiders-and-still-having-time-to-sleep/</guid><pubDate>Fri, 25 Nov 2016 02:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Crawling the web like a boss]]></title><link>https://vcrmartinez.com/2016/2016-10-15-Crawling-the-web-like-a-boss/2016-10-15-Crawling-the-web-like-a-boss/</link><guid isPermaLink="false">https://vcrmartinez.com/2016/2016-10-15-Crawling-the-web-like-a-boss/2016-10-15-Crawling-the-web-like-a-boss/</guid><pubDate>Sat, 15 Oct 2016 03:00:00 GMT</pubDate><content:encoded></content:encoded></item></channel></rss>
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[Maintaining 200+ spiders and still having time to sleep]]></title><link>https://vcrmartinez.com/2016/2016-11-25-Maintaining-200-spiders-and-still-having-time-to-sleep/Maintaining-200-spiders-and-still-having-time-to-sleep/</link><guid isPermaLink="false">https://vcrmartinez.com/2016/2016-11-25-Maintaining-200-spiders-and-still-having-time-to-sleep/Maintaining-200-spiders-and-still-having-time-to-sleep/</guid><pubDate>Fri, 25 Nov 2016 03:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Crawling the web like a boss]]></title><link>https://vcrmartinez.com/2016/2016-10-15-Crawling-the-web-like-a-boss/2016-10-15-Crawling-the-web-like-a-boss/</link><guid isPermaLink="false">https://vcrmartinez.com/2016/2016-10-15-Crawling-the-web-like-a-boss/2016-10-15-Crawling-the-web-like-a-boss/</guid><pubDate>Sat, 15 Oct 2016 03:00:00 GMT</pubDate><content:encoded></content:encoded></item></channel></rss>
