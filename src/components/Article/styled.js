@@ -12,8 +12,8 @@ export const Headline = styled.h1`
   `}
 `
 export const Article = styled.article`
-  line-height: 2.2rem;
-  font-size: 1.2rem;
+  line-height: 2.3rem;
+  font-size: 1.1rem;
 `
 export const Header = styled.header`
   text-align: center;
@@ -63,12 +63,17 @@ export const Section = styled.section`
   ul,
   ol {
     margin-top: -0.5em;
+    padding-left: 1em;
   }
 
   ol {
     list-style-type: decimal;
     margin-left: 1em;
     margin-bottom: 2em;
+  }
+
+  li {
+    margin-bottom: 0.5em;
   }
 
   ul {
