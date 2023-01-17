@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Acelerando seu onboarding como programador
+title: Acelerando seu onboarding
 category: Carreira
 date: 2023-01-17T00:00:00
-tags: [carreira, manual, escrita]
+tags: [carreira, manual, escrita, onboarding]
 image: featured.jpeg
 image_url: https://unsplash.com/photos/5uUErSi29js
 image_author: Denny Ryanto
@@ -17,7 +17,7 @@ Ao longo dos anos adotei o hábito de criar um documento que anotava tudo que ju
 
 ## O que?
 
-O Manual de Sobrevivência é um documento que condenso tudo o que é preciso saber para exercer o meu trabalho no dia-a-dia. Como programador, por exemplo, eu preciso estar a par de como funciona o processo de **deploy** adotado pela empresa, quais comando são úteis no dia-a-dia, dicas de como debugar uma determinada aplicação, etc. Esse documento está em constante atualização e à medida que os meses passam eu adiciono novas informações.
+O Manual de Sobrevivência é um documento que condenso tudo o que é preciso saber para exercer o meu trabalho no dia-a-dia. Como programador, por exemplo, eu preciso estar a par de como funciona o processo de deploy adotado pela empresa, quais comando são úteis no dia-a-dia, dicas de como debugar uma determinada aplicação, etc. Esse documento está em constante atualização e à medida que os meses passam eu adiciono novas informações.
 
 ## Por que?
 
@@ -97,10 +97,10 @@ que a transação financeira é consolidada.
 
 ## Estendendo o Boilerplate
 
-O boilerplate acima é apenas com começo e existem diversos tópicos que você pode adicionar:
+O boilerplate acima foca no meu universo (programação) mas você adaptá-lo para a sua área. É apenas com começo e existem diversos tópicos que você pode adicionar:
 
-- Quais métricas mais importantes para cada aplicação?
-- Como debugar corretamente?
-- Quais principais causas de erro em prod e como endereçar?
+- Quais métricas mais importantes para o meu negócio e/ou aplicação?
+- Como investigar problemas de forma assertiva?
+- Quais principais causas de erro no ambiente de produção e como endereçar?
 
 O mais importante é que você comece o quanto antes. Tenho certeza que seu processo ficará muito mais fácil se você tomar a iniciativa de documentar o que achar necessário.
