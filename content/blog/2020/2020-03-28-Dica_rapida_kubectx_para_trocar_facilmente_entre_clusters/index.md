@@ -10,7 +10,7 @@ date: "2020-03-28T00:00:00"
 
 Depentendo da sua empresa, manter mais de um cluster Kubernetes pode ser uma atividade comum. Entretando, digitar `kubectl config get-contexts` e `kubectl config use-context` para listar os contextos e trocar, respectivamente, (i) é chato, (ii) demanda esforço e (iii) não é intuitivo. Graças ao [kubectx](https://github.com/ahmetb/kubectx/) você pode facilmente trocar entre contextos.
 
-Na [Onyo](http://onyo.com/), nós temos que trocar entre três clusters. Portanto, os comandos abaixo são comumente usados:
+Onde trabalho temos que trocar entre três clusters. Portanto, os comandos abaixo são comumente usados:
 
 ```
 kubectx             : list the contexts

@@ -167,16 +167,6 @@ spec:
 
 ## Considerações Importantes
 
-It is important to be carefull regarding some points:
-
-1. **UTC vs LocalTime:** Configure the Dockerfile to use UTC time and consider it in the `schedule` property.
-
-2. **Click:** You can wrap the python code with [Click](https://click.palletsprojects.com/en/7.x/) to create an easy to use command line interface.
-
-3. **Configmaps:** The settings module use hardcoded values but it could easily take the values from a ConfigMap.
-
-4. **Non-root user:** Do not use root user for the Dockerfile. You can take the Dockerfile below as a starting point:
-
 É importante ter cuidado com alguns pontos:
 
 1. **UTC vs LocalTime:** Configure o Dockerfile para usar o horário UTC e considere-o na propriedade `schedule`.

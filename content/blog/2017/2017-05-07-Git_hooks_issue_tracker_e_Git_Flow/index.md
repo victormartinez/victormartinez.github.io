@@ -7,7 +7,7 @@ tags: [git, gitflow, hooks]
 image: featured.png
 ---
 
-Na [Agilize](https://www.agilize.com.br/) o fluxo comum de trabalho do desenvolvedor envolve o uso do Jira para gerenciamento das tarefas, Git & Git Flow para versionamento de código, Slack para comunicação e ferramentas como IDE, Editor de Texto e Terminal. Basicamente, a sprint é mantida no Jira com cards que descrevem as funcionalidades, bugs, spikes e chores seguindo algumas convenções do SCRUM e, então, o programador atribui um card para si.
+Onde trabalho temos um fluxo comum de desenvolvimento que envolve o uso do Jira para gerenciamento das tarefas; Git & Git Flow para versionamento de código; Slack para comunicação; ferramentas como IDE, Editor de Texto e Terminal. Basicamente, a sprint é mantida no Jira com cards que descrevem as funcionalidades, bugs, spikes e chores seguindo algumas convenções do SCRUM e, então, o programador atribui um card para si.
 
 Durante o fluxo de desenvolvimento existe uma convenção de que **commits devem ter o código do card que o programador está trabalhando**. Após alguns commits a convenção se torna chata de manter (pois você tem que digitar o código do card a todo momento). Existe uma forma de automatizar isso com Git Hooks.
 

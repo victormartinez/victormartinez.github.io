@@ -18,7 +18,7 @@ No cenário do mundo real, algumas mudanças são ~praticamente~ impossíveis de
 2. Fornecer, acidentalmente, um desconto a um usuário (ou muitos)
 3. Atualizar de registros sem backup
 
-Como desenvolvedores, precisamos não apenas verificar novamente nossos scripts, mas também fazer o nosso melhor para minimizar / evitar possíveis efeitos colaterais (especialmente se algo inesperado acontecer). Algumas semanas atrás, durante uma sessão pair programming, [Elias] (https://etandel.xyz) e eu criamos um crítico [comando Django](https://docs.djangoproject.com/en/2.2/howto/custom-management-command/) responsável por alterar registros em muitas tabelas de acordo com uma lógica de negócios. À medida que mergulhávamos nas partes intrínsecas do script, percebemos o quão perigoso isso poderia ser e tomamos alguns cuidados que são compartilhados neste post.
+Como desenvolvedores, precisamos não apenas verificar novamente nossos scripts, mas também fazer o nosso melhor para minimizar / evitar possíveis efeitos colaterais (especialmente se algo inesperado acontecer). Algumas semanas atrás, durante uma sessão pair programming, [Elias](https://etandel.xyz) e eu criamos um crítico [comando Django](https://docs.djangoproject.com/en/2.2/howto/custom-management-command/) responsável por alterar registros em muitas tabelas de acordo com uma lógica de negócios. À medida que mergulhávamos nas partes intrínsecas do script, percebemos o quão perigoso isso poderia ser e tomamos alguns cuidados que são compartilhados neste post.
 
 ## Barras de progresso são fantásticas!
 

@@ -11,7 +11,7 @@ image_url: https://unsplash.com/photos/dMUt0X3f59Q
 
 É comum que programadores enfrentem um desafio técnico nos processos de recrutamento. O desafio consiste em tarefas de programação projetadas para avaliar candidatos, principalmente, em relação às hard skills (por exemplo, habilidade de programação, arquitetura de software, etc.) Normalmente, o processo é composto por três fases: (i) especificação; (ii) desenvolvimento; (iii) revisão. Existem idiossincrasias e dicas para cada um deles.
 
-Depois de passar por desafios de codificação e, principalmente, avaliar alguns deles na [Onyo](www.onyo.com), decidi escrever este post e compartilhar algumas lições que aprendi.
+Depois de passar por desafios de codificação e, principalmente, avaliar alguns deles na atual empresa, decidi escrever este post e compartilhar algumas lições que aprendi.
 
 ## Especificação
 
