@@ -6,7 +6,7 @@ export const PaginationWrapper = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-weight: 900;
+  font-weight: 600;
   padding: 2em 0;
   height: 2em;
   font-size: 1rem;
@@ -27,7 +27,6 @@ export const PaginationNext = styled.div`
 `
 
 export const PaginationPage = styled.div`
-  width: 3em;
 `
 
 export const PaginationLink = styled(Link)`
