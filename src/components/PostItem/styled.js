@@ -47,19 +47,19 @@ export const Header = styled.header`
 `
 
 export const Title = styled.h2`
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 600;
   line-height: 1.5;
 `
 
 export const Description = styled.p`
-  line-height: 1.8;
+  line-height: 1.6;
   font-size: 1rem;
   font-weight: 300;
 `
 
 export const Metadata = styled.div`
-  margin: 0.5em 0;
+  margin: 0.4em 0;
   font-weight: 300;
   line-height: 1.8;
   font-size: 0.9rem;

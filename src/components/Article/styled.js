@@ -3,7 +3,7 @@ import media from "styled-media-query"
 
 export const Headline = styled.h1`
   font-size: 3.5rem;
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1.5;
   text-align: center;
 
@@ -12,7 +12,7 @@ export const Headline = styled.h1`
   `}
 `
 export const Article = styled.article`
-  line-height: 2.3rem;
+  line-height: 2rem;
   font-size: 1.1rem;
 `
 export const Header = styled.header`
@@ -40,7 +40,7 @@ export const TagItem = styled.li`
   background-color: #f5f2f0;
   color: gray;
   padding: 0 0.5em;
-  font-weight: 300;
+  font-weight: 600;
 
   ${media.lessThan("small")`
     margin-top: 0.5em;
@@ -85,17 +85,17 @@ export const Section = styled.section`
 
   h1 {
     font-size: 3.5rem;
-    font-weight: 900;
+    font-weight: 600;
   }
 
   h2 {
-    font-weight: 900;
+    font-weight: 600;
     font-size: 2rem;
     margin-top: 1.2em;
   }
 
   h3 {
-    font-weight: 900;
+    font-weight: 600;
     font-size: 1.4rem;
     margin-top: 0.5em;
   }
@@ -103,7 +103,7 @@ export const Section = styled.section`
   h4,
   h5,
   h6 {
-    font-weight: 900;
+    font-weight: 600;
     font-size: 1rem;
   }
 
@@ -147,7 +147,7 @@ export const Section = styled.section`
   }
 
   strong {
-    font-weight: 900;
+    font-weight: 600;
   }
 
   .gatsby-highlight {

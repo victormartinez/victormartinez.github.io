@@ -41,7 +41,7 @@ export const Header = styled.header`
 `
 
 export const Title = styled.h2`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
 `
 

@@ -11,7 +11,7 @@ export const BarHeader = styled.header`
   padding: 0 0 0.2em 0;
   display: flex;
   justify-content: flex-start;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 
   ${media.greaterThan("large")`
     display: none;

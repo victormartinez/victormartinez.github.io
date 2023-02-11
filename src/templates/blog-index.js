@@ -149,7 +149,7 @@ export const pageQuery = graphql`
       skip: $skip
     ) {
       nodes {
-        excerpt(pruneLength: 200)
+        excerpt(pruneLength: 180)
         fields {
           slug
         }
