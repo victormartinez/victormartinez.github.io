@@ -1,4 +1,4 @@
-import "typeface-merriweather"
+import "@fontsource/montserrat";
 
 // Highlighting for code blocks
 import "prismjs/themes/prism.css"

@@ -9,6 +9,7 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "@fontsource/montserrat": "^4.5.14",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",
     "gatsby-plugin-feed": "^2.7.0",
@@ -38,8 +39,7 @@
     "react-helmet": "^5.2.1",
     "styled-components": "^5.2.1",
     "styled-icons": "^10.22.0",
-    "styled-media-query": "^2.1.2",
-    "typeface-merriweather": "^1.1.13"
+    "styled-media-query": "^2.1.2"
   },
   "devDependencies": {
     "gh-pages": "^3.2.3",
@@ -62,7 +62,7 @@
     "deploy:win": "copy CNAME public/ && gh-pages -d public",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
