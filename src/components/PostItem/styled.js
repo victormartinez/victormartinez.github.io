@@ -76,7 +76,7 @@ export const Metadata = styled.div`
   font-size: 0.9rem;
 
   ${media.greaterThan("medium")`
-    font-weight: 600;
+    font-weight: 400;
   `};
 `
 
