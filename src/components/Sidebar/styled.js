@@ -7,6 +7,7 @@ export const BarHeader = styled.header`
   width: 100vw;
   z-index: 99999;
   overflow: auto;
+  background: #222631;
   
   padding: 0 0 0.2em 0;
   display: flex;
@@ -46,6 +47,7 @@ export const SidebarWrapper = styled.aside`
   align-items: center;
   height: 100vh;
   width: 20em;
+  background-color: #303644;
   
   position: fixed !important;
   z-index: 99999;
