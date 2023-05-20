@@ -60,7 +60,7 @@
     "build": "gatsby build",
     "deploy": "gatsby build && cp CNAME public/ && gh-pages -d public",
     "deploy:win": "copy CNAME public/ && gh-pages -d public",
-    "develop": "gatsby develop",
+    "develop": "NODE_OPTIONS=--openssl-legacy-provider gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "NODE_OPTIONS=--openssl-legacy-provider npm run develop",
     "serve": "gatsby serve",
