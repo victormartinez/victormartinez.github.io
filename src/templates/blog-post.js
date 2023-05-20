@@ -4,7 +4,6 @@ import { graphql } from "gatsby"
 
 import Article from "../components/Article"
 import Comments from "../components/Comments"
-import Divider from "../components/Divider"
 import LayoutArticle from "../components/LayoutArticle"
 import SEO from "../components/seo"
 import { pageDetailUrl } from "../utils/routing.js"
@@ -34,7 +33,6 @@ const BlogPostTemplate = ({ data }) => {
         ]}
       />
       <Article post={post} />
-      <Divider />
       <Comments url={url} identifier={path} title={title} />
     </LayoutArticle>
   )

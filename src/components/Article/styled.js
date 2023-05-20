@@ -15,6 +15,7 @@ export const Article = styled.article`
   line-height: 2.2rem;
   font-size: 1.2rem;
   color: #c8c8c8;
+  margin-bottom: 1em;
 `
 
 export const Header = styled.header`
@@ -77,7 +78,7 @@ export const Section = styled.section`
   }
 
   li {
-    margin-bottom: 1.5em;
+    margin-bottom: 1em;
   }
 
   ul {

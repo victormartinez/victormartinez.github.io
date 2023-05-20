@@ -2,7 +2,9 @@ import styled from "styled-components"
 import media from "styled-media-query"
 
 export const CommentsWrapper = styled.section`
-  background-color: #f3f2f1;
+  color: #c8c8c8;
+
+  background-color: #323849;
   padding: 1em;
 
   iframe[src*="ads-iframe"] {
