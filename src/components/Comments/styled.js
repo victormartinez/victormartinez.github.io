@@ -3,9 +3,10 @@ import media from "styled-media-query"
 
 export const CommentsWrapper = styled.section`
   color: #c8c8c8;
-
-  background-color: #323849;
-  padding: 1em;
+  background-color: #222631;
+  border-top: 1px solid #c8c8c8;
+  padding-top: 1em;
+  margin-top: 5em;
 
   iframe[src*="ads-iframe"] {
     display: none;
