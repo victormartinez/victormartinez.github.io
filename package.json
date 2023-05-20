@@ -58,7 +58,7 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "deploy": "gatsby build && cp CNAME public/ && gh-pages -d public",
+    "deploy": "NODE_OPTIONS=--openssl-legacy-provider gatsby build && cp CNAME public/ && gh-pages -d public",
     "deploy:win": "copy CNAME public/ && gh-pages -d public",
     "develop": "NODE_OPTIONS=--openssl-legacy-provider gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
