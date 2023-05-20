@@ -6,12 +6,11 @@ import * as S from "./styled"
 
 const PostItem = ({
   path,
-  image,
   category,
   date,
   timeToRead,
   title,
-  description,
+  image,
 }) => {
   const intl = useIntl()
 
@@ -27,17 +26,15 @@ const PostItem = ({
           <S.Title>
             <S.PostLink to={path}>{title}</S.PostLink>
           </S.Title>
-
           <S.Metadata>
             <S.Date>{formatDate(date, intl.locale)}</S.Date>
-            <S.Bullet>•</S.Bullet>
+            <S.Bullet> •</S.Bullet>
             <S.ReadingTime>
               {timeToRead} min {intl.formatMessage({ id: "reading" })}
             </S.ReadingTime>
             <S.Bullet>•</S.Bullet>
             <S.Category>{category}</S.Category>
           </S.Metadata>
-          <S.Description>{description}</S.Description>
         </S.Header>
       </S.TextSection>
     </S.PostItemWrapper>

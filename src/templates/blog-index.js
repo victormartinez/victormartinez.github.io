@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 
 import LayoutContent from "../components/LayoutContent"
 import PostItem from "../components/PostItem"
+import FeaturedPosts from "../components/FeaturedPosts"
 import Pagination from "../components/Pagination"
 import Paragraph from "../components/Paragraph"
 import SEO from "../components/seo"
@@ -32,6 +33,24 @@ const BlogIndex = ({ data, pageContext }) => {
   const isLast = currentPage === numPages
   const prevPage = prevPageUrl(intl.locale, routeName, currentPage)
   const nextPage = nextPageUrl(intl.locale, routeName, currentPage)
+
+  const countFeaturedPosts = 3;
+  const featuredPostsIndex = isFirst ? countFeaturedPosts : 0
+
+  const featuredPosts = posts.slice(0, featuredPostsIndex).map(element => {
+    return {
+      key: element.fields.slug,
+      path: `${pageDetailUrl(intl.locale, routeName, element.fields.slug)}`,
+      title: element.frontmatter.title || element.fields.slug,
+      image: element.frontmatter.image,
+      date: element.frontmatter.date,
+      description: element.frontmatter.description || element.excerpt,
+      timeToRead: element.timeToRead,
+      category: element.frontmatter.category,
+    }
+  });
+
+  const remainingPosts = posts.slice(featuredPostsIndex, posts.length);
 
   if (posts.length === 0) {
     return (
@@ -75,7 +94,10 @@ const BlogIndex = ({ data, pageContext }) => {
           },
         ]}
       />
-      {posts.map(post => {
+
+      <FeaturedPosts posts={featuredPosts} />
+
+      {remainingPosts.map(post => {
         return (
           <PostItem
             key={post.fields.slug}
@@ -89,6 +111,7 @@ const BlogIndex = ({ data, pageContext }) => {
           />
         )
       })}
+
       <Pagination
         isFirst={isFirst}
         isLast={isLast}

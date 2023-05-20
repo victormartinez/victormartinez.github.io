@@ -3,28 +3,37 @@ import media from "styled-media-query"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 
-export const PostItemWrapper = styled.article`
+
+export const FeaturedPostsRow = styled.div`
   display: flex;
-  margin-bottom: 0.5em;
-  
-  ${media.greaterThan("medium")`
-    color: white;
-  `};
+  flex-direction: row;
+  justify-content: space-between;
 
   ${media.lessThan("medium")`
     flex-direction: column;
-    padding: 1em;
-    background-color: #f3f3f3;
-    margin-bottom: 3em;
   `};
 `
 
-export const ImageSection = styled.div``
+export const PostItemFeaturedWrapper = styled.article`
+  background-color: #f3f3f3;
+  margin-bottom: 2em;
+  flex-direction: column;
+  width: 32%;
+
+  ${media.lessThan("medium")`
+    padding: 1em;
+    width: 100%;
+
+  `};
+`
+
+export const ImageSection = styled.div`
+  width: 100%;
+`
 
 export const PostLink = styled(Link)``
 
 export const Image = styled(Img)`
-
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
 
@@ -33,12 +42,8 @@ export const Image = styled(Img)`
     filter: grayscale(0%);
   }
 
-  ${media.greaterThan("medium")`
-    display: None;
-  `};
-
   ${media.greaterThan("small")`
-    width: 20em;
+    width: 100%;
     height: 7em;
   `}
 
@@ -49,8 +54,7 @@ export const Image = styled(Img)`
 `
 
 export const TextSection = styled.section`
-  width: 100vw;
-  padding: 1em 1em 0em 0em;
+  padding: 0.5em 0.5em 0em 0.8em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -61,10 +65,12 @@ export const TextSection = styled.section`
 `
 
 export const Header = styled.header`
+  display: flex;
+  flex-direction: column;
 `
 
 export const Title = styled.h2`
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 600;
   line-height: 1.5;
 `
@@ -74,10 +80,6 @@ export const Metadata = styled.div`
   font-weight: 300;
   line-height: 1.8;
   font-size: 0.9rem;
-
-  ${media.greaterThan("medium")`
-    font-weight: 600;
-  `};
 `
 
 export const Bullet = styled.span`

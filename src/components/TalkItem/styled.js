@@ -37,7 +37,7 @@ export const TextSection = styled.section`
 `
 
 export const Header = styled.header`
-  margin-bottom: 1em;
+  
 `
 
 export const Title = styled.h2`
