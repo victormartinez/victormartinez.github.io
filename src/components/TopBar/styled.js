@@ -3,7 +3,7 @@ import media from "styled-media-query"
 import { Link } from "gatsby"
 
 export const TopBarHeader = styled.header`
-  background-color: #090b0b;
+  
   display: flex;
   justify-content: center;
   align-items: center;

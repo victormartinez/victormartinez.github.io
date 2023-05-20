@@ -21,8 +21,8 @@ module.exports = {
     "blog",
   ],
   pt: {
-    title: `Olá, eu sou o Victor!`,
-    description: `Um desenvolvedor (principalmente) backend que gosta de tópicos relacionados a desenvolvimento de software, python 💚 e carreira em tech.`,
+    title: `Olá, meu nome é Victor!`,
+    description: `Desenvolvedor web (principalmente) backend que gosta de tópicos relacionados a software, python 💚 e carreira em tech.`,
     noPosts: `Desculpa, eu ainda não publiquei um post.`,
     talks: {
       title: `Palestras. Bate-papos. Slides.`,

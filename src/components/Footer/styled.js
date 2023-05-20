@@ -6,7 +6,6 @@ export const FooterWrapper = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #090b0b;
   margin-top: 1em;
 `
 

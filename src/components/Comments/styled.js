@@ -2,6 +2,9 @@ import styled from "styled-components"
 import media from "styled-media-query"
 
 export const CommentsWrapper = styled.section`
+  background-color: #f3f2f1;
+  padding: 1em;
+
   iframe[src*="ads-iframe"] {
     display: none;
   }

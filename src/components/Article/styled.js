@@ -12,16 +12,16 @@ export const Headline = styled.h1`
   `}
 `
 export const Article = styled.article`
-  line-height: 2rem;
-  font-size: 1.1rem;
+  line-height: 2.2rem;
+  font-size: 1.2rem;
+  color: #c8c8c8;
 `
+
 export const Header = styled.header`
   text-align: center;
 `
 
-export const DateBox = styled.div`
-  color: gray;
-`
+export const DateBox = styled.div``
 
 export const Date = styled.span``
 
@@ -38,7 +38,7 @@ export const TagsList = styled.ul`
 export const TagItem = styled.li`
   margin-right: 1em;
   background-color: #f5f2f0;
-  color: gray;
+  color: #222631;
   padding: 0 0.5em;
   font-weight: 600;
 
@@ -50,7 +50,7 @@ export const TagItem = styled.li`
 export const TagItemFirst = styled.li`
   font-weight: 600;
   margin-right: 1em;
-  color: gray;
+  color: white;
 
   ${media.lessThan("small")`
     margin-top: 0.5em;
@@ -58,7 +58,11 @@ export const TagItemFirst = styled.li`
 `
 
 export const Section = styled.section`
-  margin-top: 2em;
+  margin-top: 4em;
+
+  b, strong {
+    color: white;
+  }
 
   ul,
   ol {
@@ -73,7 +77,7 @@ export const Section = styled.section`
   }
 
   li {
-    margin-bottom: 0.5em;
+    margin-bottom: 1.5em;
   }
 
   ul {
@@ -91,13 +95,13 @@ export const Section = styled.section`
   h2 {
     font-weight: 600;
     font-size: 2rem;
-    margin-top: 1.2em;
+    margin-top: 1.5em;
   }
 
   h3 {
     font-weight: 600;
     font-size: 1.4rem;
-    margin-top: 0.5em;
+    margin-top: 0.8em;
   }
 
   h4,
@@ -152,5 +156,13 @@ export const Section = styled.section`
 
   .gatsby-highlight {
     margin-bottom: 2em;
+
+    pre {
+      background-color: #2b2f3a;
+
+      code {
+        text-shadow: none;
+      }
+    }
   }
 `

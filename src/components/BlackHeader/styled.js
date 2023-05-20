@@ -3,9 +3,7 @@ import media from "styled-media-query"
 
 export const Wrapper = styled.div`
   display: flex;
-  background-color: #090b0b;
   
-
   ${media.lessThan("small")`
     margin-bottom: 2em;  
   `}
