@@ -4,10 +4,19 @@ import media from "styled-media-query"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 
+export const TalkMain = styled.div`
+  ${media.greaterThan("medium")`
+    display: grid;
+    grid-template-columns: auto auto auto;
+  `};
+`
+
 export const TalkItemWrapper = styled.article`
-  background-color: #f3f3f3;
   display: flex;
-  margin-bottom: 3em;
+  flex-direction: column;
+  margin: 0 2em 2em 0;
+  background-color: #f3f3f3;
+  padding-bottom: 0.5em;
 
   ${media.lessThan("medium")`
     flex-direction: column;
@@ -20,13 +29,19 @@ export const ImageSection = styled.div``
 export const Url = styled(Link)``
 
 export const Image = styled(Img)`
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+
+  &:hover {
+    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+  }
+
   ${media.greaterThan("small")`
-    width: 20em;
     height: 12em;
   `}
 
   ${media.between("small", "medium")`
-    width: 95vw;
     height: 25vh;
   `}
 `

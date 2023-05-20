@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import LayoutContent from "../components/LayoutContent"
-import TalkItem from "../components/TalkItem"
+import Talks from "../components/Talks"
 import Paragraph from "../components/Paragraph"
 import SEO from "../components/seo"
 
@@ -19,6 +19,19 @@ const TalksIndex = ({ data }) => {
   const author = data.site.siteMetadata.author.name
   const keywords = data.site.siteMetadata.keywords
   const image = data.allFile.edges[0].node.publicURL
+  const talkElements = posts.map(element => {
+    return {
+      key: element.fields.slug,
+      title: element.frontmatter.title,
+      date: element.frontmatter.date,
+      image: element.frontmatter.image,
+      slides: element.frontmatter.slides,
+      event: element.frontmatter.event,
+      where: element.frontmatter.where,
+      video: element.frontmatter.video,
+      website: element.frontmatter.website,
+    }
+  });
 
   if (posts.length === 0) {
     return (
@@ -62,21 +75,8 @@ const TalksIndex = ({ data }) => {
           },
         ]}
       />
-      {posts.map(post => {
-        return (
-          <TalkItem
-            key={post.fields.slug}  
-            title={post.frontmatter.title}  
-            date={post.frontmatter.date}
-            image={post.frontmatter.image}
-            slides={post.frontmatter.slides}
-            event={post.frontmatter.event}
-            where={post.frontmatter.where}
-            video={post.frontmatter.video}
-            website={post.frontmatter.website}
-          />
-        )
-      })}
+
+      <Talks talks={talkElements} />
     </LayoutContent>
   )
 }
