@@ -125,6 +125,11 @@ export const Section = styled.section`
     margin: 0 0 1em 0;
   }
 
+  li code, p code {
+    font-size: 0.8em;
+    padding: 0em 0.3em;
+  }
+
   ul > p,
   li > p {
     margin: -0.5em 0 1em 0;
@@ -157,10 +162,9 @@ export const Section = styled.section`
 
   .gatsby-highlight {
     margin-bottom: 2em;
+    font-size: 0.8em;
 
     pre {
-      background-color: #2b2f3a;
-
       code {
         text-shadow: none;
       }
