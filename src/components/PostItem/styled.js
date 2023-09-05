@@ -16,6 +16,7 @@ export const PostItemWrapper = styled.article`
     padding: 1em;
     background-color: #f3f3f3;
     margin-bottom: 3em;
+    border-radius: 10px;
   `};
 `
 
@@ -25,13 +26,8 @@ export const PostLink = styled(Link)``
 
 export const Image = styled(Img)`
 
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%);
+  border-radius: 10px 10px 0 0;
 
-  &:hover {
-    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(0%);
-  }
 
   ${media.greaterThan("medium")`
     display: None;

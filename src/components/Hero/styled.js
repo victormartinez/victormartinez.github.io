@@ -50,7 +50,6 @@ export const Description = styled.p`
   ${media.lessThan("large")`
     font-size: 1rem;
     width: 100vw;
-    padding: 1em;
   `}
 `
 
@@ -66,7 +65,6 @@ export const SubDescription = styled.p`
   ${media.lessThan("large")`
     font-size: 1rem;
     width: 100vw;
-    padding: 1em;
   `}
 `
 
