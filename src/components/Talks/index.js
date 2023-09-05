@@ -21,7 +21,7 @@ const Talks = ({ talks }) => {
             }
             {!t.website && t.event}
           </S.Item>
-          <S.Item>Quando: {new Date(t.date).toLocaleString().slice(0, 10)}</S.Item>
+          <S.Item>Quando: {new Date(t.date).toISOString().split('T')[0]}</S.Item>
           <S.Item>Onde: {t.where}</S.Item>
           {t.slides && <S.Item><S.Url to={t.slides} target="_blank" rel="noopener noreferrer"> Slides</S.Url></S.Item>}
           {t.video && <S.Item><S.Url to={t.video} target="_blank" rel="noopener noreferrer"> Video</S.Url></S.Item>}
