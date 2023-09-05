@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://vcrmartinez.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 21 May 2023 03:23:53 GMT</lastBuildDate><item><title><![CDATA[Acelerando seu onboarding]]></title><description><![CDATA[TLDR; diminua a fricção no seu onboarding criando um Manual de Sobrevivência. Por mais que você seja experiente entrar em uma empresa nova é…]]></description><link>https://vcrmartinez.com/2023/2022-01-17-Acelerando_seu_onboarding/</link><guid isPermaLink="false">https://vcrmartinez.com/2023/2022-01-17-Acelerando_seu_onboarding/</guid><pubDate>Tue, 17 Jan 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;TLDR;&lt;/em&gt; diminua a fricção no seu onboarding criando um Manual de Sobrevivência.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://vcrmartinez.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 05 Sep 2023 02:05:35 GMT</lastBuildDate><item><title><![CDATA[Acelerando seu onboarding]]></title><description><![CDATA[TLDR; diminua a fricção no seu onboarding criando um Manual de Sobrevivência. Por mais que você seja experiente entrar em uma empresa nova é…]]></description><link>https://vcrmartinez.com/2023/2022-01-17-Acelerando_seu_onboarding/</link><guid isPermaLink="false">https://vcrmartinez.com/2023/2022-01-17-Acelerando_seu_onboarding/</guid><pubDate>Tue, 17 Jan 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;TLDR;&lt;/em&gt; diminua a fricção no seu onboarding criando um Manual de Sobrevivência.&lt;/p&gt;
 &lt;p&gt;Por mais que você seja experiente entrar em uma empresa nova é sempre desconfortável. No novo local de trabalho você precisa conhecer novas pessoas, absorver uma nova cultura, estudar sobre um novo mercado de atuação e se familiarizar com a parte técnica (ferramentas, processos, tecnologias do dia-a-dia, etc). Além disso, se você for uma pessoa &lt;strong&gt;ansiosa&lt;/strong&gt; e &lt;strong&gt;excessivamente preocupada&lt;/strong&gt;, então os primeiros meses tendem a ser angustiantes devido a uma cobrança interna muito grande.&lt;/p&gt;
 &lt;p&gt;Ao longo dos anos adotei o hábito de criar um documento que anotava tudo que julgava necessário. Isso me ajudava tanto na parte emocional como técnica. Hoje compartilho com vocês como criar o seu &lt;strong&gt;Manual de Sobrevivência (MS)&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2&gt;O que?&lt;/h2&gt;
@@ -22,54 +22,54 @@
 &lt;/ol&gt;
 &lt;h2&gt;Um boilerplate para você seguir&lt;/h2&gt;
 &lt;p&gt;A seção anterior é um pouco abstrata então resolvi colocar aqui um boilerplate para que você possa seguir. Meus Manuais de Sobrevivência não seguem um padrão específico mas todos possuem um conjunto de tópicos que me permitem consultar rapidamente um determinado assunto. Um bom começo pode ser o modelo abaixo.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;💻 Manual de Sobrevivência da Empresa XYZ
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;markdown&quot;&gt;&lt;pre class=&quot;language-markdown&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;💻 Manual de Sobrevivência da Empresa XYZ
 
-**Descrição da Empresa**
+&lt;span class=&quot;token bold&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;token content&quot;&gt;Descrição da Empresa&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;/span&gt;
 A XYZ é uma startup de tecnologia voltada para o agronegócio.
 Por meio do seu marketplace web ela conecta pessoas interessados 
 em comprar e vender (i) produtos, (ii) animais e (iii) terrenos.
 
-**Descrição do Time**
+&lt;span class=&quot;token bold&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;token content&quot;&gt;Descrição do Time&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;/span&gt;
 O Time de Payment é responsável por manter e evoluir o fluxo de pagamento 
 do cliente desde quando ele coloca um produto no carrinho até o momento em 
 que a transação financeira é consolidada.
 
-**Sistemas**
-- Sistema 1: &amp;lt;responsabilidade_1&amp;gt;
-- Sistema 2: &amp;lt;responsabilidade_2&amp;gt;
-- Sistema 3: &amp;lt;responsabilidade_3&amp;gt;
+&lt;span class=&quot;token bold&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;token content&quot;&gt;Sistemas&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Sistema 1: &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;responsabilidade_1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Sistema 2: &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;responsabilidade_2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Sistema 3: &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;responsabilidade_3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
 
-**Sistema 1**
-- Explicação
-- Arquitetura
-- Repositório
+&lt;span class=&quot;token bold&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;token content&quot;&gt;Sistema 1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Explicação
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Arquitetura
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Repositório
 
-**Sistema 2**
-- Explicação
-- Arquitetura
-- Repositório
+&lt;span class=&quot;token bold&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;token content&quot;&gt;Sistema 2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Explicação
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Arquitetura
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Repositório
 
-**Sistema 3**
-- Explicação
-- Arquitetura
-- Repositório
+&lt;span class=&quot;token bold&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;token content&quot;&gt;Sistema 3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Explicação
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Arquitetura
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Repositório
 
-**Comandos Úteis**
-- Logs da Aplicação: `kubectl logs -f svc/api-app`
-- Acessar um POD: `kubectl exec -it &amp;lt;pod-name&amp;gt; -- /bin/bash`
+&lt;span class=&quot;token bold&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;token content&quot;&gt;Comandos Úteis&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Logs da Aplicação: &lt;span class=&quot;token code keyword&quot;&gt;`kubectl logs -f svc/api-app`&lt;/span&gt;
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Acessar um POD: &lt;span class=&quot;token code keyword&quot;&gt;`kubectl exec -it &amp;lt;pod-name&gt; -- /bin/bash`&lt;/span&gt;
 
-**Passos para fazer o Deploy**
-1. &amp;lt;Passo 1&amp;gt;
-2. &amp;lt;Passo 2&amp;gt;
-3. &amp;lt;Passo 3&amp;gt;
-4. &amp;lt;Passo 4&amp;gt;
+&lt;span class=&quot;token bold&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;token content&quot;&gt;Passos para fazer o Deploy&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token list punctuation&quot;&gt;1.&lt;/span&gt; &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;Passo&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token list punctuation&quot;&gt;2.&lt;/span&gt; &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;Passo&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token list punctuation&quot;&gt;3.&lt;/span&gt; &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;Passo&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token list punctuation&quot;&gt;4.&lt;/span&gt; &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;Passo&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
 
-**Links Importantes**
-1. &amp;lt;titulo_1&amp;gt;: &amp;lt;link_1&amp;gt;
-2. &amp;lt;titulo_2&amp;gt;: &amp;lt;link_2&amp;gt;
-3. &amp;lt;titulo_3&amp;gt;: &amp;lt;link_3&amp;gt;
+&lt;span class=&quot;token bold&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;token content&quot;&gt;Links Importantes&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token list punctuation&quot;&gt;1.&lt;/span&gt; &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;titulo_1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;link_1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token list punctuation&quot;&gt;2.&lt;/span&gt; &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;titulo_2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;link_2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token list punctuation&quot;&gt;3.&lt;/span&gt; &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;titulo_3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;link_3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
 
-**Como fazer rollback?**
+&lt;span class=&quot;token bold&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;token content&quot;&gt;Como fazer rollback?&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;/span&gt;
 ...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;Estendendo o Boilerplate&lt;/h2&gt;
 &lt;p&gt;O boilerplate acima foca no meu universo (programação) mas você adaptá-lo para a sua área. É apenas com começo e existem diversos tópicos que você pode adicionar:&lt;/p&gt;
@@ -183,7 +183,7 @@ que a transação financeira é consolidada.
 &lt;li&gt;Somos bombardeados constantemente pela opinião dos outros. Só nós mesmos conhecemos nossa realidade.&lt;/li&gt;
 &lt;li&gt;Descubra a sua forma de trabalhar. Pode ser que 8h sem parar não seja o seu &lt;em&gt;modus operandi&lt;/em&gt;.&lt;/li&gt;
 &lt;li&gt;Tenha paciência. Tudo na vida demanda tempo e trabalho.&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Dados geolocalizados com Redis]]></title><description><![CDATA[TL;DR; Vamos usar o Redis para armazenar dados geolocalizados. Quando falamos em Redis invariavelmente pensamos em cache. Porém ele evoluiu…]]></description><link>https://vcrmartinez.com/2022/2022-01-20-Dados_geolocalizados_com_Redis/</link><guid isPermaLink="false">https://vcrmartinez.com/2022/2022-01-20-Dados_geolocalizados_com_Redis/</guid><pubDate>Thu, 20 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;TL;DR;&lt;/em&gt; Vamos usar o Redis para armazenar dados geolocalizados.&lt;/p&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Construa o inquebrável: arquiteturas defensivas para devs cauteloso]]></title><link>https://vcrmartinez.com/2022/2022-07-12-Construa-o-inquebravel-arquiteturas-defensivas-para-devs-cautelosos/2022-07-12-Construa-o-inquebravel-arquiteturas-defensivas-para-devs-cautelosos/</link><guid isPermaLink="false">https://vcrmartinez.com/2022/2022-07-12-Construa-o-inquebravel-arquiteturas-defensivas-para-devs-cautelosos/2022-07-12-Construa-o-inquebravel-arquiteturas-defensivas-para-devs-cautelosos/</guid><pubDate>Tue, 12 Jul 2022 00:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Hexagonal Architecture]]></title><link>https://vcrmartinez.com/2022/2022-06-30-Hexagonal-Architecture/2022-06-30-Hexagonal-Architecture/</link><guid isPermaLink="false">https://vcrmartinez.com/2022/2022-06-30-Hexagonal-Architecture/2022-06-30-Hexagonal-Architecture/</guid><pubDate>Thu, 30 Jun 2022 00:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Dados geolocalizados com Redis]]></title><description><![CDATA[TL;DR; Vamos usar o Redis para armazenar dados geolocalizados. Quando falamos em Redis invariavelmente pensamos em cache. Porém ele evoluiu…]]></description><link>https://vcrmartinez.com/2022/2022-01-20-Dados_geolocalizados_com_Redis/</link><guid isPermaLink="false">https://vcrmartinez.com/2022/2022-01-20-Dados_geolocalizados_com_Redis/</guid><pubDate>Thu, 20 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;TL;DR;&lt;/em&gt; Vamos usar o Redis para armazenar dados geolocalizados.&lt;/p&gt;
 &lt;p&gt;Quando falamos em Redis invariavelmente pensamos em cache. Porém ele evoluiu e hoje é considerado um servidor que armazena diferentes estruturas de dados (hashes, sets, lists, etc).&lt;/p&gt;
 &lt;p&gt;No post de hoje vamos sair do uso comum e entender de que forma o Redis nos ajuda com quando precisamos trabalhar dados geolocalizados (para mais info, vide &lt;a href=&quot;https://redis.io/commands#geo&quot;&gt;documentação&lt;/a&gt;).&lt;/p&gt;
 &lt;h2&gt;Configuração do ambiente&lt;/h2&gt;
@@ -327,7 +327,7 @@ $ redis-cli
 &lt;li&gt;Cuidado com o nome do índice e dos pontos. Você vai precisar buscá-los de uma forma inteligente e que evite erros de digitação.&lt;/li&gt;
 &lt;li&gt;Antes de inserir todos os pontos pense em como você vai buscar os dados. Será que faz sentido todos os pontos estarem no mesmo índice? E se você precisar fazer &lt;em&gt;sharding&lt;/em&gt;?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;E ai, curtiu o post?&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Defensive-Software-Delivery]]></title><link>https://vcrmartinez.com/2021/2021-12-28-Defensive-Software-Delivery/2020-12-28-Defensive-Software-Delivery/</link><guid isPermaLink="false">https://vcrmartinez.com/2021/2021-12-28-Defensive-Software-Delivery/2020-12-28-Defensive-Software-Delivery/</guid><pubDate>Tue, 28 Dec 2021 03:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Usando a função Postgres::array_agg para agregar colunas de string]]></title><description><![CDATA[Graças a @copquevictor eu aprendi uma função de agregação muito útil do Posgres: array_agg. Para entendê-la, vamos supor que você tenha que…]]></description><link>https://vcrmartinez.com/2021/2021-01-12-Usando_a_funcao_Postgres_array_agg_para_agregar_colunas_de_string/</link><guid isPermaLink="false">https://vcrmartinez.com/2021/2021-01-12-Usando_a_funcao_Postgres_array_agg_para_agregar_colunas_de_string/</guid><pubDate>Tue, 12 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Graças a &lt;a href=&quot;https://twitter.com/copquevictor&quot;&gt;@copquevictor&lt;/a&gt; eu aprendi uma função de agregação muito útil do Posgres: &lt;strong&gt;array_agg&lt;/strong&gt;. Para entendê-la, vamos supor que você tenha que notificar interessados em relatórios e sua query fornece a tabela abaixo como saída:&lt;/p&gt;
+&lt;p&gt;E ai, curtiu o post?&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Building Scalable Restaurants]]></title><link>https://vcrmartinez.com/2022/2022-01-13-Building-Scalable-Restaurants/2022-01-13-Building-Scalable-Restaurants/</link><guid isPermaLink="false">https://vcrmartinez.com/2022/2022-01-13-Building-Scalable-Restaurants/2022-01-13-Building-Scalable-Restaurants/</guid><pubDate>Thu, 13 Jan 2022 00:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Defensive Software Delivery]]></title><link>https://vcrmartinez.com/2021/2021-12-28-Defensive-Software-Delivery/2020-12-28-Defensive-Software-Delivery/</link><guid isPermaLink="false">https://vcrmartinez.com/2021/2021-12-28-Defensive-Software-Delivery/2020-12-28-Defensive-Software-Delivery/</guid><pubDate>Tue, 28 Dec 2021 03:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Usando a função Postgres::array_agg para agregar colunas de string]]></title><description><![CDATA[Graças a @copquevictor eu aprendi uma função de agregação muito útil do Posgres: array_agg. Para entendê-la, vamos supor que você tenha que…]]></description><link>https://vcrmartinez.com/2021/2021-01-12-Usando_a_funcao_Postgres_array_agg_para_agregar_colunas_de_string/</link><guid isPermaLink="false">https://vcrmartinez.com/2021/2021-01-12-Usando_a_funcao_Postgres_array_agg_para_agregar_colunas_de_string/</guid><pubDate>Tue, 12 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Graças a &lt;a href=&quot;https://twitter.com/copquevictor&quot;&gt;@copquevictor&lt;/a&gt; eu aprendi uma função de agregação muito útil do Posgres: &lt;strong&gt;array_agg&lt;/strong&gt;. Para entendê-la, vamos supor que você tenha que notificar interessados em relatórios e sua query fornece a tabela abaixo como saída:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;markdown&quot;&gt;&lt;pre class=&quot;language-markdown&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;&lt;span class=&quot;token table&quot;&gt;&lt;span class=&quot;token table-header-row&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token table-header important&quot;&gt; Report    &lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token table-header important&quot;&gt; Email                  &lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;
 &lt;/span&gt;&lt;span class=&quot;token table-line&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;---------&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;----------------------&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;
 &lt;/span&gt;&lt;span class=&quot;token table-data-rows&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token table-data&quot;&gt; Report #1 &lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token table-data&quot;&gt; johndoe@gmail.com      &lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;
@@ -366,44 +366,7 @@ $ redis-cli
 &lt;h3&gt;Referências:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/23261944/sqlalchemy-postgresql-and-array-agg-how-to-select-items-from-array-agg&quot;&gt;Stackoverflow: SQLAlchemy, PostgreSQL and array&lt;em&gt;agg: How to select items from array&lt;/em&gt;agg?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Do Jekyll para o Gatsby]]></title><description><![CDATA[Durante os útlimos meses eu tenho estudado desenvolvimento front-end e um dos primeiros projetos para praticar foi migrar meu site do Jekyll…]]></description><link>https://vcrmartinez.com/2020/2020-12-24-Do_Jekyll_para_o_Gatsby/</link><guid isPermaLink="false">https://vcrmartinez.com/2020/2020-12-24-Do_Jekyll_para_o_Gatsby/</guid><pubDate>Thu, 24 Dec 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Durante os útlimos meses eu tenho estudado desenvolvimento front-end e um dos primeiros projetos para praticar foi migrar meu site do &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; para o &lt;a href=&quot;https://www.gatsbyjs.com/&quot;&gt;Gatsby&lt;/a&gt;. Só por isso eu já achei a migração vantajosa mas acabei descobrindo outros benefícios à medida que eu desenvolvia as funcionalidades do site.&lt;/p&gt;
-&lt;h2&gt;Requisitos&lt;/h2&gt;
-&lt;p&gt;Eu acredito que a melhor ferramenta para manter um site é o Wordpress. Porém, quem escolhe geradores de sites estáticos não quer se preocupar com: (i) hospedagem; (ii) banco de dados; (iii) manutenção de plugins / terceiros.&lt;/p&gt;
-&lt;p&gt;Além disso, no meu caso, eu queria usar o &lt;a href=&quot;https://pages.github.com/&quot;&gt;Github Pages&lt;/a&gt; pela praticidade da ferramenta e por me permitir focar mais no texto do que com a gestão do blog.&lt;/p&gt;
-&lt;h2&gt;Vantagens&lt;/h2&gt;
-&lt;p&gt;Para mim, algumas vantagens ficaram bem claras:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Praticar desenvolvimento front-end&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Neste site eu tive contato com React, Styled Components, HTML, CSS, Vanilla Javascript, Media Queries (e responsividade) e GraphQL.&lt;/p&gt;
-&lt;p&gt;Aqui cabe o &lt;em&gt;disclaimer&lt;/em&gt;: um desenvolvedor não front-ender pode sentir dificuldade pois é necessário entender (ainda que minimamente) de diversas tecnologias que talvez em outra ferramenta esteja presente de forma transparente.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Plugins poderosos&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;O Gatsby tem &lt;a href=&quot;https://www.gatsbyjs.com/plugins&quot;&gt;plugins&lt;/a&gt; muito poderosos que permitem trabalhar com: PWA, Internacionalização, Otimização de Imagens, Performance, e um muito mais!&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Build separado do Github Pages&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Como o Github Pages faz o build do seu site criado com Jekyll, por questões de segurança ele não aceita alguns plugins e, com isso, você fica um pouco limitado. Isso não acontece com o Gatsby porque você executa o build e só disponibiliza a pasta &lt;code class=&quot;language-text&quot;&gt;public&lt;/code&gt; para o Github Pages. Assim, como o output é apenas HTML, CSS e Javascript, seu site dificilmente terá alguma incompatibilidade com o Github.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Internacionalização&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Com o Jekyll eu tive muita dificuldade em criar um blog que suportasse dois idiomas até que desisti da ideia. Com o Gatsby, encontrei plugins e materiais que me ajudaram bastante no processo e, hoje, finalmente, tenho um site com dois idiomas.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Alta possibilidade de customização&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Como o Gatsby utiliza React, você pode criar seus próprios componentes. Por exemplo, criei um componente que exibe um alerta caso a postagem seja muito antiga.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Aplicabilidade no mercado&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Eu confesso que não me sentia motivado a estudar como o Jekyll funcionava pois não via aplicabilidade prática no mercado. Já o Gatsby, por ser mais recentes, te coloca em contato com diversas tecnologias utilizadas no mercado (vide o primeiro item desta listagem).&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Performance&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;É nítida a preocupação que o Gatsby tem com performance. Isso vai desde fazer o prefetch das páginas enquanto o usuário navega até o uso de plugins que otimizam imagens para a web.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;E aí, o que achou do site? Críticas e sugestões são bem-vindas!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[O Manual do Trabalho Remoto]]></title><link>https://vcrmartinez.com/2020/2020-11-09-O-Manual-do-Trabalho-Remoto/2020-11-09-O-Manual-do-Trabalho-Remoto/</link><guid isPermaLink="false">https://vcrmartinez.com/2020/2020-11-09-O-Manual-do-Trabalho-Remoto/2020-11-09-O-Manual-do-Trabalho-Remoto/</guid><pubDate>Mon, 09 Nov 2020 03:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Configure o Alembic e o SQLAlchemy para um schema diferente]]></title><description><![CDATA[Há algum tempo, desenvolvi um projeto de back-end que usava uma instância compartilhada do Postgres. Se você usar o Flask, como eu fiz…]]></description><link>https://vcrmartinez.com/2020/2020-10-02-Configure_o_Alembic_e_o_SQLAlchemy_para_um_schema_diferente/</link><guid isPermaLink="false">https://vcrmartinez.com/2020/2020-10-02-Configure_o_Alembic_e_o_SQLAlchemy_para_um_schema_diferente/</guid><pubDate>Fri, 02 Oct 2020 03:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Há algum tempo, desenvolvi um projeto de back-end que usava uma instância compartilhada do Postgres. Se você usar o Flask, como eu fiz, provavelmente sua camada de migração é tratada pelo Alembic e o ORM de escolha sendo o SQLAlchemy. Devido a restrições da arquitetura, o projeto usou um esquema diferente (&lt;em&gt;public&lt;/em&gt; não estava disponível). &lt;strong&gt;Após a primeira migração, qualquer alteração no modelo não foi identificada pelo Alembic e todas as tabelas foram geradas novamente.&lt;/strong&gt;&lt;/p&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[O Manual do Trabalho Remoto]]></title><link>https://vcrmartinez.com/2020/2020-11-09-O-Manual-do-Trabalho-Remoto/2020-11-09-O-Manual-do-Trabalho-Remoto/</link><guid isPermaLink="false">https://vcrmartinez.com/2020/2020-11-09-O-Manual-do-Trabalho-Remoto/2020-11-09-O-Manual-do-Trabalho-Remoto/</guid><pubDate>Mon, 09 Nov 2020 03:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Configure o Alembic e o SQLAlchemy para um schema diferente]]></title><description><![CDATA[Há algum tempo, desenvolvi um projeto de back-end que usava uma instância compartilhada do Postgres. Se você usar o Flask, como eu fiz…]]></description><link>https://vcrmartinez.com/2020/2020-10-02-Configure_o_Alembic_e_o_SQLAlchemy_para_um_schema_diferente/</link><guid isPermaLink="false">https://vcrmartinez.com/2020/2020-10-02-Configure_o_Alembic_e_o_SQLAlchemy_para_um_schema_diferente/</guid><pubDate>Fri, 02 Oct 2020 03:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Há algum tempo, desenvolvi um projeto de back-end que usava uma instância compartilhada do Postgres. Se você usar o Flask, como eu fiz, provavelmente sua camada de migração é tratada pelo Alembic e o ORM de escolha sendo o SQLAlchemy. Devido a restrições da arquitetura, o projeto usou um esquema diferente (&lt;em&gt;public&lt;/em&gt; não estava disponível). &lt;strong&gt;Após a primeira migração, qualquer alteração no modelo não foi identificada pelo Alembic e todas as tabelas foram geradas novamente.&lt;/strong&gt;&lt;/p&gt;
 &lt;h2&gt;O Cenário&lt;/h2&gt;
 &lt;p&gt;Para lidar com um novo schema de banco de dados, especifiquei os argumentos nos models, conforme ilustrado pelo exemplo abaixo.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;db&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Model&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
@@ -1044,7 +1007,7 @@ res &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; search&lt;span c
     &lt;/span&gt;&lt;/p&gt;
 &lt;h2&gt;Ciclos curtos, melhoria constante&lt;/h2&gt;
 &lt;p&gt;Você planejou as etapas, dividiu o problema em partes, começou a resolver um de cada vez e escreveu alguns testes automatizados. Lembre-se, todas as etapas devem se concentrar nos requisitos mínimos para alcançar o MVP, v1, v2, v3 e assim por diante. Dessa forma, você pode iterar ao longo de todo o ciclo, aprender as lições, desenvolver, testar e entregar rapidamente um software funcional. Se você gastar muito tempo planejando ou apenas desenvolvendo, provavelmente perderá a noção do Time-to-Market que muitas empresas lutam para serem boas.&lt;/p&gt;
-&lt;p&gt;E quanto a você? O que você usa para melhorar seu fluxo de trabalho?&lt;/p&gt;</content:encoded></item><item><title><![CDATA[O estilo de vida remoto]]></title><description><![CDATA[TL;DR Já faz três meses trabalhando remotamente e quero compartilhar o que aprendi da perspectiva de uma pessoa que nunca trabalhou…]]></description><link>https://vcrmartinez.com/2018/2018-01-12-O_estilo_de_vida_remoto/</link><guid isPermaLink="false">https://vcrmartinez.com/2018/2018-01-12-O_estilo_de_vida_remoto/</guid><pubDate>Fri, 12 Jan 2018 00:00:00 GMT</pubDate><content:encoded>&lt;h4&gt;TL;DR&lt;/h4&gt;
+&lt;p&gt;E quanto a você? O que você usa para melhorar seu fluxo de trabalho?&lt;/p&gt;</content:encoded></item><item><title><![CDATA[O estilo de vida remoto]]></title><description><![CDATA[TL;DR Já faz três meses trabalhando remotamente e quero compartilhar o que aprendi da perspectiva de uma pessoa que nunca trabalhou…]]></description><link>https://vcrmartinez.com/2018/2018-01-12-O_estilo_de_vida_remoto/</link><guid isPermaLink="false">https://vcrmartinez.com/2018/2018-01-12-O_estilo_de_vida_remoto/</guid><pubDate>Fri, 12 Jan 2018 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;TL;DR&lt;/h3&gt;
 &lt;p&gt;Já faz três meses trabalhando remotamente e quero compartilhar o que aprendi da perspectiva de uma pessoa que nunca trabalhou remotamente antes.&lt;/p&gt;
 &lt;p&gt;—&lt;/p&gt;
 &lt;p&gt;2017 foi um ano muito difícil mas, como diz o ditado, &lt;em&gt;mar tranquilo nunca fez um bom marinheiro&lt;/em&gt;. Eu estava trabalhando com PHP e o framework Neos Flow, mas queria trabalhar com Python. Infelizmente a cidade em que moro não oferece muitas oportunidades e não pude aceitar o cenário.&lt;/p&gt;
@@ -1070,119 +1033,22 @@ res &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; search&lt;span c
 &lt;/ol&gt;
 &lt;h2&gt;Aprendizados&lt;/h2&gt;
 &lt;p&gt;Você ponderou os prós e os contras e decidiu embarcar nessa jornada. Para ajudá-lo, listei algumas lições aprendidas até agora:&lt;/p&gt;
-&lt;h5&gt;A disciplina vem com uma rotina que dura&lt;/h5&gt;
+&lt;h3&gt;A disciplina vem com uma rotina que dura&lt;/h3&gt;
 &lt;p&gt;Se você se permitir uma rotina desorganizada, sua vida será uma bagunça. Em uma semana comum uma pessoa tem: reuniões, resultados a cumprir, e-mails para responder, atividades pessoais (academia, faculdade, etc.), tarefas e assim por diante. Outras pessoas podem discordar, mas, na minha opinião, se você não se autodisciplinar, perderá o controle de suas responsabilidades porque nada terá tempo para acontecer. Não há solução mágica para se tornar uma pessoa com mínimo autodisciplina. No entanto, a chave para começar é definir uma rotina que se adapte a você e cumpri-la.&lt;/p&gt;
 &lt;p&gt;A chave aqui é desenvolver um ritual que seja realizado todos os dias para fazer seu cérebro entrar na zona. Por exemplo, todos os dias eu (i) acordo; (ii) tomo banho; (iii) tomo café da manhã; (iv) escovo os dentes; (v) pego uma caneca com café; (vi) vou ao meu escritório em casa; (vii) abro o computador; (viii) começo a trabalhar. Você pode achar que é bobagem, mas depois de algumas semanas você vai se acostumar a trabalhar em casa.&lt;/p&gt;
-&lt;h5&gt;Não, você não pode trabalhar em seu quarto&lt;/h5&gt;
+&lt;h3&gt;Não, você não pode trabalhar em seu quarto&lt;/h3&gt;
 &lt;p&gt;Não se trata de trabalhar em seu quarto. É sobre não trabalhar em um local cheio de distrações. É fácil ser atraído por uma cama confortável ou por um bom programa de TV. Evite distrações. Eles afetam drasticamente a sua produtividade. Se possível, crie um lugar onde você automaticamente entre no clima quando entrar. Não precisa ser necessariamente um escritório, mas deve ser um lugar onde você tenha privacidade para trabalhar.&lt;/p&gt;
-&lt;h5&gt;Ser pontual&lt;/h5&gt;
+&lt;h3&gt;Ser pontual&lt;/h3&gt;
 &lt;p&gt;Se você trabalha para uma empresa verdadeiramente remota, é comum conversar com pessoas de diferentes fusos horários. Por isso, encontrar um horário que funcione para todos pode parecer um desafio e você deve respeitá-lo. Faça o seu melhor para chegar na hora certa. Não é apenas uma questão de respeito, mas também de profissionalismo.&lt;/p&gt;
-&lt;h5&gt;Invista em sua infraestrutura&lt;/h5&gt;
+&lt;h3&gt;Invista em sua infraestrutura&lt;/h3&gt;
 &lt;p&gt;Faça o possível para ter uma conexão com a Internet capaz de atender as videochamadas, pois elas acontecem o tempo todo. Também é aconselhável ter um plano de backup, como uma boa internet móvel no telefone no caso de sua conexão cair.&lt;/p&gt;
 &lt;p&gt;Além da conexão, é importante configurar um espaço confortável, pois você passará 8 horas ou mais trabalhando. Pense na cadeira, na mesa, na tela e no computador. Se possível, faça de uma sala privada seu escritório pessoal.&lt;/p&gt;
-&lt;h5&gt;Solidão&lt;/h5&gt;
+&lt;h3&gt;Solidão&lt;/h3&gt;
 &lt;p&gt;É bastante desafiador trabalhar remotamente se você for uma pessoa sociável e franca. Basicamente, o número de iterações online (chats, chamadas de vídeo, e-mails) aumenta muito, mas o offline diminui. Isso cria uma atmosfera incomum em que você pode sentir a necessidade de ver as pessoas ao seu redor. Para equilibrar isso, você pode procurar diferentes locais para trabalhar (como escritórios de coworking) e trazer para sua rotina atividades que envolvam interação social (por exemplo, fazer exercícios na academia, almoçar em um restaurante uma vez por semana, etc).&lt;/p&gt;
-&lt;h5&gt;Família e amigos&lt;/h5&gt;
+&lt;h3&gt;Família e amigos&lt;/h3&gt;
 &lt;p&gt;A distração pode ser um problema se você dividir o apartamento com amigos / família / etc, porque eles olharão para você e presumirão que você está disponível para ser interrompido / questionado / distraído. É um processo normal que quase todo mundo enfrenta porque trabalhar remotamente é uma mudança de paradigma que tem acontecido recentemente. Estabeleça uma regra ou ritual claro para se distrair, caso contrário, isso diminuirá sua produtividade. Pense em algumas regras como: toda vez que me levanto para pegar um café; ou você pode usar a Técnica Pomodoro e fazer o check-in durante as paradas; ou você pode receber uma mensagem de texto; tudo o que funciona para você.&lt;/p&gt;
-&lt;h5&gt;Excesso de trabalho&lt;/h5&gt;
+&lt;h3&gt;Excesso de trabalho&lt;/h3&gt;
 &lt;p&gt;Trabalhar em casa dá a sensação de ter mais tempo para fazer as coisas. Esse comportamento o leva a trabalhar mais horas em vez de usá-las para fazer algo produtivo para sua própria vida. A chave é equilibrar suas horas de trabalho com sua vida pessoal, mantendo o controle de quanto tempo você trabalha, quão produtivo você é e quanto tempo ainda resta. Não ter tempo para uma vida pessoal não é saudável.&lt;/p&gt;
-&lt;h5&gt;Exercício&lt;/h5&gt;
+&lt;h3&gt;Exercício&lt;/h3&gt;
 &lt;p&gt;Como diz o ditado &lt;em&gt;Mens sana in corpore sano&lt;/em&gt; (Mente sã em um corpo são). Eu preciso te contar alguma coisa? =)&lt;/p&gt;
-&lt;p&gt;Isso é tudo, pessoal. Se você tiver alguma dúvida, por favor me avise.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Integrando PyCharm com Pyenv]]></title><description><![CDATA[PyCharm é minha IDE favorita e, sem dúvidas, uma ferramenta poderosa. Ela te dá excelentes atalhos e um grupo de ferramentas que previnem o…]]></description><link>https://vcrmartinez.com/2017/2017-08-04-Integrando_PyCharm_com_Pyenv/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-08-04-Integrando_PyCharm_com_Pyenv/</guid><pubDate>Fri, 04 Aug 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;PyCharm é minha IDE favorita e, sem dúvidas, uma ferramenta poderosa. Ela te dá excelentes atalhos e um grupo de ferramentas que previnem o programador de ter que ficar trocando de telas a todo momento. Uma delas é um terminal embutido que evita que você fique trocando de contexto da IDE para o terminal do linux e vice-versa.&lt;/p&gt;
-&lt;p&gt;Como você pode ver na imagem abaixo, o terminal dentro do PyCharm mostra o virtualenv atual que eu estou trabalhando.&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 40%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsSAAALEgHS3X78AAABHUlEQVQoz5XS7UrDMBQG4N6Maz67NpO1XdtlSZO1kwkqIv7w/m/j9WRsojDG/PFwICHvySHJeuvw8v6BcT+h21q03YB8kf8oigJlaaCXBlyZP3u/LR4WEEIi2/o9Xj+/EOYj+l2kUA+pSwgidYV1vcG6G6GrBlItoWjtmnRmWT0ic3HGfHxDmJ7RuAlNeMLgDnBuRj14tMN40iS9v6nfBWTtpoMsNHrOYAQH0wpKKmglaQQOwc/EbZzlqIxBVlMgFwKKNHkOSVWcSSnvxqlptaKR0yOkBUE0KVLYP4Iu0i1NChysRU434zQyoy6MsVM3fql3SNMwyigrGnk+HDDGPXyIJCBOE6zzsDuHnr5RN2xP9Zq0l9RtBxs8fIz4BgBT/bsjgzbpAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image lazyload&quot;
-        alt=&quot;Terminal do PyCharm com virtualenv&quot;
-        title=&quot;Terminal do PyCharm com virtualenv&quot;
-        data-src=&quot;/static/153a8f5294fb8799158eb303ef9b9a08/d9199/terminal.png&quot;
-        data-srcset=&quot;/static/153a8f5294fb8799158eb303ef9b9a08/8ff5a/terminal.png 240w,
-/static/153a8f5294fb8799158eb303ef9b9a08/e85cb/terminal.png 480w,
-/static/153a8f5294fb8799158eb303ef9b9a08/d9199/terminal.png 960w,
-/static/153a8f5294fb8799158eb303ef9b9a08/3f20e/terminal.png 1275w&quot;
-        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-      /&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Entretando, você pode acabar lidando com alguns erros no primeiro uso caso o seu ambiente local não esteja devidamente configurado. Como eu uso &lt;a href=&quot;https://github.com/pyenv/pyenv&quot;&gt;Pyenv&lt;/a&gt; para gerenciar tanto minhas versões do Python como minhas &lt;em&gt;virtualenvs&lt;/em&gt;, eu tive que configurar o ambiente para ter o terminal integrado com o PyCharm. É bem fácil:&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 60.83333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsSAAALEgHS3X78AAACl0lEQVQozzWS6VITQRSF51UsLUMSQAJZZ98yk2WyEWAmIQkCJcqmpahlWRaKQvkeFpAEVHzD4+kJ/DjVM933fvfc2y39OL/A+cVPXF5eYjKZYjy9wZ+7v7i7+4fx7RTT37eY3Nzg6nrM8wnGjJlMuc/1mrpi/K+ra3w9+47Tb2eQbK8C168iGmxja/cVBtt7CDefoz8YoTcUGqI3GCLaHGAj6iHs9bHR20S4HiJqd7DTbGGj1cajx0+Qml+E5BAYdNqoNToEB5A1F4bh4uXBPt6cvMPh0TEOqKPj1zj59BmjnRdQdRO65cAwbVj81lQdibkkVnIFSIrtwwlWEYSH6IzewuvuQ/d7CFh1LYzQH27Fa3O1i343RMWrQ3PKqNQb0G0Wdz2oBCeeJrC8koOk8SfohHDCj9gafUFzcAqlvoeirEBmdb/WQHt1LU5yuFdnkm/ZcCu1eM8gXDUsJBJzWFhgy6JKwIRas4PIr6FRb8GwyyixDVkzYHs++qMRypxzSbfi/QoBrWodlnBICeAcW158tgTJsG14VVazAwYEUK2AiR5hM2C54mM9CmGL1ui4pGg8N2FyhiYdCpiIy+YLkFUNkqyoWMpkCKpCdxuxFEMAmaxZcOmk2V2HootkZ+acUgSI4AdgOp1GrlCElC/JSKZSnAeBThBLAIveEKXgCH70Hs3hB5Rq+5AbxyhYLQJVgmbuHoDJZBLZXB6SGH56fv4e2IilGD6KtB+3x7XAGMtxoVg+crIBhQCF7gRINczYcYqmRNuSpuvxQFWTM2KCavoEujwsIpPNx1q+VyabQ64oxyDxDk1RxOQYdJe3nOA7pEPXE8M2YIob43MQTjRW1U0rri6ksa1Y5mx9eNgiVrRcUk06VuPz/5YPxClvh3DhAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image lazyload&quot;
-        alt=&quot;Passos para configurar pyenv e PyCharm&quot;
-        title=&quot;Passos para configurar pyenv e PyCharm&quot;
-        data-src=&quot;/static/60ad0994acb2e20bcf9444786fe52d72/d9199/setup-pyenv.png&quot;
-        data-srcset=&quot;/static/60ad0994acb2e20bcf9444786fe52d72/8ff5a/setup-pyenv.png 240w,
-/static/60ad0994acb2e20bcf9444786fe52d72/e85cb/setup-pyenv.png 480w,
-/static/60ad0994acb2e20bcf9444786fe52d72/d9199/setup-pyenv.png 960w,
-/static/60ad0994acb2e20bcf9444786fe52d72/9cea8/setup-pyenv.png 1278w&quot;
-        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-      /&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Vá em &lt;code class=&quot;language-text&quot;&gt;Preferences&lt;/code&gt; &gt; &lt;code class=&quot;language-text&quot;&gt;Project Interpreter&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Clique na engrenagem e selecione &lt;strong&gt;Add local&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Aponte para o arquivo python que fica dentro do seu virtualenv. Como eu esotu usando pyenv, o caminho é &lt;code class=&quot;language-text&quot;&gt;~/.pyenv/versions/&amp;lt;virtualenv-name&amp;gt;/bin/python3&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Pode ser que você precise reiniciar o PyCharm.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h5&gt;Você não usa o Pyenv?&lt;/h5&gt;
-&lt;p&gt;&lt;del&gt;Basta instalar e seguir o tutorial&lt;/del&gt;. Você só precisa substituir o caminho pelo caminho do seu virtualenv. =)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git hooks, issue tracker e Git Flow]]></title><description><![CDATA[Onde trabalho temos um fluxo comum de desenvolvimento que envolve o uso do Jira para gerenciamento das tarefas; Git & Git Flow para…]]></description><link>https://vcrmartinez.com/2017/2017-05-07-Git_hooks_issue_tracker_e_Git_Flow/</link><guid isPermaLink="false">https://vcrmartinez.com/2017/2017-05-07-Git_hooks_issue_tracker_e_Git_Flow/</guid><pubDate>Sun, 07 May 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Onde trabalho temos um fluxo comum de desenvolvimento que envolve o uso do Jira para gerenciamento das tarefas; Git &amp;#x26; Git Flow para versionamento de código; Slack para comunicação; ferramentas como IDE, Editor de Texto e Terminal. Basicamente, a sprint é mantida no Jira com cards que descrevem as funcionalidades, bugs, spikes e chores seguindo algumas convenções do SCRUM e, então, o programador atribui um card para si.&lt;/p&gt;
-&lt;p&gt;Durante o fluxo de desenvolvimento existe uma convenção de que &lt;strong&gt;commits devem ter o código do card que o programador está trabalhando&lt;/strong&gt;. Após alguns commits a convenção se torna chata de manter (pois você tem que digitar o código do card a todo momento). Existe uma forma de automatizar isso com Git Hooks.&lt;/p&gt;
-&lt;h2&gt;Git Hooks&lt;/h2&gt;
-&lt;p&gt;Git permite executir um script toda vez que um evento acontecer no repositório. Por exemplo, é possível configurar o editor de texto com uma mensagem de template que deve ser preenchida. Este &lt;a href=&quot;https://www.atlassian.com/git/tutorials/git-hooks&quot;&gt;tutorial&lt;/a&gt; explica o poder do Git Hooks e disponibiliza um trecho de código que será customizado neste post para endereçar nossas necessidades.&lt;/p&gt;
-&lt;p&gt;Dentro do nosso repositório existe um diretório &lt;em&gt;.git/hooks&lt;/em&gt; que contém alguns scripts de exemplo que podem ser usados como playground. Eles terminam com &lt;em&gt;.sample&lt;/em&gt; para não serem interpretados pelo Git.&lt;/p&gt;
-&lt;p&gt;Crie um arquivo chamado &lt;em&gt;prepare-commit-msg&lt;/em&gt; que vai conter o código abaixo para automatizar a mensagem de commit.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token shebang important&quot;&gt;#!/usr/bin/env python3&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;import&lt;/span&gt; sys, os, re
-from subprocess &lt;span class=&quot;token function&quot;&gt;import&lt;/span&gt; check_output
-
-&lt;span class=&quot;token comment&quot;&gt;# Setup&lt;/span&gt;
-branch_regex &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; r&lt;span class=&quot;token string&quot;&gt;&apos;.+/(AGZ-\d+).*&apos;&lt;/span&gt;
-
-&lt;span class=&quot;token comment&quot;&gt;# Collect the parameters&lt;/span&gt;
-commit_msg_filepath &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; sys.argv&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
-
-&lt;span class=&quot;token comment&quot;&gt;# Figure out which branch we&apos;re on&lt;/span&gt;
-branch &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; check_output&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;git&apos;&lt;/span&gt;, &lt;span class=&quot;token string&quot;&gt;&apos;symbolic-ref&apos;&lt;/span&gt;, &lt;span class=&quot;token string&quot;&gt;&apos;--short&apos;&lt;/span&gt;, &lt;span class=&quot;token string&quot;&gt;&apos;HEAD&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;.strip&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;token comment&quot;&gt;# Populate the commit message with the issue #, if there is one&lt;/span&gt;
-issue_match &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; re.match&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;branch_regex, branch.decode&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;utf-8&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;, re.M&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;re.I&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; issue_match:
-    issue_code &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; issue_match.group&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-    with open&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;commit_msg_filepath, &lt;span class=&quot;token string&quot;&gt;&apos;r+&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; as f:
-        content &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; f.read&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-        f.seek&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-        f.write&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;%s %s&quot;&lt;/span&gt; % &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;issue_code, content&lt;span class=&quot;token punctuation&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Depois de executar &lt;em&gt;git commit&lt;/em&gt; o arquivo acima será executado para popular a mensagem de commit e, então, permitir-nos adotar o template nos nossos commits. O script é chamado com três argumentos:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Nome do arquivo&lt;/li&gt;
-&lt;li&gt;O nome de um arquivo temporário que vai conter a mensagem&lt;/li&gt;
-&lt;li&gt;O tipo do commit&lt;/li&gt;
-&lt;li&gt;O hash SHA1 do commit&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Na Agilize o código do card segue a regex na linha 6. Como usamos o &lt;a href=&quot;http://nvie.com/posts/a-successful-git-branching-model/&quot;&gt;gitflow&lt;/a&gt; para gerenciar as branches, elas sempre seguirão alguns padrões como &lt;em&gt;feature/AGZ-1256&lt;/em&gt;, &lt;em&gt;hotfix/AGZ-981&lt;/em&gt;, &lt;em&gt;release/AGZ-453&lt;/em&gt;. Portanto, commits não são criados nas branch master ou dev. Devido a isso, a variável na linha 6 define a regex que irá usar o nome da branch para criar nossa mensagem de commit. Se você quiser aplicar isso para a sua empresa basta atualizar a regex (veja a linha 17).&lt;/p&gt;
-&lt;p&gt;As linhas 15 e 16 checam se a branch atual não é master / dev e contém o código do card. As linhas finais apenas criam a mensagem com o código.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Obs:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Ao fazer commit o cursor geralmente começa no início da linha mas você pode fazer com que o cursor comece imediatamente depois da mensagem de template. Apenas adicione o trecho de código abaixo ao seu arquivo &lt;em&gt;.bashrc&lt;/em&gt;.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;GIT_EDITOR&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;vim -c&apos;startinsert|norm! ggA&apos;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;Referências&lt;/h4&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.atlassian.com/git/tutorials/git-hooks&quot;&gt;Git hooks&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/41232722/open-git-commit-editor-to-specific-cursor-location&quot;&gt;Open git commit editor to specific cursor location&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[Maintaining 200+ spiders and still having time to sleep]]></title><link>https://vcrmartinez.com/2016/2016-11-25-Maintaining-200-spiders-and-still-having-time-to-sleep/Maintaining-200-spiders-and-still-having-time-to-sleep/</link><guid isPermaLink="false">https://vcrmartinez.com/2016/2016-11-25-Maintaining-200-spiders-and-still-having-time-to-sleep/Maintaining-200-spiders-and-still-having-time-to-sleep/</guid><pubDate>Fri, 25 Nov 2016 03:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Crawling the web like a boss]]></title><link>https://vcrmartinez.com/2016/2016-10-15-Crawling-the-web-like-a-boss/2016-10-15-Crawling-the-web-like-a-boss/</link><guid isPermaLink="false">https://vcrmartinez.com/2016/2016-10-15-Crawling-the-web-like-a-boss/2016-10-15-Crawling-the-web-like-a-boss/</guid><pubDate>Sat, 15 Oct 2016 03:00:00 GMT</pubDate><content:encoded></content:encoded></item></channel></rss>
+&lt;p&gt;Isso é tudo, pessoal. Se você tiver alguma dúvida, por favor me avise.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Maintaining 200+ spiders and still having time to sleep]]></title><link>https://vcrmartinez.com/2016/2016-11-25-Maintaining-200-spiders-and-still-having-time-to-sleep/Maintaining-200-spiders-and-still-having-time-to-sleep/</link><guid isPermaLink="false">https://vcrmartinez.com/2016/2016-11-25-Maintaining-200-spiders-and-still-having-time-to-sleep/Maintaining-200-spiders-and-still-having-time-to-sleep/</guid><pubDate>Fri, 25 Nov 2016 03:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Crawling the web like a boss]]></title><link>https://vcrmartinez.com/2016/2016-10-15-Crawling-the-web-like-a-boss/2016-10-15-Crawling-the-web-like-a-boss/</link><guid isPermaLink="false">https://vcrmartinez.com/2016/2016-10-15-Crawling-the-web-like-a-boss/2016-10-15-Crawling-the-web-like-a-boss/</guid><pubDate>Sat, 15 Oct 2016 03:00:00 GMT</pubDate><content:encoded></content:encoded></item></channel></rss>
