@@ -14,7 +14,7 @@ const Talks = ({ talks }) => {
         </S.Header>
         <S.BodyItems>
           <S.Item>
-            Evento:
+            {`Evento: `}
             {
               t.website &&
               <S.Url to={t.website} target="_blank" rel="noopener noreferrer"> {t.event}</S.Url>
