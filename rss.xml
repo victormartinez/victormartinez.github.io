@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://vcrmartinez.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 05 Sep 2023 02:05:35 GMT</lastBuildDate><item><title><![CDATA[Acelerando seu onboarding]]></title><description><![CDATA[TLDR; diminua a fricção no seu onboarding criando um Manual de Sobrevivência. Por mais que você seja experiente entrar em uma empresa nova é…]]></description><link>https://vcrmartinez.com/2023/2022-01-17-Acelerando_seu_onboarding/</link><guid isPermaLink="false">https://vcrmartinez.com/2023/2022-01-17-Acelerando_seu_onboarding/</guid><pubDate>Tue, 17 Jan 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;TLDR;&lt;/em&gt; diminua a fricção no seu onboarding criando um Manual de Sobrevivência.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://vcrmartinez.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 05 Sep 2023 10:16:49 GMT</lastBuildDate><item><title><![CDATA[Acelerando seu onboarding]]></title><description><![CDATA[TLDR; diminua a fricção no seu onboarding criando um Manual de Sobrevivência. Por mais que você seja experiente entrar em uma empresa nova é…]]></description><link>https://vcrmartinez.com/2023/2022-01-17-Acelerando_seu_onboarding/</link><guid isPermaLink="false">https://vcrmartinez.com/2023/2022-01-17-Acelerando_seu_onboarding/</guid><pubDate>Tue, 17 Jan 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;TLDR;&lt;/em&gt; diminua a fricção no seu onboarding criando um Manual de Sobrevivência.&lt;/p&gt;
 &lt;p&gt;Por mais que você seja experiente entrar em uma empresa nova é sempre desconfortável. No novo local de trabalho você precisa conhecer novas pessoas, absorver uma nova cultura, estudar sobre um novo mercado de atuação e se familiarizar com a parte técnica (ferramentas, processos, tecnologias do dia-a-dia, etc). Além disso, se você for uma pessoa &lt;strong&gt;ansiosa&lt;/strong&gt; e &lt;strong&gt;excessivamente preocupada&lt;/strong&gt;, então os primeiros meses tendem a ser angustiantes devido a uma cobrança interna muito grande.&lt;/p&gt;
 &lt;p&gt;Ao longo dos anos adotei o hábito de criar um documento que anotava tudo que julgava necessário. Isso me ajudava tanto na parte emocional como técnica. Hoje compartilho com vocês como criar o seu &lt;strong&gt;Manual de Sobrevivência (MS)&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2&gt;O que?&lt;/h2&gt;
@@ -922,24 +922,20 @@ res &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; search&lt;span c
 &lt;p&gt;Da próxima vez que você conseguir um recurso / bug / melhoria / tarefa para fazer, segure seu impulso por alguns minutos e desenhe as etapas que você deve seguir para conseguir isso. Durante o caminho você provavelmente notará que existem alguns casos extremos para ficar atento ou cenários que exigem um esforço extra.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 472px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 63.74999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsSAAALEgHS3X78AAABkElEQVQ4y4VTS0/CQBDu/z959+7NmzEhMRwM0RiQBEGNMRUojwKlj+1uS30k435LZ7OLBw8fm9LZ7zEzDSpV0H9QMrfIsx2l+w3JMvPecW1gL+JFe7rgYj5FsadNvDCkdSU8MY9QsdqJK5eMHQL7JLYu3RrPoXWqUVc+MdyMn4aU7NbmGU7ZYZEntvZPZNVGLbQLXMLzoS5pu1nSR/hGzUGaepDBaSlSI8ItCNw4bg/jdUSr5cy6Q8RUA+T4bzZ9p2geGlGQQdA4xI8EdD/YHYqA3XZl+1TqE4Bopp1l6dYIIS731PSwqUr6rCV9HxQ1Wt0twiUQHwlzg1xkVOizavtnjfDaTMJXehj16eq+S8/hC8U6JuKikCeq5NGlKI9phH4nncG5CM5713TR69DZzSV1h3ekitQqIwavBzsHMBie9OnyB7eTAfVHAxqMHylaTE3TQWAut7F5pfA/Jp1oEUwXYkxqCRslTO9+vmqr7H4h7tfAq7Jezc3Jg/N6yMVuc71VcoqZFCmQAPuHdXFFfwEye9nu5stTPgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 63.74999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAABmElEQVQ4y4WT204CMRCG+/4P4J0XPoKGS6NGIiESIxgkCAiiUtjzoWUXCMnYme5sdlcSLibb0uHrP/9MxVbHcC60imoRRz6EgQMqDWvnuBb/AHhYfDk4mb9pEoCz+YXAd/5dKE7BqoAmDCOOPIrA35QqOacGLJU1AAzOtgm8DwfguZL2qJRzktg/o9AEJqESXOcGhqDpZAS7XFEeXoBQVImeomLRLK9asuusyCtSZ/ZR6ILvrSHPUvpt+TUz8UlQhLmOtEBVhOayTeCtqA6T2CeVRrRWCuEeqeJyMXAvsJRDrmGfKciSsPQQYVwyeYUWEMx+k9R6Wm0cjY30JIyXE3gdv0GrcwfD2Qgc+QNr+V3MnO2oJpWmEWlUQtWJxonrQQcuHm7g6r4Fl71baI9eYGuUsuElsJxBq3pX+JjEQW20RHfch6ePPjwPevDYbcN8MaUuolcI5EZU/7SYT6gJfF59MSI3i51Rc9xncDxkdiQaLyTjkSpmESFytSQg+sxzSR5qbROpeyaaL6M6TrxHKIOxs567Ls/+AMF62cTU/hp3AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image lazyload&quot;
         alt=&quot;Planeje as etapas&quot;
         title=&quot;Planeje as etapas&quot;
-        data-src=&quot;/static/d8857b1db6c297ba73261b0460a98433/d9199/step1.png&quot;
-        data-srcset=&quot;/static/d8857b1db6c297ba73261b0460a98433/8ff5a/step1.png 240w,
-/static/d8857b1db6c297ba73261b0460a98433/e85cb/step1.png 480w,
-/static/d8857b1db6c297ba73261b0460a98433/d9199/step1.png 960w,
-/static/d8857b1db6c297ba73261b0460a98433/07a9c/step1.png 1440w,
-/static/d8857b1db6c297ba73261b0460a98433/29114/step1.png 1920w,
-/static/d8857b1db6c297ba73261b0460a98433/cd13d/step1.png 1958w&quot;
-        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+        data-src=&quot;/static/18c0fd9733e9c5b4e8ba6eab024550ea/3c5de/step1.png&quot;
+        data-srcset=&quot;/static/18c0fd9733e9c5b4e8ba6eab024550ea/8ff5a/step1.png 240w,
+/static/18c0fd9733e9c5b4e8ba6eab024550ea/3c5de/step1.png 472w&quot;
+        sizes=&quot;(max-width: 472px) 100vw, 472px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -950,23 +946,21 @@ res &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; search&lt;span c
 &lt;p&gt;Cada problema pode ser dividido em pequenos pedaços e deve ser resolvido uma vez por vez. Tentar codificar tudo de uma vez irá distraí-lo para o que importa: fazer funcionar. Comece com componentes simples que funcionam no melhor cenário. Vamos ver um exemplo:&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 643px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 46.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsSAAALEgHS3X78AAAByElEQVQoz11SXVPaUBDNf/ahv8EX39Tp+NJilQ6VoTDi52A7ndEptmgEEkhCAoTw0WhCQkJIinrcex1GJw87e2/2nD1n90aYhx7eRxhMEVH2vAd0xBq6p8doHOQg/azAHg8QRTOOSfNWIaSbcfAiQLt6BetbDubXLPqZz7C/7EIqFuCz+gr3jrMKId2Mx9zHSG1xd/VSAc3Sd7TyOWi/LxEnIccHM/d1GsLGZGBBzrnDtAKL/3GIGWXL6sF1/mFCo7pTG57v8POMckIY1ojVe90OzL7x5jChQhy9KfV7OtqtJicPzC6chwnHMFdMRGre4aZ2DU2V+VlVZM5R2hKEgNR6ROqPBhhR/Lm+4qBkEULvKLi3x3QX4dMjMcHnxxiPyRyMx0Snrg3DUCFLdY4XbqlrXrxBodmgfAuZPi6JYA11iGKV78g0DdT+VuHcj3FJj1X+UYFBIzIRjXbNnBm68rpDWVdRacs4lRo4r4uQVQmlk0/I5NeRLW1AUe+A5yU0rYX1nR182NzG2uYWDo7LeFpGCGhvvudw97zhghy4pDyk3UTsIQY6ji4yyB9+xMWvIu1vzMGTyRB75UNsZfdRPDuhu8Xdp3+fF1G0jZRkRhkiAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 46.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAAByklEQVQoz11S227TQBTMN/PIR5QHVFT1BVGQUC5cGkpIU0UEUClQRFI5tR1fYyd2UufqaxwKHc5ZKIQ8jNa7e87M7BwX0mSJTSTxAlkaYrGcQm9/hVWvQaoUcdlqIvBdZFkkahjbvYzCNlnKxUTY+3SKQbkEr1TE4MljBITu4QuEf4iSjXUThU2yW8KY9r6mwG7UcXH4HO1nZciVEozPH7FaxcjoPo7mf1+T09mKnAuH2wqMdZ4gotXzXCzmAeaMxQTLcIbgykNIcXANE81nV+jbOgau9c8hX+SkwGBFvjQNFb7nYDoZYTYdY001CbnySURVu+hKHdiWhh59u44Jp2/QXieHVGT2Teh0OBoPcdE+Fw3rPCVlQ5BxU0TuWBg/c9xcZ4jIpabJmAS+IFZkiUhNFDqU1VFPQd22UJW7UAwN10Q2GOqQpHPxDG/ooENCM3J7+uUMb963YLu2IGVXDHYpMtQcC01VxlHnG97Kl1BNBa9PHuFpdQeV2n3ohoSbH2sYuoJ7Bwe4u7ePO7sPUG2e4DsPiCK6je33b0MOQgqcw0/p+SO/j1eNhyi+3MWHsxqFPhYTDIIRio1j7JfLqL9rieEwWRz9P9Bf/9aPr5s31RYAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image lazyload&quot;
         alt=&quot;Divida um problema em pequenas partes&quot;
         title=&quot;Divida um problema em pequenas partes&quot;
-        data-src=&quot;/static/679ded0f865201227959f790169f1fa2/d9199/step2.png&quot;
-        data-srcset=&quot;/static/679ded0f865201227959f790169f1fa2/8ff5a/step2.png 240w,
-/static/679ded0f865201227959f790169f1fa2/e85cb/step2.png 480w,
-/static/679ded0f865201227959f790169f1fa2/d9199/step2.png 960w,
-/static/679ded0f865201227959f790169f1fa2/07a9c/step2.png 1440w,
-/static/679ded0f865201227959f790169f1fa2/5068c/step2.png 1917w&quot;
-        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+        data-src=&quot;/static/34351fa77d12191c5c380cec898dffde/b5bda/step2.png&quot;
+        data-srcset=&quot;/static/34351fa77d12191c5c380cec898dffde/8ff5a/step2.png 240w,
+/static/34351fa77d12191c5c380cec898dffde/e85cb/step2.png 480w,
+/static/34351fa77d12191c5c380cec898dffde/b5bda/step2.png 643w&quot;
+        sizes=&quot;(max-width: 643px) 100vw, 643px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -984,23 +978,21 @@ res &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; search&lt;span c
 &lt;p&gt;Cada componente deve ser testado para garantir, pelo menos, os requisitos mínimos. Não vou entrar na discussão sobre TDD ou não-TDD. O resultado final é: você deve garantir que seus componentes funcionem corretamente.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 509px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 58.75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsSAAALEgHS3X78AAACf0lEQVQoz21TYU/aYBDuT963fdz2Zcmiy7LEZBvR6ZYpZk5kMy5muoDDoAKC0JYCQhWk2AKF0kIpjuXZ3Tvg0z5c2ve9u+eee947yR866NsWZDmHdOYCmqbAG9jwR4OFDb2+sBHF8tdzexgHQ2F8x+e5X1KvS0g2bpGsVnCsqTjUqzjOpOD2O7CpUL/XxmSWyElj38VkMkLnpgjrrgaXwH4/+Iui0lkhh/3qNY4I8JTskOzgPAm73cJdQ4dcyKKkySI4GHtom01kcllcHoRR+vEZ51RcoRjuRDAcEJNCSUGO2MnUbl6+gkOsmAkbg1zl0qiUVViWgUz6HCaB+q6NCfm4kKrkxT3HS8F4iGDkolwsIPHrJ7EpEGCHKrqiIgM+UIvculaUBRNukZPnMvyZBlCUKzTqNdKwmEXk+wb2jzaxFn6JlY9PsRNdh2UaaBl10W4um4LRvBXMeqQrS8HJ3c49imoeNn35rOsVSKfJIyy9fYzV7SW8Xn2C5yuPsPrpFQE24dJr92YPw8kaJTu2iSYBmvd3ws+SeSMHWkWFXitDYsqycokEAZ8kDpE8i6HVqotW2ccvzGB9ApJLRZQNA34wEq175J+SHN2hjWgqjppxA2lMjilpYndM1Os62lYL49n8sU7MMB4/hnXfQNd18DWRhFIuCY25KHeSSp+h1tTFWWKdvp3EsBHdQyi8hWehENb3IuKlmZlKYttdEwGBD9w+evRg1TJNRTaNS1oE/jLGxP/XkZSnDXkTiWArFsO73V0s7+zixdp7UZkB58O82BZiHpAMA6cLh/SbBN5CHjGHfHlBlTYjX7BM7D5sh1G/rYmg+bAu1m72Pz//by3/Agb5Y0erkapgAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 58.75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAACfElEQVQoz21TSU/bYBD1j67UQ0899ESrCvWAUKsiQeCAxBaxBKpCWcqeDRMvibM4cRw7ie3EduIAql5nPgi99DCyPs98b+bNe5+UxAMMgx50vYRiMQfD0BEPPYxHw9eIQh9xFGBEtfyN6TxOIiRJ/Hx+Cc5Let3AldXEeUXHT7WETNXAyV0eITXp9zoI/C4eH0avYNzgYTJC0Kqi165jROfHyT9g6UaRkTYq+GU2cEPABwS4n72G33dgteqQ5Tw0VRbFkyQUTQpyEcXMOozDNG4LOeiU50ZiQqarEM2CrkBW71GiGNBUyTgUMSFquewVKmUFvueikL9F17UR0z3OR9SIGxYLWXGW+MLDOEK9quH66hSNehmDoC+SU4pcw9SNiiqm4BWMKS/WQPt8ehpD0+7RthqQNL2I9MES1nYW8HV5Bp+/vcPmboqmaKNjN6Eod8jeXsJ1LHS7tgB2KceXmb5OQF7PgW2ZMBtVSBfXh/g4/xapjVl8+f4eM/NvsLAyC8dpkbqBUJiDgcpaCaHvwqyV4XRa4n846CMiFmVDQ5MBmZai5nH8ex/HZxmcXxzCtk1B81mICD6BeTxNtQLVasOPn/cr6JN1erGH7dwZajZR5h39eUrgdiyUdZVotoQNuFiAkRCnp0dEqYEgGmD7/BI1s4aQvDqk6fy+i1z+BjWyENdLvJvdsxOs/jjA6t4OZlIpLKa3BJU+7eZeLghVuZgV9fweaiQO2+mOHgKr69AQLKzwoUI2mVtfx0Img7m1NXxYXsGnxSWxI4+6856miovX8KI6M5vaapoXPmSL5OllZI6PsLS5ga39PTTNqigcvZj19dlNn95/Ylr3F//WZyeR759eAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image lazyload&quot;
         alt=&quot;Testes automatizados&quot;
         title=&quot;Testes automatizados&quot;
-        data-src=&quot;/static/2101f4bfba7793b7152acfc6ebe67ec9/d9199/step3.png&quot;
-        data-srcset=&quot;/static/2101f4bfba7793b7152acfc6ebe67ec9/8ff5a/step3.png 240w,
-/static/2101f4bfba7793b7152acfc6ebe67ec9/e85cb/step3.png 480w,
-/static/2101f4bfba7793b7152acfc6ebe67ec9/d9199/step3.png 960w,
-/static/2101f4bfba7793b7152acfc6ebe67ec9/07a9c/step3.png 1440w,
-/static/2101f4bfba7793b7152acfc6ebe67ec9/541fe/step3.png 1654w&quot;
-        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+        data-src=&quot;/static/2bc12a581f46f5507a55110989fcf953/71554/step3.png&quot;
+        data-srcset=&quot;/static/2bc12a581f46f5507a55110989fcf953/8ff5a/step3.png 240w,
+/static/2bc12a581f46f5507a55110989fcf953/e85cb/step3.png 480w,
+/static/2bc12a581f46f5507a55110989fcf953/71554/step3.png 509w&quot;
+        sizes=&quot;(max-width: 509px) 100vw, 509px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
