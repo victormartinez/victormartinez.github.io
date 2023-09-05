@@ -42,7 +42,7 @@ Agora que você já entendeu o objetivo e a motivação, é hora de criar o seu 
 
 A seção anterior é um pouco abstrata então resolvi colocar aqui um boilerplate para que você possa seguir. Meus Manuais de Sobrevivência não seguem um padrão específico mas todos possuem um conjunto de tópicos que me permitem consultar rapidamente um determinado assunto. Um bom começo pode ser o modelo abaixo.
 
-```
+```markdown
 💻 Manual de Sobrevivência da Empresa XYZ
 
 **Descrição da Empresa**

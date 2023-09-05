@@ -16,6 +16,13 @@ export const Article = styled.article`
   font-size: 1.2rem;
   color: #c8c8c8;
   margin-bottom: 1em;
+
+  .gatsby-highlight, .gatsby-highlight pre {
+    background-color: #fdf6e3;
+    border-radius: 0.3em;
+    padding: 0.5em 1em;
+    overflow: auto;
+  }
 `
 
 export const Header = styled.header`
