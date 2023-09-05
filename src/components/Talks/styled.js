@@ -17,6 +17,8 @@ export const TalkItemWrapper = styled.article`
   margin: 0 2em 2em 0;
   background-color: #f3f3f3;
   padding-bottom: 0.5em;
+  border-radius: 10px;
+
 
   ${media.lessThan("medium")`
     flex-direction: column;
@@ -29,13 +31,7 @@ export const ImageSection = styled.div``
 export const Url = styled(Link)``
 
 export const Image = styled(Img)`
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%);
-
-  &:hover {
-    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(0%);
-  }
+  border-radius: 10px 10px 0 0;
 
   ${media.greaterThan("small")`
     height: 12em;

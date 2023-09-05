@@ -19,6 +19,7 @@ export const PostItemFeaturedWrapper = styled.article`
   margin-bottom: 2em;
   flex-direction: column;
   width: 32%;
+  border-radius: 10px;
 
   ${media.lessThan("medium")`
     padding: 1em;
@@ -34,13 +35,7 @@ export const ImageSection = styled.div`
 export const PostLink = styled(Link)``
 
 export const Image = styled(Img)`
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%);
-
-  &:hover {
-    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(0%);
-  }
+  border-radius: 10px 10px 0 0;
 
   ${media.greaterThan("small")`
     width: 100%;
