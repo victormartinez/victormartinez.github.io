@@ -7,13 +7,13 @@ import SocialLinks from "../SocialLinks"
 
 import GlobalStyles from "../../styles/global"
 
-const LayoutMarketing = ({ title, description, social }) => {
+const LayoutMarketing = ({ title, description, subdescription, social }) => {
   return (
     <>
       <GlobalStyles />
       <TopBar />
       <Sidebar social={social} />
-      <Hero title={title} description={description}>
+      <Hero title={title} description={description} subdescription={subdescription}>
         <SocialLinks data={social} />
       </Hero>
     </>

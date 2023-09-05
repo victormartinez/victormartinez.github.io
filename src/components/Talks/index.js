@@ -2,6 +2,13 @@ import React from "react"
 
 import * as S from "./styled"
 
+const formatDate = (dateStr) => {
+  const date = new Date(dateStr);
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  return `${month.toString().padStart(2, '0')}/${year}`;
+}
+
 const Talks = ({ talks }) => {
   const talkItems = talks.map(t => (
     <S.TalkItemWrapper>
@@ -21,7 +28,7 @@ const Talks = ({ talks }) => {
             }
             {!t.website && t.event}
           </S.Item>
-          <S.Item>Quando: {new Date(t.date).toISOString().split('T')[0]}</S.Item>
+          <S.Item>Quando: {formatDate(t.date)}</S.Item>
           <S.Item>Onde: {t.where}</S.Item>
           {t.slides && <S.Item><S.Url to={t.slides} target="_blank" rel="noopener noreferrer"> Slides</S.Url></S.Item>}
           {t.video && <S.Item><S.Url to={t.video} target="_blank" rel="noopener noreferrer"> Video</S.Url></S.Item>}

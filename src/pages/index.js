@@ -11,6 +11,7 @@ const HomeIndex = ({ data }) => {
 
   const siteTitle = data.site.siteMetadata[intl.locale].title
   const description = data.site.siteMetadata[intl.locale].description
+  const subdescription = data.site.siteMetadata[intl.locale].subdescription
   const social = data.site.siteMetadata.social
   const author = data.site.siteMetadata.author.name
   const keywords = data.site.siteMetadata.keywords
@@ -32,6 +33,7 @@ const HomeIndex = ({ data }) => {
       <LayoutMarketing
         title={siteTitle}
         description={description}
+        subdescription={subdescription}
         social={social}
       />
     </>
@@ -64,12 +66,14 @@ export const pageQuery = graphql`
         pt {
           title
           description
+          subdescription
         }
         social {
           twitter
           github
           linkedin
           speakerdeck
+          instagram
         }
       }
     }

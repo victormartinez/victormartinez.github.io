@@ -4,6 +4,7 @@ import { Github } from "@styled-icons/entypo-social/Github"
 import { Twitter } from "@styled-icons/boxicons-logos/Twitter"
 import { Linkedin } from "@styled-icons/boxicons-logos/Linkedin"
 import { SpeakerDeck } from "@styled-icons/fa-brands/SpeakerDeck"
+import { Instagram } from "@styled-icons/fa-brands/Instagram"
 
 import * as S from "./styled"
 
@@ -28,6 +29,11 @@ const SocialLinks = ({ data }) => {
       url: `https://speakerdeck.com/${data.speakerdeck}`,
       element: SpeakerDeck,
       label: "SpeakerDeck",
+    },
+    {
+      url: `https://instagram.com/${data.instagram}`,
+      element: Instagram,
+      label: "Instagram",
     },
   ]
 

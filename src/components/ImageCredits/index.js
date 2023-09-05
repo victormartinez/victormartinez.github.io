@@ -12,7 +12,7 @@ const ImageCredits = ({ url, author }) => {
     hasCopyright && (
       <S.CreditsWrapper>
         <S.Text>
-          * {intl.formatMessage({ id: "Featured_image_credits" })}:{" "}
+          {intl.formatMessage({ id: "Featured_image_credits" })}:{" "}
         </S.Text>
         <S.Url
           title={author}

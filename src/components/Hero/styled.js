@@ -45,6 +45,22 @@ export const Description = styled.p`
   width: 30em;
   line-height: 1.5;
   text-align: center;
+  margin-bottom: 0.5em;
+
+  ${media.lessThan("large")`
+    font-size: 1rem;
+    width: 100vw;
+    padding: 1em;
+  `}
+`
+
+export const SubDescription = styled.p`
+  color: #fff;
+  font-size: 1rem;
+  margin: 0 auto;
+  width: 30em;
+  line-height: 1.5;
+  text-align: center;
   margin-bottom: 1em;
 
   ${media.lessThan("large")`
@@ -53,3 +69,6 @@ export const Description = styled.p`
     padding: 1em;
   `}
 `
+
+
+

@@ -6,6 +6,7 @@ export const Headline = styled.h1`
   font-weight: 600;
   line-height: 1.5;
   text-align: center;
+  color: white;
 
   ${media.lessThan("small")`
     font-size: 2.8rem;
@@ -13,7 +14,7 @@ export const Headline = styled.h1`
 `
 export const Article = styled.article`
   line-height: 2.2rem;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #c8c8c8;
   margin-bottom: 1em;
 
@@ -27,13 +28,16 @@ export const Article = styled.article`
 
 export const Header = styled.header`
   text-align: center;
+  color: white;
 `
 
 export const DateBox = styled.div``
 
 export const Date = styled.span``
 
-export const TagsWrapper = styled.div``
+export const TagsWrapper = styled.div`
+  font-style: italic;
+`
 
 export const TagsList = styled.ul`
   display: flex;
@@ -41,12 +45,11 @@ export const TagsList = styled.ul`
   list-style-type: none;
   margin-top: 4em;
   flex-wrap: wrap;
+  font-size: 1rem;
 `
 
 export const TagItem = styled.li`
   margin-right: 1em;
-  background-color: #f5f2f0;
-  color: #222631;
   padding: 0 0.5em;
   font-weight: 600;
 
@@ -134,7 +137,7 @@ export const Section = styled.section`
 
   li code, p code {
     font-size: 0.8em;
-    padding: 0em 0.3em;
+    padding: 0.2em 0.3em;
   }
 
   ul > p,

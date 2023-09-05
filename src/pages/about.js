@@ -17,6 +17,7 @@ const AboutIndex = ({ data }) => {
     <LayoutMarketing
       title={siteTitle}
       description={description}
+      subdescription={``}
       social={social}
     >
       <SEO title={`${siteTitle}`} description={`${siteTitle} ${description}`} />

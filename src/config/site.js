@@ -5,6 +5,7 @@ module.exports = {
     linkedin: `vcrmartinez`,
     github: `victormartinez`,
     speakerdeck: `victormartinez`,
+    instagram: `vcrmartinez`,
   },
   author: {
     name: `Victor Martinez`,
@@ -22,7 +23,8 @@ module.exports = {
   ],
   pt: {
     title: `Olá, meu nome é Victor!`,
-    description: `Desenvolvedor web (principalmente) backend que gosta de tópicos relacionados a software, python 💚 e carreira em tech.`,
+    description: `Dev 🧑‍💻 Backender 🔥 Pythonista 💚`,
+    subdescription: `Carreira. Software. Arquitetura. Lifestyle.`,
     noPosts: `Desculpa, eu ainda não publiquei um post.`,
     talks: {
       title: `Palestras. Bate-papos. Slides.`,
