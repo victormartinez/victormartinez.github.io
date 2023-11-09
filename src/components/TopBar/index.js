@@ -23,6 +23,9 @@ const TopBar = () => {
             <S.NavItem>
               <S.NavLink to={pageUrl(intl.locale, 'talks')}>Talks</S.NavLink>
             </S.NavItem>
+            <S.NavItem>
+              <S.NavLink to={pageUrl(intl.locale, 'eBooks')}>eBooks</S.NavLink>
+            </S.NavItem>
           </S.NavList>
         </S.Nav>
       </S.TopBarContainer>

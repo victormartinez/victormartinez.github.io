@@ -5,6 +5,7 @@ export const NotFoundWrapper = styled.section`
   text-align: center;
   display: flex;
   flex-direction: column;
+  color: #c8c8c8;
 `
 
 export const Oops = styled.span`

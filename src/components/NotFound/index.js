@@ -21,7 +21,7 @@ const NotFound = () => {
         <S.Url to={homeUrl(intl.locale)}>Home</S.Url>
         <S.Url to={pageUrl(intl.locale, 'blog')}>Blog</S.Url>
         <S.Url to={pageUrl(intl.locale, 'talks')}>Talks</S.Url>
-        <S.Url to={pageUrl(intl.locale, 'studynotes')}>Study Notes</S.Url>
+        <S.Url to={pageUrl(intl.locale, 'ebooks')}>eBooks</S.Url>
       </S.Footer>
     </S.NotFoundWrapper>
   )

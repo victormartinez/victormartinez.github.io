@@ -21,6 +21,7 @@ const Sidebar = ({ social }) => {
         <S.MenuLink to={homeUrl(intl.locale)}>Home</S.MenuLink>
         <S.MenuLink to={pageUrl(intl.locale, 'blog')}>Blog</S.MenuLink>
         <S.MenuLink to={pageUrl(intl.locale, 'talks')}>Talks</S.MenuLink>
+        <S.MenuLink to={pageUrl(intl.locale, 'eBooks')}>eBooks</S.MenuLink>
       </S.Menu>
       <S.Footer>{social && <SocialLinks data={social} />}</S.Footer>
     </S.SidebarWrapper>

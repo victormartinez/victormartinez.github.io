@@ -35,8 +35,12 @@ module.exports = {
       description: `Sobre mim`
     },
     blog: {
-      title: `Blog. Textos. Guias.`,
-      description: `Blog. Textos. Guias.`
+      title: `Blog. Textos. Artigos.`,
+      description: `Blog. Textos. Artigos.`
+    },
+    eBooks: {
+      title: `eBooks. Guias. Materiais.`,
+      description: `eBooks. Guias. Materiais.`
     },
   }
 }
