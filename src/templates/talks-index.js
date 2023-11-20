@@ -12,7 +12,7 @@ const TalksIndex = ({ data }) => {
   const intl = useIntl()
 
   const siteTitle = data.site.siteMetadata[intl.locale].talks.title
-  const noPosts = data.site.siteMetadata[intl.locale].noPosts
+  const noTalks = data.site.siteMetadata[intl.locale].noTalks
   const description = data.site.siteMetadata[intl.locale].talks.description
   const social = data.site.siteMetadata.social
   const posts = data.talks.nodes
@@ -51,7 +51,7 @@ const TalksIndex = ({ data }) => {
             },
           ]}
         />
-        <Paragraph text={noPosts} />
+        <Paragraph text={noTalks} />
       </LayoutContent>
     )
   }
@@ -111,7 +111,7 @@ export const pageQuery = graphql`
         }
         keywords
         pt {
-          noPosts
+          noTalks
           talks {
             title
             description
