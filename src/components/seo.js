@@ -1,102 +1,58 @@
+import * as React from "react"
+import site from "../config/site"
+
+const FONTES = [
+  "/assets/fonts/space-grotesk.woff2",
+  "/assets/fonts/dm-sans.woff2",
+  "/assets/fonts/jetbrains-mono.woff2",
+]
+
 /**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
+ * Tags de <head> das páginas (Gatsby Head API).
+ * Espelha o <head> do site estático, com preload das fontes woff2.
  */
-
-import React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
-
-const SEO = ({ description, lang, meta, title, image }) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            social {
-              twitter
-            }
-            siteUrl
-          }
-        }
-      }
-    `
-  )
-
-  const metaDescription = description || site.siteMetadata.description
-  const siteUrl = site.siteMetadata.siteUrl
-  const ogImage = `${siteUrl}${image || "/assets/cover.png"}`
-  const defaultTitle = site.siteMetadata?.title
+const Seo = ({ titulo, descricao, caminho = "/", tipo = "website", children }) => {
+  const t = titulo ? `${titulo} · ${site.titulo}` : site.tituloCompleto
+  const d = descricao || site.descricao
+  const url = `${site.siteUrl}${caminho}`
+  const og = `${site.siteUrl}${site.ogImagem}`
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:image`,
-          content: ogImage,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:image`,
-          content: ogImage,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.social?.twitter || ``,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
+    <>
+      <html lang={site.lang} />
+      <title>{t}</title>
+      <meta name="description" content={d} />
+      <meta name="author" content={site.autor} />
+      <link rel="canonical" href={url} />
+      <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+      <meta property="og:type" content={tipo} />
+      <meta property="og:locale" content="pt_BR" />
+      <meta property="og:site_name" content={site.titulo} />
+      <meta property="og:title" content={t} />
+      <meta property="og:description" content={d} />
+      <meta property="og:image" content={og} />
+      <meta property="og:url" content={url} />
+      <meta name="twitter:card" content="summary_large_image" />
+      {FONTES.map(f => (
+        <link
+          key={f}
+          rel="preload"
+          href={f}
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      ))}
+      <link
+        rel="alternate"
+        type="application/rss+xml"
+        title={site.tituloCompleto}
+        href="/rss.xml"
+      />
+      {children}
+    </>
   )
 }
 
-SEO.defaultProps = {
-  lang: `pt-BR`,
-  meta: [],
-  description: ``,
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-}
-
-export default SEO
+export default Seo

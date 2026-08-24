@@ -1,46 +1,19 @@
+/**
+ * Constantes do site usadas no Head API (que não aceita hooks nem
+ * useStaticQuery) e nos componentes de layout.
+ */
 module.exports = {
-  siteUrl: `https://vcrmartinez.com/`,
-  social: {
-    twitter: `vcrmartinez`,
-    linkedin: `vcrmartinez`,
-    github: `victormartinez`,
-    speakerdeck: `victormartinez`,
-    instagram: `vcrmartinez`,
-  },
-  author: {
-    name: `Victor Martinez`,
-  },
-  keywords: [
-    "developer",
-    "programmer",
-    "web development",
-    "python",
-    "react",
-    "javascript",
-    "kubernetes",
-    "technology",
-    "blog",
-  ],
-  pt: {
-    title: `Olá, meu nome é Victor!`,
-    description: `Dev 🧑‍💻 Backender 🔥 Pythonista 💚`,
-    subdescription: `Carreira. Software. Arquitetura. Lifestyle.`,
-    noPosts: `Desculpa, eu ainda não publiquei um post.`,
-    talks: {
-      title: `Palestras. Bate-papos. Slides.`,
-      description: `Palestras. Bate-papos. Slides.`
-    },
-    about: {
-      title: `Sobre mim`,
-      description: `Sobre mim`
-    },
-    blog: {
-      title: `Blog. Textos. Artigos.`,
-      description: `Blog. Textos. Artigos.`
-    },
-    eBooks: {
-      title: `eBooks. Guias. Materiais.`,
-      description: `eBooks. Guias. Materiais.`
-    },
-  }
+  titulo: "Victor Martinez",
+  tituloCompleto: "Victor Martinez — engenharia contada de dentro",
+  descricao:
+    "Victor Martinez: doze anos construindo software, quatro liderando times. Textos e palestras sobre engenharia, arquitetura, gestão e IA aplicada.",
+  siteUrl: "https://vcrmartinez.com",
+  autor: "Victor Martinez",
+  lang: "pt-BR",
+  papel: "Senior | Lead | Head",
+  creditos: "© 2026 Victor Martinez · engenharia contada de dentro",
+  linkedin: "https://linkedin.com/in/vcrmartinez",
+  github: "https://github.com/victormartinez",
+  ogImagem: "/assets/img/og-victor-martinez.png",
+  email: { usuario: "vcrmartinez", dominio: "gmail.com" },
 }
