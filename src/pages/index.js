@@ -266,7 +266,7 @@ const Home = ({ data }) => {
                   Para conversar, palestrar ou aconselhar,
                 </h2>
                 <p className="contato__lead">
-                  escreva para o e-mail abaixo ou me chame no LinkedIn.
+                  me mande um e-mail ou me chame no LinkedIn.
                 </p>
               </div>
               <div className="contato__links">
