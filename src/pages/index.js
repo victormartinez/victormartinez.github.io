@@ -50,7 +50,7 @@ const Home = ({ data }) => {
 
       <main id="conteudo">
         <section className="heroi grao" id="topo" aria-labelledby="nome-victor">
-          <Campo densidade={1000} forca={5.2} />
+          <Campo densidade={1600} forca={5.2} />
           <div className="heroi__conteudo">
             <h1 className="heroi__nome" id="nome-victor">
               <span>Victor</span>
