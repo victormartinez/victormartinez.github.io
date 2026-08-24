@@ -1,16 +1,22 @@
-import "@fontsource/montserrat";
-import "@fontsource/montserrat/200.css"
-import "@fontsource/montserrat/300.css"
-import "@fontsource/montserrat/400.css"
-import "@fontsource/montserrat/500.css"
-import "@fontsource/montserrat/600.css"
-import "@fontsource/montserrat/700.css"
-import "@fontsource/montserrat/800.css"
-import "@fontsource/montserrat/900.css"
+// Sem tema pronto do Prism: as cores de token vivem em src/styles/style.css,
+// afinadas com o `pre` escuro da marca (importar prism.css sobrescreveria o
+// fundo ameixa do bloco de código).
+const { GA4_ID } = require("./src/components/analytics")
 
-// Highlighting for code blocks
-import "prismjs/themes/prism.css"
+exports.wrapPageElement = require("./gatsby-shared").wrapPageElement
 
-import "lazysizes"
-
-import "moment/locale/pt"
+/**
+ * page_view a cada troca de rota (roda também na primeira carga).
+ * `gtag` é o stub forwardado pelo Partytown; se o GA não estiver
+ * configurado, nada acontece.
+ */
+exports.onRouteUpdate = ({ location }) => {
+  if (!GA4_ID || typeof window === "undefined" || typeof window.gtag !== "function") {
+    return
+  }
+  window.gtag("event", "page_view", {
+    page_path: location.pathname + location.search + location.hash,
+    page_location: window.location.href,
+    page_title: document.title,
+  })
+}

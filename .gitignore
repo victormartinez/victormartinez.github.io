@@ -117,3 +117,9 @@ public
 
 .python-version
 .DS_Store
+
+# Gatsby 5
+.cache/
+public/
+.env.development
+.env.production
