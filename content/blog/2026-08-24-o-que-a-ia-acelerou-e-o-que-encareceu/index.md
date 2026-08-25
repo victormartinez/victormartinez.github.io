@@ -5,11 +5,11 @@ description: "A conta completa de colocar IA num time de engenharia: onde o ganh
 category: Engenharia
 ---
 
-Numa terça, um dev do time abriu um PR de umas novecentas linhas antes do almoço. Feature inteira, testes junto, descrição bonitinha. Todo mundo achou ótimo.
+Numa terça, um dev do time abriu um PR grande antes do almoço. Feature inteira, testes junto, descrição bonitinha. Todo mundo achou ótimo.
 
-O PR foi para produção na sexta. [CONFIRMAR: tamanho aproximado do PR e dias em fila no caso real]
+O PR só foi para produção no fim da semana.
 
-Ninguém tinha travado nada. Não houve briga, não houve bug escandaloso, não houve discussão de arquitetura. O código simplesmente ficou parado esperando alguém com cabeça fresca o suficiente para ler novecentas linhas que outra pessoa não tinha escrito de verdade.
+Ninguém tinha travado nada. Não houve briga, não houve bug escandaloso, não houve discussão de arquitetura. O código simplesmente ficou parado esperando alguém com cabeça fresca o suficiente para ler um PR daquele tamanho que outra pessoa não tinha escrito de verdade.
 
 Foi ali que eu entendi que a gente estava medindo a coisa errada. A parte que ficou rápida era a parte que já era barata.
 
@@ -19,7 +19,7 @@ Vou começar pelo lado bom, porque ele existe e é grande.
 
 O ganho apareceu inteiro no começo das coisas. A primeira versão de qualquer coisa. O teste chato que todo mundo empurra com a barriga. A migração mecânica de um formato para outro. O script que roda uma vez na vida e ninguém quer escrever. Aquele trecho de glue code entre dois serviços que não tem nenhuma decisão interessante dentro.
 
-O caso mais claro foi uma migração de contratos entre dois serviços, dessas que ninguém defende em reunião e todo mundo adia. A estimativa antiga era de duas semanas de trabalho de uma pessoa. Saiu em dois dias, revisão incluída. [CONFIRMAR: estimativa e tempo real da migração no caso] O trabalho era mecânico, o critério de "está certo" era objetivo e existia teste para provar. Três condições que quase nunca aparecem juntas no resto do dia.
+O caso mais claro foi uma migração de contratos entre dois serviços, dessas que ninguém defende em reunião e todo mundo adia. A estimativa antiga era de semanas de trabalho de uma pessoa. Saiu numa fração disso, revisão incluída. O trabalho era mecânico, o critério de "está certo" era objetivo e existia teste para provar. Três condições que quase nunca aparecem juntas no resto do dia.
 
 Também acelerou uma coisa que eu não esperava: entrar em código alheio. Chegar num módulo de quatro anos atrás e conseguir uma explicação decente em dois minutos, em vez de meia hora de leitura, mudou o custo de mexer em legado. Isso vale dinheiro e ninguém fala.
 
@@ -45,7 +45,7 @@ O efeito mais útil da IA no time que eu liderei não foi velocidade. Foi diagn�
 
 Quando a etapa de escrever encolhe, tudo que estava escondido atrás dela aparece de uma vez. A fila de review. O ambiente de homologação que duas squads disputam. O deploy que depende de uma pessoa específica estar acordada. O requisito que chega pela metade e volta para o produto três vezes antes de virar código.
 
-A gente achava que o problema era capacidade. Não era. Era espera. Quando finalmente parei para olhar quanto tempo uma tarefa passava parada versus quanto tempo ela passava sendo trabalhada, o desequilíbrio era constrangedor: a maior parte do lead time era fila, não trabalho. [CONFIRMAR: proporção medida entre tempo parado e tempo trabalhado no caso real]
+A gente achava que o problema era capacidade. Não era. Era espera. Quando finalmente parei para olhar quanto tempo uma tarefa passava parada versus quanto tempo ela passava sendo trabalhada, o desequilíbrio era constrangedor: a maior parte do lead time era fila, não trabalho.
 
 A IA não criou nada disso. Ela só tirou a desculpa. Enquanto escrever era lento, dava para dizer que o time era pequeno. Depois, não deu mais.
 
