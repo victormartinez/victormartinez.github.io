@@ -15,20 +15,39 @@ Site pessoal de Victor Martinez — engenharia contada de dentro.
 
 ## Comandos
 
+O `make` é a porta de entrada: cada alvo passa por `scripts/com-node.sh`, que
+carrega o **nvm** e seleciona a versão do `.nvmrc` antes de rodar. Não precisa
+`nvm use` na mão, e não importa qual Node está no seu PATH.
+
 ```bash
-nvm use            # usa a versão do .nvmrc
-npm install
-npm run develop    # http://localhost:8000
-npm run build      # gera public/
-npm run serve      # serve o build em http://localhost:9000
-npm run clean      # limpa .cache e public
-npm run deploy     # build + publica no branch gh-pages (ver abaixo)
+make                            # lista os comandos
+make novo-texto TITULO="..."    # cria a pasta e o frontmatter de um texto
+make dev                        # http://localhost:8000, com recarga
+make build                      # gera public/
+make servir                     # serve o build em http://localhost:9000
+make publicar MSG="..."         # commita content/ e faz push (dispara o deploy)
+make deps                       # instala as dependências
+make limpar                     # limpa .cache e public
 ```
+
+Os scripts npm equivalentes (`npm run develop|build|serve|clean`) seguem
+funcionando para quem preferir — só exigem `nvm use` antes.
 
 ## Publicar um texto novo
 
-Cada texto é uma pasta em `content/blog/`, no formato `AAAA-MM-DD-slug/`, com um
-`index.md` dentro. Imagens do texto ficam na mesma pasta e são referenciadas por
+O caminho curto:
+
+```bash
+make novo-texto TITULO="Como eu decido quando parar de refatorar"
+# opcional: CATEGORIA="Carreira"  DESCRICAO="Uma linha."  DATA=AAAA-MM-DD
+```
+
+Isso cria a pasta com a data de hoje, o slug já sem acento e o frontmatter
+preenchido — é só escrever. Depois, `make dev` para ver e `make publicar` para
+mandar para o ar.
+
+Por baixo, cada texto é uma pasta em `content/blog/`, no formato
+`AAAA-MM-DD-slug/`, com um `index.md` dentro. Imagens do texto ficam na mesma pasta e são referenciadas por
 caminho relativo (`![alt](figura.png)`).
 
 ```
