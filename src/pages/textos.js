@@ -92,7 +92,10 @@ export const Head = () => (
 
 export const query = graphql`
   {
-    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+    allMarkdownRemark(
+      filter: { frontmatter: { rascunho: { ne: true } } }
+      sort: { frontmatter: { date: DESC } }
+    ) {
       nodes {
         id
         timeToRead

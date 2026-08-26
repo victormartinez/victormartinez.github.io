@@ -73,6 +73,14 @@ nota: "Publicado originalmente em ... (opcional)"
 | `description` | recomendado | listagens, `<meta name="description">`, RSS |
 | `category` | opcional | kicker do texto e tag da listagem |
 | `nota` | opcional | linha pequena abaixo da data |
+| `rascunho` | opcional | `true` mantém o texto fora do site inteiro |
+
+### Rascunhos
+
+`rascunho: true` no frontmatter tira o texto do build: ele some da home, da
+página `/textos/`, do sitemap e do RSS, mas continua versionado no git — dá para
+escrever de qualquer máquina sem risco de publicar sem querer. Apague a linha
+quando o texto estiver pronto.
 
 A rota sai de graça: `/textos/<slug>/`, onde o slug é o nome da pasta sem o prefixo
 de data. O texto entra sozinho na home (3 mais recentes), na página `/textos/`, no

@@ -291,7 +291,11 @@ export const Head = () => <Seo tipo="profile" caminho="/" />
 
 export const query = graphql`
   {
-    allMarkdownRemark(sort: { frontmatter: { date: DESC } }, limit: 3) {
+    allMarkdownRemark(
+      filter: { frontmatter: { rascunho: { ne: true } } }
+      sort: { frontmatter: { date: DESC } }
+      limit: 3
+    ) {
       nodes {
         id
         timeToRead

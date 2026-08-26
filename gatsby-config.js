@@ -114,7 +114,10 @@ module.exports = {
               })),
             query: `
               {
-                allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+                allMarkdownRemark(
+                  filter: { frontmatter: { rascunho: { ne: true } } }
+                  sort: { frontmatter: { date: DESC } }
+                ) {
                   nodes {
                     excerpt
                     html
