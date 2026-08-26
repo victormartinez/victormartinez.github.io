@@ -69,7 +69,10 @@ if (!descricao) {
   console.log(`Preencha a "description" antes de publicar: ela é o resumo na
 listagem, na busca e no compartilhamento.\n`)
 }
-console.log(`Para ver no navegador enquanto escreve:  make dev\n`)
+console.log(`O texto nasce como RASCUNHO: fica fora do site, do sitemap e do RSS
+até você descomentar "publicado: true" no frontmatter.
+
+Para ver no navegador enquanto escreve:  make dev\n`)
 
 // ---------------------------------------------------------------- utilidades
 
@@ -97,6 +100,7 @@ title: ${aspas(titulo)}
 date: ${data}
 description: ${aspas(descricao)}
 category: ${categoria}
+# publicado: true   <- descomente quando o texto estiver pronto para ir ao ar
 ---
 
 `

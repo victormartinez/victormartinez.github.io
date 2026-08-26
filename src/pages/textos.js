@@ -93,7 +93,7 @@ export const Head = () => (
 export const query = graphql`
   {
     allMarkdownRemark(
-      filter: { frontmatter: { rascunho: { ne: true } } }
+      filter: { frontmatter: { publicado: { eq: true } } }
       sort: { frontmatter: { date: DESC } }
     ) {
       nodes {

@@ -115,7 +115,7 @@ module.exports = {
             query: `
               {
                 allMarkdownRemark(
-                  filter: { frontmatter: { rascunho: { ne: true } } }
+                  filter: { frontmatter: { publicado: { eq: true } } }
                   sort: { frontmatter: { date: DESC } }
                 ) {
                   nodes {

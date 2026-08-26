@@ -73,14 +73,21 @@ nota: "Publicado originalmente em ... (opcional)"
 | `description` | recomendado | listagens, `<meta name="description">`, RSS |
 | `category` | opcional | kicker do texto e tag da listagem |
 | `nota` | opcional | linha pequena abaixo da data |
-| `rascunho` | opcional | `true` mantém o texto fora do site inteiro |
+| `publicado` | **sim, para ir ao ar** | sem `publicado: true` o texto é rascunho |
 
-### Rascunhos
+### Rascunho é o padrão
 
-`rascunho: true` no frontmatter tira o texto do build: ele some da home, da
-página `/textos/`, do sitemap e do RSS, mas continua versionado no git — dá para
-escrever de qualquer máquina sem risco de publicar sem querer. Apague a linha
-quando o texto estiver pronto.
+Um texto só aparece no site — home, `/textos/`, sitemap e RSS — quando o
+frontmatter tiver:
+
+```yaml
+publicado: true
+```
+
+`make novo-texto` cria a linha já comentada; descomente quando estiver pronto.
+Enquanto isso o arquivo fica versionado no git normalmente, dá para escrever de
+qualquer máquina, e nenhum commit distraído publica nada. O padrão erra sempre
+para o lado seguro.
 
 A rota sai de graça: `/textos/<slug>/`, onde o slug é o nome da pasta sem o prefixo
 de data. O texto entra sozinho na home (3 mais recentes), na página `/textos/`, no

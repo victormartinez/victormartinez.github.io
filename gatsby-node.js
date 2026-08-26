@@ -45,7 +45,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       category: String
       date: Date @dateformat
       nota: String
-      rascunho: Boolean
+      publicado: Boolean
     }
 
     type Fields {
@@ -61,7 +61,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const resultado = await graphql(`
     {
       allMarkdownRemark(
-        filter: { frontmatter: { rascunho: { ne: true } } }
+        filter: { frontmatter: { publicado: { eq: true } } }
         sort: { frontmatter: { date: DESC } }
       ) {
         nodes {
