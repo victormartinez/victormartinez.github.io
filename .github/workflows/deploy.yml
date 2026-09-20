@@ -9,6 +9,8 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  # deploy-pages@v4+ resolve o artefato pelo id e precisa ler a API de Actions.
+  actions: read
 
 concurrency:
   group: pages
@@ -18,9 +20,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -31,7 +33,7 @@ jobs:
           # sharp e lmdb precisam rodar install scripts
           NPM_CONFIG_IGNORE_SCRIPTS: "false"
 
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
 
       - name: Build do Gatsby
         run: npm run build
@@ -40,9 +42,13 @@ jobs:
           NODE_ENV: production
           CI: "true"
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: public
+          # A partir da v4 esta action descarta arquivos ocultos. O build gera
+          # `public/.nojekyll` (vem de `static/`), então sem isto o artefato
+          # deixaria de ser idêntico ao de hoje.
+          include-hidden-files: true
 
   deploy:
     needs: build
@@ -52,4 +58,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
