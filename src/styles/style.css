@@ -117,7 +117,11 @@ a{color:var(--pinheiro)}a:hover{color:var(--menta)}
 .post__meta{margin:clamp(20px,2.6vw,30px) 0 0;font-family:var(--mono);font-size:13px;letter-spacing:.06em;color:rgba(216,211,222,.85)}
 .post__nota{margin:8px 0 0;font-family:var(--mono);font-size:12px;color:var(--lavanda)}
 .post{background:var(--giz);color:var(--tinta)}
-.post__interno{max-width:900px;margin:0 auto;padding:clamp(44px,6vw,80px) var(--margem) clamp(56px,7vw,96px)}
+/* A coluna do corpo tem de cair no mesmo eixo do titulo. O cabecalho recebe a
+   margem do .post__topo e limita o miolo em 900px; aqui a margem e padding
+   DESTE elemento, entao a caixa precisa ser 900px + as duas margens para o
+   conteudo medir os mesmos 900px comecando no mesmo x. */
+.post__interno{max-width:calc(900px + 2 * var(--margem));margin:0 auto;padding:clamp(44px,6vw,80px) var(--margem) clamp(56px,7vw,96px)}
 .post__corpo{max-width:72ch;font-size:clamp(18px,1.3vw,19px);line-height:1.78}
 .post__corpo p{margin:0 0 26px;text-wrap:pretty}
 .post__corpo h2{margin:clamp(44px,5vw,60px) 0 20px;font-family:var(--display);font-weight:700;font-size:clamp(26px,2.4vw,32px);line-height:1.2;letter-spacing:-.02em}
