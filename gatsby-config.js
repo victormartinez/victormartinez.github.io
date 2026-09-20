@@ -37,6 +37,16 @@ module.exports = {
       },
     },
     {
+      // Anotações de estudo. A árvore de pastas daqui vira a árvore de URLs sob
+      // /notas-de-estudo/ (ver caminhoDaNota em gatsby-node.js).
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "notas",
+        path: `${__dirname}/content/notas`,
+        ignore: ["**/.DS_Store"],
+      },
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
@@ -47,6 +57,15 @@ module.exports = {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
+          {
+            // Põe o `id` nos títulos — sem ele o sumário das notas linkaria para
+            // âncoras que não existem. Vem antes do prismjs porque os dois
+            // mexem no mesmo HTML e essa é a ordem que a doc do Gatsby pede.
+            // `icon: false`: nada de ícone de corrente; o link fica invisível e
+            // os textos em /textos/ continuam com a mesma aparência de sempre.
+            resolve: "gatsby-remark-autolink-headers",
+            options: { icon: false, offsetY: 80, className: "ancora" },
+          },
           {
             resolve: "gatsby-remark-images",
             options: { maxWidth: 900, linkImagesToOriginal: false },
@@ -115,7 +134,10 @@ module.exports = {
             query: `
               {
                 allMarkdownRemark(
-                  filter: { frontmatter: { publicado: { eq: true } } }
+                  filter: {
+                    fields: { colecao: { eq: "blog" } }
+                    frontmatter: { publicado: { eq: true } }
+                  }
                   sort: { frontmatter: { date: DESC } }
                 ) {
                   nodes {

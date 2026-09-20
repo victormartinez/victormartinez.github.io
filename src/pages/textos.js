@@ -43,7 +43,10 @@ const Textos = ({ data }) => {
               <ul className="lista">
                 {textos.map(t => (
                   <li key={t.id}>
-                    <Link className="lista__item" to={`/textos/${t.fields.slug}/`}>
+                    <Link
+                      className="lista__item"
+                      to={`/textos/${t.fields.slug}/`}
+                    >
                       <span className="lista__meta">
                         {mesAno(t.frontmatter.date)} · {t.timeToRead} min
                         {t.frontmatter.category ? (
@@ -56,7 +59,9 @@ const Textos = ({ data }) => {
                         ) : null}
                       </span>
                       <span>
-                        <span className="lista__titulo">{t.frontmatter.title}</span>
+                        <span className="lista__titulo">
+                          {t.frontmatter.title}
+                        </span>
                         <span className="lista__resumo">
                           {t.frontmatter.description || t.excerpt}
                         </span>
@@ -93,7 +98,10 @@ export const Head = () => (
 export const query = graphql`
   {
     allMarkdownRemark(
-      filter: { frontmatter: { publicado: { eq: true } } }
+      filter: {
+        fields: { colecao: { eq: "blog" } }
+        frontmatter: { publicado: { eq: true } }
+      }
       sort: { frontmatter: { date: DESC } }
     ) {
       nodes {

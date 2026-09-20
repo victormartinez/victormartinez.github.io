@@ -29,6 +29,7 @@ const Topo = ({ voltar }) => (
         <a href="#assuntos">Assuntos</a>
         <a href="#palestras">Palestras</a>
         <a href="#textos">Textos</a>
+        <a href="#notas">Notas</a>
         <a className="sempre" href="#contato">
           Contato
         </a>

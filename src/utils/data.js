@@ -40,3 +40,14 @@ export const iso8601 = iso => {
   const d = paraData(iso)
   return d ? d.toISOString().slice(0, 10) : ""
 }
+
+/** Anos inteiros entre `iso` e hoje. Devolve 0 quando a data é inválida. */
+export const anosDesde = iso => {
+  const d = paraData(iso)
+  if (!d) return 0
+  const agora = new Date()
+  let anos = agora.getUTCFullYear() - d.getUTCFullYear()
+  const mes = agora.getUTCMonth() - d.getUTCMonth()
+  if (mes < 0 || (mes === 0 && agora.getUTCDate() < d.getUTCDate())) anos--
+  return Math.max(0, anos)
+}

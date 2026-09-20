@@ -4,6 +4,7 @@ import { graphql, Link } from "gatsby"
 import Seo from "../components/seo"
 import Topo from "../components/topo"
 import Rodape from "../components/rodape"
+import AvisoIdade from "../components/aviso-idade"
 import { dataLonga, iso8601 } from "../utils/data"
 import "../styles/style.css"
 
@@ -38,6 +39,7 @@ const Texto = ({ data }) => {
           </header>
           <div className="post">
             <div className="post__interno">
+              <AvisoIdade tipo="texto" data={date} />
               <div
                 className="post__corpo"
                 dangerouslySetInnerHTML={{ __html: texto.html }}

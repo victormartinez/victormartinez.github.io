@@ -6,6 +6,7 @@ import Topo from "../components/topo"
 import Rodape from "../components/rodape"
 import Campo from "../components/campo"
 import Email from "../components/email"
+import Selo from "../components/selo"
 import palestras from "../data/palestras"
 import { mesAno } from "../utils/data"
 import site from "../config/site"
@@ -34,12 +35,14 @@ const ASSUNTOS = [
     num: "04",
     spot: "spot-gestao-claro.svg",
     titulo: "Gestão de times de tecnologia",
-    linha: "Contratar bem, dar ritmo e ter as conversas difíceis na hora certa.",
+    linha:
+      "Contratar bem, dar ritmo e ter as conversas difíceis na hora certa.",
   },
 ]
 
 const Home = ({ data }) => {
-  const textos = data.allMarkdownRemark.nodes
+  const textos = data.textos.nodes
+  const temas = data.temas.nodes
 
   return (
     <>
@@ -58,8 +61,8 @@ const Home = ({ data }) => {
             </h1>
             <div className="heroi__base">
               <p className="heroi__lead">
-                Construo software há doze anos e lidero times há quatro. De vez em
-                quando escrevo sobre o que vivo nesse trabalho — engenharia,
+                Construo software há doze anos e lidero times há quatro. De vez
+                em quando escrevo sobre o que vivo nesse trabalho — engenharia,
                 arquitetura, gestão e IA aplicada.
               </p>
               <p className="heroi__dica">passe o mouse pelo campo</p>
@@ -96,17 +99,19 @@ const Home = ({ data }) => {
               </div>
               <div className="sobre__prosa">
                 <p>
-                  Comecei mantendo centenas de crawlers que rodavam todo dia para
-                  manter a maior base de documentos jurídicos do Brasil. Depois
-                  vieram sistemas complexos envolvendo contabilidade. Aprendi que
-                  sistemas importantes podem (e devem) ser construídos
-                  progressivamente, <strong>release após release</strong>, com uma
-                  base forte de engenharia.
+                  Comecei mantendo centenas de crawlers que rodavam todo dia
+                  para manter a maior base de documentos jurídicos do Brasil.
+                  Depois vieram sistemas complexos envolvendo contabilidade.
+                  Aprendi que sistemas importantes podem (e devem) ser
+                  construídos progressivamente,{" "}
+                  <strong>release após release</strong>, com uma base forte de
+                  engenharia.
                 </p>
                 <p>
-                  Participei da construção de uma plataforma de pedidos take away em
-                  praças de alimentação comprada pela Alelo. Fui o primeiro
-                  engenheiro de um produto de crédito que suportava a emissão de{" "}
+                  Participei da construção de uma plataforma de pedidos take
+                  away em praças de alimentação comprada pela Alelo. Fui o
+                  primeiro engenheiro de um produto de crédito que suportava a
+                  emissão de{" "}
                   <strong>centenas de milhares de contratos por dia</strong>.
                   Experiências que só se sustentaram com decisões defensivas e
                   tomadas cuidadosamente com o time.
@@ -115,8 +120,8 @@ const Home = ({ data }) => {
                   Hoje lidero um time de engenharia como Head de Engenharia. O
                   trabalho é o mesmo de sempre em outra escala. Eu gerencio
                   lideranças, contribuo com arquiteturas robustas,{" "}
-                  <strong>decido junto com o time</strong> e coleciono aprendizados
-                  ao longo do caminho.
+                  <strong>decido junto com o time</strong> e coleciono
+                  aprendizados ao longo do caminho.
                 </p>
                 <div className="numeros">
                   <div className="numero">
@@ -187,7 +192,9 @@ const Home = ({ data }) => {
             <h2 className="titulo" id="tit-palestras">
               Palestras e conversas ao longo do caminho.
             </h2>
-            <p className="lead">Desde 2016, em eventos, meetups e dentro de empresas.</p>
+            <p className="lead">
+              Desde 2016, em eventos, meetups e dentro de empresas.
+            </p>
             <ul className="palestras">
               {palestras.map((p, i) => (
                 <li className="palestra" key={`${p.titulo}-${i}`}>
@@ -216,15 +223,23 @@ const Home = ({ data }) => {
             </h2>
             <p className="lead">Textos mais longos, sem periodicidade.</p>
             {textos.length > 0 ? (
-              <ul className="lista" style={{ marginTop: "clamp(36px, 4.6vw, 56px)" }}>
+              <ul
+                className="lista"
+                style={{ marginTop: "clamp(36px, 4.6vw, 56px)" }}
+              >
                 {textos.map(t => (
                   <li key={t.id}>
-                    <Link className="lista__item" to={`/textos/${t.fields.slug}/`}>
+                    <Link
+                      className="lista__item"
+                      to={`/textos/${t.fields.slug}/`}
+                    >
                       <span className="lista__meta">
                         {mesAno(t.frontmatter.date)} · {t.timeToRead} min
                       </span>
                       <span>
-                        <span className="lista__titulo">{t.frontmatter.title}</span>
+                        <span className="lista__titulo">
+                          {t.frontmatter.title}
+                        </span>
                         <span className="lista__resumo">
                           {t.frontmatter.description || t.excerpt}
                         </span>
@@ -237,7 +252,10 @@ const Home = ({ data }) => {
                 ))}
               </ul>
             ) : (
-              <p className="lead" style={{ marginTop: "clamp(36px, 4.6vw, 56px)" }}>
+              <p
+                className="lead"
+                style={{ marginTop: "clamp(36px, 4.6vw, 56px)" }}
+              >
                 Nada publicado por aqui ainda.
               </p>
             )}
@@ -250,13 +268,75 @@ const Home = ({ data }) => {
         </section>
 
         <section
+          className="secao bloco--giz"
+          id="notas"
+          aria-labelledby="tit-notas"
+        >
+          <div className="interno">
+            <div className="regua">
+              <span className="regua__num">06</span>
+              <span className="regua__linha" aria-hidden="true"></span>
+              <span className="regua__nome">Estudos</span>
+            </div>
+            <h2 className="titulo" id="tit-notas">
+              Notas de estudo
+            </h2>
+            <p className="lead">
+              Anotações dos meus estudos, por tema — algumas em aberto, outras
+              já revisadas.
+            </p>
+            {temas.length > 0 ? (
+              <>
+                <ul
+                  className="lista"
+                  style={{ marginTop: "clamp(36px, 4.6vw, 56px)" }}
+                >
+                  {temas.map(t => (
+                    <li key={t.id}>
+                      <Link className="lista__item" to={t.fields.caminho}>
+                        <span className="lista__meta">
+                          <Selo maturidade={t.frontmatter.maturidade} />
+                        </span>
+                        <span>
+                          <span className="lista__titulo">
+                            {t.frontmatter.title}
+                          </span>
+                          {t.frontmatter.description ? (
+                            <span className="lista__resumo">
+                              {t.frontmatter.description}
+                            </span>
+                          ) : null}
+                        </span>
+                        <span className="lista__seta" aria-hidden="true">
+                          →
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link className="todos" to="/notas-de-estudo/">
+                  Todas as notas →
+                </Link>
+              </>
+            ) : (
+              <p
+                className="lead"
+                style={{ marginTop: "clamp(36px, 4.6vw, 56px)" }}
+              >
+                Nada por aqui ainda.
+              </p>
+            )}
+          </div>
+        </section>
+
+        <section
           className="secao bloco--ameixa"
           id="contato"
           aria-labelledby="tit-contato"
         >
           <div className="interno">
             <div className="regua">
-              <span className="regua__num">06</span>
+              <span className="regua__num">07</span>
               <span className="regua__linha" aria-hidden="true"></span>
               <span className="regua__nome">Contato</span>
             </div>
@@ -271,7 +351,11 @@ const Home = ({ data }) => {
               </div>
               <div className="contato__links">
                 <Email />
-                <a href={site.linkedin} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={site.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   linkedin.com/in/vcrmartinez
                 </a>
               </div>
@@ -291,8 +375,11 @@ export const Head = () => <Seo tipo="profile" caminho="/" />
 
 export const query = graphql`
   {
-    allMarkdownRemark(
-      filter: { frontmatter: { publicado: { eq: true } } }
+    textos: allMarkdownRemark(
+      filter: {
+        fields: { colecao: { eq: "blog" } }
+        frontmatter: { publicado: { eq: true } }
+      }
       sort: { frontmatter: { date: DESC } }
       limit: 3
     ) {
@@ -307,6 +394,26 @@ export const query = graphql`
           title
           description
           date
+        }
+      }
+    }
+    temas: allMarkdownRemark(
+      filter: {
+        fields: { colecao: { eq: "notas" }, nivel: { eq: 0 } }
+        frontmatter: { publicado: { ne: false } }
+      }
+      sort: { frontmatter: { atualizado: DESC } }
+      limit: 4
+    ) {
+      nodes {
+        id
+        fields {
+          caminho
+        }
+        frontmatter {
+          title
+          description
+          maturidade
         }
       }
     }
