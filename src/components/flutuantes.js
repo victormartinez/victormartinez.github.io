@@ -160,6 +160,9 @@ const Flutuantes = () => {
     const reduz =
       window.matchMedia &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    // Abaixo de 760px a camada está com display:none (ver style.css): nada a
+    // posicionar, e o loop nem começa.
+    const celular = window.matchMedia("(max-width: 760px)")
     const t0 = performance.now()
 
     const posicionar = agora => {
@@ -212,7 +215,9 @@ const Flutuantes = () => {
 
     if (reduz) {
       // Sem balanço não há o que animar: posiciona quando o layout muda.
-      const medir = () => posicionar(t0)
+      const medir = () => {
+        if (!celular.matches) posicionar(t0)
+      }
       medir()
       window.addEventListener("resize", medir)
       window.addEventListener("load", medir)
@@ -228,18 +233,22 @@ const Flutuantes = () => {
       raf = requestAnimationFrame(quadro)
     }
     const roda = () => {
-      if (raf === null && !document.hidden) raf = requestAnimationFrame(quadro)
+      if (raf === null && !document.hidden && !celular.matches) {
+        raf = requestAnimationFrame(quadro)
+      }
     }
     const para = () => {
       if (raf !== null) cancelAnimationFrame(raf)
       raf = null
     }
-    const aoTrocarVisibilidade = () => (document.hidden ? para() : roda())
-    document.addEventListener("visibilitychange", aoTrocarVisibilidade)
+    const rever = () => (document.hidden || celular.matches ? para() : roda())
+    document.addEventListener("visibilitychange", rever)
+    celular.addEventListener("change", rever)
     roda()
     return () => {
       para()
-      document.removeEventListener("visibilitychange", aoTrocarVisibilidade)
+      document.removeEventListener("visibilitychange", rever)
+      celular.removeEventListener("change", rever)
     }
   }, [])
 

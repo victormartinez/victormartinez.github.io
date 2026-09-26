@@ -30,6 +30,9 @@ button{font:inherit}
 .flutuantes{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
 .flutuante{position:absolute;left:0;top:0;width:0;height:0;will-change:transform,opacity;transition:opacity .3s}
 .flutuante__iso{position:absolute;width:0;height:0;transform-style:preserve-3d;transform:rotateX(60deg) rotateZ(45deg)}
+/* no celular, as peças flutuantes e as cenas de Textos e Estudos ficam de fora:
+   a coluna única empilharia a cena abaixo da lista e ela viraria só ruído */
+@media(max-width:760px){.flutuantes,.estante,.caderno{display:none}}
 
 /* ---------------------------------------------------------------- topo */
 .topo{position:sticky;top:0;z-index:40;background:var(--ameixa)}
