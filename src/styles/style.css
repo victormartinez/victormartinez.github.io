@@ -25,7 +25,11 @@ button{font:inherit}
 .pular{position:absolute;left:12px;top:-80px;z-index:60;background:var(--menta);color:var(--tinta);font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:12px 18px;border-radius:8px;transition:top .16s ease}
 .pular:focus{top:10px}
 .interno{max-width:var(--max);margin:0 auto}
-.inicio{overflow-x:hidden}
+.inicio{position:relative;z-index:0;isolation:isolate;overflow-x:hidden}
+/* peças flutuantes: camada decorativa sob o conteúdo, posicionada por JS */
+.flutuantes{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.flutuante{position:absolute;left:0;top:0;width:0;height:0;will-change:transform,opacity;transition:opacity .3s}
+.flutuante__iso{position:absolute;width:0;height:0;transform-style:preserve-3d;transform:rotateX(60deg) rotateZ(45deg)}
 
 /* ---------------------------------------------------------------- topo */
 .topo{position:sticky;top:0;z-index:40;background:var(--ameixa)}
@@ -156,6 +160,12 @@ button{font:inherit}
 .robo{position:relative;height:400px}
 .robo .iso{bottom:90px}
 .iso--robo{--dur:460ms}
+.balao{position:absolute;left:calc(50% + 36px);top:88px;transform-origin:0 100%;transform:translate(-40px,50px) scale(.2);opacity:0;transition:transform .38s var(--suave),opacity .22s}
+.balao--on{transform:none;opacity:1}
+.balao__caixa{position:relative;padding:11px 16px;border-radius:10px;background:var(--giz);box-shadow:0 5px 0 #B9B2C2;font-family:var(--display);font-weight:700;font-size:16px;line-height:1.1;color:var(--tinta);white-space:nowrap}
+.balao__caixa::before,.balao__caixa::after{content:"";position:absolute;top:-6px;width:14px;height:6px;border-radius:3px 3px 0 0;background:var(--giz)}
+.balao__caixa::before{left:18px}.balao__caixa::after{left:42px}
+.balao__rabo{position:absolute;left:-2px;bottom:-14px;width:22px;height:22px;background:var(--giz);clip-path:polygon(0 100%,30% 0,100% 0)}
 
 /* ---------------------------------------------------------------- selo de maturidade */
 .selo{display:inline-block;padding:3px 8px;border-radius:4px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;line-height:1.5;white-space:nowrap}
@@ -378,4 +388,4 @@ button{font:inherit}
 .post__corpo .gatsby-highlight-code-line{display:block;background:rgba(25,177,131,.14);border-left:3px solid var(--menta);margin:0 calc(-1 * clamp(16px,2.6vw,22px));padding:0 clamp(13px,2.6vw,19px)}
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none !important;transition:none !important}}
-@media print{.topo,.iso,.cena__rotulo,.copiar,.pular{display:none}body,.grade,.inicio,.cabecalho,.rodape,.proximos,.pagina{background:#fff;color:#000}.titulo,.heroi__nome,.cabecalho__titulo{color:#000}}
+@media print{.topo,.iso,.flutuantes,.balao,.cena__rotulo,.copiar,.pular{display:none}body,.grade,.inicio,.cabecalho,.rodape,.proximos,.pagina{background:#fff;color:#000}.titulo,.heroi__nome,.cabecalho__titulo{color:#000}}

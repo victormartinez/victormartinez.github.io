@@ -583,11 +583,18 @@ export function cenaRobo(on) {
   ]
 }
 
+/** No hover, além do braço, um balão branco com pinos sai da cabeça do robô. */
 export const CenaRobo = ({ on }) => (
   <div className="robo">
     <Cena blocos={cenaRobo(on)} u={30} className="iso--robo" />
+    <div className={on ? "balao balao--on" : "balao"} aria-hidden="true">
+      <div className="balao__caixa">
+        <span className="balao__rabo" />
+        vamos conversar
+      </div>
+    </div>
     <span className={on ? "cena__rotulo cena__rotulo--ok" : "cena__rotulo"}>
-      {on ? "› bora conversar" : "› robô em espera"}
+      {on ? "" : "› robô em espera"}
     </span>
   </div>
 )

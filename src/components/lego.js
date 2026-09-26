@@ -181,70 +181,65 @@ const Estampa = ({ f, topo }) => (
   />
 )
 
+/** Um bloco já projetado por `iso()`: as três faces, estampas e pinos. */
+export const Bloco = ({ b }) => (
+  <div
+    className="bloco"
+    style={{
+      left: b.l,
+      top: b.t,
+      width: b.w,
+      height: b.d,
+      transform: b.tz,
+      transformOrigin: b.to,
+      transitionDelay: b.dl,
+    }}
+  >
+    <div className="bloco__frente" style={{ height: b.h, background: b.c2 }}>
+      <div className="bloco__frente-int">
+        {b.fr.map((f, j) => (
+          <Estampa f={f} key={j} />
+        ))}
+      </div>
+    </div>
+    <div className="bloco__dir" style={{ width: b.h, background: b.c1 }} />
+    <div
+      className="bloco__topo"
+      style={{ transform: b.tt, backgroundColor: b.c }}
+    >
+      {b.tp.map((f, j) => (
+        <Estampa f={f} topo key={j} />
+      ))}
+      {b.studs.map((p, j) => (
+        <div
+          className="pino"
+          key={j}
+          style={{
+            left: p.l,
+            top: p.t,
+            width: p.s,
+            height: p.s,
+            background: p.c,
+            transform: p.z,
+            boxShadow: p.sh,
+          }}
+        />
+      ))}
+    </div>
+  </div>
+)
+
 /**
  * Desenha uma cena. `blocos` é a lista no esquema acima, `u` os px por pino.
  * A ordem da lista precisa ser estável entre renders: é ela que preserva as
  * transições de cada peça (as chaves são o índice).
  */
-export const Cena = ({ blocos, u, className = "" }) => {
-  const faces = iso(blocos, u)
-  return (
-    <div className={`iso ${className}`.trim()} aria-hidden="true">
-      {faces.map((b, i) => (
-        <div
-          className="bloco"
-          key={i}
-          style={{
-            left: b.l,
-            top: b.t,
-            width: b.w,
-            height: b.d,
-            transform: b.tz,
-            transformOrigin: b.to,
-            transitionDelay: b.dl,
-          }}
-        >
-          <div
-            className="bloco__frente"
-            style={{ height: b.h, background: b.c2 }}
-          >
-            <div className="bloco__frente-int">
-              {b.fr.map((f, j) => (
-                <Estampa f={f} key={j} />
-              ))}
-            </div>
-          </div>
-          <div
-            className="bloco__dir"
-            style={{ width: b.h, background: b.c1 }}
-          />
-          <div
-            className="bloco__topo"
-            style={{ transform: b.tt, backgroundColor: b.c }}
-          >
-            {b.tp.map((f, j) => (
-              <Estampa f={f} topo key={j} />
-            ))}
-            {b.studs.map((p, j) => (
-              <div
-                className="pino"
-                key={j}
-                style={{
-                  left: p.l,
-                  top: p.t,
-                  width: p.s,
-                  height: p.s,
-                  background: p.c,
-                  transform: p.z,
-                  boxShadow: p.sh,
-                }}
-              />
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  )
-}
+export const Cena = ({ blocos, u, className = "" }) => (
+  <div className={`iso ${className}`.trim()} aria-hidden="true">
+    {iso(blocos, u).map((b, i) => (
+      <Bloco b={b} key={i} />
+    ))}
+  </div>
+)
 
 export default Cena

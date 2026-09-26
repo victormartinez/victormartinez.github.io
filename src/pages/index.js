@@ -7,6 +7,7 @@ import Rodape from "../components/rodape"
 import Email from "../components/email"
 import Selo from "../components/selo"
 import { Regua, Rotulo } from "../components/pecas"
+import Flutuantes from "../components/flutuantes"
 import {
   CenaHeroi,
   CenaAssunto,
@@ -90,6 +91,7 @@ const Home = ({ data }) => {
       <Topo />
 
       <main id="conteudo" className="inicio grade">
+        <Flutuantes />
         <section className="heroi" id="topo" aria-labelledby="nome-victor">
           <div className="heroi__texto">
             <div className="heroi__kicker">
@@ -191,7 +193,7 @@ const Home = ({ data }) => {
             <p className="lead lead--lista">
               Desde 2016, em eventos, meetups e dentro de empresas.
             </p>
-            <div className="log">
+            <div className="log" data-evita="">
               <ol className="log__lista">
                 {log.map(p => (
                   <li className="log__item" key={`${p.titulo}-${p.i}`}>
