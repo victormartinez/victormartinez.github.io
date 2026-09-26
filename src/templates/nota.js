@@ -6,20 +6,27 @@ import Topo from "../components/topo"
 import Rodape from "../components/rodape"
 import Selo, { SeloComGlosa } from "../components/selo"
 import AvisoIdade from "../components/aviso-idade"
-import { dataLonga, iso8601 } from "../utils/data"
+import Indice, { SECOES_PARA_INDICE } from "../components/indice"
+import { Regua } from "../components/pecas"
+import { useLeitura, useCopiarComandos } from "../utils/leitura"
+import { dataCurta, iso8601 } from "../utils/data"
 import "../styles/style.css"
 
-/** Só vale a pena montar sumário quando a nota tem seções de verdade. */
-const SECOES_PARA_SUMARIO = 3
+const plural = (n, um, muitos) => `${n} ${n === 1 ? um : muitos}`
 
 const Nota = ({ data, pageContext }) => {
   const nota = data.markdownRemark
   const filhos = data.filhos.nodes
   const { trilha, paiCaminho, paiTitulo } = pageContext
   const { title, description, maturidade, atualizado } = nota.frontmatter
+  const secoes = nota.headings
 
-  const secoes = (nota.tableOfContents.match(/<li>/g) || []).length
-  const temSumario = secoes >= SECOES_PARA_SUMARIO
+  const corpoRef = React.useRef(null)
+  const { ativa, fim } = useLeitura(corpoRef)
+  useCopiarComandos(corpoRef)
+
+  const temIndice = secoes.length >= SECOES_PARA_INDICE
+  const temLateral = filhos.length > 0 || trilha.length > 0
 
   return (
     <>
@@ -28,10 +35,10 @@ const Nota = ({ data, pageContext }) => {
       </a>
       <Topo voltar={{ to: paiCaminho, rotulo: `← ${paiTitulo}` }} />
 
-      <main id="conteudo">
+      <main id="conteudo" className="pagina">
         <article>
-          <header className="post__topo grao colunas">
-            <div className="post__topo-interno">
+          <header className="cabecalho cabecalho--nota grade">
+            <div className="cabecalho__interno">
               <nav className="trilha" aria-label="Trilha">
                 <Link to="/notas-de-estudo/">Notas de estudo</Link>
                 {trilha.map(a => (
@@ -43,83 +50,97 @@ const Nota = ({ data, pageContext }) => {
                   </React.Fragment>
                 ))}
               </nav>
-              <h1 className="post__titulo">{title}</h1>
-              <p className="post__meta">
+              <h1 className="cabecalho__titulo cabecalho__titulo--nota">
+                {title}
+              </h1>
+              {description ? (
+                <p className="cabecalho__lead cabecalho__lead--nota">
+                  {description}
+                </p>
+              ) : null}
+              <div className="cabecalho__meta cabecalho__meta--selo">
                 <SeloComGlosa maturidade={maturidade} />
-                {atualizado ? (
-                  <>
-                    {" · "}
-                    atualizada em{" "}
-                    <time dateTime={iso8601(atualizado)}>
-                      {dataLonga(atualizado)}
-                    </time>
-                  </>
-                ) : null}
-              </p>
-              {description ? <p className="post__nota">{description}</p> : null}
+                <span>
+                  {filhos.length > 0
+                    ? `${plural(filhos.length, "nota", "notas")} · `
+                    : ""}
+                  {atualizado ? (
+                    <>
+                      atualizada em{" "}
+                      <time dateTime={iso8601(atualizado)}>
+                        {dataCurta(atualizado)}
+                      </time>
+                    </>
+                  ) : null}
+                </span>
+              </div>
             </div>
           </header>
 
-          <div className="post">
-            <div className="post__interno">
-              <AvisoIdade tipo="nota" data={atualizado} />
-              {temSumario ? (
-                <nav className="sumario" aria-label="Sumário desta nota">
-                  <p className="sumario__titulo">Nesta página</p>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: nota.tableOfContents }}
-                  />
-                </nav>
-              ) : null}
-
-              <div
-                className="post__corpo"
-                dangerouslySetInnerHTML={{ __html: nota.html }}
+          <div className="leitura leitura--nota">
+            <div className="leitura__interno">
+              <Indice
+                titulo="Nesta nota"
+                secoes={secoes}
+                ativa={ativa}
+                fim={fim}
+                numerado
               />
 
-              {filhos.length > 0 ? (
-                <section className="desdobra" aria-labelledby="tit-desdobra">
-                  <h2 className="desdobra__titulo" id="tit-desdobra">
-                    Se desdobra em
-                  </h2>
-                  <ul className="lista">
-                    {filhos.map(f => (
-                      <li key={f.id}>
-                        <Link className="lista__item" to={f.fields.caminho}>
-                          <span className="lista__meta">
-                            <Selo maturidade={f.frontmatter.maturidade} />
-                          </span>
-                          <span>
-                            <span className="lista__titulo">
-                              {f.frontmatter.title}
-                            </span>
-                            {f.frontmatter.description ? (
-                              <span className="lista__resumo">
-                                {f.frontmatter.description}
-                              </span>
-                            ) : null}
-                          </span>
-                          <span className="lista__seta" aria-hidden="true">
-                            →
-                          </span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              ) : null}
+              <div
+                className={
+                  temIndice || temLateral ? "post" : "post post--solto"
+                }
+                ref={corpoRef}
+              >
+                <AvisoIdade tipo="nota" data={atualizado} />
+                <div
+                  className="post__corpo post__corpo--nota"
+                  dangerouslySetInnerHTML={{ __html: nota.html }}
+                />
+                <footer className="post__fim">
+                  <div className="post__fim-esq">
+                    <Regua clara />
+                    <Link className="post__voltar" to={paiCaminho}>
+                      ← Voltar para {paiTitulo}
+                    </Link>
+                  </div>
+                </footer>
+              </div>
 
-              <footer className="post__fim">
-                <Link className="post__voltar" to={paiCaminho}>
-                  ← Voltar para {paiTitulo}
-                </Link>
-              </footer>
+              {temLateral ? (
+                <aside className="lateral">
+                  {filhos.length > 0 ? (
+                    <div className="lateral__bloco">
+                      <p className="lateral__titulo">Se desdobra em</p>
+                      {filhos.map(f => (
+                        <Link
+                          className="lateral__link"
+                          to={f.fields.caminho}
+                          key={f.id}
+                        >
+                          <span>{f.frontmatter.title}</span>
+                          <Selo maturidade={f.frontmatter.maturidade} />
+                        </Link>
+                      ))}
+                    </div>
+                  ) : null}
+                  {trilha.length > 0 ? (
+                    <div className="lateral__bloco">
+                      <p className="lateral__titulo">Faz parte de</p>
+                      <Link className="lateral__destaque" to={paiCaminho}>
+                        {paiTitulo}
+                      </Link>
+                    </div>
+                  ) : null}
+                </aside>
+              ) : null}
             </div>
           </div>
         </article>
       </main>
 
-      <Rodape solto />
+      <Rodape />
     </>
   )
 }
@@ -142,8 +163,11 @@ export const query = graphql`
   query ($id: String!, $globFilhos: String!, $nivelFilhos: Int!) {
     markdownRemark(id: { eq: $id }) {
       html
-      tableOfContents(maxDepth: 2)
       excerpt(pruneLength: 160)
+      headings(depth: h2) {
+        id
+        value
+      }
       fields {
         caminho
       }
@@ -172,7 +196,6 @@ export const query = graphql`
         }
         frontmatter {
           title
-          description
           maturidade
         }
       }

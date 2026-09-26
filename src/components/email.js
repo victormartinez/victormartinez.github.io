@@ -6,7 +6,7 @@ import site from "../config/site"
  * O HTML servido mostra "vcrmartinez [at] gmail" e aponta para #contato;
  * depois da hidratação vira o mailto de verdade.
  */
-const Email = () => {
+const Email = ({ className }) => {
   const ref = React.useRef(null)
 
   React.useEffect(() => {
@@ -18,7 +18,7 @@ const Email = () => {
   }, [])
 
   return (
-    <a ref={ref} href="#contato">
+    <a ref={ref} className={className} href="#contato">
       {`${site.email.usuario} [at] ${site.email.dominio.split(".")[0]}`}
     </a>
   )

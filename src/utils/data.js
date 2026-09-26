@@ -35,6 +35,25 @@ export const dataLonga = iso => {
   }).format(d)
 }
 
+/** "12 set 2026" — usado nos cards e no cabeçalho da nota. */
+export const dataCurta = iso => {
+  const d = paraData(iso)
+  if (!d) return ""
+  const mes = new Intl.DateTimeFormat("pt-BR", {
+    month: "short",
+    timeZone: "UTC",
+  })
+    .format(d)
+    .replace(/\.$/, "")
+  return `${d.getUTCDate()} ${mes} ${d.getUTCFullYear()}`
+}
+
+/** Ano da data, como string — agrupa os textos em /textos/. */
+export const anoDe = iso => {
+  const d = paraData(iso)
+  return d ? String(d.getUTCFullYear()) : ""
+}
+
 /** ISO curto para o atributo `datetime` do <time>. */
 export const iso8601 = iso => {
   const d = paraData(iso)

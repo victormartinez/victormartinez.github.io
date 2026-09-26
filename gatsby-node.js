@@ -173,8 +173,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: templateTexto,
       context: {
         id: texto.id,
-        anteriorId: i === textos.length - 1 ? null : textos[i + 1].id,
-        proximoId: i === 0 ? null : textos[i - 1].id,
+        // Os dois textos vizinhos na cronologia — viram os cards "outros
+        // textos" no fim da página. Lista (e não dois ids) porque o GraphQL
+        // filtra com `in`, que aceita vazia nas pontas.
+        vizinhos: [
+          i === textos.length - 1 ? null : textos[i + 1].id,
+          i === 0 ? null : textos[i - 1].id,
+        ].filter(Boolean),
       },
     })
   })

@@ -3,18 +3,19 @@ import { StaticImage } from "gatsby-plugin-image"
 import site from "../config/site"
 
 /**
- * Rodapé. `solto` = variante das páginas internas (sem borda superior).
+ * Rodapé. Na home (`grade`) ele fica transparente sobre o quadriculado; nas
+ * páginas internas tem fundo ameixa.
  */
-const Rodape = ({ solto = false }) => (
-  <footer className={solto ? "rodape rodape--solto" : "rodape"}>
+const Rodape = ({ grade = false }) => (
+  <footer className={grade ? "rodape rodape--grade" : "rodape"}>
     <div className="rodape__interno">
       <div className="rodape__pessoa">
         <StaticImage
           className="rodape__foto"
           src="../images/victor-retrato.jpg"
           alt="Retrato de Victor Martinez, de camiseta preta, olhando para a câmera"
-          width={64}
-          height={64}
+          width={56}
+          height={56}
           quality={95}
           placeholder="none"
           layout="fixed"

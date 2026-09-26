@@ -4,9 +4,16 @@ import { graphql, Link } from "gatsby"
 import Seo from "../components/seo"
 import Topo from "../components/topo"
 import Rodape from "../components/rodape"
-import Campo from "../components/campo"
 import Email from "../components/email"
 import Selo from "../components/selo"
+import { Regua, Rotulo } from "../components/pecas"
+import {
+  CenaHeroi,
+  CenaAssunto,
+  CenaEstante,
+  CenaCaderno,
+  CenaRobo,
+} from "../components/cenas"
 import palestras from "../data/palestras"
 import { mesAno } from "../utils/data"
 import site from "../config/site"
@@ -14,35 +21,66 @@ import "../styles/style.css"
 
 const ASSUNTOS = [
   {
-    num: "01",
-    spot: "spot-engenharia-claro.svg",
     titulo: "Engenharia de Software",
     linha: "Entrega, qualidade e o custo real de cada decisão.",
   },
   {
-    num: "02",
-    spot: "spot-arquitetura-claro.svg",
     titulo: "Arquitetura de Software",
     linha: "Fronteiras, acoplamento e o que sustenta produção.",
   },
   {
-    num: "03",
-    spot: "spot-ia-claro.svg",
     titulo: "IA aplicada no time",
     linha: "O que acelerou, o que encareceu e onde ainda atrapalha.",
   },
   {
-    num: "04",
-    spot: "spot-gestao-claro.svg",
     titulo: "Gestão de times de tecnologia",
     linha:
       "Contratar bem, dar ritmo e ter as conversas difíceis na hora certa.",
   },
 ]
 
+/** Card de assunto: a cena só se move enquanto o ponteiro está em cima. */
+const Assunto = ({ indice, titulo, linha }) => {
+  const [on, setOn] = React.useState(false)
+  return (
+    // O hover só move as peças da cena (decorativa); o conteúdo do card não
+    // depende dele, então não há ação a expor para teclado.
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+    <li
+      className="assunto"
+      onMouseEnter={() => setOn(true)}
+      onMouseLeave={() => setOn(false)}
+    >
+      <CenaAssunto indice={indice} on={on} />
+      <div className="assunto__texto">
+        <h3 className="assunto__titulo">{titulo}</h3>
+        <p className="assunto__linha">{linha}</p>
+      </div>
+    </li>
+  )
+}
+
+const plural = (n, um, muitos) => `${n} ${n === 1 ? um : muitos}`
+
 const Home = ({ data }) => {
   const textos = data.textos.nodes
   const temas = data.temas.nodes
+  const [contato, setContato] = React.useState(false)
+  // Linha de texto em hover: a estante ao lado puxa o livro dela.
+  const [livro, setLivro] = React.useState(-1)
+
+  // Quantas notas cada tema tem abaixo dele (a árvore inteira, não só filhos).
+  const notasPorTema = React.useMemo(() => {
+    const m = new Map()
+    data.notas.nodes.forEach(n => {
+      if (n.fields.nivel === 0) return
+      m.set(n.fields.tema, (m.get(n.fields.tema) || 0) + 1)
+    })
+    return m
+  }, [data.notas.nodes])
+
+  // Linha do tempo em estilo log: ano vazio = mesma safra da anterior (nó menor).
+  const log = palestras.map((p, i) => ({ ...p, i, novoAno: Boolean(p.ano) }))
 
   return (
     <>
@@ -51,46 +89,39 @@ const Home = ({ data }) => {
       </a>
       <Topo />
 
-      <main id="conteudo">
-        <section className="heroi grao" id="topo" aria-labelledby="nome-victor">
-          <Campo densidade={1600} forca={5.2} />
-          <div className="heroi__conteudo">
+      <main id="conteudo" className="inicio grade">
+        <section className="heroi" id="topo" aria-labelledby="nome-victor">
+          <div className="heroi__texto">
+            <div className="heroi__kicker">
+              <p>{site.papel}</p>
+              <Regua />
+            </div>
             <h1 className="heroi__nome" id="nome-victor">
               <span>Victor</span>
               <span>Martinez</span>
             </h1>
-            <div className="heroi__base">
-              <p className="heroi__lead">
-                Construo software há doze anos e lidero times há quatro. De vez
-                em quando escrevo sobre o que vivo nesse trabalho — engenharia,
-                arquitetura, gestão e IA aplicada.
-              </p>
-              <p className="heroi__dica">passe o mouse pelo campo</p>
-            </div>
+            <p className="heroi__lead">
+              Construo software desde 2012, peça a peça. Hoje lidero times que
+              transformam esses blocos em resultado, e cada entrega deixa um
+              aprendizado novo na pilha.
+            </p>
           </div>
+          <CenaHeroi />
         </section>
 
-        <section
-          className="secao bloco--giz"
-          id="sobre"
-          aria-labelledby="tit-sobre"
-        >
+        <section className="secao" id="sobre" aria-labelledby="tit-sobre">
           <div className="interno">
-            <div className="regua">
-              <span className="regua__num">02</span>
-              <span className="regua__linha" aria-hidden="true"></span>
-              <span className="regua__nome">Sobre mim</span>
-            </div>
+            <Rotulo num="02" nome="Sobre mim" />
+            <h2 className="titulo titulo--folga" id="tit-sobre">
+              Desde 2012 construindo coisas que precisam ficar de pé.
+            </h2>
             <div className="sobre">
-              <div className="sobre__col">
-                <h2 className="titulo" id="tit-sobre">
-                  Doze anos construindo coisas que precisam ficar de pé.
-                </h2>
+              <div className="sobre__foto-col">
                 <img
                   className="sobre__foto"
                   src="/assets/img/hero-victor-wide.jpg"
                   srcSet="/assets/img/hero-victor-wide-1080.jpg 1080w, /assets/img/hero-victor-wide.jpg 1536w"
-                  sizes="(min-width: 900px) 50vw, 100vw"
+                  sizes="(min-width: 900px) 58vw, 100vw"
                   alt="Victor Martinez, de camiseta preta, trabalhando no MacBook sobre uma mesa de madeira"
                   width="1536"
                   height="1024"
@@ -123,248 +154,190 @@ const Home = ({ data }) => {
                   <strong>decido junto com o time</strong> e coleciono
                   aprendizados ao longo do caminho.
                 </p>
-                <div className="numeros">
-                  <div className="numero">
-                    <p className="numero__valor">+12</p>
-                    <p className="numero__rotulo">anos de código</p>
-                  </div>
-                  <div className="numero">
-                    <p className="numero__valor">+04</p>
-                    <p className="numero__rotulo">liderando times</p>
-                  </div>
-                  <div className="numero">
-                    <p className="numero__valor">+5</p>
-                    <p className="numero__rotulo">startups impactadas</p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section
-          className="secao bloco--ameixa"
-          id="assuntos"
-          aria-labelledby="tit-assuntos"
-        >
+        <section className="secao" id="assuntos" aria-labelledby="tit-assuntos">
           <div className="interno">
-            <div className="regua">
-              <span className="regua__num">03</span>
-              <span className="regua__linha" aria-hidden="true"></span>
-              <span className="regua__nome">Assuntos</span>
-            </div>
-            <h2 className="titulo" id="tit-assuntos">
+            <Rotulo num="03" nome="Assuntos" />
+            <h2 className="titulo titulo--folga" id="tit-assuntos">
               Quatro assuntos que eu acompanho de perto.
             </h2>
             <ul className="assuntos">
-              {ASSUNTOS.map(a => (
-                <li className="assunto" key={a.num}>
-                  <p className="assunto__num">{a.num}</p>
-                  <img
-                    className="assunto__spot"
-                    src={`/assets/img/${a.spot}`}
-                    alt=""
-                    width="132"
-                    height="132"
-                    loading="lazy"
-                    decoding="async"
-                    aria-hidden="true"
-                  />
-                  <h3 className="assunto__titulo">{a.titulo}</h3>
-                  <p className="assunto__linha">{a.linha}</p>
-                </li>
+              {ASSUNTOS.map((a, i) => (
+                <Assunto
+                  indice={i}
+                  titulo={a.titulo}
+                  linha={a.linha}
+                  key={a.titulo}
+                />
               ))}
             </ul>
           </div>
         </section>
 
         <section
-          className="secao secao--compacta bloco--giz"
+          className="secao"
           id="palestras"
           aria-labelledby="tit-palestras"
         >
           <div className="interno">
-            <div className="regua">
-              <span className="regua__num">04</span>
-              <span className="regua__linha" aria-hidden="true"></span>
-              <span className="regua__nome">Palestras</span>
-            </div>
+            <Rotulo num="04" nome="Palestras" />
             <h2 className="titulo" id="tit-palestras">
               Palestras e conversas ao longo do caminho.
             </h2>
-            <p className="lead">
+            <p className="lead lead--lista">
               Desde 2016, em eventos, meetups e dentro de empresas.
             </p>
-            <ul className="palestras">
-              {palestras.map((p, i) => (
-                <li className="palestra" key={`${p.titulo}-${i}`}>
-                  <span className="palestra__ano">{p.ano}</span>
-                  <span className="palestra__evento">{p.evento}</span>
-                  <span className="palestra__titulo">{p.titulo}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section
-          className="secao bloco--nevoa"
-          id="textos"
-          aria-labelledby="tit-textos"
-        >
-          <div className="interno">
-            <div className="regua">
-              <span className="regua__num">05</span>
-              <span className="regua__linha" aria-hidden="true"></span>
-              <span className="regua__nome">Textos</span>
-            </div>
-            <h2 className="titulo" id="tit-textos">
-              Textos
-            </h2>
-            <p className="lead">Textos mais longos, sem periodicidade.</p>
-            {textos.length > 0 ? (
-              <ul
-                className="lista"
-                style={{ marginTop: "clamp(36px, 4.6vw, 56px)" }}
-              >
-                {textos.map(t => (
-                  <li key={t.id}>
-                    <Link
-                      className="lista__item"
-                      to={`/textos/${t.fields.slug}/`}
-                    >
-                      <span className="lista__meta">
-                        {mesAno(t.frontmatter.date)} · {t.timeToRead} min
-                      </span>
-                      <span>
-                        <span className="lista__titulo">
-                          {t.frontmatter.title}
-                        </span>
-                        <span className="lista__resumo">
-                          {t.frontmatter.description || t.excerpt}
-                        </span>
-                      </span>
-                      <span className="lista__seta" aria-hidden="true">
-                        →
-                      </span>
-                    </Link>
+            <div className="log">
+              <ol className="log__lista">
+                {log.map(p => (
+                  <li className="log__item" key={`${p.titulo}-${p.i}`}>
+                    <span className="log__linha" aria-hidden="true" />
+                    <span
+                      className={
+                        p.novoAno ? "log__no" : "log__no log__no--menor"
+                      }
+                      aria-hidden="true"
+                    />
+                    <span className="log__ano">{p.ano}</span>
+                    <span className="log__texto">
+                      <span className="log__evento">{p.evento}</span>
+                      <span className="log__titulo">{p.titulo}</span>
+                    </span>
                   </li>
                 ))}
-              </ul>
-            ) : (
-              <p
-                className="lead"
-                style={{ marginTop: "clamp(36px, 4.6vw, 56px)" }}
-              >
-                Nada publicado por aqui ainda.
-              </p>
-            )}
-            {textos.length > 0 ? (
-              <Link className="todos" to="/textos/">
-                Todos os textos →
-              </Link>
-            ) : null}
+              </ol>
+            </div>
           </div>
         </section>
 
-        <section
-          className="secao bloco--giz"
-          id="notas"
-          aria-labelledby="tit-notas"
-        >
-          <div className="interno">
-            <div className="regua">
-              <span className="regua__num">06</span>
-              <span className="regua__linha" aria-hidden="true"></span>
-              <span className="regua__nome">Estudos</span>
-            </div>
-            <h2 className="titulo" id="tit-notas">
-              Notas de estudo
-            </h2>
-            <p className="lead">
-              Anotações dos meus estudos, por tema — algumas em aberto, outras
-              já revisadas.
-            </p>
-            {temas.length > 0 ? (
-              <>
-                <ul
-                  className="lista"
-                  style={{ marginTop: "clamp(36px, 4.6vw, 56px)" }}
-                >
-                  {temas.map(t => (
-                    <li key={t.id}>
-                      <Link className="lista__item" to={t.fields.caminho}>
-                        <span className="lista__meta">
-                          <Selo maturidade={t.frontmatter.maturidade} />
-                        </span>
-                        <span>
-                          <span className="lista__titulo">
+        <section className="secao" id="textos" aria-labelledby="tit-textos">
+          <div className="interno estudos">
+            <div>
+              <Rotulo num="05" nome="Textos" />
+              <h2 className="titulo" id="tit-textos">
+                Textos
+              </h2>
+              <p className="lead lead--temas">
+                Textos mais longos, sem periodicidade.
+              </p>
+              {textos.length > 0 ? (
+                <>
+                  <ul className="temas">
+                    {textos.map((t, i) => (
+                      <li key={t.id}>
+                        <Link
+                          className="tema"
+                          to={`/textos/${t.fields.slug}/`}
+                          onMouseEnter={() => setLivro(i)}
+                          onMouseLeave={() => setLivro(-1)}
+                        >
+                          <span className="tema__nome">
                             {t.frontmatter.title}
                           </span>
-                          {t.frontmatter.description ? (
-                            <span className="lista__resumo">
-                              {t.frontmatter.description}
-                            </span>
-                          ) : null}
-                        </span>
-                        <span className="lista__seta" aria-hidden="true">
-                          →
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-                <Link className="todos" to="/notas-de-estudo/">
-                  Todas as notas →
-                </Link>
-              </>
-            ) : (
-              <p
-                className="lead"
-                style={{ marginTop: "clamp(36px, 4.6vw, 56px)" }}
-              >
-                Nada por aqui ainda.
-              </p>
-            )}
+                          <span className="tema__meta tema__meta--fixa">
+                            {mesAno(t.frontmatter.date)} · {t.timeToRead} min
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link className="botao botao--solto" to="/textos/">
+                    Todos os textos →
+                  </Link>
+                </>
+              ) : (
+                <p className="vazio">› nada publicado por aqui ainda</p>
+              )}
+            </div>
+            <CenaEstante livro={livro} />
           </div>
         </section>
 
-        <section
-          className="secao bloco--ameixa"
-          id="contato"
-          aria-labelledby="tit-contato"
-        >
-          <div className="interno">
-            <div className="regua">
-              <span className="regua__num">07</span>
-              <span className="regua__linha" aria-hidden="true"></span>
-              <span className="regua__nome">Contato</span>
+        <section className="secao" id="notas" aria-labelledby="tit-notas">
+          <div className="interno estudos">
+            <div>
+              <Rotulo num="06" nome="Estudos" />
+              <h2 className="titulo" id="tit-notas">
+                Notas de estudo
+              </h2>
+              <p className="lead lead--temas">
+                Anotações dos meus estudos, por tema — algumas em aberto, outras
+                já revisadas.
+              </p>
+              {temas.length > 0 ? (
+                <>
+                  <ul className="temas">
+                    {temas.map(t => {
+                      const n = notasPorTema.get(t.fields.tema) || 0
+                      return (
+                        <li key={t.id}>
+                          <Link className="tema" to={t.fields.caminho}>
+                            <span className="tema__nome">
+                              {t.frontmatter.title}
+                            </span>
+                            <span className="tema__meta">
+                              {n > 0 ? (
+                                <span>{plural(n, "nota", "notas")}</span>
+                              ) : null}
+                              <Selo maturidade={t.frontmatter.maturidade} />
+                            </span>
+                          </Link>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                  <Link className="botao botao--solto" to="/notas-de-estudo/">
+                    Todas as notas →
+                  </Link>
+                </>
+              ) : (
+                <p className="vazio">› nada por aqui ainda</p>
+              )}
             </div>
-            <div className="contato">
-              <div className="contato__texto">
+            <CenaCaderno />
+          </div>
+        </section>
+
+        <section className="secao" id="contato" aria-labelledby="tit-contato">
+          {/* Idem: o hover só anima o robô. */}
+          {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+          <div
+            className="interno contato"
+            onMouseEnter={() => setContato(true)}
+            onMouseLeave={() => setContato(false)}
+          >
+            <div className="contato__texto">
+              <div>
+                <Rotulo num="07" nome="Contato" />
                 <h2 className="contato__titulo" id="tit-contato">
                   Para conversar, palestrar ou aconselhar,
                 </h2>
-                <p className="contato__lead">
+                <p className="lead lead--contato">
                   me mande um e-mail ou me chame no LinkedIn.
                 </p>
               </div>
-              <div className="contato__links">
-                <Email />
+              <div className="contato__acoes">
+                <Email className="botao" />
                 <a
+                  className="botao botao--nevoa"
                   href={site.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  linkedin.com/in/vcrmartinez
+                  LinkedIn →
                 </a>
               </div>
             </div>
+            <CenaRobo on={contato} />
           </div>
         </section>
       </main>
 
-      <Rodape />
+      <Rodape grade />
     </>
   )
 }
@@ -403,17 +376,30 @@ export const query = graphql`
         frontmatter: { publicado: { ne: false } }
       }
       sort: { frontmatter: { atualizado: DESC } }
-      limit: 4
+      limit: 6
     ) {
       nodes {
         id
         fields {
           caminho
+          tema
         }
         frontmatter {
           title
-          description
           maturidade
+        }
+      }
+    }
+    notas: allMarkdownRemark(
+      filter: {
+        fields: { colecao: { eq: "notas" } }
+        frontmatter: { publicado: { ne: false } }
+      }
+    ) {
+      nodes {
+        fields {
+          tema
+          nivel
         }
       }
     }

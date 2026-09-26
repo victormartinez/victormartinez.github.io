@@ -8,25 +8,14 @@ import * as React from "react"
  * São dois estágios de propósito: a diferença entre "comecei" e "estou no meio"
  * dá trabalho de manter e não muda nada para quem lê.
  *
- * Cada estágio tem três formas, da mais curta para a mais longa:
- * - `rotulo`      o selo em si
- * - `glosa`       fica ao lado do selo na página da nota, para o significado não
- *                 depender de tooltip (que não existe no celular)
- * - `explicacao`  a legenda do índice, onde cabe a frase inteira
+ * Cada estágio tem duas formas:
+ * - `rotulo`  o selo em si
+ * - `glosa`   fica ao lado do selo na página da nota, para o significado não
+ *             depender de tooltip (que não existe no celular)
  */
 export const ESTAGIOS = {
-  "em-aberto": {
-    rotulo: "Em aberto",
-    glosa: "ainda mexendo",
-    explicacao:
-      "Anotação que eu ainda estou trabalhando: pode estar incompleta ou ter erro.",
-  },
-  revisada: {
-    rotulo: "Revisada",
-    glosa: "reli e confio",
-    explicacao:
-      "Anotação que eu reli e em que confio — dentro do que eu sabia na data da última revisão.",
-  },
+  "em-aberto": { rotulo: "Em aberto", glosa: "ainda mexendo" },
+  revisada: { rotulo: "Revisada", glosa: "reli e confio" },
 }
 
 export const MATURIDADES = Object.keys(ESTAGIOS)
@@ -50,19 +39,5 @@ export const SeloComGlosa = ({ maturidade }) => {
     </>
   )
 }
-
-/** Legenda dos dois estágios. Usada uma vez, no índice. */
-export const SeloLegenda = () => (
-  <dl className="legenda">
-    {MATURIDADES.map(chave => (
-      <div className="legenda__par" key={chave}>
-        <dt>
-          <Selo maturidade={chave} />
-        </dt>
-        <dd>{ESTAGIOS[chave].explicacao}</dd>
-      </div>
-    ))}
-  </dl>
-)
 
 export default Selo

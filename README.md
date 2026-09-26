@@ -10,6 +10,9 @@ Site pessoal de Victor Martinez — engenharia contada de dentro.
 - Fontes próprias em **woff2** subsetadas (Space Grotesk, DM Sans, JetBrains Mono),
   com `font-display: swap` e `preload` no `<head>`
 - CSS único e global (`src/styles/style.css`) — sem CSS-in-JS, sem framework
+- Layout "Lego isométrico": fundo quadriculado e cenas de blocos em CSS 3D, sem
+  canvas nem imagem. O motor está em `src/components/lego.js` (um bloco =
+  três faces + pinos) e as cenas da home em `src/components/cenas.js`
 - Sitemap, `manifest.webmanifest` e RSS (`/rss.xml`) gerados no build
 - Node: ver `.nvmrc`
 
