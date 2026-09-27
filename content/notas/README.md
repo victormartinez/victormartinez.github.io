@@ -17,7 +17,32 @@ content/notas/
 Só o `index.md` da pasta vira nota. Qualquer outro `.md` daqui — este README
 inclusive — é ignorado pelo build.
 
-## Criando uma nota
+## Escrevendo no editor
+
+```
+make editor        # abre http://localhost:8100
+```
+
+O editor (que também edita os textos do blog, na aba Textos) lista a árvore de
+notas, cria nota e sub-nota, e **salva sozinho**: um
+instante depois que você para de digitar, o texto está no `index.md` da nota.
+Não há botão de salvar (`Cmd+S` força na hora, se quiser). Ele também:
+
+- mostra a prévia ao lado com o CSS do site — é a página como ela vai ao ar;
+- cuida das imagens: cole, arraste ou use o botão Imagem. O arquivo vai para a
+  pasta da nota, foto maior que 2000 px é reduzida, HEIC vira JPG quando o
+  navegador consegue abrir, e o editor pergunta o que a imagem mostra para
+  preencher a descrição — sem precisar mexer no Markdown;
+- guarda cada mudança também no navegador: se o editor cair antes de gravar,
+  a nota oferece recuperar o texto na próxima vez que abrir;
+- não passa por cima de edição feita em outro programa: se o arquivo mudou no
+  disco desde que foi aberto, pergunta qual versão fica.
+
+**Salvar não publica.** O editor grava em `content/notas/`; quem manda para o ar
+continua sendo o `make publicar`. Com `make dev` rodando em outro terminal, o
+link "Ver no site" abre a página de verdade, que recarrega a cada gravação.
+
+## Criando uma nota pela linha de comando
 
 ```
 make nova-nota CAMINHO="kubernetes" TITULO="Kubernetes"

@@ -25,6 +25,7 @@ carrega o **nvm** e seleciona a versão do `.nvmrc` antes de rodar. Não precisa
 ```bash
 make                            # lista os comandos
 make novo-texto TITULO="..."    # cria a pasta e o frontmatter de um texto
+make editor                     # editor de notas e textos, salva sozinho (localhost:8100)
 make dev                        # http://localhost:8000, com recarga
 make build                      # gera public/
 make servir                     # serve o build em http://localhost:9000
@@ -38,7 +39,21 @@ funcionando para quem preferir — só exigem `nvm use` antes.
 
 ## Publicar um texto novo
 
-O caminho curto:
+O caminho mais curto é o editor:
+
+```bash
+make editor        # http://localhost:8100 → aba Textos → Novo texto
+```
+
+Ele cria a pasta, preenche o frontmatter, salva sozinho enquanto você escreve e
+mostra a prévia com o CSS do site. **Imagem é com ele também**: cole, arraste ou
+use o botão Imagem — o arquivo vai para a pasta do texto, foto grande é
+reduzida para 2000 px de largura, formato que o site não aceita (HEIC) é
+convertido para JPG quando o navegador consegue abrir, e o editor pergunta o que
+a imagem mostra para preencher a descrição. Quando estiver pronto, ligue
+"Publicado" e rode `make publicar`.
+
+Pela linha de comando:
 
 ```bash
 make novo-texto TITULO="Como eu decido quando parar de refatorar"

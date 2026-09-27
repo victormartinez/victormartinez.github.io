@@ -11,12 +11,13 @@ SHELL := /bin/bash
 NODE  := ./scripts/com-node.sh
 
 .DEFAULT_GOAL := ajuda
-.PHONY: ajuda novo-texto nova-nota dev build servir limpar deps publicar
+.PHONY: ajuda novo-texto nova-nota editor dev build servir limpar deps publicar
 
 ajuda:
 	@echo ""
 	@echo "  make novo-texto TITULO=\"...\"   cria a pasta e o frontmatter de um texto"
 	@echo "  make nova-nota CAMINHO=\"...\"   cria uma anotação de estudo (já nasce no ar)"
+	@echo "  make editor                     editor de notas e textos no navegador, salva sozinho (localhost:8100)"
 	@echo "  make dev                        servidor local com recarga (localhost:8000)"
 	@echo "  make build                      build de produção"
 	@echo "  make servir                     serve o build local (localhost:9000)"
@@ -46,6 +47,9 @@ endif
 		$(if $(TITULO),--titulo "$(TITULO)") \
 		$(if $(DESCRICAO),--descricao "$(DESCRICAO)") \
 		$(if $(MATURIDADE),--maturidade "$(MATURIDADE)")
+
+editor:
+	@$(if $(PORTA),PORTA=$(PORTA)) $(NODE) node scripts/editor-notas/servidor.mjs
 
 dev:
 	@$(NODE) npm run develop

@@ -1,0 +1,190 @@
+/* Editor do conteúdo do site — carregado depois do CSS do site, de quem herda a paleta
+   (Ameixa e Vidro), as fontes e as classes da prévia (.pagina, .post__corpo,
+   .selo, .botao). Tudo daqui é prefixado com "ed-" para não colidir. */
+
+.ed{
+  --lateral:280px;--topo:56px;
+  --ambar-claro:#E8C07A;--rosa:#F2A5C4;
+  height:100vh;height:100dvh;display:grid;grid-template-rows:var(--topo) minmax(0,1fr);overflow:hidden;
+  font-size:16px;line-height:1.55;
+}
+.ed [hidden]{display:none !important}
+/* Campos que só existem numa das coleções (o formulário e o diálogo dizem qual). */
+[data-colecao=notas] [data-so=textos],[data-colecao=textos] [data-so=notas]{display:none !important}
+.ed input{color-scheme:dark}
+
+/* ---------------------------------------------------------------- topo */
+.ed-topo{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 20px;background:var(--ameixa);border-bottom:1px solid var(--linha-escura)}
+.ed-marca{margin:0;display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;font-size:17px;color:var(--giz);letter-spacing:-.01em}
+.ed-marca__peca{width:28px;height:18px;fill:var(--menta)}
+.ed-marca__onde{font-family:var(--corpo);font-weight:400;font-size:14px;color:var(--nevoa-escura)}
+
+/* O status é uma peça: flutua enquanto há algo por gravar e encaixa quando o
+   disco confirma. É o único movimento da página, e só acontece por causa de
+   uma ação sua. */
+.ed-status{display:flex;align-items:center;gap:12px;min-width:0;font-size:14px;color:var(--nevoa)}
+.ed-status__texto{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ed-status__peca{position:relative;flex:none;width:30px;height:12px;margin-top:4px;border-radius:2px;background:var(--ameixa-escura);transition:background .2s,box-shadow .2s,transform .25s var(--suave)}
+.ed-status__peca i{position:absolute;top:-4px;width:8px;height:4px;border-radius:2px 2px 0 0;background:inherit;box-shadow:inherit}
+.ed-status__peca i:first-child{left:4px}.ed-status__peca i:last-child{right:4px}
+.ed-status[data-estado=pendente] .ed-status__peca{background:transparent;box-shadow:inset 0 0 0 2px var(--nevoa-escura);transform:translateY(-5px)}
+.ed-status[data-estado=salvando] .ed-status__peca{background:var(--ambar-claro);transform:translateY(-5px)}
+.ed-status[data-estado=salvo] .ed-status__peca{background:var(--menta);animation:ed-encaixe .32s var(--suave)}
+.ed-status[data-estado=salvo] .ed-status__texto{color:var(--giz)}
+.ed-status[data-estado=erro] .ed-status__peca,.ed-status[data-estado=conflito] .ed-status__peca{background:var(--rosa);transform:translateY(-5px) rotate(-8deg)}
+.ed-status[data-estado=erro] .ed-status__texto,.ed-status[data-estado=conflito] .ed-status__texto{color:var(--rosa)}
+@keyframes ed-encaixe{0%{transform:translateY(-5px)}70%{transform:translateY(1px)}100%{transform:translateY(0)}}
+
+/* ---------------------------------------------------------------- estrutura */
+.ed-corpo{display:grid;grid-template-columns:var(--lateral) minmax(0,1fr);min-height:0}
+.ed-lateral{display:flex;flex-direction:column;gap:14px;min-height:0;padding:20px 0 0;background:var(--ameixa);border-right:1px solid var(--linha-escura)}
+.ed-colecoes{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:0 20px;padding:3px;border-radius:8px;background:var(--tinta)}
+.ed-colecoes button{padding:7px 0;border:0;border-radius:6px;background:none;color:var(--nevoa-escura);font-family:var(--display);font-weight:600;font-size:15px;cursor:pointer}
+.ed-colecoes button:hover{color:var(--giz)}
+.ed-colecoes button[aria-pressed=true]{background:var(--ameixa-escura);color:var(--giz)}
+.ed-nova{margin:0 20px;text-align:center}
+.ed-busca{margin:0 20px;padding:9px 12px;border:1px solid var(--linha-escura);border-radius:8px;background:var(--tinta);color:var(--giz);font:inherit;font-size:15px}
+.ed-busca::placeholder{color:var(--nevoa-escura)}
+.ed-busca:focus-visible{outline-offset:0}
+
+/* ---------------------------------------------------------------- árvore */
+.ed-arvore{flex:1;min-height:0;overflow-y:auto;padding:4px 0 24px}
+.ed-arvore__vazio{margin:8px 20px;font-size:14px;color:var(--nevoa-escura)}
+.ed-item{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:0 10px;padding:7px 20px 7px calc(20px + var(--nivel,0) * 16px);border-left:3px solid transparent;color:var(--nevoa);text-decoration:none;font-family:var(--display);font-weight:500;font-size:15px;line-height:1.3}
+.ed-item:hover{color:var(--giz);background:rgba(216,211,222,.05)}
+.ed-item--ativa{color:var(--giz);font-weight:700;background:var(--ameixa-escura);border-left-color:var(--menta)}
+.ed-item__nome{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ed-item__onde{grid-column:1;font-family:var(--corpo);font-weight:400;font-size:12px;color:var(--nevoa-escura)}
+.ed-item__marcas{grid-column:2;grid-row:1;display:flex;gap:5px}
+/* Marcas: pino cheio = revisada, pino vazado = em aberto, rosa = fora do site,
+   âmbar = falta o tema acima (a nota não entra no site). */
+.ed-marca-item{width:9px;height:9px;border-radius:50%}
+.ed-marca-item--revisada{background:var(--menta)}
+.ed-marca-item--em-aberto{box-shadow:inset 0 0 0 2px var(--nevoa-escura)}
+.ed-marca-item--fora{box-shadow:inset 0 0 0 2px var(--rosa)}
+.ed-marca-item--orfa{border-radius:1px;background:var(--ambar-claro)}
+.ed-marca-item--rascunho{box-shadow:inset 0 0 0 2px var(--nevoa-escura);border-radius:2px}
+
+/* ---------------------------------------------------------------- área principal */
+.ed-principal{min-height:0;display:flex;flex-direction:column}
+.ed-inicio{margin:auto;max-width:560px;padding:40px 24px}
+.ed-inicio h1{margin:0 0 16px;font-family:var(--display);font-weight:700;font-size:clamp(30px,3.4vw,44px);line-height:1.1;letter-spacing:-.02em;color:var(--giz)}
+.ed-inicio p{margin:0 0 28px;font-size:17px;line-height:1.65}
+.ed-inicio code{font-family:var(--mono);font-size:.9em;color:var(--menta)}
+
+.ed-nota{flex:1;min-height:0;display:flex;flex-direction:column}
+.ed-cabeca{padding:22px 28px 14px;display:flex;flex-direction:column;gap:4px}
+.ed-trilha{display:flex;flex-wrap:wrap;gap:6px;font-size:13px;color:var(--nevoa-escura)}
+.ed-trilha a{color:var(--nevoa-escura);text-decoration:none}
+.ed-trilha a:hover{color:var(--giz);text-decoration:underline}
+.ed-trilha__sep{opacity:.6}
+.ed-titulo,.ed-descricao{width:100%;padding:2px 0;border:0;background:none;color:var(--giz);font:inherit}
+.ed-titulo{font-family:var(--display);font-weight:700;font-size:clamp(26px,2.6vw,36px);line-height:1.15;letter-spacing:-.02em}
+.ed-descricao{font-size:16px;color:var(--nevoa)}
+.ed-titulo::placeholder,.ed-descricao::placeholder{color:var(--lavanda)}
+.ed-titulo:focus-visible,.ed-descricao:focus-visible{outline:0;box-shadow:0 2px 0 var(--menta)}
+
+.ed-meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:12px}
+.ed-estagio{display:flex;align-items:center;gap:8px;margin:0;padding:0;border:0}
+.ed-estagio legend{float:left;margin-right:4px;font-size:14px;color:var(--nevoa-escura)}
+.ed-estagio label{position:relative;cursor:pointer}
+.ed-estagio input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.ed-estagio .selo{opacity:.35;transition:opacity .15s}
+.ed-estagio .selo--em-aberto{background:var(--nevoa);color:var(--tinta)}
+.ed-estagio input:checked+.selo{opacity:1}
+.ed-estagio label:hover .selo{opacity:.75}
+.ed-estagio input:checked+.selo,.ed-estagio label:hover input:checked+.selo{opacity:1}
+.ed-estagio input:focus-visible+.selo{outline:3px solid var(--menta);outline-offset:2px}
+
+.ed-campo{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--nevoa-escura)}
+.ed-campo input,.ed-campo select{padding:6px 10px;border:1px solid var(--linha-escura);border-radius:6px;background:var(--tinta);color:var(--giz);font:inherit;font-size:15px}
+#ordem{width:76px;font-family:var(--mono);font-size:14px}
+#ordem::placeholder{color:var(--lavanda)}
+
+.ed-chave{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--nevoa);cursor:pointer}
+.ed-chave input{appearance:none;position:relative;width:34px;height:20px;margin:0;border-radius:10px;background:var(--ameixa-escura);cursor:pointer;transition:background .15s}
+.ed-chave input::after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:var(--nevoa-escura);transition:transform .15s var(--suave),background .15s}
+.ed-chave input:checked{background:var(--menta-escura)}
+.ed-chave input:checked::after{transform:translateX(14px);background:var(--giz)}
+.ed-chave input:not(:checked)+span{color:var(--rosa)}
+/* Rascunho é o estado normal de um texto em andamento, não um alerta. */
+.ed-chave--publicar input:not(:checked)+span{color:var(--nevoa-escura)}
+.ed-chave--publicar input:checked+span{color:var(--menta)}
+#data{font-family:var(--mono);font-size:14px}
+#categoria{width:150px}
+
+.ed-acoes{display:flex;gap:18px;margin-left:auto}
+.ed-sub{padding:0;border:0;background:none;color:var(--menta);font-size:14px;text-decoration:none;cursor:pointer}
+.ed-sub:hover{color:var(--giz);text-decoration:underline}
+
+/* ---------------------------------------------------------------- modos */
+.ed-barra{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:0 28px}
+.ed-modos{display:flex;gap:2px;padding:3px;border-radius:8px;background:var(--ameixa)}
+.ed-imagem{display:flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--linha-escura);border-radius:8px;background:none;color:var(--nevoa);font-size:14px;cursor:pointer}
+.ed-imagem:hover{color:var(--giz);border-color:var(--nevoa-escura)}
+.ed-imagem svg{width:18px;height:15px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round}
+.ed-modos button{padding:5px 12px;border:0;border-radius:6px;background:none;color:var(--nevoa-escura);font-size:13px;cursor:pointer}
+.ed-modos button:hover{color:var(--giz)}
+.ed-modos button[aria-pressed=true]{background:var(--ameixa-escura);color:var(--giz)}
+
+/* ---------------------------------------------------------------- fonte e prévia */
+.ed-area{position:relative;flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);margin-top:12px;border-top:1px solid var(--linha-escura)}
+.ed-area[data-modo=escrever]{grid-template-columns:minmax(0,1fr)}
+.ed-area[data-modo=escrever] .ed-previa{display:none}
+.ed-area[data-modo=previa]{grid-template-columns:minmax(0,1fr)}
+.ed-area[data-modo=previa] .ed-fonte{display:none}
+
+.ed-fonte{width:100%;height:100%;padding:24px 28px 40vh;border:0;resize:none;background:var(--tinta);color:var(--nevoa);caret-color:var(--menta);font-family:var(--mono);font-size:14.5px;line-height:1.75;tab-size:2}
+.ed-area[data-modo=escrever] .ed-fonte{padding-left:max(28px,calc((100% - 78ch) / 2));padding-right:max(28px,calc((100% - 78ch) / 2))}
+.ed-fonte::placeholder{color:var(--lavanda)}
+.ed-fonte:focus-visible{outline:0}
+
+.ed-previa{min-height:0;overflow-y:auto;padding:32px clamp(24px,3vw,48px) 40vh}
+.ed-previa .post__corpo{max-width:760px;margin:0 auto;font-size:17px}
+.ed-previa__vazia{color:var(--cinza);font-size:15px}
+/* Arrastando um arquivo por cima: a área inteira aceita. */
+.ed-area--soltando{outline:3px dashed var(--menta);outline-offset:-10px}
+/* Recado depois de anexar imagem: onde escrever a descrição, o que foi reduzido. */
+.ed-dica{position:absolute;left:20px;bottom:20px;z-index:2;display:flex;flex-direction:column;gap:10px;width:min(560px,calc(100% - 40px));margin:0;padding:12px 16px;border-radius:8px;background:var(--giz);color:var(--tinta);font-size:14px;line-height:1.5;box-shadow:0 5px 0 #B9B2C2}
+.ed-dica p{margin:0}
+.ed-dica__alt{display:flex;flex-wrap:wrap;gap:8px}
+.ed-dica__alt input{flex:1 1 220px;min-width:0;padding:8px 10px;border:1px solid var(--linha-clara-forte);border-radius:6px;background:var(--branco);color:var(--tinta);font:inherit;font-size:15px;color-scheme:light}
+.ed-dica__alt input:focus-visible{outline:3px solid var(--pinheiro);outline-offset:1px}
+.ed-dica__alt .botao{padding:8px 14px;font-size:13px}
+
+/* ---------------------------------------------------------------- avisos */
+.ed-aviso{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;margin:16px 28px 0;padding:12px 16px;border-radius:8px;background:var(--ameixa-escura);border-left:4px solid var(--ambar-claro);color:var(--giz);font-size:15px}
+.ed-aviso p{margin:0;max-width:70ch}
+.ed-aviso__botoes{display:flex;gap:12px}
+.ed-aviso .botao{padding:8px 14px;font-size:13px}
+
+/* ---------------------------------------------------------------- nova nota */
+.ed-dialogo{width:min(480px,calc(100vw - 32px));padding:28px;border:0;border-radius:12px;background:var(--ameixa);color:var(--nevoa);box-shadow:0 8px 0 var(--ameixa-escura)}
+.ed-dialogo::backdrop{background:rgba(28,23,32,.7)}
+.ed-dialogo h2{margin:0 0 20px;font-family:var(--display);font-size:24px;color:var(--giz);letter-spacing:-.01em}
+.ed-campo--bloco{flex-direction:column;align-items:stretch;gap:6px;margin-bottom:14px}
+.ed-dialogo__url{margin:0 0 4px;font-family:var(--mono);font-size:13px;color:var(--nevoa-escura);overflow-wrap:anywhere}
+.ed-dialogo__erro{min-height:1.5em;margin:0 0 12px;font-size:14px;color:var(--rosa)}
+.ed-dialogo__botoes{display:flex;justify-content:flex-end;gap:12px}
+
+/* ---------------------------------------------------------------- telas estreitas */
+@media(max-width:900px){
+  .ed{height:auto;overflow:visible;grid-template-rows:auto auto}
+  .ed-topo{position:sticky;top:0;z-index:10;min-height:var(--topo)}
+  .ed-marca__onde{display:none}
+  .ed-corpo{grid-template-columns:minmax(0,1fr)}
+  .ed-lateral{padding-bottom:12px;border-right:0;border-bottom:1px solid var(--linha-escura)}
+  .ed-arvore{max-height:32vh}
+  .ed-cabeca,.ed-aviso{margin-left:0;margin-right:0;padding-left:16px;padding-right:16px}
+  .ed-aviso{margin:12px 16px 0}
+  .ed-barra{margin:0 16px}
+  .ed-acoes{margin-left:0}
+  .ed-area,.ed-area[data-modo]{grid-template-columns:minmax(0,1fr)}
+  .ed-fonte{min-height:60vh;padding:16px 16px 20vh}
+  .ed-previa{padding:24px 16px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .ed-status__peca,.ed-chave input,.ed-chave input::after{transition:none}
+  .ed-status[data-estado] .ed-status__peca{animation:none;transform:none}
+}
