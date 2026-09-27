@@ -60,7 +60,7 @@ const NaoEncontrada = () => {
               </p>
               <div className="perdida__acoes">
                 <Link className="botao" to="/">
-                  Voltar ao início →
+                  ← Voltar ao início
                 </Link>
                 <nav className="perdida__atalhos" aria-label="Outras páginas">
                   <Link to="/textos/">Textos</Link>
