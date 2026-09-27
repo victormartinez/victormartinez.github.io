@@ -8,18 +8,24 @@
  * A pasta nasce como AAAA-MM-DD-slug; o Gatsby tira o prefixo de data e publica
  * em /textos/<slug>/ (ver slugDaPasta em gatsby-node.js).
  */
-import { mkdir, writeFile, access } from "node:fs/promises"
-import { join, relative } from "node:path"
-
-const CATEGORIA_PADRAO = "Engenharia"
-const RAIZ = new URL("..", import.meta.url).pathname
+import { relative } from "node:path"
+import { RAIZ, hoje, slugificar } from "./lib/markdown.mjs"
+import {
+  CATEGORIA_PADRAO,
+  TextoJaExiste,
+  arquivoDoTexto,
+  criarTexto,
+  pastaDoTexto,
+} from "./lib/textos.mjs"
 
 const args = process.argv.slice(2)
 const opcao = nome => {
   const i = args.indexOf(`--${nome}`)
-  return i === -1 ? null : args[i + 1] ?? null
+  return i === -1 ? null : (args[i + 1] ?? null)
 }
-const titulo = args.filter((a, i) => !a.startsWith("--") && !args[i - 1]?.startsWith("--"))[0]
+const titulo = args.filter(
+  (a, i) => !a.startsWith("--") && !args[i - 1]?.startsWith("--"),
+)[0]
 
 if (!titulo) {
   console.error(`
@@ -47,16 +53,17 @@ if (!slug) {
   process.exit(1)
 }
 
-const pasta = join(RAIZ, "content", "blog", `${data}-${slug}`)
-const arquivo = join(pasta, "index.md")
-
-if (await existe(pasta)) {
-  console.error(`Já existe: ${relative(RAIZ, pasta)}\nEscolha outro título ou apague a pasta.`)
+let pasta
+try {
+  pasta = await criarTexto(slug, { titulo, data, descricao, categoria })
+} catch (e) {
+  if (!(e instanceof TextoJaExiste)) throw e
+  console.error(
+    `Já existe: ${relative(RAIZ, pastaDoTexto(e.pasta))}\nEscolha outro título ou apague a pasta.`,
+  )
   process.exit(1)
 }
-
-await mkdir(pasta, { recursive: true })
-await writeFile(arquivo, frontmatter({ titulo, data, descricao, categoria }), "utf8")
+const arquivo = arquivoDoTexto(pasta)
 
 console.log(`
 Texto criado.
@@ -73,44 +80,3 @@ console.log(`O texto nasce como RASCUNHO: fica fora do site, do sitemap e do RSS
 até você descomentar "publicado: true" no frontmatter.
 
 Para ver no navegador enquanto escreve:  make dev\n`)
-
-// ---------------------------------------------------------------- utilidades
-
-function hoje() {
-  const d = new Date() // data local: o fuso do autor, não UTC
-  const p = n => String(n).padStart(2, "0")
-  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`
-}
-
-function slugificar(texto) {
-  return texto
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "") // tira acentos
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 80)
-    .replace(/-+$/g, "")
-}
-
-function frontmatter({ titulo, data, descricao, categoria }) {
-  const aspas = s => `"${String(s).replace(/"/g, '\\"')}"`
-  return `---
-title: ${aspas(titulo)}
-date: ${data}
-description: ${aspas(descricao)}
-category: ${categoria}
-# publicado: true   <- descomente quando o texto estiver pronto para ir ao ar
----
-
-`
-}
-
-async function existe(caminho) {
-  try {
-    await access(caminho)
-    return true
-  } catch {
-    return false
-  }
-}

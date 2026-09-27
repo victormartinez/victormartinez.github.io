@@ -13,13 +13,17 @@
  * Diferente de novo-texto.mjs, a nota JÁ NASCE NO AR: o que diz o estágio dela é
  * o selo de maturidade, não um rascunho que nunca sai do lugar.
  */
-import { mkdir, writeFile, access } from "node:fs/promises"
-import { join, relative } from "node:path"
-
-const MATURIDADES = ["em-aberto", "revisada"]
-const MATURIDADE_PADRAO = "em-aberto"
-const RAIZ = new URL("..", import.meta.url).pathname
-const BASE = join(RAIZ, "content", "notas")
+import { relative } from "node:path"
+import {
+  MATURIDADES,
+  MATURIDADE_PADRAO,
+  RAIZ,
+  arquivoDaNota,
+  criarNota,
+  existe,
+  slugificar,
+  titulizar,
+} from "./lib/notas.mjs"
 
 const args = process.argv.slice(2)
 const opcao = nome => {
@@ -57,8 +61,7 @@ if (!MATURIDADES.includes(maturidade)) {
 const titulo = opcao("titulo") ?? titulizar(segmentos.at(-1))
 const descricao = opcao("descricao") ?? ""
 const slug = segmentos.join("/")
-const pasta = join(BASE, ...segmentos)
-const arquivo = join(pasta, "index.md")
+const arquivo = arquivoDaNota(slug)
 
 if (await existe(arquivo)) {
   erro(
@@ -66,27 +69,10 @@ if (await existe(arquivo)) {
   )
 }
 
-// Ancestrais primeiro: um index.md faltando no meio deixaria a nota fora do site.
-const criados = []
-for (let i = 1; i < segmentos.length; i++) {
-  const pastaPai = join(BASE, ...segmentos.slice(0, i))
-  const arquivoPai = join(pastaPai, "index.md")
-  if (await existe(arquivoPai)) continue
-  await mkdir(pastaPai, { recursive: true })
-  await writeFile(
-    arquivoPai,
-    frontmatter({
-      titulo: titulizar(segmentos[i - 1]),
-      descricao: "",
-      maturidade: MATURIDADE_PADRAO,
-    }),
-    "utf8",
-  )
-  criados.push({ arquivo: arquivoPai, slug: segmentos.slice(0, i).join("/") })
-}
-
-await mkdir(pasta, { recursive: true })
-await writeFile(arquivo, frontmatter({ titulo, descricao, maturidade }), "utf8")
+// Os index.md dos temas acima que faltarem nascem junto (ver criarNota).
+const criados = (await criarNota(slug, { titulo, descricao, maturidade })).map(
+  s => ({ arquivo: arquivoDaNota(s), slug: s }),
+)
 
 console.log(`
 Nota criada.
@@ -119,52 +105,6 @@ Para ver no navegador:  make dev
 `)
 
 // ---------------------------------------------------------------- utilidades
-
-function hoje() {
-  const d = new Date() // data local: o fuso do autor, não UTC
-  const p = n => String(n).padStart(2, "0")
-  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`
-}
-
-function slugificar(texto) {
-  return texto
-    .normalize("NFD")
-    .replace(/\p{M}/gu, "") // tira acentos
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 80)
-    .replace(/-+$/g, "")
-}
-
-/** `networking-no-kubernetes` -> `Networking no kubernetes` (chute do título). */
-function titulizar(slug) {
-  const s = slug.replace(/-/g, " ")
-  return s.charAt(0).toUpperCase() + s.slice(1)
-}
-
-function frontmatter({ titulo, descricao, maturidade }) {
-  const aspas = s => `"${String(s).replace(/"/g, '\\"')}"`
-  return `---
-title: ${aspas(titulo)}
-description: ${aspas(descricao)}
-maturidade: ${maturidade}   # em-aberto | revisada
-atualizado: ${hoje()}
-# ordem: 10        <- opcional: ordena entre as irmãs (sem ela, alfabética)
-# publicado: false <- descomente para tirar esta nota do ar
----
-
-`
-}
-
-async function existe(caminho) {
-  try {
-    await access(caminho)
-    return true
-  } catch {
-    return false
-  }
-}
 
 function erro(mensagem) {
   console.error(mensagem)
