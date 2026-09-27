@@ -37,10 +37,10 @@ const NaoEncontrada = () => {
       <a className="pular" href="#conteudo">
         Ir para o conteúdo
       </a>
-      <div className="perdida grade">
+      <div className="perdida">
         <Topo voltar={{ to: "/", rotulo: "← Início" }} />
 
-        <main id="conteudo" className="perdida__main">
+        <main id="conteudo" className="perdida__main grade">
           <div className="perdida__interno">
             <div>
               <Rotulo num="404" nome="Página não encontrada" />
@@ -74,7 +74,7 @@ const NaoEncontrada = () => {
           </div>
         </main>
 
-        <Rodape />
+        <Rodape grade />
       </div>
     </>
   )

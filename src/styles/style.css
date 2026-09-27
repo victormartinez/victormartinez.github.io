@@ -391,8 +391,8 @@ button{font:inherit}
 .post__corpo .gatsby-highlight-code-line{display:block;background:rgba(25,177,131,.14);border-left:3px solid var(--menta);margin:0 calc(-1 * clamp(16px,2.6vw,22px));padding:0 clamp(13px,2.6vw,19px)}
 
 /* ---------------------------------------------------------------- 404 */
-/* Página inteira no quadriculado: topo, o recado ao lado do muro com a peça
-   fora do lugar (cenaMuro em cenas.js) e o rodapé colado no fim da tela. */
+/* Topo, o recado no quadriculado ao lado do muro com a peça fora do lugar
+   (cenaMuro em cenas.js) e o rodapé da home, colado no fim da tela. */
 .perdida{min-height:100vh;min-height:100svh;display:flex;flex-direction:column}
 .perdida__main{flex:1;display:flex;align-items:center;padding:clamp(48px,7vw,96px) var(--margem)}
 .perdida__interno{width:100%;max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px;align-items:center}
