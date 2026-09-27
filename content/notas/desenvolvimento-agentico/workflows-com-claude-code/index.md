@@ -29,7 +29,7 @@ Erro em que a execução das tarefas começa forte e **desiste em silêncio** an
 
 Quem executa, o autor, e quem revisa, o revisor, são **o mesmo nó/agente**. O ciclo se fecha dentro da própria janela de contexto e o veredito sai sempre igual. Não é desonestidade do modelo: é o viés que torna a avaliação impossível.
 
-![Linha do tempo com três marcos de compactação; o bloco “objetivo” encolhe e desbota a cada marco até virar um contorno tracejado vazio](./falha-2-self-preference.svg)
+![Uma caixa tracejada rotulada “a mesma janela de contexto” contendo dois círculos, autor e revisor, ligados por setas circulares de produzir e avaliar; uma seta sai da caixa para um carimbo “aprovado”, com “sempre” escrito embaixo](./falha-2-self-preference.svg)
 
 ### Goal drift
 
