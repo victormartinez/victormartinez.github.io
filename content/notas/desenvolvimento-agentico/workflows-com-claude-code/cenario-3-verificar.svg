@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 260" width="760" height="260" role="img" aria-labelledby="c3">
+  <title id="c3">Verificação: cada afirmação é extraída e checada por um cético próprio contra a fonte real</title>
+  <style>
+    :root{--ink:#2f2f2c;--muted:#87877f;--line:#c9c9c1;--accent:#bf6647;--fill:#dedcd4;}
+    @media (prefers-color-scheme: dark){
+      :root{--ink:#e9e8e3;--muted:#9a9a92;--line:#4d4d47;--accent:#e08a66;--fill:#3f3f39;}
+    }
+    text{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;fill:var(--ink)}
+    .in{font-size:11.5px;font-weight:600;text-anchor:middle}
+    .cap{font-size:11.5px;fill:var(--muted);text-anchor:middle}
+    .capl{font-size:12px;fill:var(--muted)}
+    .acx{font-size:11.5px;font-weight:700;fill:var(--accent);text-anchor:middle}
+    .node{fill:var(--fill);stroke:var(--line);stroke-width:1.4}
+    .nodeA{fill:none;stroke:var(--accent);stroke-width:2}
+    .plain{fill:none;stroke:var(--line);stroke-width:1.4}
+    .ln{fill:none;stroke:var(--muted);stroke-width:1.4;marker-end:url(#ar)}
+    .lnA{fill:none;stroke:var(--accent);stroke-width:1.8;marker-end:url(#arA)}
+    .lnD{fill:none;stroke:var(--line);stroke-width:1.2;stroke-dasharray:3 3;marker-end:url(#arD)}
+    .ghost{fill:none;stroke:var(--line);stroke-width:1.2;stroke-dasharray:3 3}
+    .hair{stroke:var(--line);stroke-width:1.4}
+  </style>
+  <defs>
+    <marker id="ar"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--muted)"/></marker>
+    <marker id="arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/></marker>
+    <marker id="arD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--line)"/></marker>
+  </defs>
+  <rect class="node" x="24" y="34" width="124" height="150" rx="6"/>
+  <path class="hair" d="M42 58 L 130 58"/>
+  <path class="hair" d="M42 82 L 130 82"/>
+  <path class="hair" d="M42 106 L 112 106"/>
+  <path class="hair" d="M42 130 L 130 130"/>
+  <path class="hair" d="M42 154 L 100 154"/>
+  <text class="cap" x="86" y="204">rascunho</text>
+
+  <path class="ln" d="M152 80 L 190 56"/>
+  <path class="ln" d="M152 108 L 190 108"/>
+  <path class="ln" d="M152 136 L 190 160"/>
+
+  <rect class="plain" x="196" y="38" width="104" height="34" rx="4"/><text class="in" x="248" y="60">afirmação 1</text>
+  <rect class="plain" x="196" y="90" width="104" height="34" rx="4"/><text class="in" x="248" y="112">afirmação 2</text>
+  <rect class="plain" x="196" y="142" width="104" height="34" rx="4"/><text class="in" x="248" y="164">afirmação 3</text>
+
+  <path class="ln" d="M304 55 L 338 55"/>
+  <path class="ln" d="M304 107 L 338 107"/>
+  <path class="ln" d="M304 159 L 338 159"/>
+
+  <circle class="nodeA" cx="364" cy="55" r="20"/>
+  <circle class="nodeA" cx="364" cy="107" r="20"/>
+  <circle class="nodeA" cx="364" cy="159" r="20"/>
+  <text class="cap" x="364" y="204">um cético por afirmação</text>
+
+  <path class="ln"  d="M388 55 L 440 55"/>
+  <path class="ln"  d="M388 107 L 440 107"/>
+  <path class="lnA" d="M388 159 L 440 159"/>
+
+  <text class="cap" x="460" y="60" style="font-size:16px">✓</text>
+  <text class="cap" x="460" y="112" style="font-size:16px">✓</text>
+  <text class="acx" x="460" y="164" style="font-size:16px">✗</text>
+
+  <path class="lnA" d="M478 110 L 546 110"/>
+  <rect class="node" x="554" y="62" width="150" height="96" rx="6"/>
+  <path class="hair" d="M574 90 L 684 90"/>
+  <path class="hair" d="M574 112 L 684 112"/>
+  <path class="hair" d="M574 134 L 650 134"/>
+  <text class="cap" x="629" y="180">o que falhou e por quê</text>
+
+  <text class="capl" x="24" y="240">um verificador único herdaria o mesmo viés — por isso cada afirmação ganha o seu</text>
+</svg>

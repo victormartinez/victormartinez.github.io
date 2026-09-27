@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 215" width="700" height="215" role="img" aria-labelledby="t1">
+  <title id="t1">Agentic laziness: 15 tarefas declaradas, 7 concluídas</title>
+  <style>
+    :root{--ink:#2f2f2c;--muted:#87877f;--line:#c9c9c1;--accent:#bf6647;--fill:#dedcd4;}
+    @media (prefers-color-scheme: dark){
+      :root{--ink:#e9e8e3;--muted:#9a9a92;--line:#4d4d47;--accent:#e08a66;--fill:#3f3f39;}
+    }
+    text{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;fill:var(--ink)}
+    .lbl{font-size:15px;font-weight:600}
+    .num{font-size:15px;font-weight:700;fill:var(--muted)}
+    .note{font-size:13px;fill:var(--accent);font-weight:600}
+    .done{fill:var(--fill);stroke:var(--line);stroke-width:1.5}
+    .todo{fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:3 4}
+    .cut{stroke:var(--accent);stroke-width:2;stroke-dasharray:5 5;fill:none}
+  </style>
+
+  <text class="lbl" x="34" y="36">declarou</text>
+  <text class="num" x="110" y="36">15 tarefas</text>
+  <g>
+    <rect class="done" x="34"  y="48" width="34" height="30" rx="5"/>
+    <rect class="done" x="76"  y="48" width="34" height="30" rx="5"/>
+    <rect class="done" x="118" y="48" width="34" height="30" rx="5"/>
+    <rect class="done" x="160" y="48" width="34" height="30" rx="5"/>
+    <rect class="done" x="202" y="48" width="34" height="30" rx="5"/>
+    <rect class="done" x="244" y="48" width="34" height="30" rx="5"/>
+    <rect class="done" x="286" y="48" width="34" height="30" rx="5"/>
+    <rect class="done" x="328" y="48" width="34" height="30" rx="5"/>
+    <rect class="done" x="370" y="48" width="34" height="30" rx="5"/>
+    <rect class="done" x="412" y="48" width="34" height="30" rx="5"/>
+    <rect class="done" x="454" y="48" width="34" height="30" rx="5"/>
+    <rect class="done" x="496" y="48" width="34" height="30" rx="5"/>
+    <rect class="done" x="538" y="48" width="34" height="30" rx="5"/>
+    <rect class="done" x="580" y="48" width="34" height="30" rx="5"/>
+    <rect class="done" x="622" y="48" width="34" height="30" rx="5"/>
+  </g>
+
+  <text class="lbl" x="34" y="124">concluiu</text>
+  <text class="num" x="107" y="124">7</text>
+  <g>
+    <rect class="done" x="34"  y="136" width="34" height="30" rx="5"/>
+    <rect class="done" x="76"  y="136" width="34" height="30" rx="5"/>
+    <rect class="done" x="118" y="136" width="34" height="30" rx="5"/>
+    <rect class="done" x="160" y="136" width="34" height="30" rx="5"/>
+    <rect class="done" x="202" y="136" width="34" height="30" rx="5"/>
+    <rect class="done" x="244" y="136" width="34" height="30" rx="5"/>
+    <rect class="done" x="286" y="136" width="34" height="30" rx="5"/>
+    <rect class="todo" x="328" y="136" width="34" height="30" rx="5"/>
+    <rect class="todo" x="370" y="136" width="34" height="30" rx="5"/>
+    <rect class="todo" x="412" y="136" width="34" height="30" rx="5"/>
+    <rect class="todo" x="454" y="136" width="34" height="30" rx="5"/>
+    <rect class="todo" x="496" y="136" width="34" height="30" rx="5"/>
+    <rect class="todo" x="538" y="136" width="34" height="30" rx="5"/>
+    <rect class="todo" x="580" y="136" width="34" height="30" rx="5"/>
+    <rect class="todo" x="622" y="136" width="34" height="30" rx="5"/>
+  </g>
+
+  <path class="cut" d="M 324 130 L 324 176"/>
+  <text class="note" x="332" y="195">para aqui — sem avisar</text>
+</svg>

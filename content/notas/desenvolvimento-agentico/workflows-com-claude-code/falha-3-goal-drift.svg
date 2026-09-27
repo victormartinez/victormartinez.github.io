@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 215" width="700" height="215" role="img" aria-labelledby="t3">
+  <title id="t3">Goal drift: o objetivo encolhe a cada compactação até desaparecer</title>
+  <style>
+    :root{--ink:#2f2f2c;--muted:#87877f;--line:#c9c9c1;--accent:#bf6647;--fill:#dedcd4;}
+    @media (prefers-color-scheme: dark){
+      :root{--ink:#e9e8e3;--muted:#9a9a92;--line:#4d4d47;--accent:#e08a66;--fill:#3f3f39;}
+    }
+    text{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;fill:var(--ink)}
+    .tok{font-size:14px;font-weight:600;text-anchor:middle}
+    .cap{font-size:12px;fill:var(--muted);text-anchor:middle}
+    .note{font-size:13px;fill:var(--accent);font-weight:600;text-anchor:middle}
+    .goal{fill:var(--fill);stroke:var(--line);stroke-width:1.5}
+    .gone{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:4 4}
+    .axis{stroke:var(--line);stroke-width:1.5}
+    .tick{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:4 4}
+  </style>
+
+  <g opacity="1">
+    <rect class="goal" x="42" y="56" width="140" height="44" rx="8"/>
+    <text class="tok" x="112" y="83">objetivo</text>
+  </g>
+  <g opacity="0.6">
+    <rect class="goal" x="228" y="62" width="112" height="34" rx="8"/>
+  </g>
+  <g opacity="0.3">
+    <rect class="goal" x="406" y="66" width="82" height="26" rx="8"/>
+  </g>
+  <g>
+    <rect class="gone" x="578" y="68" width="52" height="22" rx="8"/>
+  </g>
+
+  <path class="axis" d="M 34 132 L 666 132"/>
+  <path class="tick" d="M 205 46 L 205 140"/>
+  <path class="tick" d="M 373 46 L 373 140"/>
+  <path class="tick" d="M 533 46 L 533 140"/>
+
+  <text class="cap" x="205" y="156">compactação</text>
+  <text class="cap" x="373" y="156">compactação</text>
+  <text class="cap" x="533" y="156">compactação</text>
+
+  <text class="cap" x="112" y="156">início</text>
+  <text class="note" x="604" y="180">nada resta</text>
+  <text class="cap" x="34" y="202" style="text-anchor:start">o detalhe que fazia o modelo entender a tarefa não volta</text>
+</svg>

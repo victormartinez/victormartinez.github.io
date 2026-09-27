@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 260" width="760" height="260" role="img" aria-labelledby="c5">
+  <title id="c5">Ranking: comparações par a par em rounds, cada duelo com um agente próprio, até sobrar um</title>
+  <style>
+    :root{--ink:#2f2f2c;--muted:#87877f;--line:#c9c9c1;--accent:#bf6647;--fill:#dedcd4;}
+    @media (prefers-color-scheme: dark){
+      :root{--ink:#e9e8e3;--muted:#9a9a92;--line:#4d4d47;--accent:#e08a66;--fill:#3f3f39;}
+    }
+    text{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;fill:var(--ink)}
+    .in{font-size:11.5px;font-weight:600;text-anchor:middle}
+    .cap{font-size:11.5px;fill:var(--muted);text-anchor:middle}
+    .capl{font-size:12px;fill:var(--muted)}
+    .acx{font-size:11.5px;font-weight:700;fill:var(--accent);text-anchor:middle}
+    .node{fill:var(--fill);stroke:var(--line);stroke-width:1.4}
+    .nodeA{fill:none;stroke:var(--accent);stroke-width:2}
+    .plain{fill:none;stroke:var(--line);stroke-width:1.4}
+    .ln{fill:none;stroke:var(--muted);stroke-width:1.4;marker-end:url(#ar)}
+    .lnA{fill:none;stroke:var(--accent);stroke-width:1.8;marker-end:url(#arA)}
+    .lnD{fill:none;stroke:var(--line);stroke-width:1.2;stroke-dasharray:3 3;marker-end:url(#arD)}
+    .ghost{fill:none;stroke:var(--line);stroke-width:1.2;stroke-dasharray:3 3}
+    .hair{stroke:var(--line);stroke-width:1.4}
+  </style>
+  <defs>
+    <marker id="ar"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--muted)"/></marker>
+    <marker id="arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/></marker>
+    <marker id="arD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--line)"/></marker>
+  </defs>
+  <rect class="node" x="24" y="60" width="72" height="16" rx="3"/>
+  <rect class="node" x="27" y="78" width="72" height="16" rx="3"/>
+  <rect class="node" x="24" y="96" width="72" height="16" rx="3"/>
+  <rect class="node" x="27" y="114" width="72" height="16" rx="3"/>
+  <rect class="node" x="24" y="132" width="72" height="16" rx="3"/>
+  <text class="cap" x="62" y="168">a pilha inteira</text>
+
+  <path class="ln" d="M102 92 L 130 30"/>
+  <path class="ln" d="M102 95 L 130 62"/>
+  <path class="ln" d="M102 105 L 130 146"/>
+  <path class="ln" d="M102 108 L 130 178"/>
+
+  <rect class="plain" x="136" y="18" width="58" height="22" rx="4"/>
+  <rect class="plain" x="136" y="52" width="58" height="22" rx="4"/>
+  <rect class="plain" x="136" y="136" width="58" height="22" rx="4"/>
+  <rect class="plain" x="136" y="170" width="58" height="22" rx="4"/>
+
+  <path class="ln" d="M198 29 L 232 40"/>
+  <path class="ln" d="M198 63 L 232 50"/>
+  <path class="ln" d="M198 147 L 232 158"/>
+  <path class="ln" d="M198 181 L 232 168"/>
+
+  <polygon class="nodeA" points="256,27 274,45 256,63 238,45"/>
+  <polygon class="nodeA" points="256,145 274,163 256,181 238,163"/>
+  <text class="acx" x="256" y="205">round 1 — critério A</text>
+
+  <path class="ln" d="M276 45 L 310 45"/>
+  <path class="ln" d="M276 163 L 310 163"/>
+  <rect class="plain" x="316" y="34" width="58" height="22" rx="4"/>
+  <rect class="plain" x="316" y="152" width="58" height="22" rx="4"/>
+
+  <path class="ln" d="M378 48 L 412 88"/>
+  <path class="ln" d="M378 160 L 412 116"/>
+  <polygon class="nodeA" points="434,82 454,102 434,122 414,102"/>
+  <text class="acx" x="434" y="205">round 2 — critério B</text>
+
+  <path class="lnA" d="M456 102 L 494 102"/>
+  <rect class="nodeA" x="502" y="88" width="102" height="30" rx="5"/>
+  <text class="acx" x="553" y="108">1º lugar</text>
+  <text x="622" y="112" style="font-size:22px;fill:var(--accent)">★</text>
+
+  <text class="capl" x="24" y="244">cada duelo é um agente novo: o bracket vive no loop determinístico, não na janela de contexto</text>
+</svg>

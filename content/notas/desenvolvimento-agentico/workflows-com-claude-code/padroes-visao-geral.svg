@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 450" width="920" height="450" role="img" aria-labelledby="tv">
+  <title id="tv">Os seis padrões de dynamic workflow, em forma estrutural</title>
+  <style>
+    :root{--ink:#2f2f2c;--muted:#87877f;--line:#c9c9c1;--accent:#bf6647;--fill:#dedcd4;}
+    @media (prefers-color-scheme: dark){
+      :root{--ink:#e9e8e3;--muted:#9a9a92;--line:#4d4d47;--accent:#e08a66;--fill:#3f3f39;}
+    }
+    text{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;fill:var(--ink)}
+    .ttl{font-size:14.5px;font-weight:700}
+    .num{font-size:11.5px;font-weight:700;fill:#fff;text-anchor:middle}
+    .cap{font-size:11.5px;fill:var(--muted);text-anchor:middle}
+    .in{font-size:11.5px;font-weight:600;text-anchor:middle}
+    .acx{font-size:11.5px;font-weight:700;fill:var(--accent);text-anchor:middle}
+    .node{fill:var(--fill);stroke:var(--line);stroke-width:1.4}
+    .nodeA{fill:none;stroke:var(--accent);stroke-width:2}
+    .rule{stroke:var(--line);stroke-width:1}
+    .ln{fill:none;stroke:var(--muted);stroke-width:1.4;marker-end:url(#ar)}
+    .ln2{fill:none;stroke:var(--muted);stroke-width:1.4;marker-end:url(#ar);marker-start:url(#ar)}
+    .lnA{fill:none;stroke:var(--accent);stroke-width:2;marker-end:url(#arA)}
+    .lnD{fill:none;stroke:var(--line);stroke-width:1.2;stroke-dasharray:3 3;marker-end:url(#arD)}
+    .ghost{fill:none;stroke:var(--line);stroke-width:1.2;stroke-dasharray:3 3}
+  </style>
+  <defs>
+    <marker id="ar"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--muted)"/></marker>
+    <marker id="arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/></marker>
+    <marker id="arD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--line)"/></marker>
+  </defs>
+
+  <!-- 1 -->
+  <g transform="translate(20,20)">
+    <rect x="0" y="6" width="18" height="18" rx="4" fill="var(--accent)"/><text class="num" x="9" y="19">1</text>
+    <text class="ttl" x="26" y="20">Classify and act</text>
+    <line class="rule" x1="0" y1="34" x2="280" y2="34"/>
+    <rect class="node" x="4" y="100" width="54" height="28" rx="5"/><text class="in" x="31" y="118">input</text>
+    <path class="ln" d="M60 114 L 82 114"/>
+    <polygon class="node" points="104,96 122,114 104,132 86,114"/>
+    <text class="cap" x="104" y="152">classificador</text>
+    <path class="lnA" d="M124 114 L 190 114"/>
+    <path class="lnD" d="M118 102 L 190 68"/>
+    <path class="lnD" d="M118 126 L 190 160"/>
+    <circle class="ghost" cx="206" cy="62" r="14"/><text class="cap" x="240" y="66">A</text>
+    <circle class="nodeA" cx="206" cy="114" r="14"/><text class="acx" x="240" y="118">B</text>
+    <circle class="ghost" cx="206" cy="166" r="14"/><text class="cap" x="240" y="170">C</text>
+  </g>
+
+  <!-- 2 -->
+  <g transform="translate(320,20)">
+    <rect x="0" y="6" width="18" height="18" rx="4" fill="var(--accent)"/><text class="num" x="9" y="19">2</text>
+    <text class="ttl" x="26" y="20">Fan out and synthesize</text>
+    <line class="rule" x1="0" y1="34" x2="280" y2="34"/>
+    <rect class="node" x="2" y="100" width="52" height="28" rx="5"/><text class="in" x="28" y="118">tarefa</text>
+    <path class="ln" d="M56 110 L 90 60"/>
+    <path class="ln" d="M56 112 L 90 94"/>
+    <path class="ln" d="M56 118 L 90 132"/>
+    <path class="ln" d="M56 120 L 90 166"/>
+    <circle class="node" cx="104" cy="56" r="12"/>
+    <circle class="node" cx="104" cy="94" r="12"/>
+    <circle class="node" cx="104" cy="132" r="12"/>
+    <circle class="node" cx="104" cy="170" r="12"/>
+    <path class="ln" d="M118 58 L 144 108"/>
+    <path class="ln" d="M118 96 L 144 112"/>
+    <path class="ln" d="M118 130 L 144 116"/>
+    <path class="ln" d="M118 168 L 144 120"/>
+    <rect x="152" y="44" width="5" height="142" rx="2" fill="var(--accent)"/>
+    <path class="ln" d="M160 114 L 196 114"/>
+    <circle class="node" cx="222" cy="114" r="20"/>
+    <text class="cap" x="222" y="152">sintetiza</text>
+  </g>
+
+  <!-- 3 -->
+  <g transform="translate(620,20)">
+    <rect x="0" y="6" width="18" height="18" rx="4" fill="var(--accent)"/><text class="num" x="9" y="19">3</text>
+    <text class="ttl" x="26" y="20">Adversarial verification</text>
+    <line class="rule" x1="0" y1="34" x2="280" y2="34"/>
+    <circle class="node" cx="58" cy="114" r="21"/>
+    <text class="cap" x="58" y="152">produtor</text>
+    <text class="cap" x="206" y="46">céticos</text>
+    <path class="ln2" d="M80 104 L 186 68"/>
+    <path class="ln2" d="M81 114 L 186 116"/>
+    <path class="ln2" d="M80 126 L 186 164"/>
+    <circle class="nodeA" cx="204" cy="64" r="14"/>
+    <circle class="nodeA" cx="204" cy="116" r="14"/>
+    <circle class="nodeA" cx="204" cy="168" r="14"/>
+  </g>
+
+  <!-- 4 -->
+  <g transform="translate(20,240)">
+    <rect x="0" y="6" width="18" height="18" rx="4" fill="var(--accent)"/><text class="num" x="9" y="19">4</text>
+    <text class="ttl" x="26" y="20">Generate and filter</text>
+    <line class="rule" x1="0" y1="34" x2="280" y2="34"/>
+    <circle class="node" cx="28" cy="68" r="12"/>
+    <circle class="node" cx="28" cy="110" r="12"/>
+    <circle class="node" cx="28" cy="152" r="12"/>
+    <text class="cap" x="30" y="184">geradores</text>
+    <path class="ln" d="M42 72 L 88 100"/>
+    <path class="ln" d="M42 110 L 88 110"/>
+    <path class="ln" d="M42 148 L 88 122"/>
+    <rect class="nodeA" x="94" y="86" width="66" height="46" rx="9"/>
+    <text class="acx" x="127" y="105">filtro</text>
+    <text class="cap" x="127" y="121">rubrica</text>
+    <path class="lnA" d="M162 104 L 196 96"/>
+    <rect class="nodeA" x="204" y="80" width="38" height="18" rx="4"/>
+    <rect class="nodeA" x="204" y="104" width="38" height="18" rx="4"/>
+    <text class="acx" x="223" y="70">melhores</text>
+    <path class="lnD" d="M128 136 L 150 154"/>
+    <rect class="ghost" x="140" y="158" width="38" height="16" rx="4"/>
+    <text class="cap" x="159" y="186">descarte</text>
+  </g>
+
+  <!-- 5 -->
+  <g transform="translate(320,240)">
+    <rect x="0" y="6" width="18" height="18" rx="4" fill="var(--accent)"/><text class="num" x="9" y="19">5</text>
+    <text class="ttl" x="26" y="20">Tournament</text>
+    <line class="rule" x1="0" y1="34" x2="280" y2="34"/>
+    <circle class="node" cx="24" cy="60" r="12"/>
+    <circle class="node" cx="24" cy="98" r="12"/>
+    <circle class="node" cx="24" cy="136" r="12"/>
+    <circle class="node" cx="24" cy="174" r="12"/>
+    <text class="cap" x="100" y="46">duelos</text>
+    <path class="ln" d="M38 62 L 76 74"/>
+    <path class="ln" d="M38 96 L 76 82"/>
+    <path class="ln" d="M38 138 L 76 150"/>
+    <path class="ln" d="M38 172 L 76 158"/>
+    <polygon class="nodeA" points="98,62 116,78 98,94 80,78"/>
+    <polygon class="nodeA" points="98,138 116,154 98,170 80,154"/>
+    <path class="ln" d="M118 82 L 150 108"/>
+    <path class="ln" d="M118 150 L 150 128"/>
+    <polygon class="nodeA" points="172,100 190,118 172,136 154,118"/>
+    <text class="cap" x="172" y="154">final</text>
+    <path class="ln" d="M192 118 L 212 118"/>
+    <rect class="node" x="218" y="104" width="52" height="28" rx="5"/>
+    <text class="in" x="244" y="122">1º</text>
+  </g>
+
+  <!-- 6 -->
+  <g transform="translate(620,240)">
+    <rect x="0" y="6" width="18" height="18" rx="4" fill="var(--accent)"/><text class="num" x="9" y="19">6</text>
+    <text class="ttl" x="26" y="20">Loop until done</text>
+    <line class="rule" x1="0" y1="34" x2="280" y2="34"/>
+    <text class="acx" x="106" y="58">sim — novo agente</text>
+    <path class="lnA" d="M150 98 C 140 66, 72 66, 56 96"/>
+    <circle class="node" cx="56" cy="122" r="21"/>
+    <text class="cap" x="56" y="164">agente</text>
+    <path class="ln" d="M79 122 L 126 122"/>
+    <polygon class="node" points="150,102 170,122 150,142 130,122"/>
+    <text class="cap" x="150" y="164">achou algo novo?</text>
+    <path class="ln" d="M172 122 L 214 122"/>
+    <text class="cap" x="193" y="112">não</text>
+    <rect x="222" y="108" width="28" height="28" rx="5" fill="var(--ink)"/>
+    <text class="cap" x="236" y="164">fim</text>
+  </g>
+</svg>

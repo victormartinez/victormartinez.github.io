@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 215" width="700" height="215" role="img" aria-labelledby="t2">
+  <title id="t2">Self preference: autor e revisor são a mesma sessão, o veredito é sempre aprovado</title>
+  <style>
+    :root{--ink:#2f2f2c;--muted:#87877f;--line:#c9c9c1;--accent:#bf6647;--fill:#dedcd4;}
+    @media (prefers-color-scheme: dark){
+      :root{--ink:#e9e8e3;--muted:#9a9a92;--line:#4d4d47;--accent:#e08a66;--fill:#3f3f39;}
+    }
+    text{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;fill:var(--ink)}
+    .lbl{font-size:15px;font-weight:600;text-anchor:middle}
+    .cap{font-size:13px;fill:var(--muted)}
+    .note{font-size:13px;fill:var(--accent);font-weight:600;text-anchor:middle}
+    .box{fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:6 5}
+    .node{fill:var(--fill);stroke:var(--line);stroke-width:1.5}
+    .flow{fill:none;stroke:var(--muted);stroke-width:2;marker-end:url(#a2)}
+    .stamp{fill:none;stroke:var(--accent);stroke-width:2.5}
+    .stampt{font-size:26px;font-weight:700;fill:var(--accent);text-anchor:middle}
+  </style>
+  <defs>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--muted)"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="34" y="38" width="410" height="150" rx="16"/>
+  <text class="cap" x="46" y="28">a mesma janela de contexto</text>
+
+  <circle class="node" cx="140" cy="108" r="44"/>
+  <text class="lbl" x="140" y="113">autor</text>
+
+  <circle class="node" cx="338" cy="108" r="44"/>
+  <text class="lbl" x="338" y="113">revisor</text>
+
+  <path class="flow" d="M 186 88 C 230 58, 292 58, 334 82"/>
+  <text class="cap" x="216" y="58">produz</text>
+
+  <path class="flow" d="M 334 134 C 292 160, 230 160, 188 132"/>
+  <text class="cap" x="214" y="174">avalia</text>
+
+  <path class="flow" d="M 448 108 L 508 108"/>
+
+  <rect class="stamp" x="522" y="72" width="144" height="72" rx="12"/>
+  <text class="stampt" x="594" y="118">aprovado</text>
+  <text class="note" x="594" y="168">sempre</text>
+</svg>

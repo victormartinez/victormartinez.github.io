@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 260" width="760" height="260" role="img" aria-labelledby="c6">
+  <title id="c6">Teste instável: teorias testadas em worktrees isolados, em laço, até a causa aparecer</title>
+  <style>
+    :root{--ink:#2f2f2c;--muted:#87877f;--line:#c9c9c1;--accent:#bf6647;--fill:#dedcd4;}
+    @media (prefers-color-scheme: dark){
+      :root{--ink:#e9e8e3;--muted:#9a9a92;--line:#4d4d47;--accent:#e08a66;--fill:#3f3f39;}
+    }
+    text{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;fill:var(--ink)}
+    .in{font-size:11.5px;font-weight:600;text-anchor:middle}
+    .cap{font-size:11.5px;fill:var(--muted);text-anchor:middle}
+    .capl{font-size:12px;fill:var(--muted)}
+    .acx{font-size:11.5px;font-weight:700;fill:var(--accent);text-anchor:middle}
+    .node{fill:var(--fill);stroke:var(--line);stroke-width:1.4}
+    .nodeA{fill:none;stroke:var(--accent);stroke-width:2}
+    .plain{fill:none;stroke:var(--line);stroke-width:1.4}
+    .ln{fill:none;stroke:var(--muted);stroke-width:1.4;marker-end:url(#ar)}
+    .lnA{fill:none;stroke:var(--accent);stroke-width:1.8;marker-end:url(#arA)}
+    .lnD{fill:none;stroke:var(--line);stroke-width:1.2;stroke-dasharray:3 3;marker-end:url(#arD)}
+    .ghost{fill:none;stroke:var(--line);stroke-width:1.2;stroke-dasharray:3 3}
+    .hair{stroke:var(--line);stroke-width:1.4}
+  </style>
+  <defs>
+    <marker id="ar"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--muted)"/></marker>
+    <marker id="arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/></marker>
+    <marker id="arD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--line)"/></marker>
+  </defs>
+  <text class="acx" x="330" y="18">não reproduziu — nova teoria, nova tentativa</text>
+  <path class="lnA" d="M470 78 C 430 30, 300 24, 226 38"/>
+
+  <rect class="node" x="24" y="80" width="104" height="40" rx="5"/>
+  <text class="in" x="76" y="104">teste</text>
+  <text class="cap" x="76" y="140">1 falha em 50</text>
+
+  <path class="ln" d="M132 94 L 176 58"/>
+  <path class="ln" d="M132 100 L 176 100"/>
+  <path class="ln" d="M132 106 L 176 142"/>
+
+  <rect class="plain" x="182" y="45" width="86" height="26" rx="4"/><text class="in" x="225" y="63">teoria 1</text>
+  <rect class="plain" x="182" y="87" width="86" height="26" rx="4"/><text class="in" x="225" y="105">teoria 2</text>
+  <rect class="plain" x="182" y="129" width="86" height="26" rx="4"/><text class="in" x="225" y="147">teoria 3</text>
+
+  <path class="ln" d="M272 58 L 304 58"/>
+  <path class="ln" d="M272 100 L 304 100"/>
+  <path class="ln" d="M272 142 L 304 142"/>
+
+  <rect class="ghost" x="310" y="43" width="104" height="30" rx="4"/><circle class="node" cx="330" cy="58" r="7"/>
+  <rect class="ghost" x="310" y="85" width="104" height="30" rx="4"/><circle class="node" cx="330" cy="100" r="7"/>
+  <rect class="ghost" x="310" y="127" width="104" height="30" rx="4"/><circle class="node" cx="330" cy="142" r="7"/>
+  <text class="cap" x="362" y="176">worktrees isolados</text>
+
+  <path class="ln" d="M418 58 L 452 92"/>
+  <path class="ln" d="M418 100 L 452 100"/>
+  <path class="ln" d="M418 142 L 452 110"/>
+  <polygon class="node" points="480,80 500,100 480,120 460,100"/>
+  <text class="cap" x="480" y="140">reproduziu?</text>
+
+  <path class="lnA" d="M502 100 L 550 100"/>
+  <text class="acx" x="526" y="92">sim</text>
+  <rect class="nodeA" x="558" y="84" width="140" height="34" rx="5"/>
+  <text class="acx" x="628" y="105">causa isolada</text>
+
+  <text class="capl" x="24" y="244">sem contagem fixa de tentativas: o critério de parada é o resultado</text>
+</svg>

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 260" width="760" height="260" role="img" aria-labelledby="c4">
+  <title id="c4">Ideias: sobre-gerar muitas opções e filtrar contra uma rubrica até sobrarem as poucas que prestam</title>
+  <style>
+    :root{--ink:#2f2f2c;--muted:#87877f;--line:#c9c9c1;--accent:#bf6647;--fill:#dedcd4;}
+    @media (prefers-color-scheme: dark){
+      :root{--ink:#e9e8e3;--muted:#9a9a92;--line:#4d4d47;--accent:#e08a66;--fill:#3f3f39;}
+    }
+    text{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;fill:var(--ink)}
+    .in{font-size:11.5px;font-weight:600;text-anchor:middle}
+    .cap{font-size:11.5px;fill:var(--muted);text-anchor:middle}
+    .capl{font-size:12px;fill:var(--muted)}
+    .acx{font-size:11.5px;font-weight:700;fill:var(--accent);text-anchor:middle}
+    .node{fill:var(--fill);stroke:var(--line);stroke-width:1.4}
+    .nodeA{fill:none;stroke:var(--accent);stroke-width:2}
+    .plain{fill:none;stroke:var(--line);stroke-width:1.4}
+    .ln{fill:none;stroke:var(--muted);stroke-width:1.4;marker-end:url(#ar)}
+    .lnA{fill:none;stroke:var(--accent);stroke-width:1.8;marker-end:url(#arA)}
+    .lnD{fill:none;stroke:var(--line);stroke-width:1.2;stroke-dasharray:3 3;marker-end:url(#arD)}
+    .ghost{fill:none;stroke:var(--line);stroke-width:1.2;stroke-dasharray:3 3}
+    .hair{stroke:var(--line);stroke-width:1.4}
+  </style>
+  <defs>
+    <marker id="ar"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--muted)"/></marker>
+    <marker id="arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/></marker>
+    <marker id="arD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--line)"/></marker>
+  </defs>
+  <rect class="plain" x="24" y="18" width="28" height="18" rx="3"/>
+  <rect class="plain" x="58" y="18" width="28" height="18" rx="3"/>
+  <rect class="plain" x="92" y="18" width="28" height="18" rx="3"/>
+  <rect class="plain" x="126" y="18" width="28" height="18" rx="3"/>
+  <rect class="plain" x="160" y="18" width="28" height="18" rx="3"/>
+  <rect class="plain" x="194" y="18" width="28" height="18" rx="3"/>
+  <rect class="plain" x="24" y="42" width="28" height="18" rx="3"/>
+  <rect class="plain" x="58" y="42" width="28" height="18" rx="3"/>
+  <rect class="plain" x="92" y="42" width="28" height="18" rx="3"/>
+  <rect class="plain" x="126" y="42" width="28" height="18" rx="3"/>
+  <rect class="plain" x="160" y="42" width="28" height="18" rx="3"/>
+  <rect class="plain" x="194" y="42" width="28" height="18" rx="3"/>
+  <rect class="plain" x="24" y="66" width="28" height="18" rx="3"/>
+  <rect class="plain" x="58" y="66" width="28" height="18" rx="3"/>
+  <rect class="plain" x="92" y="66" width="28" height="18" rx="3"/>
+  <rect class="plain" x="126" y="66" width="28" height="18" rx="3"/>
+  <rect class="plain" x="160" y="66" width="28" height="18" rx="3"/>
+  <rect class="plain" x="194" y="66" width="28" height="18" rx="3"/>
+  <rect class="plain" x="24" y="90" width="28" height="18" rx="3"/>
+  <rect class="plain" x="58" y="90" width="28" height="18" rx="3"/>
+  <rect class="plain" x="92" y="90" width="28" height="18" rx="3"/>
+  <rect class="plain" x="126" y="90" width="28" height="18" rx="3"/>
+  <rect class="plain" x="160" y="90" width="28" height="18" rx="3"/>
+  <rect class="plain" x="194" y="90" width="28" height="18" rx="3"/>
+  <rect class="plain" x="24" y="114" width="28" height="18" rx="3"/>
+  <rect class="plain" x="58" y="114" width="28" height="18" rx="3"/>
+  <rect class="plain" x="92" y="114" width="28" height="18" rx="3"/>
+  <rect class="plain" x="126" y="114" width="28" height="18" rx="3"/>
+  <rect class="plain" x="160" y="114" width="28" height="18" rx="3"/>
+  <rect class="plain" x="194" y="114" width="28" height="18" rx="3"/>
+  <text class="cap" x="123" y="154">gerado em excesso, de propósito</text>
+
+  <path class="ln" d="M232 80 L 272 80"/>
+  <polygon class="nodeA" points="282,26 282,134 362,104 362,56"/>
+  <text class="acx" x="318" y="76">filtro</text>
+  <text class="acx" x="318" y="92">rubrica</text>
+
+  <path class="lnA" d="M364 80 L 398 80"/>
+  <rect class="nodeA" x="406" y="34" width="68" height="24" rx="4"/>
+  <rect class="nodeA" x="406" y="68" width="68" height="24" rx="4"/>
+  <rect class="nodeA" x="406" y="102" width="68" height="24" rx="4"/>
+  <text class="acx" x="440" y="26">as que prestam</text>
+
+  <path class="lnD" d="M340 118 L 522 156"/>
+  <rect class="ghost" x="530" y="148" width="30" height="16" rx="3"/>
+  <rect class="ghost" x="568" y="156" width="30" height="16" rx="3"/>
+  <rect class="ghost" x="606" y="148" width="30" height="16" rx="3"/>
+  <rect class="ghost" x="644" y="158" width="30" height="16" rx="3"/>
+  <rect class="ghost" x="548" y="176" width="30" height="16" rx="3"/>
+  <rect class="ghost" x="586" y="184" width="30" height="16" rx="3"/>
+  <rect class="ghost" x="624" y="176" width="30" height="16" rx="3"/>
+  <rect class="ghost" x="662" y="186" width="30" height="16" rx="3"/>
+  <text class="cap" x="602" y="216">descartadas</text>
+
+  <text class="capl" x="24" y="244">é mais fácil ir de mil ideias para três do que de dez para três — e quem gera nunca é quem julga</text>
+</svg>
