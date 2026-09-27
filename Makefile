@@ -67,11 +67,4 @@ deps:
 	@$(NODE) npm install
 
 publicar:
-ifndef MSG
-	@echo "Falta a mensagem:  make publicar MSG=\"texto novo sobre X\"" && exit 1
-endif
-	@git add content/ && git status --short content/ && \
-	read -p "Publicar isso em vcrmartinez.com? [s/N] " r && [ "$$r" = "s" ] && \
-	git commit -q -m "content: $(MSG)" && git push origin main && \
-	echo "Publicado. O deploy roda em ~2min: https://vcrmartinez.com/" || \
-	echo "Cancelado (nada foi enviado)."
+	@./scripts/publicar.sh "$(MSG)"

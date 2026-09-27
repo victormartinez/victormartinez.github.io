@@ -29,10 +29,15 @@ make editor                     # editor de notas e textos, salva sozinho (local
 make dev                        # http://localhost:8000, com recarga
 make build                      # gera public/
 make servir                     # serve o build em http://localhost:9000
-make publicar MSG="..."         # commita content/ e faz push (dispara o deploy)
+make publicar MSG="..."         # commita content/ e faz push na main (dispara o deploy)
 make deps                       # instala as dependências
 make limpar                     # limpa .cache e public
 ```
+
+O `make publicar` mostra tudo o que vai subir e pede confirmação. Ele se recusa
+a rodar fora da `main` (numa branch ou worktree o commit não iria ao ar), quando o
+GitHub tem commits que a pasta não tem, e avisa se o push falhar depois do commit.
+O commit leva só `content/`.
 
 Os scripts npm equivalentes (`npm run develop|build|serve|clean`) seguem
 funcionando para quem preferir — só exigem `nvm use` antes.
