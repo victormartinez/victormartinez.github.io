@@ -598,3 +598,54 @@ export const CenaRobo = ({ on }) => (
     </span>
   </div>
 )
+
+// ---------------------------------------------------------------- 404
+
+/**
+ * Muro em aparelho de tijolos com uma peça faltando na fileira de baixo. A
+ * peça solta fica na base, na frente do muro; no hover ela sobe e vai até a
+ * boca do vão, mas não entra — a página que você procurava não está ali.
+ */
+export function cenaMuro(on) {
+  const out = [{ x: 0, y: 0, w: 6, d: 4, z: 0, h: 8, c: C.N }]
+  const tijolo = (x, z, c) => out.push({ x, y: 1, w: 2, d: 1, z, h: 22, c })
+  tijolo(0, 8, C.L)
+  tijolo(2, 8, C.P)
+  tijolo(4, 8, C.L)
+  tijolo(0, 30, C.P) // o vão fica em x = 2 nesta fileira
+  tijolo(4, 30, C.P)
+  out.push({ x: 0, y: 1, w: 1, d: 1, z: 52, h: 22, c: C.L })
+  tijolo(1, 52, C.W)
+  tijolo(3, 52, C.L)
+  out.push({ x: 5, y: 1, w: 1, d: 1, z: 52, h: 22, c: C.W })
+  out.push({
+    x: 1,
+    y: 3,
+    w: 2,
+    d: 1,
+    z: 8,
+    h: 22,
+    c: C.M,
+    mx: on ? 1 : 0,
+    my: on ? -1 : 0,
+    up: on ? 22 : 0,
+  })
+  return out
+}
+
+export const CenaMuro = () => {
+  const [on, setOn] = React.useState(false)
+  return (
+    <div
+      className="muro"
+      role="presentation"
+      onMouseEnter={() => setOn(true)}
+      onMouseLeave={() => setOn(false)}
+    >
+      <Cena blocos={cenaMuro(on)} u={30} className="iso--muro" />
+      <span className={on ? "cena__rotulo cena__rotulo--ok" : "cena__rotulo"}>
+        {on ? "› quase… não encaixa" : "› 1 peça fora do lugar"}
+      </span>
+    </div>
+  )
+}

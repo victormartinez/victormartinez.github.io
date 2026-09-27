@@ -390,5 +390,27 @@ button{font:inherit}
 .post__corpo .token.italic{font-style:italic}
 .post__corpo .gatsby-highlight-code-line{display:block;background:rgba(25,177,131,.14);border-left:3px solid var(--menta);margin:0 calc(-1 * clamp(16px,2.6vw,22px));padding:0 clamp(13px,2.6vw,19px)}
 
+/* ---------------------------------------------------------------- 404 */
+/* Página inteira no quadriculado: topo, o recado ao lado do muro com a peça
+   fora do lugar (cenaMuro em cenas.js) e o rodapé colado no fim da tela. */
+.perdida{min-height:100vh;min-height:100svh;display:flex;flex-direction:column}
+.perdida__main{flex:1;display:flex;align-items:center;padding:clamp(48px,7vw,96px) var(--margem)}
+.perdida__interno{width:100%;max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px;align-items:center}
+.perdida .regua{margin-bottom:24px}
+.perdida__titulo{max-width:14ch}
+.perdida__lead{margin-top:22px}
+.perdida__lead code{padding:2px 8px;border-radius:4px;background:var(--ameixa);font-family:var(--mono);font-size:.8em;color:var(--menta);overflow-wrap:anywhere}
+.perdida__acoes{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:clamp(32px,4vw,44px)}
+.perdida__atalhos{display:flex;flex-wrap:wrap;gap:4px 24px}
+.perdida__atalhos a{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--nevoa);text-decoration:none;padding:10px 0;border-bottom:2px solid transparent;transition:color .16s,border-color .16s}
+.perdida__atalhos a:hover{color:var(--giz);border-bottom-color:var(--menta)}
+.muro{position:relative;height:420px}
+.muro .iso{bottom:120px}
+.iso--muro{--dur:560ms}
+.muro .cena__rotulo{color:var(--nevoa)}
+.muro .cena__rotulo--ok{color:var(--menta)}
+/* empilhada abaixo do texto no celular: sem o vão vazio acima do muro */
+@media(max-width:760px){.muro{height:300px}.muro .iso{bottom:80px}}
+
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none !important;transition:none !important}}
 @media print{.topo,.iso,.flutuantes,.balao,.cena__rotulo,.copiar,.pular{display:none}body,.grade,.inicio,.cabecalho,.rodape,.proximos,.pagina{background:#fff;color:#000}.titulo,.heroi__nome,.cabecalho__titulo{color:#000}}
