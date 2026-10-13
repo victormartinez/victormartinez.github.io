@@ -6,6 +6,7 @@ import Topo from "../components/topo"
 import Rodape from "../components/rodape"
 import { Regua, Rotulo } from "../components/pecas"
 import { CenaMuro } from "../components/cenas"
+import site from "../config/site"
 import "../styles/style.css"
 
 /**
@@ -63,7 +64,7 @@ const NaoEncontrada = () => {
                   ← Voltar ao início
                 </Link>
                 <nav className="perdida__atalhos" aria-label="Outras páginas">
-                  <Link to="/textos/">Textos</Link>
+                  {site.textosNoAr ? <Link to="/textos/">Textos</Link> : null}
                   <Link to="/notas-de-estudo/">Notas</Link>
                   <Link to="/#contato">Contato</Link>
                 </nav>

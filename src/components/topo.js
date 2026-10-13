@@ -1,6 +1,8 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
+import site from "../config/site"
+
 /**
  * Cabeçalho sticky. Duas formas:
  * - home: marca + navegação das seções (no celular, só "Contato" fica visível);
@@ -36,7 +38,7 @@ const Topo = ({ voltar, children }) => (
             <a href="#sobre">Sobre</a>
             <a href="#assuntos">Assuntos</a>
             <a href="#palestras">Palestras</a>
-            <a href="#textos">Textos</a>
+            {site.textosNoAr ? <a href="#textos">Textos</a> : null}
             <a href="#notas">Notas</a>
             <a className="sempre" href="#contato">
               Contato

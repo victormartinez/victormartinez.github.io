@@ -83,6 +83,9 @@ const Home = ({ data }) => {
   // Linha do tempo em estilo log: ano vazio = mesma safra da anterior (nó menor).
   const log = palestras.map((p, i) => ({ ...p, i, novoAno: Boolean(p.ano) }))
 
+  // Com "Textos" fora do ar as seções seguintes sobem um número.
+  const num = n => String(site.textosNoAr || n < 5 ? n : n - 1).padStart(2, "0")
+
   return (
     <>
       <a className="pular" href="#conteudo">
@@ -216,53 +219,55 @@ const Home = ({ data }) => {
           </div>
         </section>
 
-        <section className="secao" id="textos" aria-labelledby="tit-textos">
-          <div className="interno estudos">
-            <div>
-              <Rotulo num="05" nome="Textos" />
-              <h2 className="titulo" id="tit-textos">
-                Textos
-              </h2>
-              <p className="lead lead--temas">
-                Textos mais longos, sem periodicidade.
-              </p>
-              {textos.length > 0 ? (
-                <>
-                  <ul className="temas">
-                    {textos.map((t, i) => (
-                      <li key={t.id}>
-                        <Link
-                          className="tema"
-                          to={`/textos/${t.fields.slug}/`}
-                          onMouseEnter={() => setLivro(i)}
-                          onMouseLeave={() => setLivro(-1)}
-                        >
-                          <span className="tema__nome">
-                            {t.frontmatter.title}
-                          </span>
-                          <span className="tema__meta tema__meta--fixa">
-                            {mesAno(t.frontmatter.date)} · {t.timeToRead} min
-                          </span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link className="botao botao--solto" to="/textos/">
-                    Todos os textos →
-                  </Link>
-                </>
-              ) : (
-                <p className="vazio">› nada publicado por aqui ainda</p>
-              )}
+        {site.textosNoAr ? (
+          <section className="secao" id="textos" aria-labelledby="tit-textos">
+            <div className="interno estudos">
+              <div>
+                <Rotulo num="05" nome="Textos" />
+                <h2 className="titulo" id="tit-textos">
+                  Textos
+                </h2>
+                <p className="lead lead--temas">
+                  Textos mais longos, sem periodicidade.
+                </p>
+                {textos.length > 0 ? (
+                  <>
+                    <ul className="temas">
+                      {textos.map((t, i) => (
+                        <li key={t.id}>
+                          <Link
+                            className="tema"
+                            to={`/textos/${t.fields.slug}/`}
+                            onMouseEnter={() => setLivro(i)}
+                            onMouseLeave={() => setLivro(-1)}
+                          >
+                            <span className="tema__nome">
+                              {t.frontmatter.title}
+                            </span>
+                            <span className="tema__meta tema__meta--fixa">
+                              {mesAno(t.frontmatter.date)} · {t.timeToRead} min
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link className="botao botao--solto" to="/textos/">
+                      Todos os textos →
+                    </Link>
+                  </>
+                ) : (
+                  <p className="vazio">› nada publicado por aqui ainda</p>
+                )}
+              </div>
+              <CenaEstante livro={livro} />
             </div>
-            <CenaEstante livro={livro} />
-          </div>
-        </section>
+          </section>
+        ) : null}
 
         <section className="secao" id="notas" aria-labelledby="tit-notas">
           <div className="interno estudos">
             <div>
-              <Rotulo num="06" nome="Estudos" />
+              <Rotulo num={num(6)} nome="Estudos" />
               <h2 className="titulo" id="tit-notas">
                 Notas de estudo
               </h2>
@@ -314,7 +319,7 @@ const Home = ({ data }) => {
           >
             <div className="contato__texto">
               <div>
-                <Rotulo num="07" nome="Contato" />
+                <Rotulo num={num(7)} nome="Contato" />
                 <h2 className="contato__titulo" id="tit-contato">
                   Para conversar, palestrar ou aconselhar,
                 </h2>

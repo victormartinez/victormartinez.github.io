@@ -1,4 +1,5 @@
 const path = require("path")
+const site = require("./src/config/site")
 
 /** Raiz das URLs das anotações de estudo. */
 const RAIZ_NOTAS = "/notas-de-estudo"
@@ -23,6 +24,14 @@ const slugDaNota = (caminho, raiz) =>
     .split(path.sep)
     .filter(Boolean)
     .join("/")
+
+/**
+ * /textos/ nasce sozinha de src/pages/textos.js; com a seção fora do ar
+ * (site.textosNoAr) ela é descartada aqui para não ficar acessível por URL.
+ */
+exports.onCreatePage = ({ page, actions }) => {
+  if (!site.textosNoAr && page.path === "/textos/") actions.deletePage(page)
+}
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   if (node.internal.type !== "MarkdownRemark") return

@@ -16,4 +16,8 @@ module.exports = {
   github: "https://github.com/victormartinez",
   ogImagem: "/assets/img/og-victor-martinez.png",
   email: { usuario: "vcrmartinez", dominio: "gmail.com" },
+  // false tira a seção "Textos" do ar: some da home, do menu e da 404, e
+  // /textos/ não é gerada. Um texto com publicado: true ainda ganha página
+  // própria e entra no RSS — só não aparece em lugar nenhum do site.
+  textosNoAr: false,
 }
