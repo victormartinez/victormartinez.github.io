@@ -33,6 +33,7 @@
         <div class="ed-colecoes" role="group" aria-label="O que editar">
           <button type="button" data-colecao="notas">Notas</button>
           <button type="button" data-colecao="textos">Textos</button>
+          <button type="button" data-colecao="linkedin">LinkedIn</button>
         </div>
         <button type="button" class="botao ed-nova" id="nova">Nova nota</button>
         <input type="search" class="ed-busca" id="busca" autocomplete="off" />
@@ -56,7 +57,7 @@
           <div class="ed-cabeca">
             <nav class="ed-trilha" id="trilha" aria-label="Onde fica"></nav>
             <input class="ed-titulo" id="titulo" aria-label="Título" placeholder="Título" />
-            <input class="ed-descricao" id="descricao" aria-label="Descrição" />
+            <input class="ed-descricao" id="descricao" aria-label="Descrição" data-so="notas textos" />
 
             <div class="ed-meta">
               <!-- só nas notas -->
@@ -75,8 +76,8 @@
               </label>
 
               <!-- só nos textos -->
-              <label class="ed-campo" data-so="textos">
-                Data
+              <label class="ed-campo" data-so="textos linkedin">
+                <span id="data-rotulo">Data</span>
                 <input type="date" id="data" required />
               </label>
               <label class="ed-campo" data-so="textos">
@@ -93,6 +94,9 @@
                 <button type="button" class="ed-sub" id="sub-nota" data-so="notas">Nova sub-nota</button>
                 <a class="ed-sub" id="ver-no-site" target="_blank" rel="noopener"
                   title="Abre a página no make dev (localhost:8000)">Ver no site</a>
+                <button type="button" class="ed-sub" id="copiar" data-so="linkedin"
+                  title="Copia o texto do post para colar no LinkedIn">Copiar texto</button>
+                <button type="button" class="ed-sub ed-sub--perigo" id="apagar" data-so="linkedin">Apagar</button>
               </div>
             </div>
           </div>
@@ -103,7 +107,8 @@
               <button type="button" data-modo="dividir">Lado a lado</button>
               <button type="button" data-modo="previa">Prévia</button>
             </div>
-            <button type="button" class="ed-imagem" id="botao-imagem">
+            <p class="ed-contador" id="contador" data-so="linkedin" role="status" aria-live="polite"></p>
+            <button type="button" class="ed-imagem" id="botao-imagem" data-so="notas textos">
               <svg viewBox="0 0 20 16" aria-hidden="true"><rect x="1" y="1" width="18" height="14" rx="2" /><circle cx="6.5" cy="5.5" r="1.8" /><path d="M1.5 13.5 7 8.5l3.5 3 3-2.5 5 4.5" /></svg>
               Imagem
             </button>
@@ -120,6 +125,14 @@
             ></textarea>
             <div class="ed-previa pagina">
               <div class="post__corpo" id="previa"></div>
+              <!-- Post do LinkedIn: texto puro, do jeito que aparece lá. -->
+              <div class="ed-cartao" id="cartao" data-so="linkedin">
+                <div class="ed-cartao__quem">
+                  <span class="ed-cartao__foto" aria-hidden="true"></span>
+                  <span class="ed-cartao__nome">Victor Martinez</span>
+                </div>
+                <p class="ed-cartao__texto" id="cartao-texto"></p>
+              </div>
             </div>
             <div class="ed-dica" id="dica" hidden>
               <p id="dica-texto" role="status" aria-live="polite"></p>

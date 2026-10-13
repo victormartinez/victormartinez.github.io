@@ -1,6 +1,7 @@
 /**
- * Editor do conteúdo do site — o lado do navegador. Edita as duas coleções em
- * Markdown: notas de estudo (content/notas/) e textos do blog (content/blog/).
+ * Editor do conteúdo do site — o lado do navegador. Edita as notas de estudo
+ * (content/notas/), os textos do blog (content/blog/) e os posts do LinkedIn
+ * (content/linkedin/ — texto puro, fora do git: é copiar, postar e apagar).
  *
  * O salvamento é o centro de tudo:
  * - cada mudança espera uma pausa curta na digitação e vai para o disco
@@ -20,6 +21,10 @@ const ESPERA_SALVAR = 700
 const ESPERA_PREVIA = 250
 const CHAVE_MODO = "editor-notas:modo"
 const SITE_LOCAL = "http://localhost:8000"
+
+/** Limite do LinkedIn e onde o feed esconde o resto atrás de "…mais" (aprox.). */
+const LIMITE_LINKEDIN = 3000
+const DOBRA_LINKEDIN = 210
 
 /** Acima disso a imagem é reduzida: o site nunca mostra mais que 900 px (1800 em tela retina). */
 const LARGURA_MAXIMA = 2000
@@ -49,6 +54,7 @@ const el = {
   ordem: $("ordem"),
   publicado: $("publicado"),
   data: $("data"),
+  dataRotulo: $("data-rotulo"),
   categoria: $("categoria"),
   categorias: $("categorias"),
   publicadoTexto: $("publicado-texto"),
@@ -56,6 +62,10 @@ const el = {
   corpo: $("corpo"),
   area: $("area"),
   previa: $("previa"),
+  cartaoTexto: $("cartao-texto"),
+  contador: $("contador"),
+  copiar: $("copiar"),
+  apagar: $("apagar"),
   dica: $("dica"),
   dicaTexto: $("dica-texto"),
   dicaAlt: $("dica-alt"),
@@ -74,15 +84,21 @@ const el = {
   novaErro: $("nova-erro"),
   novaCriar: $("nova-criar"),
 }
+const PLACEHOLDER_CORPO = el.corpo.placeholder
 
 // ---------------------------------------------------------------- coleções
 
-/** O que muda entre notas e textos na tela; o fluxo de salvar é o mesmo. */
+/**
+ * O que muda entre as coleções na tela; o fluxo de salvar é o mesmo.
+ * `endereco` só existe em quem tem página no site ("Ver no site"); `previa`
+ * só em quem desenha a prévia no próprio navegador, sem o servidor.
+ */
 const COLECOES = {
   notas: {
     novo: "Nova nota",
     criar: "Criar nota",
     busca: "Buscar nas notas",
+    titulo: "Título",
     descricao: "Uma linha sobre a nota — aparece no índice e nas buscas",
     exemplo: "Networking no Kubernetes",
     vazio: "Nenhuma nota ainda. A primeira vira um tema no índice do site.",
@@ -110,11 +126,13 @@ const COLECOES = {
     novo: "Novo texto",
     criar: "Criar texto",
     busca: "Buscar nos textos",
+    titulo: "Título",
     descricao:
       "Resumo de uma linha — aparece na listagem, no Google e ao compartilhar",
     exemplo: "Como eu decido quando parar de refatorar",
     vazio: "Nenhum texto ainda.",
     classePrevia: "post__corpo",
+    trilha: "Textos",
     endereco: id => `/textos/${id.replace(/^\d{4}-\d{2}-\d{2}-/, "")}/`,
     lerCampos() {
       return {
@@ -130,11 +148,30 @@ const COLECOES = {
       rotularPublicacao()
     },
   },
+  linkedin: {
+    novo: "Novo post",
+    criar: "Criar post",
+    busca: "Buscar nos posts",
+    titulo: "Rótulo do post — só para achar na lista, não vai para o LinkedIn",
+    exemplo: "Por que paramos de estimar em horas",
+    vazio: "Nenhum post ainda. Escreva aqui, copie, poste e apague.",
+    classePrevia: "",
+    trilha: "LinkedIn",
+    placeholder:
+      "Escreva o post como ele vai aparecer no LinkedIn: texto puro, sem Markdown. Quebras de linha valem.",
+    previa: previaLinkedin,
+    lerCampos() {
+      return { date: el.data.value }
+    },
+    preencherCampos(campos) {
+      el.data.value = campos.date || ""
+    },
+  },
 }
 
 const estado = {
   lista: "notas", // coleção mostrada na lateral
-  itens: { notas: [], textos: [] },
+  itens: { notas: [], textos: [], linkedin: [] },
   colecao: null, // coleção do item aberto
   id: null, // item aberto
   versao: null,
@@ -179,6 +216,13 @@ const slugificar = texto =>
     .replace(/-+$/g, "")
 
 const normalizar = s => s.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase()
+
+/** Data local de hoje, AAAA-MM-DD (o mesmo `hoje()` do servidor). */
+const hojeIso = () => {
+  const d = new Date()
+  const p = n => String(n).padStart(2, "0")
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`
+}
 
 const hora = d =>
   d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })
@@ -307,6 +351,14 @@ function preencher({ campos, corpo }) {
 const sujo = () =>
   estado.id !== null && JSON.stringify(lerFormulario()) !== estado.salvo
 
+/** Liga só os campos da coleção (data-so="textos linkedin") dentro de `raiz`. */
+function mostrarCamposDe(raiz, colecao) {
+  raiz.dataset.colecao = colecao
+  for (const e of raiz.querySelectorAll("[data-so]")) {
+    e.hidden = !e.dataset.so.split(" ").includes(colecao)
+  }
+}
+
 /** Texto rascunho não tem página nem no make dev: o link some até publicar. */
 function rotularPublicacao() {
   const publicado = el.publicadoTexto.checked
@@ -361,7 +413,7 @@ async function salvar() {
       estado.tentativas = 0
       if (JSON.stringify(lerFormulario()) === json) apagarRascunho(colecao, id)
       mostrarStatus("salvo")
-      atualizarItem(colecao, id, conteudo.campos)
+      atualizarItem(colecao, id, conteudo)
     } catch (e) {
       console.error("[editor] salvar:", e)
       estado.tentativas++
@@ -491,11 +543,16 @@ async function abrir(colecao, id, { focar } = {}) {
   estado.conflito = false
   estado.tentativas = 0
   estado.salvoEm = null
-  el.nota.dataset.colecao = colecao
-  el.previa.className = COLECOES[colecao].classePrevia
-  el.descricao.placeholder = COLECOES[colecao].descricao
-  el.verNoSite.hidden = false
-  el.verNoSite.href = SITE_LOCAL + COLECOES[colecao].endereco(id)
+  const c = COLECOES[colecao]
+  mostrarCamposDe(el.nota, colecao)
+  el.previa.className = c.classePrevia
+  el.previa.hidden = Boolean(c.previa)
+  el.titulo.placeholder = c.titulo
+  el.descricao.placeholder = c.descricao || ""
+  el.corpo.placeholder = c.placeholder || PLACEHOLDER_CORPO
+  el.dataRotulo.textContent = colecao === "linkedin" ? "Postar em" : "Data"
+  el.verNoSite.hidden = !c.endereco
+  if (c.endereco) el.verNoSite.href = SITE_LOCAL + c.endereco(id)
   carregarNoFormulario(r.dados)
 
   const rascunho = lerRascunho()
@@ -514,6 +571,26 @@ async function abrir(colecao, id, { focar } = {}) {
   document.title = `${r.dados.campos.title || id} — editor`
   marcarAtiva()
   if (focar === "corpo") el.corpo.focus()
+}
+
+/** Volta à tela inicial sem nada aberto (depois de apagar o item). */
+function fecharItem() {
+  clearTimeout(estado.timer)
+  Object.assign(estado, {
+    colecao: null,
+    id: null,
+    versao: null,
+    salvo: null,
+    conflito: false,
+    salvoEm: null,
+  })
+  fecharDica()
+  mostrarStatus("ocioso")
+  el.nota.hidden = true
+  el.inicio.hidden = false
+  history.replaceState(null, "", location.pathname)
+  document.title = "Editor"
+  marcarAtiva()
 }
 
 /** Quando a aba volta ao foco: se o arquivo mudou lá fora e aqui está tudo salvo, recarrega. */
@@ -541,11 +618,13 @@ function alertaSimples(texto) {
 // ---------------------------------------------------------------- lateral
 
 async function carregarListas() {
-  const [notas, textos] = await Promise.all(
-    ["notas", "textos"].map(c => api("GET", `/api/itens?colecao=${c}`)),
+  const nomes = Object.keys(COLECOES)
+  const respostas = await Promise.all(
+    nomes.map(c => api("GET", `/api/itens?colecao=${c}`)),
   )
-  if (notas.ok) estado.itens.notas = notas.dados.itens
-  if (textos.ok) estado.itens.textos = textos.dados.itens
+  nomes.forEach((c, i) => {
+    if (respostas[i].ok) estado.itens[c] = respostas[i].dados.itens
+  })
   atualizarCategorias()
   desenharLista()
 }
@@ -617,6 +696,11 @@ function desenharLista() {
       onde.textContent = [dataCurta(n.data), n.categoria]
         .filter(Boolean)
         .join(" · ")
+    } else if (colecao === "linkedin") {
+      onde.textContent = [
+        dataCurta(n.data),
+        n.tamanho ? `${n.tamanho.toLocaleString("pt-BR")} caracteres` : "vazio",
+      ].join(" · ")
     } else if (termo && n.id.includes("/")) {
       onde.textContent = n.id
         .split("/")
@@ -637,12 +721,14 @@ function desenharLista() {
           n.maturidade,
         ),
       )
-    } else {
+    } else if (colecao === "textos") {
       marcas.append(
         n.publicado
           ? marca("publicado", "revisada")
           : marca("rascunho", "rascunho"),
       )
+    } else if (n.tamanho > LIMITE_LINKEDIN) {
+      marcas.append(marca("passa do limite do LinkedIn", "fora"))
     }
     a.append(marcas)
     el.arvore.append(a)
@@ -669,23 +755,28 @@ function marcarAtiva() {
 }
 
 /** Título, estágio, data ou publicação mudou: reflete na lateral sem recarregar. */
-function atualizarItem(colecao, id, campos) {
+function atualizarItem(colecao, id, { campos, corpo }) {
   const n = estado.itens[colecao].find(n => n.id === id)
   if (!n) return
   const novo = {
     titulo: campos.title || id.split("/").at(-1),
-    publicado: campos.publicado,
     ...(colecao === "notas"
-      ? { maturidade: campos.maturidade }
-      : { data: campos.date || n.data, categoria: campos.category }),
+      ? { maturidade: campos.maturidade, publicado: campos.publicado }
+      : colecao === "textos"
+        ? {
+            data: campos.date || n.data,
+            categoria: campos.category,
+            publicado: campos.publicado,
+          }
+        : { data: campos.date || n.data, tamanho: [...corpo.trim()].length }),
   }
   if (Object.keys(novo).every(k => n[k] === novo[k])) return
   Object.assign(n, novo)
-  if (colecao === "textos") {
-    estado.itens.textos.sort(
+  if (colecao !== "notas") {
+    estado.itens[colecao].sort(
       (a, b) => b.data.localeCompare(a.data) || a.id.localeCompare(b.id),
     )
-    atualizarCategorias()
+    if (colecao === "textos") atualizarCategorias()
   }
   desenharLista()
   montarTrilha()
@@ -695,8 +786,8 @@ function montarTrilha() {
   el.trilha.innerHTML = ""
   const raiz = document.createElement("span")
   el.trilha.append(raiz)
-  if (estado.colecao === "textos") {
-    raiz.textContent = "Textos"
+  if (estado.colecao !== "notas") {
+    raiz.textContent = COLECOES[estado.colecao].trilha
     return
   }
   raiz.textContent = "Notas de estudo"
@@ -733,7 +824,11 @@ function mudarModo(modo) {
 
 function atualizarPrevia(agora) {
   clearTimeout(estado.timerPrevia)
-  if (modoAtual() === "escrever" || !estado.id) return
+  if (!estado.id) return
+  // Prévia local (LinkedIn): sem rede, sempre em dia — o contador vale
+  // também no modo "escrever".
+  if (aberto().previa) return aberto().previa()
+  if (modoAtual() === "escrever") return
   estado.timerPrevia = setTimeout(
     async () => {
       const { colecao, id } = estado
@@ -755,6 +850,39 @@ function atualizarPrevia(agora) {
       }
     },
     agora ? 0 : ESPERA_PREVIA,
+  )
+}
+
+/**
+ * O post como o feed mostra: texto puro com as quebras, contador contra o
+ * limite e a dobra onde o LinkedIn esconde o resto atrás de "…mais".
+ */
+function previaLinkedin() {
+  const texto = el.corpo.value
+  const letras = [...texto.trim()]
+  const n = letras.length
+  el.contador.textContent = `${n.toLocaleString("pt-BR")} / ${LIMITE_LINKEDIN.toLocaleString("pt-BR")} caracteres`
+  el.contador.className =
+    "ed-contador" +
+    (n > LIMITE_LINKEDIN
+      ? " ed-contador--passou"
+      : n > LIMITE_LINKEDIN - 200
+        ? " ed-contador--perto"
+        : "")
+
+  el.cartaoTexto.replaceChildren()
+  if (!n) return
+  const inteiro = [...texto.trimEnd()]
+  if (inteiro.length <= DOBRA_LINKEDIN) {
+    el.cartaoTexto.textContent = inteiro.join("")
+    return
+  }
+  const dobra = document.createElement("span")
+  dobra.className = "ed-cartao__dobra"
+  el.cartaoTexto.append(
+    inteiro.slice(0, DOBRA_LINKEDIN).join(""),
+    dobra,
+    inteiro.slice(DOBRA_LINKEDIN).join(""),
   )
 }
 
@@ -817,6 +945,12 @@ async function prepararImagem(arquivo) {
 async function anexarImagens(arquivos) {
   const imagens = [...arquivos].filter(eImagem)
   if (!imagens.length || !estado.id) return false
+  if (estado.colecao === "linkedin") {
+    mostrarDica(
+      "Post do LinkedIn não leva imagem por aqui: anexe lá, na hora de postar.",
+    )
+    return true
+  }
 
   const dicas = []
   for (const img of imagens) {
@@ -906,7 +1040,7 @@ function trocarTexto(de, para) {
 function abrirDialogoNovo(pai = "") {
   const colecao = estado.lista
   const c = COLECOES[colecao]
-  el.dialogo.dataset.colecao = colecao
+  mostrarCamposDe(el.dialogo, colecao)
   el.novaTituloDialogo.textContent = c.novo
   el.novaCriar.textContent = c.criar
   el.novaTitulo.placeholder = c.exemplo
@@ -935,6 +1069,8 @@ function atualizarUrlNova() {
   const seg = slugificar(el.novaSlug.value) || "…"
   if (el.dialogo.dataset.colecao === "textos") {
     el.novaUrl.textContent = `Vai ficar em /textos/${seg}/ — começa como rascunho, fora do site`
+  } else if (el.dialogo.dataset.colecao === "linkedin") {
+    el.novaUrl.textContent = `Vai ficar em content/linkedin/${hojeIso()}-${seg}/ — fora do git e do site`
   } else {
     const pai = el.novaPai.value
     el.novaUrl.textContent = `Vai ficar em /notas-de-estudo/${pai ? pai + "/" : ""}${seg}/`
@@ -1032,6 +1168,39 @@ el.arquivoImagem.addEventListener("change", async () => {
   const arquivos = [...el.arquivoImagem.files]
   el.arquivoImagem.value = ""
   await anexarImagens(arquivos)
+})
+
+el.copiar.addEventListener("click", async () => {
+  const texto = el.corpo.value.trim()
+  try {
+    await navigator.clipboard.writeText(texto)
+    mostrarDica("Copiado. Agora é colar no LinkedIn.")
+  } catch {
+    el.corpo.focus()
+    el.corpo.select()
+    mostrarDica(
+      "Não consegui copiar sozinho — o texto está selecionado, use Cmd+C.",
+    )
+  }
+})
+el.apagar.addEventListener("click", () => {
+  const { colecao, id } = estado
+  const rotulo = el.titulo.value.trim() || id
+  mostrarAviso(`Apagar “${rotulo}”? A pasta some do disco e não tem volta.`, [
+    [
+      "Apagar",
+      async () => {
+        clearTimeout(estado.timer)
+        if (estado.emVoo) await estado.emVoo
+        const r = await api("DELETE", `/api/item?${consulta(colecao, id)}`)
+        if (!r.ok) return alertaSimples(r.dados.erro || "Não consegui apagar.")
+        apagarRascunho(colecao, id)
+        fecharItem()
+        await carregarListas()
+      },
+    ],
+    ["Cancelar", () => {}, "botao--nevoa"],
+  ])
 })
 
 el.nota.addEventListener("submit", e => e.preventDefault())

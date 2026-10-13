@@ -9,8 +9,8 @@
   font-size:16px;line-height:1.55;
 }
 .ed [hidden]{display:none !important}
-/* Campos que só existem numa das coleções (o formulário e o diálogo dizem qual). */
-[data-colecao=notas] [data-so=textos],[data-colecao=textos] [data-so=notas]{display:none !important}
+/* Campos que só existem em algumas coleções levam data-so="textos linkedin";
+   quem liga e desliga é mostrarCamposDe() no editor.js, via [hidden]. */
 .ed input{color-scheme:dark}
 
 /* ---------------------------------------------------------------- topo */
@@ -38,7 +38,7 @@
 /* ---------------------------------------------------------------- estrutura */
 .ed-corpo{display:grid;grid-template-columns:var(--lateral) minmax(0,1fr);min-height:0}
 .ed-lateral{display:flex;flex-direction:column;gap:14px;min-height:0;padding:20px 0 0;background:var(--ameixa);border-right:1px solid var(--linha-escura)}
-.ed-colecoes{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:0 20px;padding:3px;border-radius:8px;background:var(--tinta)}
+.ed-colecoes{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:0 20px;padding:3px;border-radius:8px;background:var(--tinta)}
 .ed-colecoes button{padding:7px 0;border:0;border-radius:6px;background:none;color:var(--nevoa-escura);font-family:var(--display);font-weight:600;font-size:15px;cursor:pointer}
 .ed-colecoes button:hover{color:var(--giz)}
 .ed-colecoes button[aria-pressed=true]{background:var(--ameixa-escura);color:var(--giz)}
@@ -116,6 +116,7 @@
 .ed-acoes{display:flex;gap:18px;margin-left:auto}
 .ed-sub{padding:0;border:0;background:none;color:var(--menta);font-size:14px;text-decoration:none;cursor:pointer}
 .ed-sub:hover{color:var(--giz);text-decoration:underline}
+.ed-sub--perigo{color:var(--rosa)}
 
 /* ---------------------------------------------------------------- modos */
 .ed-barra{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:0 28px}
@@ -123,6 +124,10 @@
 .ed-imagem{display:flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--linha-escura);border-radius:8px;background:none;color:var(--nevoa);font-size:14px;cursor:pointer}
 .ed-imagem:hover{color:var(--giz);border-color:var(--nevoa-escura)}
 .ed-imagem svg{width:18px;height:15px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round}
+/* Contador do post: o LinkedIn corta em 3.000 caracteres. */
+.ed-contador{margin:0;font-family:var(--mono);font-size:13px;color:var(--nevoa-escura)}
+.ed-contador--perto{color:var(--ambar-claro)}
+.ed-contador--passou{color:var(--rosa)}
 .ed-modos button{padding:5px 12px;border:0;border-radius:6px;background:none;color:var(--nevoa-escura);font-size:13px;cursor:pointer}
 .ed-modos button:hover{color:var(--giz)}
 .ed-modos button[aria-pressed=true]{background:var(--ameixa-escura);color:var(--giz)}
@@ -142,6 +147,16 @@
 .ed-previa{min-height:0;overflow-y:auto;padding:32px clamp(24px,3vw,48px) 40vh}
 .ed-previa .post__corpo{max-width:760px;margin:0 auto;font-size:17px}
 .ed-previa__vazia{color:var(--cinza);font-size:15px}
+/* Cartão do LinkedIn: fonte de sistema, largura do feed, quebras preservadas.
+   A dobra marca onde o feed esconde o resto atrás de "…mais". */
+.ed-cartao{max-width:555px;margin:0 auto;padding:12px 16px 16px;border-radius:8px;background:#fff;color:rgba(0,0,0,.9);font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;font-size:14px;line-height:1.43;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.ed-cartao__quem{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ed-cartao__foto{width:48px;height:48px;border-radius:50%;background:#e9e5df}
+.ed-cartao__nome{font-weight:600}
+.ed-cartao__texto{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.ed-cartao__texto:empty::before{content:"O post aparece aqui, do jeito que fica no feed.";color:rgba(0,0,0,.5)}
+.ed-cartao__dobra{display:block;margin:2px 0;border-top:1px dashed rgba(0,0,0,.3);font-size:11px;color:rgba(0,0,0,.5)}
+.ed-cartao__dobra::after{content:"…mais — daqui para baixo só quem clicar vê"}
 /* Arrastando um arquivo por cima: a área inteira aceita. */
 .ed-area--soltando{outline:3px dashed var(--menta);outline-offset:-10px}
 /* Recado depois de anexar imagem: onde escrever a descrição, o que foi reduzido. */

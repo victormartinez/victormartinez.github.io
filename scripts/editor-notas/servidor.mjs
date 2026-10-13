@@ -3,11 +3,12 @@
  * Editor local do conteúdo do site:  make editor  ->  http://localhost:8100
  *
  * Um servidor pequeno, sem dependência, que serve a página do editor
- * (./pagina) e uma API que lê e grava direto nas duas coleções em Markdown:
- * as notas de estudo (content/notas/) e os textos do blog (content/blog/). O
- * arquivo em disco continua sendo a fonte da verdade: o editor é só um jeito
- * melhor de escrever nele. Salvar aqui NÃO publica — quem manda para o ar é o
- * `make publicar`, como sempre.
+ * (./pagina) e uma API que lê e grava direto nas coleções em disco: as notas
+ * de estudo (content/notas/), os textos do blog (content/blog/) e os posts do
+ * LinkedIn (content/linkedin/, fora do git e do site). O arquivo em disco
+ * continua sendo a fonte da verdade: o editor é só um jeito melhor de
+ * escrever nele. Salvar aqui NÃO publica — quem manda para o ar é o
+ * `make publicar`, como sempre (e o LinkedIn é colar lá).
  *
  * Só escuta em 127.0.0.1 e recusa Host/Origin de fora: uma página qualquer
  * aberta no navegador não consegue gravar no seu conteúdo.
@@ -44,6 +45,18 @@ import {
   serializarTexto,
   slugDaPasta,
 } from "../lib/textos.mjs"
+import {
+  BASE_LINKEDIN,
+  PostJaExiste,
+  apagarPost,
+  arquivoDoPost,
+  criarPost,
+  interpretarPost,
+  pastaDePostValida,
+  pastaDoPost,
+  pastasDePosts,
+  serializarPost,
+} from "../lib/linkedin.mjs"
 
 const PORTA = Number(process.env.PORTA) || 8100
 const HOST = "127.0.0.1"
@@ -91,13 +104,14 @@ class ErroHttp extends Error {
 }
 
 /**
- * O que muda entre notas e textos fica aqui; o resto do servidor (ler, salvar
- * com checagem de conflito, imagens, prévia) é o mesmo para os dois.
+ * O que muda entre as coleções fica aqui; o resto do servidor (ler, salvar
+ * com checagem de conflito, imagens, prévia) é o mesmo para todas.
  *
  * - `id`: o slug com barras para a nota (`kubernetes/networking`), o nome da
  *   pasta para o texto (`2026-08-24-o-que-a-ia-acelerou`).
  * - `montar(campos, atual, agora)`: o arquivo novo. Com `agora = false`, sem
  *   carimbar data — é assim que o servidor descobre se algo mudou de fato.
+ * - `apagar(id)`: só quem define aceita DELETE (hoje, os posts do LinkedIn).
  */
 const COLECOES = {
   notas: {
@@ -250,6 +264,65 @@ const COLECOES = {
         throw e
       }
     },
+  },
+
+  linkedin: {
+    rotulo: "post",
+    essa: "Esse post",
+    ao: "ao post",
+    raiz: BASE_LINKEDIN,
+    validar: pastaDePostValida,
+    pasta: pastaDoPost,
+    arquivo: arquivoDoPost,
+    interpretar: interpretarPost,
+    montar(campos, atual) {
+      return serializarPost({
+        titulo: String(campos.title ?? ""),
+        data: /^\d{4}-\d{2}-\d{2}$/.test(campos.date)
+          ? campos.date
+          : atual.campos.date || hoje(),
+        extras: atual.extras,
+        corpo: String(campos.corpo ?? ""),
+      })
+    },
+    async listar() {
+      const posts = []
+      for (const pasta of await pastasDePosts()) {
+        let texto
+        try {
+          texto = await readFile(arquivoDoPost(pasta), "utf8")
+        } catch {
+          continue // pasta sem index.md
+        }
+        const { campos, corpo } = interpretarPost(texto)
+        posts.push({
+          id: pasta,
+          titulo: campos.title || slugDaPasta(pasta),
+          data: campos.date || pasta.slice(0, 10),
+          tamanho: [...corpo.trim()].length, // o mesmo que o contador na tela
+        })
+      }
+      // Mais recente primeiro: o próximo a postar fica no topo.
+      return posts.sort(
+        (a, b) => b.data.localeCompare(a.data) || a.id.localeCompare(b.id),
+      )
+    },
+    async criar({ titulo, slug }) {
+      try {
+        return await criarPost(slug, { titulo })
+      } catch (e) {
+        if (e instanceof PostJaExiste) {
+          throw new ErroHttp(
+            409,
+            `Já existe um post de hoje com esse endereço — escolha outro.`,
+          )
+        }
+        throw e
+      }
+    },
+    apagar: apagarPost,
+    // O LinkedIn não lê Markdown: imagem vai direto lá, na hora de postar.
+    semImagem: true,
   },
 }
 
@@ -551,8 +624,23 @@ async function tratar(req, res) {
       return responder(res, resultado.conflito ? 409 : 200, resultado)
     }
 
+    case "DELETE /api/item": {
+      const { colecao, id } = await exigirItem(url)
+      if (!colecao.apagar) {
+        throw new ErroHttp(
+          405,
+          `Apagar ${colecao.rotulo} é pelo terminal ou pelo Finder.`,
+        )
+      }
+      await colecao.apagar(id)
+      return responder(res, 200, { apagado: id })
+    }
+
     case "POST /api/imagem": {
       const { colecao, id } = await exigirItem(url)
+      if (colecao.semImagem) {
+        throw new ErroHttp(400, "Post do LinkedIn não leva imagem aqui.")
+      }
       const tipo = (req.headers["content-type"] || "").split(";")[0].trim()
       if (!EXTENSAO_DA_IMAGEM[tipo]) {
         throw new ErroHttp(415, "Só dá para anexar PNG, JPG, GIF, WebP ou SVG.")
@@ -616,6 +704,7 @@ Editor no ar:  ${endereco}
 
   notas em    ${onde(BASE)}/
   textos em   ${onde(BASE_TEXTOS)}/
+  linkedin em ${onde(BASE_LINKEDIN)}/  (fora do git: é copiar, postar e apagar)
   salvar não publica: quando quiser mandar para o ar, use  make publicar MSG="..."
   para ver a página de verdade enquanto escreve, rode  make dev  em outro terminal
 

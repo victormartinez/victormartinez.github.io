@@ -123,3 +123,4 @@ public
 public/
 .env.development
 .env.production
+content/linkedin/
